@@ -1,0 +1,129 @@
+/*
+╔══════════════════════════════════════════════╗
+║       👑  𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 〽️                        ║
+╚══════════════════════════════════════════════╝
+
+🪽 𝑵𝒐𝒕𝒆 :
+Rimuru MD adalah SC hasil rename dari SC Ourin MD.
+
+╭─────────────「 🜲 𝑰𝑵𝑭𝑶 𝑶𝑼𝑹𝑰𝑵 」─────────────╮
+│ 👤 Developer : 𝑯𝒚𝒖𝒖 / 𝒁𝒂𝒏𝒏
+│ 🎵 TikTok    : https://tiktok.com/@ourinmd
+│ 📢 WhatsApp  : https://whatsapp.com/channel/0029VbB37bgBfxoAmAlsgE0t
+╰─────────────────────────────────────────────╯
+
+╭────────────「 ✦ 𝑰𝑵𝑭𝑶 𝑹𝑰𝑴𝑼𝑹𝑼 ✦ 」────────────╮
+│ 👤 Developer Pihak Ketiga : 𝑨𝒏𝒊𝒕𝒂 𝑷𝒖𝒕𝒓𝒊 𝑨𝒛𝒛𝒂𝒉𝒓𝒂
+│ 🎵 TikTok                 : https://tiktok.com/@anita.putri.azzah1
+│ 📸 Instagram              : anit_aputriazzahrah
+│ 📢 Saluran                : https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P
+│ ▶️ YouTube                : https://youtube.com/@rimurumd
+╰─────────────────────────────────────────────╯
+
+        ⚠️ 𝑫𝑶 𝑵𝑶𝑻 𝑹𝑬𝑴𝑶𝑽𝑬 𝑪𝑹𝑬𝑫𝑰𝑻 ⚠️
+              ❖ 𝐉𝐚𝐧𝐠𝐚𝐧 𝐡𝐚𝐩𝐮𝐬 𝐜𝐫𝐞𝐝𝐢𝐭 ❖
+
+                 「 👑 𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 👑 」
+*/
+
+import { getDatabase } from '../../src/lib/rimuru-database.js';
+const pluginConfig = {
+    name: 'acceptwar',
+    category: 'clan',
+    description: 'Terima tantangan clan war',
+    usage: '.clanwaraccept',
+    example: '.clanwaraccept',
+    isOwner: false,
+    isPremium: false,
+    isGroup: false,
+    isPrivate: false,
+    cooldown: 10,
+    energi: 0,
+    isEnabled: true
+}
+
+async function handler(m, { sock }) {
+    const db = getDatabase()
+    const user = db.getUser(m.sender)
+    
+    if (!user.clanId) {
+        return m.reply(`❌ Kamu belum punya clan!`)
+    }
+    
+    const clan = db.db.data.clans[user.clanId]
+    if (!clan) {
+        return m.reply(`❌ Clan tidak ditemukan!`)
+    }
+    
+    if (clan.leader !== m.sender && clan.roles?.[m.sender] !== 'coleader') {
+        return m.reply(`❌ Hanya *Leader* atau *Co-Leader* yang bisa menerima war!`)
+    }
+    
+    if (!db.db.data.pendingWars) db.db.data.pendingWars = {}
+    
+    let pendingWar = null
+    let pendingId = null
+    
+    for (const [id, war] of Object.entries(db.db.data.pendingWars)) {
+        if (war.targetClanId === clan.id && war.status === 'pending') {
+            pendingWar = war
+            pendingId = id
+            break
+        }
+    }
+    
+    if (!pendingWar) {
+        return m.reply(`❌ Tidak ada tantangan war yang masuk untuk clanmu!`)
+    }
+    
+    const attackerClan = db.db.data.clans[pendingWar.attackerClanId]
+    if (!attackerClan) {
+        delete db.db.data.pendingWars[pendingId]
+        await db.save()
+        return m.reply(`❌ Clan pengirim sudah tidak ada!`)
+    }
+    
+    pendingWar.status = 'accepted'
+    pendingWar.acceptedAt = new Date().toISOString()
+    pendingWar.warStart = Date.now()
+    pendingWar.warEnd = Date.now() + (24 * 60 * 60 * 1000)
+    
+    if (!db.db.data.activeWars) db.db.data.activeWars = {}
+    const warId = `war_${Date.now()}`
+    
+    db.db.data.activeWars[warId] = {
+        id: warId,
+        attacker: pendingWar.attackerClanId,
+        defender: pendingWar.targetClanId,
+        startTime: pendingWar.warStart,
+        endTime: pendingWar.warEnd,
+        attackerScore: 0,
+        defenderScore: 0,
+        attackerMembers: [],
+        defenderMembers: [],
+        status: 'active'
+    }
+    
+    delete db.db.data.pendingWars[pendingId]
+    await db.save()
+    
+    let txt = `⚔️ *ᴄʟᴀɴ ᴡᴀʀ ᴀᴄᴄᴇᴘᴛᴇᴅ!*\n\n`
+    txt += `╭┈┈⬡「 🎯 *ᴡᴀʀ ɪɴꜰᴏ* 」\n`
+    txt += `┃ ⚔️ Attacker: *${attackerClan.name}*\n`
+    txt += `┃ 🛡️ Defender: *${clan.name}*\n`
+    txt += `┃ ⏰ Durasi: *24 jam*\n`
+    txt += `┃ 📅 Mulai: Sekarang\n`
+    txt += `╰┈┈┈┈┈┈┈┈⬡\n\n`
+    txt += `> Ketik *.clanwar* untuk lihat status war!\n> Ketik *.clanwarscore* untuk lihat skor!`
+    
+    for (const member of clan.members) {
+        await sock.sendMessage(member, { text: txt }).catch(() => {})
+    }
+    for (const member of attackerClan.members) {
+        await sock.sendMessage(member, { text: txt }).catch(() => {})
+    }
+    
+    await m.reply(txt)
+}
+
+export { pluginConfig as config, handler };

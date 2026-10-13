@@ -1,0 +1,148 @@
+/*
+╔══════════════════════════════════════════════╗
+║       👑  𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 〽️                        ║
+╚══════════════════════════════════════════════╝
+
+🪽 𝑵𝒐𝒕𝒆 :
+Rimuru MD adalah SC hasil rename dari SC Ourin MD.
+
+╭─────────────「 🜲 𝑰𝑵𝑭𝑶 𝑶𝑼𝑹𝑰𝑵 」─────────────╮
+│ 👤 Developer : 𝑯𝒚𝒖𝒖 / 𝒁𝒂𝒏𝒏
+│ 🎵 TikTok    : https://tiktok.com/@ourinmd
+│ 📢 WhatsApp  : https://whatsapp.com/channel/0029VbB37bgBfxoAmAlsgE0t
+╰─────────────────────────────────────────────╯
+
+╭────────────「 ✦ 𝑰𝑵𝑭𝑶 𝑹𝑰𝑴𝑼𝑹𝑼 ✦ 」────────────╮
+│ 👤 Developer Pihak Ketiga : 𝑨𝒏𝒊𝒕𝒂 𝑷𝒖𝒕𝒓𝒊 𝑨𝒛𝒛𝒂𝒉𝒓𝒂
+│ 🎵 TikTok                 : https://tiktok.com/@anita.putri.azzah1
+│ 📸 Instagram              : anit_aputriazzahrah
+│ 📢 Saluran                : https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P
+│ ▶️ YouTube                : https://youtube.com/@rimurumd
+╰─────────────────────────────────────────────╯
+
+        ⚠️ 𝑫𝑶 𝑵𝑶𝑻 𝑹𝑬𝑴𝑶𝑽𝑬 𝑪𝑹𝑬𝑫𝑰𝑻 ⚠️
+              ❖ 𝐉𝐚𝐧𝐠𝐚𝐧 𝐡𝐚𝐩𝐮𝐬 𝐜𝐫𝐞𝐝𝐢𝐭 ❖
+
+                 「 👑 𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 👑 」
+*/
+
+import config from "../../config.js";
+import te from "../../src/lib/rimuru-error.js";
+import { sendToolsPreview } from "../../src/lib/rimuru-context.js";
+const pluginConfig = {
+  name: "whois",
+  category: "tools",
+  description: "DNS Lookup untuk domain",
+  usage: ".lookup <domain>",
+  example: ".lookup google.com",
+  isOwner: false,
+  isPremium: false,
+  isGroup: false,
+  isPrivate: false,
+  cooldown: 5,
+  energi: 1,
+  isEnabled: true,
+};
+
+async function handler(m, { sock }) {
+  let domain = m.args?.[0];
+
+  if (!domain) {
+    return m.reply(
+      `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
+        `> \`${m.prefix}lookup <domain>\`\n\n` +
+        `> Contoh:\n` +
+        `> \`${m.prefix}lookup google.com\``,
+    );
+  }
+
+  domain = domain.replace(/^(https?:\/\/)?(www\.)?/, "").split("/")[0];
+
+  if (
+    !/^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]?(\.[a-zA-Z]{2,})+$/.test(domain)
+  ) {
+    return m.reply(`❌ *ғᴏʀᴍᴀᴛ ᴛɪᴅᴀᴋ ᴠᴀʟɪᴅ*\n\n> Contoh: \`google.com\``);
+  }
+
+  await m.react("🕕");
+  await m.reply(`🕕 *ᴍᴇɴᴄᴀʀɪ ɪɴꜰᴏ ᴅᴏᴍᴀɪɴ...*`);
+
+  try {
+    const [dnsRes, whoisRes] = await Promise.allSettled([
+      fetch(`https://api.hackertarget.com/dnslookup/?q=${domain}`).then((r) =>
+        r.text(),
+      ),
+      fetch(`https://api.hackertarget.com/whois/?q=${domain}`).then((r) =>
+        r.text(),
+      ),
+    ]);
+
+    const dnsData = dnsRes.status === "fulfilled" ? dnsRes.value : null;
+    const whoisData = whoisRes.status === "fulfilled" ? whoisRes.value : null;
+
+    if (!dnsData && !whoisData) {
+      await m.react("❌");
+      return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak dapat memproses domain`);
+    }
+
+    let text = `🔍 *ᴅɴs ʟᴏᴏᴋᴜᴘ*\n\n`;
+    text += `> Domain: \`${domain}\`\n\n`;
+
+    if (dnsData && !dnsData.includes("error")) {
+      const lines = dnsData.split("\n").filter((l) => l.trim());
+      const records = {};
+
+      lines.forEach((line) => {
+        const parts = line.split(/\s+/);
+        if (parts.length >= 2) {
+          const type = parts[parts.length - 2] || "OTHER";
+          const value = parts[parts.length - 1];
+          if (!records[type]) records[type] = [];
+          records[type].push(value);
+        }
+      });
+
+      text += `╭┈┈⬡「 📋 *ᴅɴs ʀᴇᴄᴏʀᴅs* 」\n`;
+      if (records["A"])
+        text += `┃ 🅰️ A: ${records["A"].slice(0, 3).join(", ")}\n`;
+      if (records["AAAA"])
+        text += `┃ 🔢 AAAA: ${records["AAAA"].slice(0, 2).join(", ")}\n`;
+      if (records["MX"])
+        text += `┃ 📧 MX: ${records["MX"].slice(0, 2).join(", ")}\n`;
+      if (records["NS"])
+        text += `┃ 🌐 NS: ${records["NS"].slice(0, 3).join(", ")}\n`;
+      if (records["TXT"])
+        text += `┃ 📝 TXT: ${records["TXT"].length} records\n`;
+      text += `╰┈┈┈┈┈┈┈┈⬡\n\n`;
+    }
+
+    if (whoisData && !whoisData.includes("error") && whoisData.length < 2000) {
+      const registrar = whoisData.match(/Registrar:\s*(.+)/i)?.[1] || "-";
+      const created = whoisData.match(/Creation Date:\s*(.+)/i)?.[1] || "-";
+      const expires = whoisData.match(/Expir.*Date:\s*(.+)/i)?.[1] || "-";
+      const nameservers =
+        whoisData
+          .match(/Name Server:\s*(.+)/gi)
+          ?.slice(0, 2)
+          .map((ns) => ns.split(":")[1]?.trim()) || [];
+
+      text += `╭┈┈⬡「 📄 *ᴡʜᴏɪs* 」\n`;
+      text += `┃ 🏢 Registrar: ${registrar.slice(0, 35)}\n`;
+      text += `┃ 📅 Created: ${created.slice(0, 20)}\n`;
+      text += `┃ ⏰ Expires: ${expires.slice(0, 20)}\n`;
+      if (nameservers.length > 0)
+        text += `┃ 🌐 NS: ${nameservers.join(", ")}\n`;
+      text += `╰┈┈┈┈┈┈┈┈⬡`;
+    }
+
+    await m.react("✅");
+    await sendToolsPreview(sock, m.chat, text, "🔍 *ᴅɴs ʟᴏᴏᴋᴜᴘ*", domain, {
+      quoted: m,
+    });
+  } catch (e) {
+    await m.react("☢");
+    m.reply(te(m.prefix, m.command, m.pushName));
+  }
+}
+
+export { pluginConfig as config, handler };

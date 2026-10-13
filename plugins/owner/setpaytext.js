@@ -1,0 +1,75 @@
+/*
+╔══════════════════════════════════════════════╗
+║       👑  𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 〽️                        ║
+╚══════════════════════════════════════════════╝
+
+🪽 𝑵𝒐𝒕𝒆 :
+Rimuru MD adalah SC hasil rename dari SC Ourin MD.
+
+╭─────────────「 🜲 𝑰𝑵𝑭𝑶 𝑶𝑼𝑹𝑰𝑵 」─────────────╮
+│ 👤 Developer : 𝑯𝒚𝒖𝒖 / 𝒁𝒂𝒏𝒏
+│ 🎵 TikTok    : https://tiktok.com/@ourinmd
+│ 📢 WhatsApp  : https://whatsapp.com/channel/0029VbB37bgBfxoAmAlsgE0t
+╰─────────────────────────────────────────────╯
+
+╭────────────「 ✦ 𝑰𝑵𝑭𝑶 𝑹𝑰𝑴𝑼𝑹𝑼 ✦ 」────────────╮
+│ 👤 Developer Pihak Ketiga : 𝑨𝒏𝒊𝒕𝒂 𝑷𝒖𝒕𝒓𝒊 𝑨𝒛𝒛𝒂𝒉𝒓𝒂
+│ 🎵 TikTok                 : https://tiktok.com/@anita.putri.azzah1
+│ 📸 Instagram              : anit_aputriazzahrah
+│ 📢 Saluran                : https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P
+│ ▶️ YouTube                : https://youtube.com/@rimurumd
+╰─────────────────────────────────────────────╯
+
+        ⚠️ 𝑫𝑶 𝑵𝑶𝑻 𝑹𝑬𝑴𝑶𝑽𝑬 𝑪𝑹𝑬𝑫𝑰𝑻 ⚠️
+              ❖ 𝐉𝐚𝐧𝐠𝐚𝐧 𝐡𝐚𝐩𝐮𝐬 𝐜𝐫𝐞𝐝𝐢𝐭 ❖
+
+                 「 👑 𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 👑 」
+*/
+
+import { getDatabase } from '../../src/lib/rimuru-database.js'
+
+const pluginConfig = {
+  name: 'setpaytext',
+  category: 'owner',
+  description: 'Atur teks custom untuk .payment dengan placeholder',
+  usage: '.custompayment <teks> / .custompayment reset',
+  isOwner: true,
+  isPremium: false,
+  isGroup: false,
+  isPrivate: false,
+  cooldown: 5,
+  energi: 0,
+  isEnabled: true
+}
+
+async function handler(m) {
+  const db = getDatabase()
+  const input = m.text?.trim()
+  const current = db.setting('customPaymentText') || ''
+
+  if (!input) {
+    return m.reply(
+      `📝 *CUSTOM PAYMENT TEXT*\n\n` +
+      `Teks saat ini:\n${current || '_(belum diatur, pakai default)_'}\n\n` +
+      `*PLACEHOLDER YANG TERSEDIA:*\n` +
+      `• \`{botname}\` — Nama bot\n` +
+      `• \`{owner}\` — Nama owner\n` +
+      `• \`{methods}\` — Daftar e-wallet\n` +
+      `• \`{banks}\` — Daftar bank\n` +
+      `• \`{qris}\` — Status QRIS\n\n` +
+      `*CONTOH:*\n` +
+      `> \`${m.prefix}custompayment Halo! Bayar ke {methods}\`\n\n` +
+      `> \`${m.prefix}custompayment reset\` — Kembalikan ke default`
+    )
+  }
+
+  if (input.toLowerCase() === 'reset') {
+    db.setting('customPaymentText', '')
+    return m.reply('✅ Teks custom payment direset ke default.')
+  }
+
+  db.setting('customPaymentText', input)
+  return m.reply(`✅ Teks custom payment disimpan!\n\nPreview:\n${input}`)
+}
+
+export { pluginConfig as config, handler }

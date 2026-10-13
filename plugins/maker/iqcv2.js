@@ -1,0 +1,108 @@
+/*
+╔══════════════════════════════════════════════╗
+║       👑  𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 〽️                        ║
+╚══════════════════════════════════════════════╝
+
+🪽 𝑵𝒐𝒕𝒆 :
+Rimuru MD adalah SC hasil rename dari SC Ourin MD.
+
+╭─────────────「 🜲 𝑰𝑵𝑭𝑶 𝑶𝑼𝑹𝑰𝑵 」─────────────╮
+│ 👤 Developer : 𝑯𝒚𝒖𝒖 / 𝒁𝒂𝒏𝒏
+│ 🎵 TikTok    : https://tiktok.com/@ourinmd
+│ 📢 WhatsApp  : https://whatsapp.com/channel/0029VbB37bgBfxoAmAlsgE0t
+╰─────────────────────────────────────────────╯
+
+╭────────────「 ✦ 𝑰𝑵𝑭𝑶 𝑹𝑰𝑴𝑼𝑹𝑼 ✦ 」────────────╮
+│ 👤 Developer Pihak Ketiga : 𝑨𝒏𝒊𝒕𝒂 𝑷𝒖𝒕𝒓𝒊 𝑨𝒛𝒛𝒂𝒉𝒓𝒂
+│ 🎵 TikTok                 : https://tiktok.com/@anita.putri.azzah1
+│ 📸 Instagram              : anit_aputriazzahrah
+│ 📢 Saluran                : https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P
+│ ▶️ YouTube                : https://youtube.com/@rimurumd
+╰─────────────────────────────────────────────╯
+
+        ⚠️ 𝑫𝑶 𝑵𝑶𝑻 𝑹𝑬𝑴𝑶𝑽𝑬 𝑪𝑹𝑬𝑫𝑰𝑻 ⚠️
+              ❖ 𝐉𝐚𝐧𝐠𝐚𝐧 𝐡𝐚𝐩𝐮𝐬 𝐜𝐫𝐞𝐝𝐢𝐭 ❖
+
+                 「 👑 𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 👑 」
+*/
+
+const pluginConfig = {
+  name: "iqcv2",
+  category: "maker",
+  description: "Generate gambar IQC v2 (WA Reaction) dengan teks otomatis",
+  usage: ".iqc4 <teks>",
+  example: ".iqc4 Tes",
+  isOwner: false,
+  isPremium: false,
+  isGroup: false,
+  isPrivate: false,
+  cooldown: 5,
+  energi: 1,
+  isEnabled: true,
+};
+
+async function getImageBuffer(apiUrl) {
+  const response = await fetch(apiUrl, {
+    headers: { Accept: "image/*,application/json,text/plain;q=0.9,*/*;q=0.8" },
+  });
+
+  const contentType = response.headers.get("content-type") || "";
+  if (!response.ok) {
+    throw new Error(`API IQC gagal (${response.status})`);
+  }
+
+  if (contentType.includes("image")) {
+    return Buffer.from(await response.arrayBuffer());
+  }
+
+  const raw = await response.text();
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch {
+    throw new Error("API IQC mengembalikan respons yang tidak valid");
+  }
+
+  const imageUrl =
+    (typeof data?.result === "string" && data.result) ||
+    data?.result?.url ||
+    data?.result?.image ||
+    data?.url ||
+    data?.image;
+
+  if (!imageUrl) {
+    throw new Error(data?.message || "Hasil gambar IQC tidak ditemukan");
+  }
+
+  const imageResponse = await fetch(imageUrl);
+  if (!imageResponse.ok) throw new Error("Gambar hasil IQC gagal diambil");
+  return Buffer.from(await imageResponse.arrayBuffer());
+}
+
+async function handler(m, { sock, text }) {
+  if (!text?.trim()) {
+    return m.reply(`⚠️ *Format Salah*\n\nPenggunaan:\n\`.iqc4 <teks>\`\n\nContoh:\n\`.iqc4 Halo Dunia\``);
+  }
+
+  await m.react("⏳");
+
+  try {
+    const queryText = text.trim();
+    // Current Nexray Maker API: /maker/iqc accepts the text parameter.
+    const apiUrl = `https://api.nexray.eu.cc/maker/iqc?text=${encodeURIComponent(queryText)}`;
+    const imageBuffer = await getImageBuffer(apiUrl);
+
+    await sock.sendMessage(
+      m.chat,
+      { image: imageBuffer, caption: "✨ *Canvas IQC v2 Generated!*" },
+      { quoted: m },
+    );
+    await m.react("✅");
+  } catch (err) {
+    console.error("[IQC4 ERROR]", err);
+    await m.react("❌");
+    await m.reply(`❌ *Terjadi Kesalahan:* ${err?.message || "API IQC sedang bermasalah."}`);
+  }
+}
+
+export { pluginConfig as config, handler };

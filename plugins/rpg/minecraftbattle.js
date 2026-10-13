@@ -1,0 +1,133 @@
+/*
+╔══════════════════════════════════════════════╗
+║       👑  𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 〽️                        ║
+╚══════════════════════════════════════════════╝
+
+🪽 𝑵𝒐𝒕𝒆 :
+Rimuru MD adalah SC hasil rename dari SC Ourin MD.
+
+╭─────────────「 🜲 𝑰𝑵𝑭𝑶 𝑶𝑼𝑹𝑰𝑵 」─────────────╮
+│ 👤 Developer : 𝑯𝒚𝒖𝒖 / 𝒁𝒂𝒏𝒏
+│ 🎵 TikTok    : https://tiktok.com/@ourinmd
+│ 📢 WhatsApp  : https://whatsapp.com/channel/0029VbB37bgBfxoAmAlsgE0t
+╰─────────────────────────────────────────────╯
+
+╭────────────「 ✦ 𝑰𝑵𝑭𝑶 𝑹𝑰𝑴𝑼𝑹𝑼 ✦ 」────────────╮
+│ 👤 Developer Pihak Ketiga : 𝑨𝒏𝒊𝒕𝒂 𝑷𝒖𝒕𝒓𝒊 𝑨𝒛𝒛𝒂𝒉𝒓𝒂
+│ 🎵 TikTok                 : https://tiktok.com/@anita.putri.azzah1
+│ 📸 Instagram              : anit_aputriazzahrah
+│ 📢 Saluran                : https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P
+│ ▶️ YouTube                : https://youtube.com/@rimurumd
+╰─────────────────────────────────────────────╯
+
+        ⚠️ 𝑫𝑶 𝑵𝑶𝑻 𝑹𝑬𝑴𝑶𝑽𝑬 𝑪𝑹𝑬𝑫𝑰𝑻 ⚠️
+              ❖ 𝐉𝐚𝐧𝐠𝐚𝐧 𝐡𝐚𝐩𝐮𝐬 𝐜𝐫𝐞𝐝𝐢𝐭 ❖
+
+                 「 👑 𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 👑 」
+*/
+
+export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+
+
+let { MessageType } = (await import('@itsliaaa/baileys')).default
+
+function pickRandom(list) {
+  return list[Math.floor(Math.random() * list.length)]
+}
+
+const pluginConfig = {
+  name: "minecraftbattle",
+  category: "rpg",
+  description: "Imported from Rimuru MD V4.6",
+  usage: "",
+  example: "",
+  isOwner: false,
+  isPremium: false,
+  isGroup: true,
+  isPrivate: false,
+  cooldown: 3,
+  energi: 1,
+  isEnabled: true,
+};
+
+async function handler(m, { sock }) {
+    const conn = sock;
+  try {
+    // Inisialisasi database global
+    global.db.data = global.db.data || {}
+    global.db.data.users = global.db.data.users || {}
+    global.db.data.monsters = global.db.data.monsters || [
+      'Zombi', 'Creeper', 'Skeleton', 'Enderman',
+      'Spider', 'Ghast', 'Blaze', 'Witch'
+    ]
+    global.db.data.items = global.db.data.items || [
+      'Kayu', 'Batu', 'Besi', 'Emas',
+      'Diamond', 'Netherite', 'Emerald', 'Redstone'
+    ]
+
+    let user = global.db.data.users[m.sender]
+    if (!user) global.db.data.users[m.sender] = user = {}
+
+    // Inisialisasi properti user jika belum ada
+    if (user.health == null) user.health = 100
+    if (user.maxHealth == null) user.maxHealth = 100
+    if (!Array.isArray(user.items)) user.items = []
+    if (user.exp == null) user.exp = 0
+    if (user.money == null) user.money = 0
+
+    if (user.health <= 0) {
+      return conn.reply(m.chat, '😓 Anda tidak memiliki nyawa. Pulihkan dulu sebelum bertarung.', m)
+    }
+
+    const selectedMonster = pickRandom(global.db.data.monsters)
+    let monsterHealth = 50
+    let monsterAttack = 10
+    let round = 1
+    let message = `🗡️ Anda bertemu dengan *${selectedMonster}*!\n`
+    message += `❤️ Kesehatan Anda: ${user.health}/${user.maxHealth}\n`
+    message += `❤️ Kesehatan ${selectedMonster}: ${monsterHealth}\n\n`
+
+    // Pertarungan
+    while (user.health > 0 && monsterHealth > 0 && round <= 10) {
+      let userAttack = Math.floor(Math.random() * 20) + 1
+      monsterHealth -= userAttack
+
+      let damageToUser = monsterAttack
+      user.health -= damageToUser
+
+      message += `🏴‍☠️ *Ronde ${round}*:\n`
+      message += `👤 Serangan Anda: ${userAttack}\n`
+      message += `👻 Serangan ${selectedMonster}: ${damageToUser}\n`
+      message += `❤️ Anda: ${Math.max(user.health, 0)}/${user.maxHealth}\n`
+      message += `❤️ ${selectedMonster}: ${Math.max(monsterHealth, 0)}\n\n`
+
+      if (monsterHealth <= 0) {
+        let expReward = Math.floor(Math.random() * 100) + 50
+        let moneyReward = Math.floor(Math.random() * 50) + 10
+        user.exp += expReward
+        user.money += moneyReward
+        message += `🎉 *Kemenangan!*\n💰 +${moneyReward} Money\n🌟 +${expReward} Exp\n`
+        break
+      }
+
+      if (user.health <= 0) {
+        message += `😵 *Kamu kalah!*\nPulihkan kesehatanmu dulu.\n`
+        break
+      }
+
+      round++
+    }
+
+    if (round > 10) {
+      message += `⚠️ Pertarungan dihentikan setelah 10 ronde.\n`
+    }
+
+    await conn.reply(m.chat, message, m)
+
+  } catch (e) {
+    console.error(e)
+    conn.reply(m.chat, '❌ Terjadi kesalahan, coba lagi nanti.', m)
+  }
+}
+
+export { pluginConfig as config, handler };
