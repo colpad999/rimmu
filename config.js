@@ -194,7 +194,7 @@ const config = {
     banned:
       "🚫 *Kamu Dibanned!* Kamu tidak bisa menggunakan bot ini karena telah melanggar aturan.",
 
-    rejectCall: "🚫 JANGAN TELPON NOMOR INI WEH",
+    rejectCall: "",
   },
 
   database: { path: "./database/main" },
