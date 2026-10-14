@@ -3,7 +3,7 @@
 import fs from "fs";
 import path from "path";
 import config from "../../config.js";
-import { AIRich } from "../../src/lib/rimuru-builder.js";
+import { AIRich } from "../../src/lib/yalena-builder.js";
 const pluginConfig = {
   name: "getcode",
   category: "owner",

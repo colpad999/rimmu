@@ -1,6 +1,6 @@
 //
 
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 
 
 import config from '../../config.js';
@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
     const name = m.pushName || "Darling"
 
     const text1 = `
-╭━━〔 💖 RIMURU SELECTION 💖 〕━━⬣
+╭━━〔 💖 YALENA SELECTION 💖 〕━━⬣
 ┃
 ┃ Wahh *${name}*~
 ┃ Darling mau seleksi *F02* yaa? 😋
@@ -50,7 +50,7 @@ async function handler(m, { sock }) {
 ┃ • *wajib CNTIKTOK*
 ┃
 ┃ Tunggu sebentar ya darling...
-┃ Rimuru sedang menyiapkan
+┃ Yalena sedang menyiapkan
 ┃ akses masuk F02 💕
 ╰━━━━━━━━⬣
 `
@@ -75,7 +75,7 @@ async function handler(m, { sock }) {
 
     await sock.sendMessage(m.chat, {
         text: text2,
-        footer: "FAMOUS RIMURU",
+        footer: "FAMOUS YALENA",
         interactiveButtons: [
             {
                 name: "cta_url",

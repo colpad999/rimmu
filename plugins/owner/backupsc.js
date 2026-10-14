@@ -5,7 +5,7 @@ import fs from "fs";
 import path from "path";
 import archiver from "archiver";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "backupsc",
   category: "owner",
@@ -104,7 +104,7 @@ async function handler(m, { sock }) {
     const projectRoot = process.cwd();
     const timestamp = moment().tz("Asia/Jakarta").format("YYYY-MM-DD_HH-mm-ss");
     const botName =
-      config.bot?.name?.replace(/[^a-zA-Z0-9]/g, "") || "RimuruBot";
+      config.bot?.name?.replace(/[^a-zA-Z0-9]/g, "") || "YalenaBot";
     const zipFileName = `${botName}_backup_${timestamp}.zip`;
     const backupDir = getBackupOutputDir(projectRoot);
     const zipFilePath = path.join(backupDir, zipFileName);
@@ -184,8 +184,8 @@ async function handler(m, { sock }) {
 
     const stats = fs.statSync(zipFilePath);
     const fileSizeMB = (stats.size / (1024 * 1024)).toFixed(2);
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-    const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+    const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
 
     await sock.sendMessage(
       m.chat,

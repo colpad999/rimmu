@@ -1,6 +1,6 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import config from "../../config.js";
 const pluginConfig = {
   name: "unregister",
@@ -27,8 +27,8 @@ async function handler(m, { sock }) {
     );
   }
 
-  const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-  const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+  const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+  const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
   const unregisteredAt = new Date().toISOString();
 
   db.setUser(m.sender, {

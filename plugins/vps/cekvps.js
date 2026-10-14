@@ -2,8 +2,8 @@
 
 import axios from 'axios'
 import config from '../../config.js'
-import * as timeHelper from '../../src/lib/rimuru-time.js'
-import te from '../../src/lib/rimuru-error.js'
+import * as timeHelper from '../../src/lib/yalena-time.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
   name: ["cekvps", "cekdroplet", "vpsstatus", "infovps"],
   category: "vps",

@@ -1,7 +1,7 @@
 //
 
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "bye",
   category: "owner",
@@ -81,8 +81,8 @@ async function handler(m, { sock }) {
   try {
     global.sewaLeaving = true;
 
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-    const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+    const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
 
     if (m.isGroup && targetGroupJid === m.chat) {
       await sock.sendMessage(m.chat, {

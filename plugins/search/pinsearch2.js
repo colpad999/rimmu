@@ -6,7 +6,7 @@ import axios from 'axios';
 import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 const pluginConfig = {
     name: 'pinsearch2',
     category: 'search',
@@ -105,7 +105,7 @@ async function handler(m, { sock, config: botConfig }) {
                         text: cardBody
                     }),
                     footer: proto.Message.InteractiveMessage.Footer.create({
-                        text: `✨ Rimuru Pinterest • Swipe kiri/kanan untuk lihat semua ✨`
+                        text: `✨ Yalena Pinterest • Swipe kiri/kanan untuk lihat semua ✨`
                     }),
                     nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
                         buttons: [{
@@ -132,7 +132,7 @@ async function handler(m, { sock, config: botConfig }) {
         }
         
         const headerText = 
-`╭━━━〔 💗 RIMURU PINTEREST CAROUSEL 💗 〕━━━⬣
+`╭━━━〔 💗 YALENA PINTEREST CAROUSEL 💗 〕━━━⬣
 ┃
 ┃ 🔎 *Query:* ${query}
 ┃ 🖼️ *Total:* ${carouselCards.length} gambar
@@ -155,7 +155,7 @@ async function handler(m, { sock, config: botConfig }) {
                             text: headerText
                         }),
                         footer: proto.Message.InteractiveMessage.Footer.fromObject({
-                            text: `✨ Rimuru Pinterest | “Nikmati gambarnya, Darling~” ✨`
+                            text: `✨ Yalena Pinterest | “Nikmati gambarnya, Darling~” ✨`
                         }),
                         carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({
                             cards: carouselCards
@@ -177,7 +177,7 @@ async function handler(m, { sock, config: botConfig }) {
         console.error('[Pins] Error:', err.message)
         m.react('❌')
         m.reply(
-`╭━━━〔 ❌ RIMURU ERROR ❌ 〕━━━⬣
+`╭━━━〔 ❌ YALENA ERROR ❌ 〕━━━⬣
 ┃
 ┃ *Error:* ${err.message}
 ┃

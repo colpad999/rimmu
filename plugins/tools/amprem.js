@@ -113,7 +113,7 @@ async function apiRequest(action, params = {}) {
     timeout: 45_000,
     headers: {
       Accept: "application/json, text/plain, */*",
-      "User-Agent": "Rimuru-MD/AMPREM-Hyerls",
+      "User-Agent": "Yalena-MD/AMPREM-Hyerls",
     },
     validateStatus: () => true,
   });

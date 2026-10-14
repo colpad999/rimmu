@@ -2,10 +2,10 @@
 
 import axios from "axios";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import te from "../../src/lib/yalena-error.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 
-const NEOXR_APIKEY = config.APIkey?.neoxr || "Milik-Bot-RimuruMD";
+const NEOXR_APIKEY = config.APIkey?.neoxr || "Milik-Bot-YalenaMD";
 
 const pluginConfig = {
     name: "resep",

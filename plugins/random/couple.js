@@ -1,10 +1,10 @@
 //
 
 import config from '../../config.js'
-import { downloadMediaMessage } from 'rimuru'
+import { downloadMediaMessage } from 'yalena'
 import fs from 'fs'
 import { default as axios } from 'axios'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'ppcouple',
     category: 'random',

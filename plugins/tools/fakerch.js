@@ -6,7 +6,7 @@ const pluginConfig = {
     category: 'tools',
     description: 'Kirim react ke post channel WhatsApp',
     usage: '.rch <link_post> <emoji>',
-    example: '.rch https://whatsapp.com/channel/RIMURU_CHANNEL 😂😍',
+    example: '.rch https://whatsapp.com/channel/YALENA_CHANNEL 😂😍',
     isOwner: false,
     isPremium: true,
     isGroup: false,
@@ -26,8 +26,8 @@ async function handler(m, { sock }) {
             `┃ \`${m.prefix}rch <link_post> <emoji>\`\n` +
             `╰┈┈⬡\n\n` +
             `📌 *Contoh:*\n` +
-            `\`${m.prefix}rch https://whatsapp.com/channel/RIMURU_CHANNEL 😂\`\n` +
-            `\`${m.prefix}rch https://whatsapp.com/channel/RIMURU_CHANNEL 😂😱🔥\``
+            `\`${m.prefix}rch https://whatsapp.com/channel/YALENA_CHANNEL 😂\`\n` +
+            `\`${m.prefix}rch https://whatsapp.com/channel/YALENA_CHANNEL 😂😱🔥\``
         )
     }
     

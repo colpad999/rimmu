@@ -1,8 +1,8 @@
 //
 
-import { f } from '../../src/lib/rimuru-http.js'
+import { f } from '../../src/lib/yalena-http.js'
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'animegen',
     category: 'ai',
@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
     m.react('🕕')
 
     try {
-        const NEOXR_APIKEY = config.APIkey?.neoxr || 'Milik-Bot-RimuruMD'
+        const NEOXR_APIKEY = config.APIkey?.neoxr || 'Milik-Bot-YalenaMD'
         const apiUrl = `https://api.neoxr.eu/api/ai-anime?q=${encodeURIComponent(prompt)}&apikey=${NEOXR_APIKEY}`
         
         const data = await f(apiUrl)

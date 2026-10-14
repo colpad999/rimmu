@@ -1,7 +1,7 @@
 //
 
-import te from "../../src/lib/rimuru-error.js";
-import rimuruApi from "../../src/lib/rimuru-apimanager.js";
+import te from "../../src/lib/yalena-error.js";
+import yalenaApi from "../../src/lib/yalena-apimanager.js";
 const pluginConfig = {
   name: "say",
   category: "tts",
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
 
   async function textToSpeech2(text) {
     try {
-      const response = await rimuruApi.nexray.geminiTts(text);
+      const response = await yalenaApi.nexray.geminiTts(text);
       return response;
     } catch (error) {
       return error;

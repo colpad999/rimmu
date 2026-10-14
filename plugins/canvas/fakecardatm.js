@@ -9,7 +9,7 @@ const pluginConfig = {
     category: 'canvas',
     description: 'Bikin fake kartu ATM (buat konten/gaguan doang)',
     usage: '.fakeatm <nama> | <bank>',
-    example: '.fakeatm Rimuru | BCA',
+    example: '.fakeatm Yalena | BCA',
     isOwner: false,
     isPremium: false,
     isGroup: false,
@@ -57,7 +57,7 @@ async function generateFakeATM(nama, bank) {
 
 async function handler(m, { sock }) {
     const text = m.args.join(' ') || m.text?.trim() || ''
-    if (!text) return m.reply(`*Cara pakai:*\n${m.prefix}fakeatm <nama> | <bank>\nContoh: .fakeatm Rimuru | BCA`)
+    if (!text) return m.reply(`*Cara pakai:*\n${m.prefix}fakeatm <nama> | <bank>\nContoh: .fakeatm Yalena | BCA`)
     
     const parts = text.split('|').map(p => p.trim())
     const nama = parts[0] || 'Darling'
@@ -68,7 +68,7 @@ async function handler(m, { sock }) {
     
     try {
         const imageBuffer = await generateFakeATM(nama, bank)
-        await sock.sendMessage(m.chat, { image: imageBuffer, caption: `💕 *FAKE KARTU ATM* 💕\n\n✅ Nama: ${nama}\n🏦 Bank: ${bank}\n\n💗 *Rimuru:* Saldo nya banyak ya darling~ 🗿` }, { quoted: m })
+        await sock.sendMessage(m.chat, { image: imageBuffer, caption: `💕 *FAKE KARTU ATM* 💕\n\n✅ Nama: ${nama}\n🏦 Bank: ${bank}\n\n💗 *Yalena:* Saldo nya banyak ya darling~ 🗿` }, { quoted: m })
         m.react('✅')
     } catch (err) {
         m.react('💔')

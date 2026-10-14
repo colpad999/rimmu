@@ -5,7 +5,7 @@ import crypto from 'node:crypto'
 ║       👑  𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 〽️                        ║
 ╚══════════════════════════════════════════════╝
 
-  Fitur tambahan hasil audit FURINA V17 → Rimuru MD.
+  Fitur tambahan hasil audit FURINA V17 → Yalena MD.
   Jangan menghapus credit sumber.
 */
 
@@ -143,7 +143,7 @@ resize();
                             submessages: [
                                 {
                                     messageType: 2,
-                                    messageText: "Flappy Bird • Fitur By: Anita Putri Azzahra"
+                                    messageText: "Flappy Bird • Fitur By: Colpad"
                                 }
                             ],
                             unifiedResponse: {

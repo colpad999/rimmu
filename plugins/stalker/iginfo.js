@@ -111,7 +111,7 @@ body{padding:0;display:flex;justify-content:center;align-items:flex-start}
 <div class="screen" data-response-id="${esc(responseId)}">
   <div class="bg"></div><div class="overlay"></div>
   <div class="content">
-    <div class="top"><div><div class="brand">INSTAGRAM INFO</div><div class="credit">By Anita</div></div><div class="badge">RIMURU MD</div></div>
+    <div class="top"><div><div class="brand">INSTAGRAM INFO</div><div class="credit">By Anita</div></div><div class="badge">Yalena MD</div></div>
     <div class="avatarWrap"><div class="avatar">${profile ? `<img src="${profile}" alt="Instagram profile">` : ""}</div></div>
     <div class="name">${fullName}</div>
     <div class="handle">@${username}</div>
@@ -119,7 +119,7 @@ body{padding:0;display:flex;justify-content:center;align-items:flex-start}
     <div class="stats"><div class="stat"><div class="num">${followers}</div><div class="label">Followers</div></div><div class="stat"><div class="num">${following}</div><div class="label">Following</div></div><div class="stat"><div class="num">${posts}</div><div class="label">Posts</div></div></div>
     <div class="bio"><div class="bioTitle">BIO</div>${bio}</div>
     <div class="actions"><a class="btn primary" href="${ig}" target="_blank" rel="noopener">Open Instagram</a><a class="btn" href="${telegram}" target="_blank" rel="noopener">Telegram • Anita</a></div>
-    <div class="footer">Fitur by Anita Putri Azzahra • <a href="${telegram}" target="_blank" rel="noopener">t.me/anitaputri</a></div>
+    <div class="footer">Fitur by Colpad • <a href="${telegram}" target="_blank" rel="noopener">t.me/anitaputri</a></div>
   </div>
 </div>`;
 }

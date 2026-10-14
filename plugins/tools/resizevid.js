@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
       return m.reply("❌ Ukuran video terlalu besar. Maksimal 60 MB.");
     }
 
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "rimuru-resize-"));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "yalena-resize-"));
     const input = path.join(tempDir, "input.mp4");
     const output = path.join(tempDir, "output.mp4");
     fs.writeFileSync(input, buffer);

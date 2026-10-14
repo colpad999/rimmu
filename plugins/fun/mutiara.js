@@ -1,7 +1,7 @@
 //
 
-import { getRandomItem } from '../../src/lib/rimuru-game-data.js'
-import { fetchBuffer } from '../../src/lib/rimuru-utils.js'
+import { getRandomItem } from '../../src/lib/yalena-game-data.js'
+import { fetchBuffer } from '../../src/lib/yalena-utils.js'
 const pluginConfig = {
     name: 'mutiara',
     category: 'fun',

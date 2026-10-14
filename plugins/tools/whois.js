@@ -1,8 +1,8 @@
 //
 
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
-import { sendToolsPreview } from "../../src/lib/rimuru-context.js";
+import te from "../../src/lib/yalena-error.js";
+import { sendToolsPreview } from "../../src/lib/yalena-context.js";
 const pluginConfig = {
   name: "whois",
   category: "tools",

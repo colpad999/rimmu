@@ -27,7 +27,7 @@ const captionUser = text[2] || "Preset baru"
 
 if(!link5mb || !linkxml){
 return m.reply(
-`╭━━〔 *❤️ RIMURU PRESET UPLOADER* 〕━━⬣
+`╭━━〔 *❤️ YALENA PRESET UPLOADER* 〕━━⬣
 ┃
 ┃ *Format :*
 ┃
@@ -47,7 +47,7 @@ try{
 const time = new Date().toLocaleTimeString()
 
 const caption =
-`╭━━〔 *❤️ RIMURU PRESET STORE* 〕━━⬣
+`╭━━〔 *❤️ YALENA PRESET STORE* 〕━━⬣
 ┃
 ┃ ✨ *${captionUser}*
 ┃
@@ -76,7 +76,7 @@ CHANNEL_ID,
 m.react("✅")
 
 return m.reply(
-`╭━━〔 *❤️ RIMURU SYSTEM* 〕━━⬣
+`╭━━〔 *❤️ YALENA SYSTEM* 〕━━⬣
 ┃
 ┃ ✅ *Preset berhasil dikirim*
 ┃

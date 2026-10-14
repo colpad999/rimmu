@@ -7,9 +7,9 @@ import {
   searchKota,
   getTodaySchedule,
   extractPrayerTimes,
-} from "../../src/lib/rimuru-sholat-api.js";
-import te from "../../src/lib/rimuru-error.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
+} from "../../src/lib/yalena-sholat-api.js";
+import te from "../../src/lib/yalena-error.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
 const pluginConfig = {
   name: "jadwalsholat",
   category: "religi",
@@ -40,8 +40,8 @@ async function handler(m, { sock }) {
     const lokasi = jadwalData.lokasi || kota.lokasi;
     const daerah = jadwalData.daerah || "";
     const today = moment.tz("Asia/Jakarta").format("dddd, DD MMMM YYYY");
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-    const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+    const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
 
     const caption = `🕌 *ᴊᴀᴅᴡᴀʟ sʜᴏʟᴀᴛ*
 ╭┈┈⬡「 📍 *${lokasi}* 」

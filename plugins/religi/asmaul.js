@@ -1,6 +1,6 @@
 //
 
-import { getRandomItem, getItemByIndex, searchItem, getAllData } from '../../src/lib/rimuru-game-data.js'
+import { getRandomItem, getItemByIndex, searchItem, getAllData } from '../../src/lib/yalena-game-data.js'
 const pluginConfig = {
     name: 'asmaul',
     category: 'religi',

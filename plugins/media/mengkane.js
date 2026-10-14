@@ -2,7 +2,7 @@
 
 import config from '../../config.js'
 import fs from 'fs'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const sadCommands = ['mengkane']
 for (let i = 1; i <= 52; i++) {
     sadCommands.push(`mengkane${i}`)

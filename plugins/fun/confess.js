@@ -1,7 +1,7 @@
 //
 
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const pluginConfig = {
   name: "confess",
@@ -124,8 +124,8 @@ async function replyHandler(m, { sock }) {
   const replyMessage = m.body?.trim();
   if (!replyMessage) return false;
 
-  const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-  const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+  const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+  const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
 
   const replyText = `💌 *ADA BALASAN MENFESS NIH KAK!* 💌\n\n` +
     `Orang yang kamu kirimin menfess tadi barusan balas pesanmu:\n\n` +

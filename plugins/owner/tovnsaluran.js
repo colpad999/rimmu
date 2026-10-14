@@ -1,6 +1,6 @@
 //
 
-import { RIMURU_CORE_CONFIG } from "../../config.js";
+import { YALENA_CORE_CONFIG } from "../../config.js";
 import config from '../../config.js';
 const pluginConfig = {
     name: 'tovnsaluran',
@@ -33,7 +33,7 @@ async function handler(m, { sock }) {
             `┃\n` +
             `┃   ${m.prefix}upaudioch Info terbaru!\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Mau upload audio ke channel apa darling~?\n` +
+            `┃ 💗 *Yalena:* Mau upload audio ke channel apa darling~?\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
     }
@@ -41,7 +41,7 @@ async function handler(m, { sock }) {
     const text = m.args.join(' ') || m.text?.trim() || 'Audio dari Owner'
     
     // 🔥 AMBIL ID CHANNEL DARI CONFIG
-    const CHANNEL_ID = RIMURU_CORE_CONFIG.saluran?.id
+    const CHANNEL_ID = YALENA_CORE_CONFIG.saluran?.id
     if (!CHANNEL_ID) {
         return m.reply(
             `❌ *ᴇʀʀᴏʀ*\n\n` +
@@ -57,7 +57,7 @@ async function handler(m, { sock }) {
     }
     
     m.react('💕')
-    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Rimuru:* Lagi upload audio ke channel darling~ tunggu sebentar yaa 🎵`)
+    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Yalena:* Lagi upload audio ke channel darling~ tunggu sebentar yaa 🎵`)
     
     try {
         const audioBuffer = await quoted.download()
@@ -92,7 +92,7 @@ async function handler(m, { sock }) {
             `┃ 📢 *ᴄʜᴀɴɴᴇʟ*: ${CHANNEL_ID}\n` +
             `┃ 📝 *ᴘᴇꜱᴀɴ*: ${text}\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Audio sudah terkirim darling~ 🎤\n` +
+            `┃ 💗 *Yalena:* Audio sudah terkirim darling~ 🎤\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
         

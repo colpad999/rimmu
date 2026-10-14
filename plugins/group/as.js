@@ -1,7 +1,7 @@
 //
 
 import config from '../../config.js'
-import { getDatabase } from '../../src/lib/rimuru-database.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
 const pluginConfig = {
     name: 'as',
     category: 'group',
@@ -94,7 +94,7 @@ async function autoStickerHandler(m, sock) {
         
         if (isImage) {
             await sock.sendImageAsSticker(m.chat, buffer, m, {
-                packname: config.sticker?.packname || 'Rimuru',
+                packname: config.sticker?.packname || 'Yalena',
                 author: config.sticker?.author || 'Bot'
             })
         } else if (isVideo) {
@@ -103,7 +103,7 @@ async function autoStickerHandler(m, sock) {
             if (duration > 10) return false
             
             await sock.sendVideoAsSticker(m.chat, buffer, m, {
-                packname: config.sticker?.packname || 'Rimuru',
+                packname: config.sticker?.packname || 'Yalena',
                 author: config.sticker?.author || 'Bot'
             })
         }

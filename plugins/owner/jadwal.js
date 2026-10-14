@@ -1,6 +1,6 @@
 //
 
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 /**
  * @file plugins/owner/schedule.js
  * @description Command untuk mengelola scheduled messages
@@ -15,7 +15,7 @@ import {
   getSchedulerStatus,
   formatTimeRemaining,
   getMsUntilTime,
-} from "../../src/lib/rimuru-scheduler.js";
+} from "../../src/lib/yalena-scheduler.js";
 /**
  * Konfigurasi plugin
  */

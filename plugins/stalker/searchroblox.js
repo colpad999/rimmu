@@ -2,8 +2,8 @@
 
 import axios from 'axios'
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
-const NEOXR_APIKEY = config.APIkey?.neoxr || 'Milik-Bot-RimuruMD'
+import te from '../../src/lib/yalena-error.js'
+const NEOXR_APIKEY = config.APIkey?.neoxr || 'Milik-Bot-YalenaMD'
 
 const pluginConfig = {
     name: 'searchroblox',

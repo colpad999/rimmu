@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import FormData from 'form-data';
 import { downloadContentFromMessage } from '@itsliaaa/baileys';
-import { RIMURU_CORE_CONFIG } from "../../config.js";
+import { YALENA_CORE_CONFIG } from "../../config.js";
 import config from '../../config.js';
 const NEOXR_APIKEY = config.APIkey?.neoxr || 'Milik-Bot-zerotwoMD'
 
@@ -99,8 +99,8 @@ async function handler(m, { sock }) {
         
         const videoUrl = res.data.data.url
         
-        const saluranId = RIMURU_CORE_CONFIG.saluran?.id || config.saluran?.id
-        const saluranName = RIMURU_CORE_CONFIG.saluran?.name || RIMURU_CORE_CONFIG.bot?.name || 'rimuru-AI'
+        const saluranId = YALENA_CORE_CONFIG.saluran?.id || config.saluran?.id
+        const saluranName = YALENA_CORE_CONFIG.saluran?.name || YALENA_CORE_CONFIG.bot?.name || 'yalena-AI'
         
         await sock.sendMessage(m.chat, {
             video: { url: videoUrl },

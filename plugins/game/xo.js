@@ -1,7 +1,7 @@
 //
 
-import { getDatabase } from '../../src/lib/rimuru-database.js'
-import { parseMention, delay } from '../../src/lib/rimuru-utils.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
+import { parseMention, delay } from '../../src/lib/yalena-utils.js'
 const pluginConfig = {
   name: "xo",
   category: "game",

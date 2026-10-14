@@ -1,6 +1,6 @@
 //
 
-import { setNotifMakan, toggleNotif, getNotif, deleteNotif, parseJadwal } from '../../src/lib/rimuru-notif-scheduler.js'
+import { setNotifMakan, toggleNotif, getNotif, deleteNotif, parseJadwal } from '../../src/lib/yalena-notif-scheduler.js'
 
 const pluginConfig = {
     name: 'notifmakan',

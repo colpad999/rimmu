@@ -1,7 +1,7 @@
 /**
  * ╔══════════════════════════════════════════════════════════════════════════╗
  * ║ OCGC — Otomatis Close / Open Group                                   ║
- * ║ Struktur plugin Rimuru-MD v4.5                                        ║
+ * ║ Struktur plugin Yalena-MD v4.5                                        ║
  * ╚══════════════════════════════════════════════════════════════════════════╝
  *
  * Penggunaan:
@@ -12,10 +12,10 @@
  * Fitur hanya bekerja di grup dan membutuhkan bot sebagai admin.
  * Konfigurasi tersimpan di database/ocgc.json agar tetap aktif setelah restart.
  *
- * Fitur By: Anita Putri Azzahra
- * Fitur SC Bot Rimuru MD 👑
- * Tiktok: https://tiktok.com/@anita.putri.azzah1
- * Saluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P
+ * Fitur By: Colpad
+ * Fitur SC Bot Yalena MD 👑
+ * Tiktok: https://tiktok.com/@sibrosup
+ * Saluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y
  */
 
 import fs from "fs";
@@ -149,7 +149,7 @@ async function reply(m, text) {
 }
 
 function getRuntimeSocket() {
-  return runtimeSocket || globalThis.sock || globalThis.conn || globalThis.rimuruSock || globalThis.__RIMURU_SOCKET__ || null;
+  return runtimeSocket || globalThis.sock || globalThis.conn || globalThis.yalenaSock || globalThis.__YALENA_SOCKET__ || null;
 }
 
 async function getGroupAdminStatus(sock, groupJid, senderJid) {
@@ -179,7 +179,7 @@ async function getGroupAdminStatus(sock, groupJid, senderJid) {
 
 async function setGroupMode(sock, groupJid, mode) {
   if (!sock || typeof sock.groupSettingUpdate !== "function") {
-    throw new Error("API groupSettingUpdate tidak tersedia pada socket Rimuru.");
+    throw new Error("API groupSettingUpdate tidak tersedia pada socket Yalena.");
   }
 
   const setting = mode === "closed" ? "announcement" : "not_announcement";

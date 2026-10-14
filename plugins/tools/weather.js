@@ -1,5 +1,5 @@
 /*
-  Fitur tambahan hasil audit FURINA V17 → Rimuru MD.
+  Fitur tambahan hasil audit FURINA V17 → Yalena MD.
   Weather card menggunakan asset Poppins + background cache lokal.
 */
 
@@ -222,7 +222,7 @@ async function renderCard(data) {
 
     ctx.fillStyle = 'rgba(255,255,255,.62)'
     ctx.font = '400 18px Poppins'
-    ctx.fillText(`🌤️ Rimuru Weather • ${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })} WIB`, leftX, cardY + cardH - 36)
+    ctx.fillText(`🌤️ Yalena Weather • ${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })} WIB`, leftX, cardY + cardH - 36)
 
     return canvas.encode('png')
 }

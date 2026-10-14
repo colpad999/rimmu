@@ -1,5 +1,5 @@
 {
-  "name": "rimuru-md",
+  "name": "yalena-md",
   "version": "3.3.0",
   "description": "WhatsApp Multi-Device Bot dengan sistem plugin modular",
   "main": "index.js",
@@ -16,7 +16,7 @@
     "multi-device",
     "plugin"
   ],
-  "author": "Anita Putri Azzahra",
+  "author": "Colpad",
   "license": "ISC",
   "type": "module",
   "engines": {
@@ -75,7 +75,7 @@
     "node-upload-images": "^1.0.1",
     "node-webpmux": "^3.2.1",
     "openpgp": "^6.3.0",
-    "rimuru": "npm:ourin-baileys@^9.0.11",
+    "yalena": "npm:ourin-baileys@^9.0.11",
     "p-queue": "^9.1.0",
     "pino": "^9.14.0",
     "qrcode": "^1.5.4",

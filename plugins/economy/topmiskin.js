@@ -1,11 +1,11 @@
 //
 
 import { createCanvas } from '@napi-rs/canvas';
-import { getDatabase } from '../../src/lib/rimuru-database.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
 const pluginConfig = {
     name: 'topmiskin',
     category: 'economy',
-    description: 'Ranking orang paling miskin versi Rimuru 🗿💸',
+    description: 'Ranking orang paling miskin versi Yalena 🗿💸',
     usage: '.topmiskin',
     example: '.topmiskin',
     isOwner: false,
@@ -241,7 +241,7 @@ async function drawLeaderboard(users, totalKoin) {
     
     ctx.fillStyle = THEME.textSecondary
     ctx.font = '12px Arial'
-    ctx.fillText(`🗿 Para Pejuang Kere • Rimuru Edition`, 85, 78)
+    ctx.fillText(`🗿 Para Pejuang Kere • Yalena Edition`, 85, 78)
     
     // Badge total peserta
     ctx.save()
@@ -437,8 +437,8 @@ async function handler(m, { sock }) {
             caption += `   └ 🪙 ${formatRupiah(u.koin)}\n`
         })
         
-        caption += `\n🗿 *Rimuru:* Darling, kasian banget liat mereka~ Jangan sampe kamu masuk list ini ya!\n`
-        caption += `💡 *Tips dari Rimuru:* Kerja dikit, nabung, jangan beli skin ML mulu~ 😈`
+        caption += `\n🗿 *Yalena:* Darling, kasian banget liat mereka~ Jangan sampe kamu masuk list ini ya!\n`
+        caption += `💡 *Tips dari Yalena:* Kerja dikit, nabung, jangan beli skin ML mulu~ 😈`
         
         const mentions = poorestUsers.map(u => u.jid)
         
@@ -455,7 +455,7 @@ async function handler(m, { sock }) {
     } catch (error) {
         console.error('[TopMiskin] Error:', error)
         await m.react('❌')
-        await m.reply(`❌ *Rimuru:* Error nih darling, coba lagi ya~ ${error.message}`)
+        await m.reply(`❌ *Yalena:* Error nih darling, coba lagi ya~ ${error.message}`)
     }
 }
 

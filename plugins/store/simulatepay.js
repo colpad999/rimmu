@@ -1,6 +1,6 @@
 //
 
-import { getDatabase } from '../../src/lib/rimuru-database.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
 import pakasir from '../../src/lib/pakasir.js';
 import orderPoller from '../../src/lib/orderPoller.js';
 import config from '../../config.js';

@@ -1,11 +1,11 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 import { fileTypeFromBuffer } from "file-type";
 import { config } from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
-import { generateWAMessage } from "rimuru";
+import te from "../../src/lib/yalena-error.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
+import { generateWAMessage } from "yalena";
 
 const botConfig = config;
 

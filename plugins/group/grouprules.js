@@ -1,8 +1,8 @@
 //
 
 import config from "../../config.js"
-import { getDatabase } from "../../src/lib/rimuru-database.js"
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js"
+import { getDatabase } from "../../src/lib/yalena-database.js"
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js"
 
 const pluginConfig = {
     name: "grouprules",
@@ -57,7 +57,7 @@ async function handler(m, { sock }) {
     const customRules = groupData.groupRules
     const rulesText = customRules || DEFAULT_GROUP_RULES
 
-    const imageUrl = config.assets?.["rimuru-rules"]
+    const imageUrl = config.assets?.["yalena-rules"]
 
     if (imageUrl) {
         await sock.sendMessage(m.chat, {

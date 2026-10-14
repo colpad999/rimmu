@@ -1,9 +1,9 @@
 //
 
 import axios from "axios";
-import te from "../../src/lib/rimuru-error.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
-import { prepareWAMessageMedia, generateWAMessageFromContent } from "rimuru";
+import te from "../../src/lib/yalena-error.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
+import { prepareWAMessageMedia, generateWAMessageFromContent } from "yalena";
 
 const nexrayTypes = [
   "waifu", "neko", "shinobu", "megumin", "bully", "cuddle", "cry", "hug",

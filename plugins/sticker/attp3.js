@@ -1,11 +1,11 @@
 //
 
-import { addExifToWebp } from '../../src/lib/rimuru-exif.js'
+import { addExifToWebp } from '../../src/lib/yalena-exif.js'
 import axios from 'axios'
 import config from '../../config.js'
-import { f } from '../../src/lib/rimuru-http.js'
-import te from '../../src/lib/rimuru-error.js'
-const NEOXR_APIKEY = config.APIkey?.neoxr || 'Milik-Bot-RimuruMD'
+import { f } from '../../src/lib/yalena-http.js'
+import te from '../../src/lib/yalena-error.js'
+const NEOXR_APIKEY = config.APIkey?.neoxr || 'Milik-Bot-YalenaMD'
 const pluginConfig = {
     name: 'attp3',
     category: 'sticker',

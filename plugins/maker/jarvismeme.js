@@ -5,7 +5,7 @@ import { writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const pluginConfig = {
   name: "jarvismeme",

@@ -1,7 +1,7 @@
 //
 
-import te from "../../src/lib/rimuru-error.js";
-import rimuruApi from "../../src/lib/rimuru-apimanager.js";
+import te from "../../src/lib/yalena-error.js";
+import yalenaApi from "../../src/lib/yalena-apimanager.js";
 import config from "../../config.js";
 const pluginConfig = {
   name: "gpt4o",

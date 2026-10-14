@@ -4,7 +4,7 @@
 
 # Fitur : Fake Discord Chat
 # Type : Plugins ESM
-# Created by : https://whatsapp.com/channel/RIMURU_CHANNEL
+# Created by : https://whatsapp.com/channel/YALENA_CHANNEL
 # Api : local (canvas)
 
    ⚠️ _Note_ ⚠️

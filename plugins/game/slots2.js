@@ -81,9 +81,9 @@ BT.onclick=function(){if(busy)return;sndClick();bet=bet===10?20:bet===20?50:10;i
 document.getElementById('restart').onclick=function(){sndClick();credits=500;bet=10;best=0;busy=false;OV.className='over off';msg('SPIN UNTUK MULAI');SP.disabled=false;BT.disabled=false;clearWin();ui()};
 var box=document.getElementById('reels');for(var c=0;c<5;c++){var d=document.createElement('div');d.className='reel';var s=document.createElement('div');s.className='strip';d.appendChild(s);box.appendChild(d);var h='';for(var i=0;i<LEN;i++)h+=symHTML(pick());s.innerHTML=h;s.style.transform='translateY(-'+(OFF*SH)+'px)';reels.push({strip:s,vals:[0,0,0]})}ui();
 })();
-\n/* RIMURU LIGHT SFX: procedural WebAudio, no external audio asset */
+\n/* YALENA LIGHT SFX: procedural WebAudio, no external audio asset */
 (function(){
-  if (window.__RIMURU_LIGHT_SFX__) return;
+  if (window.__YALENA_LIGHT_SFX__) return;
   var ac=null, master=null, last=0;
   function init(){
     try{
@@ -123,7 +123,7 @@ var box=document.getElementById('reels');for(var c=0;c<5;c++){var d=document.cre
     win:function(){ if(cool(60)) { tone(523,0.08,'sine',0.06); tone(659,0.08,'sine',0.05,0.07); tone(784,0.12,'sine',0.045,0.14); } },
     over:function(){ if(cool(60)) { tone(392,0.09,'sawtooth',0.055); tone(294,0.12,'sawtooth',0.04,0.08); } }
   };
-  window.__RIMURU_LIGHT_SFX__=api;
+  window.__YALENA_LIGHT_SFX__=api;
 
   function num(el){
     var s=(el.textContent||'').replace(/,/g,'').match(/-?\d+(?:\.\d+)?/);

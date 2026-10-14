@@ -1,13 +1,13 @@
 //
 
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 
 
 import axios from "axios";
 import FormData from "form-data";
 import { fileTypeFromBuffer } from "file-type";
 import sharp from "sharp";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const pluginConfig = {
   name: ["blurface", "faceblur"],
@@ -62,7 +62,7 @@ async function blurFace(buffer) {
   if (!type?.mime?.startsWith("image/")) throw new Error("Format gambar tidak didukung.");
 
   const meta = await sharp(buffer).metadata();
-  const fileName = `rimuru_${Date.now()}.${type.ext}`;
+  const fileName = `yalena_${Date.now()}.${type.ext}`;
 
   const { api, taskId } = await getTask();
 

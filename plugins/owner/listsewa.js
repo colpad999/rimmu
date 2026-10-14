@@ -1,7 +1,7 @@
 //
 
-import { getDatabase } from '../../src/lib/rimuru-database.js'
-import * as timeHelper from '../../src/lib/rimuru-time.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
+import * as timeHelper from '../../src/lib/yalena-time.js'
 const pluginConfig = {
     name: 'listsewa',
     category: 'owner',

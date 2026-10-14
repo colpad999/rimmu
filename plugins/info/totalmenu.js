@@ -1,11 +1,11 @@
 //
 
-import { getCategories, getCommandsByCategory } from '../../src/lib/rimuru-plugins.js';
+import { getCategories, getCommandsByCategory } from '../../src/lib/yalena-plugins.js';
 
 const pluginConfig = {
   name: 'totalmenu',
   category: 'info',
-  description: 'Menampilkan ringkasan menu aktif Rimuru MD',
+  description: 'Menampilkan ringkasan menu aktif Yalena MD',
   usage: '.totalmenu',
   example: '.totalmenu',
   isOwner: false,

@@ -3,7 +3,7 @@
 import { Canvas, loadImage, FontLibrary } from 'skia-canvas'
 import fs from 'fs'
 import path from 'path'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 async function ensureFile(url, file) {
   const dir = path.dirname(file)
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })

@@ -1,9 +1,9 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import config from "../../config.js";
 import path from "path";
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 import fs from "fs";
 const pluginConfig = {
   name: "jodoh",
@@ -22,7 +22,7 @@ const pluginConfig = {
 
 let thumbFun = null;
 try {
-  thumbFun = getAssetBuffer("rimuru-games");
+  thumbFun = getAssetBuffer("yalena-games");
 } catch (e) {}
 
 const loveQuotes = [

@@ -109,7 +109,7 @@ async function handler(m, { sock }) {
 
     if (!input) {
         return m.reply(
-            `🤖 *AI CHAT - RIMURU* 🤖\n\n` +
+            `🤖 *AI CHAT - YALENA* 🤖\n\n` +
             `💫 *"He~ mau ngobrol apa darling?"* 💫\n\n` +
             `📌 *Cara pakai:*\n` +
             `> ${m.prefix}aisantai <pesan>\n\n` +
@@ -200,7 +200,7 @@ async function handler(m, { sock }) {
                 `│ 💬 *Pesan ke-* ${userCount}/${MAX_MESSAGES_PER_SESSION}\n` +
                 `│ 🧠 *Model:* GPT-3.5\n` +
                 `└─────────────────────────\n\n` +
-                `💬 *Rimuru:* "Gimana darling? Membantu kan? 🗿"\n` +
+                `💬 *Yalena:* "Gimana darling? Membantu kan? 🗿"\n` +
                 `🌸 *Yosh! Semangat!* 🌸`
             )
         } else {

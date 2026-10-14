@@ -1,6 +1,6 @@
 //
 
-import { games } from '../../src/lib/rimuru-games.js'
+import { games } from '../../src/lib/yalena-games.js'
 
 // 1. REGISTRASI GAME KE ENGINE
 games.register('tebakprovinsi', {

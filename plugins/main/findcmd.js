@@ -1,11 +1,11 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
-import { getCaseCommands } from "../../case/rimuru.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
+import { getCaseCommands } from "../../case/yalena.js";
 import fs from "fs";
 import path from "path";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -205,8 +205,8 @@ async function handler(m, { sock }) {
         `🔍 *ʜᴀsɪʟ ᴘᴇɴᴄᴀʀɪᴀɴ*\n\n> Tidak ditemukan fitur dengan keyword \`${keyword}\``,
       );
     }
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-    const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+    const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
     let text = `🔍 *ʜᴀsɪʟ ᴘᴇɴᴄᴀʀɪᴀɴ: "${keyword}"*\n`;
     text += `> Ditemukan *${matches.length}* fitur\n`;
     text += `> Pilih salah satu command di bawah:\n\n`;
@@ -234,7 +234,7 @@ async function handler(m, { sock }) {
     m.react("✅");
     await sock.sendButton(
       m.chat,
-      config.assets?.["rimuru"],
+      config.assets?.["yalena"],
       text,
       m,
       {

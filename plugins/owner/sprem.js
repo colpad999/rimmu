@@ -1,6 +1,6 @@
 //
 
-import { generateWAMessageFromContent, proto } from "rimuru";
+import { generateWAMessageFromContent, proto } from "yalena";
 
 const pluginConfig = {
   name: ["sprem", "stickerpremium", "premiumsticker"],

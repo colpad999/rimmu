@@ -1,9 +1,9 @@
 //
 
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 import config from "../../config.js";
 import axios from "axios";
-import { uploadImage } from "../../src/lib/rimuru-uploader.js";
+import { uploadImage } from "../../src/lib/yalena-uploader.js";
 
 const pluginConfig = {
   name: "efekstarboy",

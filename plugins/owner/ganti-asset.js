@@ -1,8 +1,8 @@
 //
 
 import config from '../../config.js';
-import { updateAssetUrl } from '../../src/lib/rimuru-uploader.js';
-import te from '../../src/lib/rimuru-error.js';
+import { updateAssetUrl } from '../../src/lib/yalena-uploader.js';
+import te from '../../src/lib/yalena-error.js';
 
 const pluginConfig = {
     name: 'ganti-asset',

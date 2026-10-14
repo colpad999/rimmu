@@ -1,6 +1,6 @@
 //
 
-import { getAllJadibotSessions, getActiveJadibots } from '../../src/lib/rimuru-jadibot-manager.js'
+import { getAllJadibotSessions, getActiveJadibots } from '../../src/lib/yalena-jadibot-manager.js'
 const pluginConfig = {
     name: 'listjadibot',
     category: 'owner',

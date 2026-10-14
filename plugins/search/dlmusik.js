@@ -31,7 +31,7 @@ async function getThumbMusic() {
 
 async function getContextInfo(title, body, thumbnail) {
     const saluranId = config.saluran?.id || config.saluran?.id
-    const saluranName = config.saluran?.name || config.bot?.name || 'rimuru-AI'
+    const saluranName = config.saluran?.name || config.bot?.name || 'yalena-AI'
 
     const ctx = {
         forwardingScore: 9999,
@@ -99,7 +99,7 @@ async function handler(m, { sock }) {
     try {
         await m.reply(`🎵 *ᴍᴇɴɢᴜɴᴅᴜʜ...*\n\n> ${selectedSong.title}`)
         
-        const NEOXR_APIKEY = config.zeroApi?.neoxr || config.zeroApi?.neoxr || 'Milik-Bot-RimuruMD'
+        const NEOXR_APIKEY = config.zeroApi?.neoxr || config.zeroApi?.neoxr || 'Milik-Bot-YalenaMD'
         const apiUrl = `https://api.neoxr.eu/api/song?q=${encodeURIComponent(session.query)}&select=${num}&apikey=${NEOXR_APIKEY}`
         const { data } = await axios.get(apiUrl, { timeout: 60000 })
         

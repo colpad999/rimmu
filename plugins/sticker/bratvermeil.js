@@ -8,7 +8,7 @@ import os from "os";
 import { execFile } from "child_process";
 import { promisify } from "util";
 import fetch from "node-fetch";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 import config from "../../config.js";
 
 const execFileAsync = promisify(execFile);

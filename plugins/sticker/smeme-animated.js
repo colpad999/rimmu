@@ -2,9 +2,9 @@
 
 import axios from 'axios';
 import config from '../../config.js';
-import te from '../../src/lib/rimuru-error.js';
-import { uploadImage } from '../../src/lib/rimuru-uploader.js';
-import { downloadMediaMessage, getContentType } from 'rimuru';
+import te from '../../src/lib/yalena-error.js';
+import { uploadImage } from '../../src/lib/yalena-uploader.js';
+import { downloadMediaMessage, getContentType } from 'yalena';
 
 const pluginConfig = {
   name: 'smeme-animated',

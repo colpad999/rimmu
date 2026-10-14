@@ -24,8 +24,8 @@
   "onlyAdmin": false,
   "selfAdmin": false,
   "publicAdmin": false,
-  "_lastEnergiDefault": 99999,
-  "_lastEnergiPremium": 99999999,
+  "_lastEnergiDefault": 150,
+  "_lastEnergiPremium": 300,
   "lastLimitReset": "2026-08-04T17:00:00.043Z",
   "onlyThisGroup": null,
   "autoJpm": {
@@ -63,7 +63,84 @@
   "ownerNames": {},
   "publicGroups": [],
   "autoRead": false,
-  "contacts": {},
+  "contacts": {
+    "6287866857134@s.whatsapp.net": {
+      "jid": "6287866857134@s.whatsapp.net",
+      "name": "r"
+    },
+    "6282367875428@s.whatsapp.net": {
+      "jid": "6282367875428@s.whatsapp.net",
+      "name": "jy"
+    },
+    "628988181934@s.whatsapp.net": {
+      "jid": "628988181934@s.whatsapp.net",
+      "name": "Mie goreng"
+    },
+    "6289668732874@s.whatsapp.net": {
+      "jid": "6289668732874@s.whatsapp.net",
+      "name": "."
+    },
+    "628216675638@s.whatsapp.net": {
+      "jid": "628216675638@s.whatsapp.net",
+      "name": "sok asik"
+    },
+    "6287840201274@s.whatsapp.net": {
+      "jid": "6287840201274@s.whatsapp.net",
+      "name": "celynette !"
+    },
+    "6283892314036@s.whatsapp.net": {
+      "jid": "6283892314036@s.whatsapp.net",
+      "name": "c h e r i n"
+    },
+    "6283188246207@s.whatsapp.net": {
+      "jid": "6283188246207@s.whatsapp.net",
+      "name": "gtw"
+    },
+    "6285188028598@s.whatsapp.net": {
+      "jid": "6285188028598@s.whatsapp.net",
+      "name": "ー R. Ky/h"
+    },
+    "6288287004869@s.whatsapp.net": {
+      "jid": "6288287004869@s.whatsapp.net",
+      "name": "ze"
+    },
+    "6282195927518@s.whatsapp.net": {
+      "jid": "6282195927518@s.whatsapp.net",
+      "name": "𝘔𝘪𝘳𝘻𝘢𝘋𝘪𝘢𝘣𝘭𝘰★"
+    },
+    "6289679443837@s.whatsapp.net": {
+      "jid": "6289679443837@s.whatsapp.net",
+      "name": "rala?? why"
+    },
+    "6283874419079@s.whatsapp.net": {
+      "jid": "6283874419079@s.whatsapp.net",
+      "name": "🐟"
+    },
+    "6285194593615@s.whatsapp.net": {
+      "jid": "6285194593615@s.whatsapp.net",
+      "name": "🚣"
+    },
+    "6285809379383@s.whatsapp.net": {
+      "jid": "6285809379383@s.whatsapp.net",
+      "name": "𝓛𝓪𝓷𝓰𝓲𝓽"
+    },
+    "6288293772108@s.whatsapp.net": {
+      "jid": "6288293772108@s.whatsapp.net",
+      "name": "ƙׁׅꪱׁׁׁׅׅׅ݊ꪀɑꭈ⋆. 𐙚 ˚"
+    },
+    "6287839137661@s.whatsapp.net": {
+      "jid": "6287839137661@s.whatsapp.net",
+      "name": "sahirawayoykukuk"
+    },
+    "628815534632@s.whatsapp.net": {
+      "jid": "628815534632@s.whatsapp.net",
+      "name": "𝐑𝐞𝐛𝐞𝐜𝐜𝐚 𝐀𝐧𝐨𝐫𝐚||𝟑𝟗𝟗"
+    },
+    "6282373387960@s.whatsapp.net": {
+      "jid": "6282373387960@s.whatsapp.net",
+      "name": "??"
+    }
+  },
   "notiflimit": false,
   "pgTopups": {},
   "pgPayments": {},

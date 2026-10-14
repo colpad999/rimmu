@@ -4,9 +4,9 @@ import {
   generateWAMessage,
   generateWAMessageFromContent,
   prepareWAMessageMedia,
-} from "rimuru";
-import te from "../../src/lib/rimuru-error.js";
-import { f } from "../../src/lib/rimuru-http.js";
+} from "yalena";
+import te from "../../src/lib/yalena-error.js";
+import { f } from "../../src/lib/yalena-http.js";
 
 const pluginConfig = {
   name: "papfemboy",

@@ -10,7 +10,7 @@ function getSharp() {
 import fs from "fs";
 import path from "path";
 import { config } from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "memes",
   category: "sticker",
@@ -137,7 +137,7 @@ async function handler(m, { sock }) {
     });
     const buffer = Buffer.from(response.data);
     await sock.sendImageAsSticker(m.chat, buffer, m, {
-      packname: config.sticker?.packname || "Rimuru-AI",
+      packname: config.sticker?.packname || "Yalena-AI",
       author: config.sticker?.author || "Bot",
     });
     m.react("✅");

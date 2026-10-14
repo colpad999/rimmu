@@ -2,7 +2,7 @@
 
 import { createCanvas, loadImage } from '@napi-rs/canvas';
 import axios from 'axios';
-import { RIMURU_CORE_CONFIG } from "../../config.js";
+import { YALENA_CORE_CONFIG } from "../../config.js";
 import config from '../../config.js';
 const pluginConfig = {
     name: 'wa-canvas',
@@ -117,8 +117,8 @@ async function handler(m, { sock }) {
 
         const buffer = canvas.toBuffer('image/png')
 
-        const saluranId = RIMURU_CORE_CONFIG.saluran?.id || config.saluran?.id
-        const saluranName = RIMURU_CORE_CONFIG.saluran?.name || RIMURU_CORE_CONFIG.bot?.name || 'rimuru-AI'
+        const saluranId = YALENA_CORE_CONFIG.saluran?.id || config.saluran?.id
+        const saluranName = YALENA_CORE_CONFIG.saluran?.name || YALENA_CORE_CONFIG.bot?.name || 'yalena-AI'
 
         await sock.sendMessage(m.chat, {
             image: buffer,

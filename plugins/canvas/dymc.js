@@ -1,8 +1,8 @@
 //
 
 import { createCanvas, loadImage } from "@napi-rs/canvas";
-import { downloadMediaMessage, getContentType } from "rimuru";
-import te from "../../src/lib/rimuru-error.js";
+import { downloadMediaMessage, getContentType } from "yalena";
+import te from "../../src/lib/yalena-error.js";
 import axios from "axios";
 
 const pluginConfig = {
@@ -10,7 +10,7 @@ const pluginConfig = {
   category: "canvas",
   description: "Buat gambar dengan efek dynamic circular text",
   usage: ".dymc <teks>",
-  example: ".dymc RIMURU BOT (sambil reply gambar)",
+  example: ".dymc YALENA BOT (sambil reply gambar)",
   isOwner: false,
   isPremium: false,
   isGroup: false,

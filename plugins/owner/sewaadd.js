@@ -1,11 +1,11 @@
 //
 
 import config from "../../config.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import * as timeHelper from "../../src/lib/rimuru-time.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import * as timeHelper from "../../src/lib/yalena-time.js";
 import fs from "fs";
-import te from "../../src/lib/rimuru-error.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
+import te from "../../src/lib/yalena-error.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
 const pluginConfig = {
   name: "sewaadd",
   category: "owner",

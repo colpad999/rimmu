@@ -9,8 +9,8 @@ function getSharp() {
 
   return _sharp;
 }
-import te from "../../src/lib/rimuru-error.js";
-import { addExifToWebp } from "../../src/lib/rimuru-exif.js";
+import te from "../../src/lib/yalena-error.js";
+import { addExifToWebp } from "../../src/lib/yalena-exif.js";
 
 const pluginConfig = {
   name: "stickersearch",
@@ -211,7 +211,7 @@ async function handler(m, { sock }) {
       return m.reply(`── .✦ ──\n\n> Gagal mendownload sticker .☘︎ ݁˖`);
     }
 
-    const packname = randPick.name || config.sticker?.packname || "Rimuru-AI";
+    const packname = randPick.name || config.sticker?.packname || "Yalena-AI";
     const author = config.bot?.developer || config.sticker?.author || "Bot";
 
     try {

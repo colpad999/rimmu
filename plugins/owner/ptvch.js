@@ -1,7 +1,7 @@
 //
 
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'ptvch',
     category: 'owner',
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
         )
     }
     
-    const channelId = config.saluran?.id || '120363412350560864@newsletter'
+    const channelId = config.saluran?.id || '120363380765405182@newsletter'
     
     await m.reply(`🕕 *ᴍᴇɴɢɪʀɪᴍ ᴘᴛᴠ ᴋᴇ ᴄʜᴀɴɴᴇʟ...*`)
     

@@ -8,7 +8,7 @@
 import imgtoprompt from '../../src/scraper/img2prompt.js'
 import fs from 'fs'
 import path from 'path'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'imagetoprompt',
     category: 'tools',

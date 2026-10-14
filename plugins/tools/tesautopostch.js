@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
 ┃ Status: ✅ Berhasil
 ┃ Tipe: ${type}
 ┃
-┃ Rimuru udah kirim duluan 😈
+┃ Yalena udah kirim duluan 😈
 ╰━━━━━━━━━━━━━━━━⬣`
         }, { quoted: m })
 

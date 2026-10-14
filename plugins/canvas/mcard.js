@@ -1,6 +1,6 @@
 //
 
-import { downloadMediaMessage, getContentType } from "rimuru";
+import { downloadMediaMessage, getContentType } from "yalena";
 import { ImageUploadService } from "node-upload-images";
 import axios from "axios";
 

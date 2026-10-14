@@ -1,7 +1,7 @@
 //
 
 import { cocofun } from 'btch-downloader'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'cocofun',
     category: 'download',

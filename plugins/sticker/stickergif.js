@@ -5,7 +5,7 @@ import path from 'path'
 import { exec } from 'child_process'
 import { promisify } from 'util'
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const execAsync = promisify(exec)
 
 const pluginConfig = {
@@ -178,7 +178,7 @@ async function handler(m, { sock, config: botConfig }) {
             if (fs.existsSync(tempVideo)) fs.unlinkSync(tempVideo)
         }
         
-        const packname = options.packname || botConfig.sticker?.packname || botConfig.bot?.name || 'Rimuru-AI'
+        const packname = options.packname || botConfig.sticker?.packname || botConfig.bot?.name || 'Yalena-AI'
         const author = options.author || botConfig.sticker?.author || botConfig.owner?.name || 'Bot'
         
         const hasProcessing = options.crop || options.resize || options.circle || options.rounded

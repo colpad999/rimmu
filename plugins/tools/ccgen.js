@@ -8,7 +8,7 @@ Jangan Hapus Wm Bang
 Ya Bgtu Lah Bisa Di Pake Jga GK tawu
 
 *[Sumber]*
-https://whatsapp.com/channel/RIMURU_CHANNEL
+https://whatsapp.com/channel/YALENA_CHANNEL
 
 *[Sumber Scrape]*
 

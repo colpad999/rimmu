@@ -1,8 +1,8 @@
 //
 
 import config from '../../config.js'
-import { getParticipantJids } from '../../src/lib/rimuru-lid.js'
-import te from '../../src/lib/rimuru-error.js'
+import { getParticipantJids } from '../../src/lib/yalena-lid.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'ht2',
     category: 'group',
@@ -41,7 +41,7 @@ async function handler(m, { sock }) {
                 remoteJid: 'status@broadcast'
             },
             message: {
-                conversation: config.bot?.name || 'Rimuru MD'
+                conversation: config.bot?.name || 'Yalena MD'
             }
         }
         if (m.quoted) {

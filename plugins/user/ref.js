@@ -1,7 +1,7 @@
 //
 
 import crypto from "crypto";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 
 const pluginConfig = {
   name: "ref",
@@ -100,7 +100,7 @@ async function handler(m, { sock }) {
     : null;
 
   return m.reply(
-    `🎁 *REFERRAL RIMURU*\n\n` +
+    `🎁 *REFERRAL YALENA*\n\n` +
       `Kode kamu: *${user.refCode}*\n` +
       `Sudah dipakai: *${user.refCount} orang*\n\n` +
       `💎 Hadiah pengguna baru: *+${XP_FIRST.toLocaleString("id-ID")} EXP*\n` +

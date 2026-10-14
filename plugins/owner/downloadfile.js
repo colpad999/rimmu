@@ -44,7 +44,7 @@ async function handler(m,{ sock }){
 
     if(!input){
         return m.reply(
-`╭━━〔 💖 RIMURU AMBIL FILE 💖 〕━━⬣
+`╭━━〔 💖 YALENA AMBIL FILE 💖 〕━━⬣
 ┃ Darling masukkan nama file~
 ┃
 ┃ Contoh:
@@ -72,7 +72,7 @@ async function handler(m,{ sock }){
         const time = new Date().toLocaleTimeString()
 
         const ui =
-`╭━━〔 💖 RIMURU DOWNLOAD FILE 💖 〕━━⬣
+`╭━━〔 💖 YALENA DOWNLOAD FILE 💖 〕━━⬣
 ┃ Darling aku temukan filenya~
 ┃
 ┃ 📦 Nama : ${fileName}
@@ -100,7 +100,7 @@ async function handler(m,{ sock }){
         m.react("❌")
 
         return m.reply(
-`╭━━〔 ❌ RIMURU SYSTEM ❌ 〕━━⬣
+`╭━━〔 ❌ YALENA SYSTEM ❌ 〕━━⬣
 ┃
 ┃ ${e.message}
 ╰━━━━━━━━━━━━━━━━⬣`

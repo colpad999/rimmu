@@ -1,16 +1,16 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 /**
  * 🐺 WEREWOLF GAME
  * Social deduction game for WhatsApp
  *
  * Based on reference: RTXZY-MD-pro/lib/werewolf.js
- * Enhanced for RimuruAI
+ * Enhanced for YalenaAI
  */
 import config from "../../config.js";
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
-import te from "../../src/lib/rimuru-error.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "wwgc",
   category: "game",
@@ -34,10 +34,10 @@ let thumbDay = null;
 let thumbWin = null;
 
 try {
-  thumbWW = getAssetBuffer("rimuru-games");
-  thumbNight = getAssetBuffer("rimuru");
-  thumbDay = getAssetBuffer("rimuru");
-  thumbWin = getAssetBuffer("rimuru-winner");
+  thumbWW = getAssetBuffer("yalena-games");
+  thumbNight = getAssetBuffer("yalena");
+  thumbDay = getAssetBuffer("yalena");
+  thumbWin = getAssetBuffer("yalena-winner");
 } catch (e) {
   console.log("[WW] Failed to load thumbnails:", e.message);
 }
@@ -84,8 +84,8 @@ const PHASE_DURATION = {
 };
 
 function wwCtx(mentions) {
-  const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-  const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+  const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+  const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
   return {
     forwardingScore: 9999,
     isForwarded: true,

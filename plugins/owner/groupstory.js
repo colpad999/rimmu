@@ -1,13 +1,13 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 import { fileTypeFromBuffer } from "file-type";
 import fs from "fs";
 import path from "path";
 import { config } from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
-import { handleAntiSwGc } from "../../src/lib/rimuru-group-protection.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
+import te from "../../src/lib/yalena-error.js";
+import { handleAntiSwGc } from "../../src/lib/yalena-group-protection.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
 const botConfig = config;
 
 function buildSyntheticSwGcRawMessage(sock, remoteJid, content, messageId) {
@@ -309,7 +309,7 @@ async function handler(m, { sock, db }) {
 
     let thumbnail = null;
     try {
-      thumbnail = getAssetBuffer("rimuru2");
+      thumbnail = getAssetBuffer("yalena2");
     } catch (e) {}
 
     await sock.sendMessage(m.chat, {
@@ -325,7 +325,7 @@ async function handler(m, { sock, db }) {
           newsletterName: botConfig?.saluran?.name,
         },
       },
-      footer: "Rimuru MD",
+      footer: "Yalena MD",
       interactiveButtons: [
         {
           name: "single_select",

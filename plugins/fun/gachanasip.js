@@ -27,7 +27,7 @@ async function handler(m){
     const nasip = nasipList[Math.floor(Math.random()*nasipList.length)]
 
     const responses = [
-`╭─〔 💖 RIMURU GACHA NASIP 💖 〕─╮
+`╭─〔 💖 YALENA GACHA NASIP 💖 〕─╮
 │ Darling, nih nasipmu hari ini 😋
 │
 │ 👤 Player : *${name}*

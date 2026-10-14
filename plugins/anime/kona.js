@@ -69,7 +69,7 @@ async function handler(m, { args, sock }) {
     const tagDisplay = image.tags.slice(0, 15).join(", ");
     caption += `${tagDisplay}${image.tags.length > 15 ? '...' : ''}\n\n`;
     caption += `🔗 *Source:*\n${image.details_page || 'https://konachan.net'}\n\n`;
-    caption += `💕 *Rimuru:* Selamat menikmati darling~ ♡`;
+    caption += `💕 *Yalena:* Selamat menikmati darling~ ♡`;
 
     // Kirim gambar pake sendMessage (bukan sendMedia)
     await sock.sendMessage(m.chat, {

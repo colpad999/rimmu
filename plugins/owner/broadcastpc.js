@@ -1,7 +1,7 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import { decodeAndNormalize } from "../../src/lib/rimuru-lid.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import { decodeAndNormalize } from "../../src/lib/yalena-lid.js";
 import config from "../../config.js";
 
 const pluginConfig = {

@@ -2,8 +2,8 @@
 
 import fs from "fs";
 import path from "path";
-import { hotReloadPlugin } from "../../src/lib/rimuru-plugins.js";
-import te from "../../src/lib/rimuru-error.js";
+import { hotReloadPlugin } from "../../src/lib/yalena-plugins.js";
+import te from "../../src/lib/yalena-error.js";
 
 const pluginConfig = {
   name: "addpl",

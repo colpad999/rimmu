@@ -1,6 +1,6 @@
 //
 
-import { RIMURU_CORE_CONFIG } from "../../config.js";
+import { YALENA_CORE_CONFIG } from "../../config.js";
 import crypto from 'crypto';
 import config from '../../config.js';
 
@@ -77,7 +77,7 @@ async function handler(m, { sock }) {
     const buffer = await m.quoted.download();
     if (!buffer) throw new Error("Gagal mendownload stiker.");
 
-    const botName = RIMURU_CORE_CONFIG.bot?.name || 'Ourin-MD';
+    const botName = YALENA_CORE_CONFIG.bot?.name || 'Ourin-MD';
     const dynamicPackName = `Anti colong •`;
     const dynamicPublisher = `By ${botName}`;
 
@@ -87,7 +87,7 @@ async function handler(m, { sock }) {
       "sticker-pack-publisher": dynamicPublisher,
       "accessibility-text": "Protected Sticker",
       "android-app-store-link": "https://whatsapp.com",
-      "ios-app-store-link": "https://whatsapp.com/channel/RIMURU_CHANNEL",
+      "ios-app-store-link": "https://whatsapp.com/channel/YALENA_CHANNEL",
       emojis: ["🦸"],
       "is-from-sticker-maker": 0,
       "is-avatar-sticker": 1,

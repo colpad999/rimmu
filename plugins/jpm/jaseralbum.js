@@ -1,15 +1,15 @@
 //
 
-import { getDatabase } from '../../src/lib/rimuru-database.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
 import { getGroupMode } from '../group/botmode.js';
-import { fetchGroupsSafe } from '../../src/lib/rimuru-jpm-helper.js';
+import { fetchGroupsSafe } from '../../src/lib/yalena-jpm-helper.js';
 import { generateWAMessage, generateWAMessageFromContent, jidNormalizedUser } from '@itsliaaa/baileys';
 import config from '../../config.js';
 import crypto from 'crypto';
 import fs from 'fs';
-import { getAssetBuffer } from '../../src/lib/rimuru-asset-manager.js';
+import { getAssetBuffer } from '../../src/lib/yalena-asset-manager.js';
 
-let cachedThumb = getAssetBuffer("rimuru2");
+let cachedThumb = getAssetBuffer("yalena2");
 
 const pluginConfig = {
     name: 'jaseralbum',
@@ -30,7 +30,7 @@ const COLLECT_WINDOW = 60000
 
 function getContextInfo(title = '📢 ᴊᴘᴍ ᴀʟʙᴜᴍ', body = 'Album Broadcast') {
     const saluranId = config.saluran?.id || config.saluran?.id
-    const saluranName = config.saluran?.name || config.bot?.name || 'rimuru-AI'
+    const saluranName = config.saluran?.name || config.bot?.name || 'yalena-AI'
 
     const contextInfo = {
         forwardingScore: 9999,
@@ -287,7 +287,7 @@ async function handler(m, { sock }) {
                     await sendAlbumToGroup(sock, groupId, mediaList, caption)
                 } else {
                     const media = mediaList[0]
-                    const contextInfo = getContextInfo('📢 ᴊᴘᴍ ᴀʟʙᴜᴍ', config.bot?.name || 'rimuru')
+                    const contextInfo = getContextInfo('📢 ᴊᴘᴍ ᴀʟʙᴜᴍ', config.bot?.name || 'yalena')
                     await sock.sendMessage(groupId, {
                         [media.type]: media.buffer,
                         caption: caption || media.caption,

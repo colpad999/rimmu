@@ -1,11 +1,11 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 
 const pluginConfig = {
   name: ["admincount","groupage","groupcreator","exportmember","lockinfo","unlockinfo","ephemeral","seticon","delicon","quicklock","quickunlock","votekick","setmotd","motd","previewwelcome"],
   category: "group",
-  description: "Utilitas admin grup tambahan yang tidak tersedia di Rimuru.",
+  description: "Utilitas admin grup tambahan yang tidak tersedia di Yalena.",
   usage: ".<command>",
   example: ".admincount",
   isGroup: true,
@@ -56,7 +56,7 @@ async function handler(m,{sock,db}){
         Object.assign(gd,{antilink:true,antispam:true,antitag:true});
         if(db?.save) await db.save();
         await sock.groupSettingUpdate(m.chat,settings[0]);
-        return m.reply("🔒 Quick Lock aktif: grup dikunci dan proteksi dasar Rimuru diaktifkan.");
+        return m.reply("🔒 Quick Lock aktif: grup dikunci dan proteksi dasar Yalena diaktifkan.");
       }
       case "quickunlock":{
         const gd=db?.getGroup?.(m.chat)||{};

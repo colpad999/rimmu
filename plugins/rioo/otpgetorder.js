@@ -1,13 +1,13 @@
 //
 
-import { config, httpRequest } from "../../src/lib/rimuru-rioo-bridge.js";
+import { config, httpRequest } from "../../src/lib/yalena-rioo-bridge.js";
 import fs from "node:fs/promises";
 import path from "node:path";
 
 const pluginConfig = {
   name: "otpgetorder",
   category: "owner",
-  description: "Layanan OTP Rimuru dengan API dan key yang dipindahkan ke config Rimuru",
+  description: "Layanan OTP Yalena dengan API dan key yang dipindahkan ke config Yalena",
   usage: ".otpmenu / .otplayanan / .otporder <id> / .otpgetorder <id> / .otpsms <id> / .otpcancel <id>",
   isOwner: true,
   isPremium: false,

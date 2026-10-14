@@ -1,14 +1,14 @@
 //
 
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 
 const pluginConfig = {
     name: 'idlink',
     category: 'tools',
     description: 'Ambil ID WhatsApp dari link channel atau grup',
     usage: '.linkid <link channel/grup>',
-    example: '.linkid https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P',
+    example: '.linkid https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y',
     isOwner: false,
     isPremium: false,
     isGroup: false,

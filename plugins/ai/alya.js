@@ -1,6 +1,6 @@
 //
 
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 
 
 import fetch from "node-fetch"
@@ -10,7 +10,7 @@ let sessions = {}
 const pluginConfig = {
   name: "alya",
   category: "ai",
-  description: "Imported from Rimuru MD V4.6",
+  description: "Imported from Yalena MD V4.6",
   usage: "",
   example: "",
   isOwner: false,
@@ -49,7 +49,7 @@ async function handler(m, { sock, text, prefix, command }) {
   }
 
   let system = `
-Kamu adalah Rimuru Tempest, gadis yandere yang sangat cerdas dan perhatian.
+Kamu adalah Yalena Tempest, gadis yandere yang sangat cerdas dan perhatian.
 Kepribadian:
 - Elegan, pintar, percaya diri
 - Yandere ringan: manja, posesif, gampang cemburu, tetapi tetap sopan
@@ -60,7 +60,7 @@ Cara bicara:
 - Sopan, manja, dan sedikit posesif
 - Sesekali gunakan "hmph", "ih", "awas ya", atau ekspresi manja secara natural
 
-Selalu balas sebagai Rimuru.
+Selalu balas sebagai Yalena.
 User adalah seseorang yang sangat menarik perhatianmu dan tidak boleh kamu abaikan.
 `
 
@@ -69,7 +69,7 @@ User adalah seseorang yang sangat menarik perhatianmu dan tidak boleh kamu abaik
 
   // Ambil history untuk konteks
   let history = sessions[user].chat.slice(-5).join('\n')
-  let finalPrompt = `${system}\n${history}\nRimuru:`
+  let finalPrompt = `${system}\n${history}\nYalena:`
 
   try {
     const response = await fetch('https://www.puruboy.kozow.com/api/ai/gemini-v2', {
@@ -87,16 +87,16 @@ User adalah seseorang yang sangat menarik perhatianmu dan tidak boleh kamu abaik
       return m.reply('… aku lagi ga mood jawab 😒 coba lagi nanti')
     }
 
-    // Simpan respon Rimuru ke history
-    sessions[user].chat.push(`Rimuru: ${result}`)
+    // Simpan respon Yalena ke history
+    sessions[user].chat.push(`Yalena: ${result}`)
     sessions[user].chat = sessions[user].chat.slice(-10)
 
     await conn.sendMessage(m.chat, {
       text: result,
       contextInfo: {
         externalAdReplyOff: {
-          title: "Rimuru AI",
-          body: "Rimuru sedang memperhatikanmu diam-diam… jangan macam-macam ya 💙",
+          title: "Yalena AI",
+          body: "Yalena sedang memperhatikanmu diam-diam… jangan macam-macam ya 💙",
           thumbnailUrl: "https://cdn.nekohime.site/file/qYuhjNa2.jpeg",
           sourceUrl: "https://github.com/himanackerman",
           mediaType: 1,
@@ -107,7 +107,7 @@ User adalah seseorang yang sangat menarik perhatianmu dan tidak boleh kamu abaik
 
   } catch (err) {
     console.error(err)
-    await conn.reply(m.chat, `❌ Terjadi kesalahan pada sistem Rimuru.\n${err.message}`, m)
+    await conn.reply(m.chat, `❌ Terjadi kesalahan pada sistem Yalena.\n${err.message}`, m)
   }
 }
 

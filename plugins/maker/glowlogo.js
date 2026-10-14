@@ -28,11 +28,11 @@ async function handler(m, { sock }) {
         
         // Kalo gak ada gambar dan gak ada teks
         if (!hasImage && !text) {
-            return m.reply(`✨ *CARA PAKAI LOGO GLOW* ✨\n\n1. Dengan teks:\n\`.logo-glow Rimuru\`\n\n2. Dengan gambar + teks:\nReply gambar lalu ketik:\n\`.logo-glow Rimuru\`\n\n3. Hanya gambar:\nReply gambar tanpa teks\n\n*Contoh efek:*\n🔥 Neon glow\n💗 Pink neon\n💙 Blue neon`)
+            return m.reply(`✨ *CARA PAKAI LOGO GLOW* ✨\n\n1. Dengan teks:\n\`.logo-glow Yalena\`\n\n2. Dengan gambar + teks:\nReply gambar lalu ketik:\n\`.logo-glow Yalena\`\n\n3. Hanya gambar:\nReply gambar tanpa teks\n\n*Contoh efek:*\n🔥 Neon glow\n💗 Pink neon\n💙 Blue neon`)
         }
         
         // Set default text kalo gak ada
-        if (!text) text = 'RIMURU'
+        if (!text) text = 'YALENA'
         
         // Settings
         const width = 800
@@ -120,7 +120,7 @@ async function handler(m, { sock }) {
         ctx.shadowBlur = 5
         ctx.font = '14px monospace'
         ctx.fillStyle = glowColor
-        ctx.fillText('⚡ RIMURU MAKER ⚡', width/2, height - 20)
+        ctx.fillText('⚡ YALENA MAKER ⚡', width/2, height - 20)
         
         ctx.font = '10px monospace'
         ctx.fillStyle = '#888'
@@ -163,7 +163,7 @@ async function handler(m, { sock }) {
         
         await sock.sendMessage(m.chat, {
             image: buffer,
-            caption: `✨ *NEON LOGO MAKER* ✨\n\n╭─❍「 DETAIL 」\n│ 📝 Teks: ${text.toUpperCase()}\n│ 🎨 Warna: ${Object.entries(glowColors).find(([k,v]) => v === glowColor)?.[0] || 'pink'}\n│ ⚡ Efek: Neon Glow\n╰─────────────❍\n\n💗 *Rimuru*: Ini untuk sayang~`
+            caption: `✨ *NEON LOGO MAKER* ✨\n\n╭─❍「 DETAIL 」\n│ 📝 Teks: ${text.toUpperCase()}\n│ 🎨 Warna: ${Object.entries(glowColors).find(([k,v]) => v === glowColor)?.[0] || 'pink'}\n│ ⚡ Efek: Neon Glow\n╰─────────────❍\n\n💗 *Yalena*: Ini untuk sayang~`
         }, { quoted: m })
         
     } catch (error) {

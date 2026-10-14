@@ -2,8 +2,8 @@
 
 import axios from "axios";
 import config from "../../config.js";
-import { f } from "../../src/lib/rimuru-http.js";
-import te from "../../src/lib/rimuru-error.js";
+import { f } from "../../src/lib/yalena-http.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "jadwalbola",
   category: "info",
@@ -19,7 +19,7 @@ const pluginConfig = {
   isEnabled: true,
 };
 
-const NEOXR_APIKEY = config.APIkey?.neoxr || "Milik-Bot-RimuruMD";
+const NEOXR_APIKEY = config.APIkey?.neoxr || "Milik-Bot-YalenaMD";
 
 const LEAGUE_EMOJI = {
   "liga inggris": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
@@ -81,8 +81,8 @@ async function handler(m, { sock }) {
       grouped[date].push(match);
     }
 
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-    const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+    const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
 
     let text = `⚽ *ᴊᴀᴅᴡᴀʟ ᴘᴇʀᴛᴀɴᴅɪɴɢᴀɴ*\n\n`;
     if (filter) text += `> Filter: \`${filter}\`\n\n`;

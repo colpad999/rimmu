@@ -4,8 +4,8 @@ import os from 'os'
 import { performance } from 'perf_hooks'
 import { execSync } from 'child_process'
 import config from '../../config.js'
-import { getDatabase } from '../../src/lib/rimuru-database.js'
-import te from '../../src/lib/rimuru-error.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
+import te from '../../src/lib/yalena-error.js'
 
 const pluginConfig = {
     name: 'p2',
@@ -134,7 +134,7 @@ async function handler(m, { sock }) {
             tableData,
             m,
             {
-                headerText: `${config.bot?.name || 'Rimuru-AI'} *STATUS*\n\n- 🎄 Dibawah ini adalah statistik bot kita`,
+                headerText: `${config.bot?.name || 'Yalena-AI'} *STATUS*\n\n- 🎄 Dibawah ini adalah statistik bot kita`,
                 footer: '🍃 Realtime Monitoring'
             }
         )

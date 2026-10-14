@@ -20,7 +20,7 @@ async function handler(m, { sock }) {
 
     if (!folderPath) {
         return m.reply(
-`╭━━〔 💖 RIMURU FOLDER GETTER 〕━━⬣
+`╭━━〔 💖 YALENA FOLDER GETTER 〕━━⬣
 ┃
 ┃ Gunakan:
 ┃ .ambilfolder path/folder

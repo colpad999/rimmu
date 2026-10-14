@@ -231,7 +231,7 @@ mengedit gambar`
 ${prompt}`,
 
                 footer:
-                    'RIMURU AI',
+                    'YALENA AI',
 
                 contextInfo: {
 

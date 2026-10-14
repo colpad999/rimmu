@@ -3,7 +3,7 @@
 import axios from 'axios'
 import fs from 'fs'
 import path from 'path'
-import { f } from '../../src/lib/rimuru-http.js'
+import { f } from '../../src/lib/yalena-http.js'
 const pluginConfig = {
     name: 'asupan',
     category: 'asupan',

@@ -1,6 +1,6 @@
 //
 
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 import { tiktokSearchVideo } from "../../src/scraper/tiktoksearch.js";
 
 const pluginConfig = {

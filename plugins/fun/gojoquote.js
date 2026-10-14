@@ -3,7 +3,7 @@
 const pluginConfig = {
   name:'gojoquote',
   category:"fun",
-  description:"Fitur tema Gojo sederhana yang tidak tersedia di Rimuru.",
+  description:"Fitur tema Gojo sederhana yang tidak tersedia di Yalena.",
   usage:".gquote",
   example:".gquote",
   isOwner:false,isPremium:false,isGroup:false,isPrivate:false,cooldown:3,energi:0,isEnabled:true

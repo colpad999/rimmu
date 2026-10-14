@@ -4,7 +4,7 @@
  * Putus - End relationship
  */
 
-import { getDatabase } from '../../src/lib/rimuru-database.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
 const pluginConfig = {
     name: 'putus',
     category: 'fun',

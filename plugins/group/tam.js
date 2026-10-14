@@ -1,9 +1,9 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import { generateWAMessageFromContent } from "rimuru";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import { generateWAMessageFromContent } from "yalena";
 import config from "../../config.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
 
 const pluginConfig = {
   name: "tam",

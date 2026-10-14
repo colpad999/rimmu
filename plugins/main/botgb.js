@@ -2,7 +2,7 @@
 
 import fs from "fs";
 import path from "path";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const dbFile = path.join(process.cwd(), "database", "gbbot.json");
 
@@ -52,7 +52,7 @@ async function handler(m, { sock, isOwner }) {
 
     const newLink = fullText.replace(/^[\/.!#]?setgbbot\s*/i, "").trim();
     if (!newLink || !newLink.includes("chat.whatsapp.com")) {
-      return m.reply(`❌ Masukkan link grup WhatsApp yang valid!\nContoh: \`${prefix}setgbbot https://whatsapp.com/channel/RIMURU_CHANNEL\``);
+      return m.reply(`❌ Masukkan link grup WhatsApp yang valid!\nContoh: \`${prefix}setgbbot https://whatsapp.com/channel/YALENA_CHANNEL\``);
     }
 
     writeDb({ link: newLink });
@@ -65,7 +65,7 @@ async function handler(m, { sock, isOwner }) {
 
   try {
     const db = readDb();
-    const groupLink = db.link || "https://whatsapp.com/channel/RIMURU_CHANNEL";
+    const groupLink = db.link || "https://whatsapp.com/channel/YALENA_CHANNEL";
     const pushName = m.pushName || "Kak";
 
     let caption = `╭───〔 🌐 *OFFICIAL COMMUNITY* 〕───\n`;

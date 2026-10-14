@@ -2,8 +2,8 @@
 
 import axios from "axios";
 import config from "../../config.js";
-import { f } from "../../src/lib/rimuru-http.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
+import { f } from "../../src/lib/yalena-http.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
 const pluginConfig = {
   name: "tiktokasupan",
   category: "asupan",

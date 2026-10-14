@@ -1,6 +1,6 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import { calculateLevel, getRole } from "../user/level.js";
 
 const EXP_PER_LEVEL = 10000;

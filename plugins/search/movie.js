@@ -1,11 +1,11 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 import axios from "axios";
 import config from "../../config.js";
 import fs from "fs";
-import te from "../../src/lib/rimuru-error.js";
-const NEOXR_APIKEY = config.APIkey?.neoxr || "Milik-Bot-RimuruMD";
+import te from "../../src/lib/yalena-error.js";
+const NEOXR_APIKEY = config.APIkey?.neoxr || "Milik-Bot-YalenaMD";
 
 const pluginConfig = {
   name: "movie",
@@ -78,7 +78,7 @@ async function handler(m, { sock }) {
 
     await sock.sendButton(
       m.chat,
-      config.assets?.["rimuru"],
+      config.assets?.["yalena"],
       text,
       m,
       {

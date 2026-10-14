@@ -1,8 +1,8 @@
 //
 
 import gemini from '../../src/scraper/gemini.js';
-import { AIRich } from '../../src/lib/rimuru-builder.js';
-import te from '../../src/lib/rimuru-error.js';
+import { AIRich } from '../../src/lib/yalena-builder.js';
+import te from '../../src/lib/yalena-error.js';
 
 const pluginConfig = {
     name: 'ai4chat',
@@ -21,7 +21,7 @@ const pluginConfig = {
 
 const sessions = {};
 
-const systemPrompt = `Kamu adalah asisten AI yang cerdas dan canggih (Rimuru AI).
+const systemPrompt = `Kamu adalah asisten AI yang cerdas dan canggih (Yalena AI).
 Gunakan format markdown secara ketat:
 1. Jika membuat daftar perbandingan atau sekumpulan data, SELALU gunakan format tabel markdown (diawali dan diakhiri dengan '|').
 2. Jika memberikan kode pemrograman, SELALU bungkus dengan markdown code block (\`\`\`bahasa ... \`\`\`).

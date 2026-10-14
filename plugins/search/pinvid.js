@@ -10,11 +10,11 @@ import {
   generateWAMessage,
   generateWAMessageFromContent,
   jidNormalizedUser,
-} from "rimuru";
+} from "yalena";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const execAsync = promisify(exec);
-const NEOXR_APIKEY = config.APIkey?.neoxr || "Milik-Bot-RimuruMD";
+const NEOXR_APIKEY = config.APIkey?.neoxr || "Milik-Bot-YalenaMD";
 
 const pluginConfig = {
   name: "pinvid",
@@ -52,7 +52,7 @@ async function handler(m, { sock }) {
 
   try {
     const res = await axios.get(
-      `https://firefly.maiku.my.id/api/pinterestvideo?apikey=RimuruNextGen&q=${encodeURIComponent(query)}`,
+      `https://firefly.maiku.my.id/api/pinterestvideo?apikey=YalenaNextGen&q=${encodeURIComponent(query)}`,
       {
         timeout: 60000,
       },
@@ -185,9 +185,9 @@ async function handler(m, { sock }) {
         albumErr.message,
       );
 
-      const saluranId = config.saluran?.id || "120363412350560864@newsletter";
+      const saluranId = config.saluran?.id || "120363380765405182@newsletter";
       const saluranName =
-        config.saluran?.name || config.bot?.name || "Rimuru-AI";
+        config.saluran?.name || config.bot?.name || "Yalena-AI";
 
       for (const content of mediaList) {
         await sock.sendMessage(

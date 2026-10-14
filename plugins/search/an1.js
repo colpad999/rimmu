@@ -1,11 +1,11 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 import axios from "axios";
 import config from "../../config.js";
 import fs from "fs";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import te from "../../src/lib/rimuru-error.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "an1",
   category: "search",
@@ -21,7 +21,7 @@ const pluginConfig = {
   isEnabled: true,
 };
 
-const NEOXR_APIKEY = config.APIkey?.neoxr || "Milik-Bot-RimuruMD";
+const NEOXR_APIKEY = config.APIkey?.neoxr || "Milik-Bot-YalenaMD";
 
 async function handler(m, { sock }) {
   const db = getDatabase();
@@ -65,8 +65,8 @@ async function handler(m, { sock }) {
     };
     db.save();
 
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-    const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+    const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
 
     let caption = `📱 Hasil dari pencarian apk mod *${text}*\n`;
     caption += `*${apps.length}* aplikasi ditemukan\n\n`;
@@ -88,7 +88,7 @@ async function handler(m, { sock }) {
     m.react("✅");
     await sock.sendButton(
       m.chat,
-      config.assets?.["rimuru"],
+      config.assets?.["yalena"],
       caption,
       m,
       {

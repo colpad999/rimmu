@@ -2,8 +2,8 @@
 
 import axios from 'axios'
 import config from '../../config.js'
-import { hasFullAccess, getUserRole, VALID_SERVERS } from '../../src/lib/rimuru-roles-cpanel.js'
-import te from '../../src/lib/rimuru-error.js'
+import { hasFullAccess, getUserRole, VALID_SERVERS } from '../../src/lib/yalena-roles-cpanel.js'
+import te from '../../src/lib/yalena-error.js'
 const allCommands = VALID_SERVERS.map(v => `deladmin${v}`)
 const allAliases = VALID_SERVERS.map(v => `hapusadmin${v}`)
 

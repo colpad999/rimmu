@@ -1,6 +1,6 @@
 //
 
-import { sendStoreBackup, SCHEMA_VERSION } from '../../src/lib/rimuru-store-backup.js'
+import { sendStoreBackup, SCHEMA_VERSION } from '../../src/lib/yalena-store-backup.js'
 const pluginConfig = {
     name: 'storebackup',
     category: 'owner',

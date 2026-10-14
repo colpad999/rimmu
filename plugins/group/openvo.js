@@ -1,6 +1,6 @@
 //
 
-import { downloadContentFromMessage } from 'rimuru'
+import { downloadContentFromMessage } from 'yalena'
 const pluginConfig = {
     name: 'rvo',
     category: 'group',

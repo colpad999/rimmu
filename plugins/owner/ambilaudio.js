@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
             `┃ ✦ *Lihat daftar file*\n` +
             `┃   ${m.prefix}listmp3\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣\n\n` +
-            `💗 *Rimuru:* Mau ambil audio apa darling~?`
+            `💗 *Yalena:* Mau ambil audio apa darling~?`
         )
     }
     
@@ -75,7 +75,7 @@ async function handler(m, { sock }) {
             `┃ 🎵 *ɴᴀᴍᴇ*: ${fileName}\n` +
             `┃ 📦 *ᴜᴋᴜʀᴀɴ*: ${fileSizeMB} MB\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Ini dia audio nya darling~ 🎶\n` +
+            `┃ 💗 *Yalena:* Ini dia audio nya darling~ 🎶\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
         

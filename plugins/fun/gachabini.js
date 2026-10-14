@@ -13,7 +13,7 @@ const pluginConfig = {
 let cachedThumb = null
 try {
 
-const thumbPath = path.join(process.cwd(),"assets","images","rimuru-gachabini.jpg")
+const thumbPath = path.join(process.cwd(),"assets","images","yalena-gachabini.jpg")
 
 if(fs.existsSync(thumbPath)){
 cachedThumb = fs.readFileSync(thumbPath)
@@ -25,7 +25,7 @@ console.log(e)
 
 const waifuList = [
 
-"Rimuru","Rem","Ram","Emilia","Satella","Echidna","Beatrice","Priscilla","Crusch",
+"Yalena","Rem","Ram","Emilia","Satella","Echidna","Beatrice","Priscilla","Crusch",
 "Kurisu Makise","Mayuri Shiina","Suzuha Amane",
 "Mikasa Ackerman","Annie Leonhart","Historia Reiss","Sasha Blouse","Pieck Finger",
 "Hinata Hyuga","Sakura Haruno","Ino Yamanaka","Tsunade","Kushina Uzumaki",

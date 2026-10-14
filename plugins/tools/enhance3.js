@@ -3,7 +3,7 @@
 import axios from "axios";
 import FormData from "form-data";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 import _sharp from "sharp";
 
 const pluginConfig = {
@@ -122,7 +122,7 @@ async function handler(m, { sock }) {
       {
         image: resultBuffer,
         jpegThumbnail: thumbBuffer,
-        caption: `✨ *UNBLUR / HD ENHANCE*\n\nDibuat dengan ${config.bot?.name || "Rimuru MD"}`,
+        caption: `✨ *UNBLUR / HD ENHANCE*\n\nDibuat dengan ${config.bot?.name || "Yalena MD"}`,
       },
       { quoted: m },
     );

@@ -1,6 +1,6 @@
 //
 
-import { stopJadibot, isJadibotActive, getJadibotStatus } from '../../src/lib/rimuru-jadibot-manager.js'
+import { stopJadibot, isJadibotActive, getJadibotStatus } from '../../src/lib/yalena-jadibot-manager.js'
 
 const pluginConfig = {
     name: 'stopjadibot',

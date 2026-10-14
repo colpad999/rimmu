@@ -1,7 +1,7 @@
 //
 
 import config from '../../config.js';
-import { generateCarbon } from '../../src/lib/rimuru-carbon.js';
+import { generateCarbon } from '../../src/lib/yalena-carbon.js';
 const pluginConfig = {
     name: 'carbonsnap',
     category: 'maker',
@@ -37,13 +37,13 @@ async function handler(m, { sock }) {
             `┃\n` +
             `┃   ${m.prefix}carbonlocal console.log("Hello")\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Mau bikin screenshot kode apa darling~?\n` +
+            `┃ 💗 *Yalena:* Mau bikin screenshot kode apa darling~?\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
     }
     
     m.react('💕')
-    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Rimuru:* Lagi bikin screenshot kode darling~ tunggu sebentar yaa 🎨`)
+    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Yalena:* Lagi bikin screenshot kode darling~ tunggu sebentar yaa 🎨`)
     
     try {
         const imageBuffer = await generateCarbon(code)
@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
                     `┃ ✅ *ʙᴇʀʜᴀꜱɪʟ*\n` +
                     `┃ 📝 *ᴋᴏᴅᴇ*: ${code.length > 50 ? code.substring(0, 50) + '...' : code}\n` +
                     `┃\n` +
-                    `┃ 💗 *Rimuru:* Ini hasilnya darling~ 📸\n` +
+                    `┃ 💗 *Yalena:* Ini hasilnya darling~ 📸\n` +
                     `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         }, { quoted: m })
         

@@ -2,8 +2,8 @@
 
 import fs from 'fs'
 import path from 'path'
-import te from '../../src/lib/rimuru-error.js'
-import { updateAssetUrl } from '../../src/lib/rimuru-uploader.js'
+import te from '../../src/lib/yalena-error.js'
+import { updateAssetUrl } from '../../src/lib/yalena-uploader.js'
 const pluginConfig = {
     name: 'setppkosong',
     category: 'owner',

@@ -3,7 +3,7 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 import crypto from "crypto";
-import { generateWAMessageFromContent, generateWAMessage, jidNormalizedUser } from "rimuru";
+import { generateWAMessageFromContent, generateWAMessage, jidNormalizedUser } from "yalena";
 
 const pluginConfig = {
     name: 'bandingkanhp',

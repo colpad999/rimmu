@@ -4,7 +4,7 @@ import ttdown from "../../src/scraper/tiktok.js";
 import axios from "axios";
 import ffmpeg from "fluent-ffmpeg";
 import ffmpegInstaller from "@ffmpeg-installer/ffmpeg";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
 ffmpeg.setFfmpegPath(ffmpegInstaller.path);
 
 const pluginConfig = {

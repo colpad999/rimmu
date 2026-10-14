@@ -20,7 +20,7 @@ async function handler(m) {
 
     if (args.length < 2) {
         return m.reply(
-`╭━━〔 💗 RIMURU API SYSTEM 💗 〕━━⬣
+`╭━━〔 💗 YALENA API SYSTEM 💗 〕━━⬣
 ┃
 ┃ Darling, formatnya salah 😖
 ┃
@@ -37,7 +37,7 @@ async function handler(m) {
 
     if (!fs.existsSync(pluginPath)) {
         return m.reply(
-`╭━━〔 ❌ RIMURU SYSTEM 〕━━⬣
+`╭━━〔 ❌ YALENA SYSTEM 〕━━⬣
 ┃ Plugin *${pluginName}* tidak ditemukan
 ╰━━━━━━━━━━━━━━━━⬣`)
     }
@@ -50,7 +50,7 @@ async function handler(m) {
 
         if (!apiRegex.test(file)) {
             return m.reply(
-`╭━━〔 ⚠️ RIMURU SYSTEM 〕━━⬣
+`╭━━〔 ⚠️ YALENA SYSTEM 〕━━⬣
 ┃ API tidak ditemukan di plugin
 ┃ *${pluginName}*
 ╰━━━━━━━━━━━━━━━━⬣`)
@@ -61,7 +61,7 @@ async function handler(m) {
         fs.writeFileSync(pluginPath, file)
 
         await m.reply(
-`╭━━〔 💗 RIMURU API UPDATED 💗 〕━━⬣
+`╭━━〔 💗 YALENA API UPDATED 💗 〕━━⬣
 ┃
 ┃ Plugin : *${pluginName}*
 ┃ API baru : *${newApi}*
@@ -75,7 +75,7 @@ async function handler(m) {
     } catch (err) {
 
         m.reply(
-`╭━━〔 ❌ RIMURU ERROR 〕━━⬣
+`╭━━〔 ❌ YALENA ERROR 〕━━⬣
 ┃ ${err.message}
 ╰━━━━━━━━━━━━━━━━⬣`)
     }

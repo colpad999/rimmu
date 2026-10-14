@@ -1,7 +1,7 @@
 //
 
 import config from '../../config.js'
-import { getRoles, getUserRole, getAccessibleServers, VALID_SERVERS } from '../../src/lib/rimuru-roles-cpanel.js'
+import { getRoles, getUserRole, getAccessibleServers, VALID_SERVERS } from '../../src/lib/yalena-roles-cpanel.js'
 const pluginConfig = {
     name: 'cpanel',
     category: 'panel',
@@ -105,7 +105,7 @@ async function handler(m, { sock }) {
     txt += `┃ \`${prefix}turnon\` | \`${prefix}turnoff\` | \`${prefix}restartvps\`\n`
     txt += `╰───────────────\n\n`
     
-    txt += `> _Powered by ${config.info?.website || 'RimuruAI'}_`
+    txt += `> _Powered by ${config.info?.website || 'YalenaAI'}_`
     
     await m.reply(txt)
 }

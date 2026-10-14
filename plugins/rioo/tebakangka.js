@@ -1,11 +1,11 @@
 //
 
-import { getDatabase, randomInt } from "../../src/lib/rimuru-rioo-bridge.js";
+import { getDatabase, randomInt } from "../../src/lib/yalena-rioo-bridge.js";
 
 const pluginConfig = {
   name: "tebakangka",
   category: "game",
-  description: "Tebak angka 1-100 dari Rimuru",
+  description: "Tebak angka 1-100 dari Yalena",
   usage: ".tebakangka <angka>",
   isOwner: false,
   isPremium: false,

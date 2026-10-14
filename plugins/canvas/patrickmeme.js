@@ -4,7 +4,7 @@
  * ✧ Name   : patrickmeme
  * ✧ Creator   : Rin imup lucu🤤
  * ✧ Category : Canvas
- * ✧ Sumber   : https://whatsapp.com/channel/RIMURU_CHANNEL
+ * ✧ Sumber   : https://whatsapp.com/channel/YALENA_CHANNEL
  * ✧ *Note* : Jangan hapus wm dan jika text kurang besar atau ke bawah and atas atau kanan atau kurang ke kiri sesuai aja ya
  **/
 

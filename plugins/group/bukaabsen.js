@@ -40,8 +40,8 @@ async function handler(m, { sock }) {
     peserta: [],
   };
 
-  const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-  const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+  const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+  const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
 
   await m.reply(
     `📋 *ABSEN UDAH JALAN NIHH*\n\n` +

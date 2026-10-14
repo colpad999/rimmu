@@ -108,7 +108,7 @@ async function handler(m, { sock }) {
         else {
 
             return m.reply(
-`╭━━━〔 💗 RIMURU GROUP STORY 💗 〕━━⬣
+`╭━━━〔 💗 YALENA GROUP STORY 💗 〕━━⬣
 ┃
 ┃ Darling kirim sesuatu dong~
 ┃
@@ -124,7 +124,7 @@ async function handler(m, { sock }) {
         await sendGroupStatus(sock, m.chat, content)
 
         await m.reply(
-`╭━━━〔 💗 RIMURU STORY 💗 〕━━⬣
+`╭━━━〔 💗 YALENA STORY 💗 〕━━⬣
 ┃
 ┃ 📡 Story grup berhasil dipost~
 ┃

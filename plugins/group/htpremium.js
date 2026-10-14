@@ -1,7 +1,7 @@
 //
 
-import { getParticipantJids } from '../../src/lib/rimuru-lid.js'
-import te from '../../src/lib/rimuru-error.js'
+import { getParticipantJids } from '../../src/lib/yalena-lid.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: ['htpremium', 'hidetagpremium', 'htprem'],
     category: 'group',

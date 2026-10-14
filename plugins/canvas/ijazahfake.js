@@ -7,7 +7,7 @@ const pluginConfig = {
     category: 'canvas',
     description: 'Bikin fake ijazah (buat konten/gaguan doang)',
     usage: '.fakeijazah <nama> | <gelar> | <universitas>',
-    example: '.fakeijazah Rimuru | S.Kom | Universitas Zero',
+    example: '.fakeijazah Yalena | S.Kom | Universitas Zero',
     isOwner: false,
     isPremium: false,
     isGroup: false,
@@ -70,9 +70,9 @@ async function handler(m, { sock }) {
             `┃\n` +
             `┃ ✦ *Contoh*\n` +
             `┃\n` +
-            `┃   ${m.prefix}fakeijazah Rimuru | S.Kom | Universitas Zero\n` +
+            `┃   ${m.prefix}fakeijazah Yalena | S.Kom | Universitas Zero\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Mau lulusan mana darling~?\n` +
+            `┃ 💗 *Yalena:* Mau lulusan mana darling~?\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
     }
@@ -83,7 +83,7 @@ async function handler(m, { sock }) {
     const universitas = parts[2] || 'Universitas Zero'
     
     m.react('💕')
-    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Rimuru:* Lagi bikin fake ijazah darling~`)
+    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Yalena:* Lagi bikin fake ijazah darling~`)
     
     try {
         const imageBuffer = await generateFakeIjazah(nama, gelar, universitas)
@@ -97,7 +97,7 @@ async function handler(m, { sock }) {
                     `┃ 🎓 *ɢᴇʟᴀʀ*: ${gelar}\n` +
                     `┃ 🏛️ *ᴜɴɪᴠᴇʀꜱɪᴛᴀꜱ*: ${universitas}\n` +
                     `┃\n` +
-                    `┃ 💗 *Rimuru:* Selamat ya darling! 🗿\n` +
+                    `┃ 💗 *Yalena:* Selamat ya darling! 🗿\n` +
                     `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         }, { quoted: m })
         

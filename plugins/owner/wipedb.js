@@ -3,8 +3,8 @@
 import fs from 'fs'
 import path from 'path'
 import config from '../../config.js'
-import { getDatabase } from '../../src/lib/rimuru-database.js'
-import te from '../../src/lib/rimuru-error.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'wipedb',
     category: 'owner',

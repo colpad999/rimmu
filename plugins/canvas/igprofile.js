@@ -1,9 +1,9 @@
 //
 
 import axios from "axios";
-import te from "../../src/lib/rimuru-error.js";
-import { uploadImage } from "../../src/lib/rimuru-uploader.js";
-import { downloadMediaMessage } from "rimuru";
+import te from "../../src/lib/yalena-error.js";
+import { uploadImage } from "../../src/lib/yalena-uploader.js";
+import { downloadMediaMessage } from "yalena";
 
 const pluginConfig = {
     name: "igprofile",

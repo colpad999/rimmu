@@ -3,9 +3,9 @@
 import fs from "fs";
 import path from "path";
 import cekfemboy from "../../src/scraper/lufemboy.js";
-import { queueFFmpeg } from "../../src/lib/rimuru-ffmpeg.js";
-import { fetchBuffer } from "../../src/lib/rimuru-utils.js";
-import te from "../../src/lib/rimuru-error.js";
+import { queueFFmpeg } from "../../src/lib/yalena-ffmpeg.js";
+import { fetchBuffer } from "../../src/lib/yalena-utils.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "femboy",
   category: "cek",

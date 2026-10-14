@@ -75,7 +75,7 @@ errorPlugins.push(`${folder}/${file}`)
 let normal = total - errorPlugins.length - deadApi.length
 
 let text =
-`╭─〔 ❤️ RIMURU SCAN PLUGIN 〕
+`╭─〔 ❤️ YALENA SCAN PLUGIN 〕
 │
 │ 📦 Total Plugin : ${total}
 │ ✅ Normal : ${normal}

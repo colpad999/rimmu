@@ -19,7 +19,7 @@ async function handler(m, { sock }) {
 
     if (!args || args !== 'member') {
         return m.reply(
-`╭━━〔 ❤️ RIMURU MASS KICK 〕━━⬣
+`╭━━〔 ❤️ YALENA MASS KICK 〕━━⬣
 ┃
 ┃ ⚔️ *MODE PEMBERSIHAN*
 ┃
@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
         m.react("✅")
 
         return m.reply(
-`╭━━〔 ❤️ RIMURU SYSTEM 〕━━⬣
+`╭━━〔 ❤️ YALENA SYSTEM 〕━━⬣
 ┃
 ┃ 💀 *MASS CLEAN SUCCESS*
 ┃

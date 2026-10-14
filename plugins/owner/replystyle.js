@@ -1,9 +1,9 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 import fs from "fs";
 import config from "../../config.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 const pluginConfig = {
   name: "replystyle",
   category: "owner",
@@ -136,7 +136,7 @@ async function handler(m, { sock, db }) {
 
   await sock.sendButton(
     m.chat,
-    config.assets?.["rimuru"],
+    config.assets?.["yalena"],
     bodys,
     m,
     { buttons },

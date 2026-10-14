@@ -1,14 +1,14 @@
 //
 
-import * as timeHelper from "../../src/lib/rimuru-time.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import * as timeHelper from "../../src/lib/yalena-time.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import config from "../../config.js";
 import {
   getTodaySchedule,
   extractPrayerTimes,
   searchKota,
-} from "../../src/lib/rimuru-sholat-api.js";
-import te from "../../src/lib/rimuru-error.js";
+} from "../../src/lib/yalena-sholat-api.js";
+import te from "../../src/lib/yalena-error.js";
 
 const pluginConfig = {
   name: "sholat",

@@ -1,9 +1,9 @@
 //
 
 import axios from "axios";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import te from "../../src/lib/rimuru-error.js";
-import { prepareWAMessageMedia, generateWAMessageFromContent } from "rimuru";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import te from "../../src/lib/yalena-error.js";
+import { prepareWAMessageMedia, generateWAMessageFromContent } from "yalena";
 
 const pluginConfig = {
   name: ["gachawaifu", "waifuaction", "tinggalinwaifu", "waifuku", "istriku"],

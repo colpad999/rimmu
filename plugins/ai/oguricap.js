@@ -1,6 +1,6 @@
 //
 
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 
 
 import fetch from "node-fetch"
@@ -10,7 +10,7 @@ let sessions = {}
 const pluginConfig = {
   name: "oguricap",
   category: "ai",
-  description: "Imported from Rimuru MD V4.6",
+  description: "Imported from Yalena MD V4.6",
   usage: "",
   example: "",
   isOwner: false,

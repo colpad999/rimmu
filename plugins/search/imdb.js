@@ -1,5 +1,5 @@
 /*
-  Fitur tambahan hasil audit FURINA V17 → Rimuru MD.
+  Fitur tambahan hasil audit FURINA V17 → Yalena MD.
 */
 
 import axios from 'axios'

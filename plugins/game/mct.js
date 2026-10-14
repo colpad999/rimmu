@@ -1,6 +1,6 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import {
   getOrCreateMCUser,
   getRandomOre,
@@ -18,7 +18,7 @@ import {
   getAvailableMobs,
   healPlayer,
   JACKPOT_POOLS,
-} from "../../src/lib/rimuru-minecraft.js";
+} from "../../src/lib/yalena-minecraft.js";
 import {
   biomes,
   travelRequirements,
@@ -33,11 +33,11 @@ import {
   GACHA_PITY_LIMIT,
   SMELT_RECIPES,
   CRAFT_RECIPES,
-} from "../../src/lib/rimuru-minecraft-data.js";
+} from "../../src/lib/yalena-minecraft-data.js";
 import config from "../../config.js";
 import path from "path";
 import fs from "fs";
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 
 const MC = 15;
 const rc = (r) => RARITY_EMOJI[r] || "⬜";
@@ -54,12 +54,12 @@ const encCost = (r) =>
 
 let thumbMC = null;
 try {
-  thumbMC = getAssetBuffer("rimuru-minecraft");
+  thumbMC = getAssetBuffer("yalena-minecraft");
 } catch (e) {}
 
 function ctx() {
-  const sId = config.saluran?.id || "120363412350560864@newsletter";
-  const sName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+  const sId = config.saluran?.id || "120363380765405182@newsletter";
+  const sName = config.saluran?.name || config.bot?.name || "Yalena-AI";
   return {
     forwardingScore: 9999,
     isForwarded: true,

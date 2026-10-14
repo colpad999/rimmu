@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import crypto from 'crypto';
-import { uploadImage } from '../../src/lib/rimuru-uploader.js';
+import { uploadImage } from '../../src/lib/yalena-uploader.js';
 
 const pluginConfig = {
   name: 'faceswap',

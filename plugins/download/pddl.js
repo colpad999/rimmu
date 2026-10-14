@@ -2,12 +2,12 @@
 
 import axios from 'axios'
 import config from '../../config.js'
-import * as timeHelper from '../../src/lib/rimuru-time.js'
+import * as timeHelper from '../../src/lib/yalena-time.js'
 import path from 'path'
 import fs from 'fs'
-import { f } from '../../src/lib/rimuru-http.js'
-import te from '../../src/lib/rimuru-error.js'
-const NEOXR_APIKEY = config.APIkey?.neoxr || "Milik-Bot-RimuruMD";
+import { f } from '../../src/lib/yalena-http.js'
+import te from '../../src/lib/yalena-error.js'
+const NEOXR_APIKEY = config.APIkey?.neoxr || "Milik-Bot-YalenaMD";
 
 const pluginConfig = {
   name: "pddl",

@@ -351,7 +351,7 @@ async function handler(m, { sock }) {
     });
 
     await sendHTMLRichMessage(sock, m.chat, html, {
-      title: "YouTube Player • Fitur By: Anita Putri Azzahra",
+      title: "YouTube Player • Fitur By: Colpad",
       fallbackText: `〄 *YT PLAY*\n\n〄 ${meta.title || "YouTube Video"}\n〄 ${meta.channel || "YouTube"}\n\n〄 Player video siap diputar.`,
     });
     await m.react("✅");

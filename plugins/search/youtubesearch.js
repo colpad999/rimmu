@@ -1,7 +1,7 @@
 //
 
 import yts from "yt-search";
-import { generateWAMessageFromContent, proto } from "rimuru";
+import { generateWAMessageFromContent, proto } from "yalena";
 import axios from "axios";
 import sharp from "sharp";
 import config from "../../config.js";

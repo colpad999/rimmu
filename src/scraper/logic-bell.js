@@ -42,8 +42,8 @@ function buildTextMessage(message, history = [], imageBuffer = null) {
 }
 
 function getAiNames(aiFullName = "") {
-  const fullName = String(aiFullName || config.bot?.name || "Rimuru AI").trim();
-  const nickName = fullName.split(/\s+/)[0] || "Rimuru";
+  const fullName = String(aiFullName || config.bot?.name || "Yalena AI").trim();
+  const nickName = fullName.split(/\s+/)[0] || "Yalena";
   return { fullName, nickName };
 }
 

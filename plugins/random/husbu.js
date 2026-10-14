@@ -1,7 +1,7 @@
 //
 
 import axios from 'axios';
-import { RIMURU_CORE_CONFIG } from "../../config.js";
+import { YALENA_CORE_CONFIG } from "../../config.js";
 import config from '../../config.js';
 const pluginConfig = {
     name: 'husbu',
@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     try {
         await m.react('💕')
         
-        const apikey = config.APIkey?.lolhuman || 'APIKey-Milik-Bot-RimuruMD(RIMURU)'
+        const apikey = config.APIkey?.lolhuman || 'APIKey-Milik-Bot-YalenaMD(YALENA)'
         const url = `https://api.lolhuman.xyz/api/random/husbu?apikey=${apikey}`
         
         const response = await axios.get(url, { 
@@ -30,8 +30,8 @@ async function handler(m, { sock }) {
             timeout: 30000 
         })
         
-        const saluranId = RIMURU_CORE_CONFIG.saluran?.id || config.saluran?.id
-        const saluranName = RIMURU_CORE_CONFIG.saluran?.name || RIMURU_CORE_CONFIG.bot?.name || 'rimuru-AI'
+        const saluranId = YALENA_CORE_CONFIG.saluran?.id || config.saluran?.id
+        const saluranName = YALENA_CORE_CONFIG.saluran?.name || YALENA_CORE_CONFIG.bot?.name || 'yalena-AI'
         
         await sock.sendMessage(m.chat, {
             image: Buffer.from(response.data),

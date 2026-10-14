@@ -1,6 +1,6 @@
 //
 
-import { setNotifTidur, toggleNotif, getNotif, deleteNotif, parseJadwal } from '../../src/lib/rimuru-notif-scheduler.js'
+import { setNotifTidur, toggleNotif, getNotif, deleteNotif, parseJadwal } from '../../src/lib/yalena-notif-scheduler.js'
 
 const pluginConfig = {
     name: 'sleepreminder',

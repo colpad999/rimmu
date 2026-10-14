@@ -9,7 +9,7 @@ const pluginConfig = {
     category: 'owner',
     description: 'Tambah karakter ke database gacha darling',
     usage: '.add-gacha Nama Karakter | https://url.mp4',
-    example: '.add-gacha Rimuru | https://example.com/video.mp4',
+    example: '.add-gacha Yalena | https://example.com/video.mp4',
     isOwner: true,
     isPremium: false,
     isGroup: false,
@@ -88,10 +88,10 @@ async function handler(m, { sock, args, prefix, command }) {
             `> Gunakan format:\n` +
             `> \`${prefix}add-gacha Nama Karakter | https://url-video.mp4\`\n\n` +
             `> Contoh:\n` +
-            `> \`${prefix}add-gacha Rimuru | https://example.com/zerotwo.mp4\`\n` +
+            `> \`${prefix}add-gacha Yalena | https://example.com/zerotwo.mp4\`\n` +
             `> \`${prefix}add-gacha Ichigo | https://cdn.com/ichigo.mp4\`\n\n` +
             `> Contoh multi URL:\n` +
-            `> \`${prefix}add-gacha Rimuru | https://url1.mp4,https://url2.mp4\``
+            `> \`${prefix}add-gacha Yalena | https://url1.mp4,https://url2.mp4\``
         );
     }
 
@@ -104,7 +104,7 @@ async function handler(m, { sock, args, prefix, command }) {
         return m.reply(
             `❌ *Nama atau URL tidak boleh kosong!*\n\n` +
             `> Format: \`Nama | URL\`\n` +
-            `> Contoh: \`Rimuru | https://example.com/video.mp4\``
+            `> Contoh: \`Yalena | https://example.com/video.mp4\``
         );
     }
 

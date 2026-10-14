@@ -1,7 +1,7 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import { addExpWithLevelCheck } from "../../src/lib/rimuru-level.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import { addExpWithLevelCheck } from "../../src/lib/yalena-level.js";
 
 const pluginConfig = {
   name: "explore",

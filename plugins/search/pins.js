@@ -4,12 +4,12 @@ import {
   generateWAMessage,
   generateWAMessageFromContent,
   jidNormalizedUser,
-} from "rimuru";
+} from "yalena";
 import { pinterest } from "btch-downloader";
 import axios from "axios";
 import crypto from "crypto";
-import te from "../../src/lib/rimuru-error.js";
-import { f } from "../../src/lib/rimuru-http.js";
+import te from "../../src/lib/yalena-error.js";
+import { f } from "../../src/lib/yalena-http.js";
 
 const pluginConfig = {
   name: "pins",
@@ -167,9 +167,9 @@ async function handler(m, { sock, config }) {
     } catch (albumErr) {
       console.log("[Pins] Album gagal, kirim satu-satu:", albumErr.message);
 
-      const saluranId = config.saluran?.id || "120363412350560864@newsletter";
+      const saluranId = config.saluran?.id || "120363380765405182@newsletter";
       const saluranName =
-        config.saluran?.name || config.bot?.name || "Rimuru-AI";
+        config.saluran?.name || config.bot?.name || "Yalena-AI";
 
       for (const content of mediaList) {
         await sock.sendMessage(

@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
     if (cmd === "followch") {
       const id = String(m.args?.[0] || "").trim();
       if (!id) return m.reply(`Contoh: ${m.prefix}followch CHANNEL_ID`);
-      if (typeof sock.newsletterFollow !== "function") return m.reply("❌ Baileys Rimuru tidak menyediakan newsletterFollow.");
+      if (typeof sock.newsletterFollow !== "function") return m.reply("❌ Baileys Yalena tidak menyediakan newsletterFollow.");
       await sock.newsletterFollow(id.includes("@newsletter") ? id : `${id}@newsletter`);
       return m.reply(`✅ Berhasil follow channel ${id}`);
     }
@@ -29,7 +29,7 @@ async function handler(m, { sock }) {
     if (cmd === "unfollowch") {
       const id = String(m.args?.[0] || "").trim();
       if (!id) return m.reply(`Contoh: ${m.prefix}unfollowch CHANNEL_ID`);
-      if (typeof sock.newsletterUnfollow !== "function") return m.reply("❌ Baileys Rimuru tidak menyediakan newsletterUnfollow.");
+      if (typeof sock.newsletterUnfollow !== "function") return m.reply("❌ Baileys Yalena tidak menyediakan newsletterUnfollow.");
       await sock.newsletterUnfollow(id.includes("@newsletter") ? id : `${id}@newsletter`);
       return m.reply(`✅ Berhasil unfollow channel ${id}`);
     }
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
       channel ||= m.chat?.endsWith("@newsletter") ? m.chat : null;
       if (!channel && sock.newsletterMetadata) channel = (await sock.newsletterMetadata("jid", m.chat))?.id;
       if (!channel) return m.reply("Masukkan ID/JID channel dengan format `channelJid|Nama Baru`.");
-      if (typeof sock.newsletterUpdateName !== "function") return m.reply("❌ Baileys Rimuru tidak menyediakan newsletterUpdateName.");
+      if (typeof sock.newsletterUpdateName !== "function") return m.reply("❌ Baileys Yalena tidak menyediakan newsletterUpdateName.");
       await sock.newsletterUpdateName(channel, name);
       return m.reply(`✅ Nama channel berhasil diubah menjadi ${name}`);
     }

@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "pixiv",
   category: "search",
@@ -30,7 +30,7 @@ async function handler(m, { sock }) {
 
     await m.react("🔍");
 
-    const apikey = config.APIkey?.neoxr || "Milik-Bot-RimuruMD";
+    const apikey = config.APIkey?.neoxr || "Milik-Bot-YalenaMD";
     const url = `https://api.neoxr.eu/api/pixiv-search?q=${encodeURIComponent(query)}&apikey=${apikey}`;
 
     const response = await axios.get(url, { timeout: 30000 });
@@ -43,8 +43,8 @@ async function handler(m, { sock }) {
 
     const results = data.data.slice(0, 10);
 
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-    const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+    const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
 
     let caption = `🎨 *ᴘɪxɪᴠ sᴇᴀʀᴄʜ*\n`;
     caption += `📝 *ᴋᴜᴇʀʏ:* ${query}\n`;

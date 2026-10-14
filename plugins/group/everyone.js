@@ -3,8 +3,8 @@
 import {
   getParticipantJid,
   getParticipantJids,
-} from "../../src/lib/rimuru-lid.js";
-import te from "../../src/lib/rimuru-error.js";
+} from "../../src/lib/yalena-lid.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "everyone",
   category: "group",

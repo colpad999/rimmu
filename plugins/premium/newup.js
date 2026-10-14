@@ -1,27 +1,27 @@
 //
 
 async function newup(m, { conn }) {
-  const text = `╭━━━〔 ✦ RIMURU UPDATE ✦ 〕━━━╮
+  const text = `╭━━━〔 ✦ YALENA UPDATE ✦ 〕━━━╮
 ┃
 ┃  📢 UPDATE TERBARU
 ┃
 ┃  ✦ Gojo Merge
 ┃  • Fitur Gojo yang benar-benar belum
-┃    ada di Rimuru telah ditambahkan.
+┃    ada di Yalena telah ditambahkan.
 ┃  • Command dibuat pendek dan disesuaikan
-┃    dengan struktur RimuruMD.
+┃    dengan struktur YalenaMD.
 ┃  • Fitur yang sudah ada tidak diduplikasi.
 ┃
 ┃  ✦ NIVID
 ┃  • Command: .nivid
 ┃  • Mengirim direct video URL sebagai MP4.
 ┃  • Sumber URL:
-┃    src/data/Nita/rimuru.json
+┃    src/data/Nita/yalena.json
 ┃  • Jika satu URL gagal, sistem mencoba
 ┃    URL berikutnya.
 ┃
 ┃  ✦ Kompatibilitas
-┃  • Handler mengikuti struktur RimuruMD.
+┃  • Handler mengikuti struktur YalenaMD.
 ┃  • Error ditangani agar kegagalan command
 ┃    tidak membuat bot crash.
 ┃
@@ -30,7 +30,7 @@ async function newup(m, { conn }) {
 ┃  • .newup
 ┃
 ┃  📌 Catatan
-┃  • Isi rimuru.json dengan direct URL video
+┃  • Isi yalena.json dengan direct URL video
 ┃    milik kamu sendiri.
 ┃
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯`

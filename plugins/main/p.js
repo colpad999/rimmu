@@ -4,7 +4,7 @@ import { createCanvas } from "@napi-rs/canvas"
 import { performance } from "perf_hooks"
 import os from "os"
 import config from "../../config.js"
-import te from "../../src/lib/rimuru-error.js"
+import te from "../../src/lib/yalena-error.js"
 
 const pluginConfig = {
   name: "p",
@@ -188,7 +188,7 @@ async function createEpicPingCanvas(data) {
     
     ctx.fillStyle = '#cbd5e1';
     ctx.font = 'bold 24px Courier New';
-    ctx.fillText(`STATUS: ONLINE | TERMINAL: Rimuru MD`, 50, 110);
+    ctx.fillText(`STATUS: ONLINE | TERMINAL: Yalena MD`, 50, 110);
     
     ctx.beginPath();
     ctx.moveTo(50, 130);

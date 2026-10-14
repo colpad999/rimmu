@@ -5,9 +5,9 @@ import path from 'path'
 import crypto from 'crypto'
 import { exec } from 'child_process'
 import { promisify } from 'util'
-import { downloadMediaMessage } from 'rimuru'
+import { downloadMediaMessage } from 'yalena'
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 
 const run = promisify(exec)
 
@@ -55,7 +55,7 @@ function generateWaveform(audioBuf, samples = 64) {
 async function handler(m, { sock }) {
     const args = m.text?.replace(/^\.upch\s+/i, '').split(" ") || []
     const chId = args[0]?.includes("@newsletter") ? args.shift() : config?.saluran?.id
-    const chName = config?.saluran?.name || config?.bot?.name || "Rimuru-AI"
+    const chName = config?.saluran?.name || config?.bot?.name || "Yalena-AI"
     const caption = args.join(" ").trim()
 
     const quoted = m.quoted || m

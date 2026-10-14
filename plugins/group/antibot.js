@@ -1,10 +1,10 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import {
   findParticipantByNumber,
   getParticipantJid,
-} from "../../src/lib/rimuru-lid.js";
+} from "../../src/lib/yalena-lid.js";
 import config from "../../config.js";
 const pluginConfig = {
   name: ["antibot", "botdetect"],

@@ -1,6 +1,6 @@
 //
 
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 import { live3d } from '../../src/scraper/seaart.js'
 const pluginConfig = {
     name: 'tooncartoon',

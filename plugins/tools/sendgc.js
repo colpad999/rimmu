@@ -1,6 +1,6 @@
 //
 
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 
 
 import config from '../../config.js';
@@ -77,7 +77,7 @@ return
 
 if (!text) {
 return m.reply(`
-╭━━━〔 💗 *RIMURU SEND GC* 💗 〕━━━⬣
+╭━━━〔 💗 *YALENA SEND GC* 💗 〕━━━⬣
 ┃
 ┃ Hai Owner 😋
 ┃
@@ -122,7 +122,7 @@ text: `
 ┃
 ╰━━━━━━━━━━━━━━━━━━⬣
 `,
-footer: "RIMURU BOT",
+footer: "YALENA BOT",
 interactiveButtons: [
 {
 name: "single_select",

@@ -1,13 +1,13 @@
 //
 
 import { createMoviePoster, GENRES } from '../../src/lib/elaina/moviePoster.js';
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "movieposterelaina",
   category: "canvas",
   description: "Buat poster film bergaya sinematik dari nama, genre, dan judul",
   usage: ".movieposter nama|genre|judul|tagline",
-  example: ".movieposter Anita Putri Azzahra|scifi|Rimuru: The Movie|The last slime standing",
+  example: ".movieposter Colpad|scifi|Yalena: The Movie|The last slime standing",
   isOwner: false,
   isPremium: false,
   isGroup: false,
@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
   try {
     const raw = String(m.text || "").trim();
     if (!raw) {
-      return m.reply(`🎬 *MOVIE POSTER*\n\nFormat: \`.movieposter nama|genre|judul|tagline\`\n\nGenre: ${Object.keys(GENRES).join(", ")}\n\nContoh: \`.movieposter Anita Putri Azzahra|scifi|Rimuru: The Movie|The last slime standing\``);
+      return m.reply(`🎬 *MOVIE POSTER*\n\nFormat: \`.movieposter nama|genre|judul|tagline\`\n\nGenre: ${Object.keys(GENRES).join(", ")}\n\nContoh: \`.movieposter Colpad|scifi|Yalena: The Movie|The last slime standing\``);
     }
 
     await m.react("🎬");

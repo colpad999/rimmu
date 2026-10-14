@@ -2,7 +2,7 @@
 
 import fs from "fs";
 import path from "path";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "offplugin",
   category: "owner",

@@ -39,7 +39,7 @@ async function handler(m, { sock, db }) {
     }
     
     m.react('🎮')
-    await m.reply(`⏳ *ᴍᴇɴᴄᴀʀɪ ᴀɴɪᴍᴇ...*\n\n💗 *Rimuru:* Lagi nyari anime buat tebakan darling~`)
+    await m.reply(`⏳ *ᴍᴇɴᴄᴀʀɪ ᴀɴɪᴍᴇ...*\n\n💗 *Yalena:* Lagi nyari anime buat tebakan darling~`)
     
     try {
         let anime = null

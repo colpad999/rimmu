@@ -21,7 +21,7 @@ async function handler(m,{ sock }){
 
     const quoted = m.quoted
     if(!quoted) return m.reply(
-`╭━━〔 *❤️ RIMURU SET PP CHANNEL* 〕━━⬣
+`╭━━〔 *❤️ YALENA SET PP CHANNEL* 〕━━⬣
 ┃ Reply gambar dengan command ini
 ┃ lalu kirim *.setppsaluran*
 ╰━━━━━━━━━━━━━━━━⬣`
@@ -35,7 +35,7 @@ async function handler(m,{ sock }){
     }
 
     if(!imageBuffer) return m.reply(
-`╭━━〔 *❌ RIMURU SET PP CHANNEL* 〕━━⬣
+`╭━━〔 *❌ YALENA SET PP CHANNEL* 〕━━⬣
 ┃ ❌ Pesan yang direply bukan gambar
 ╰━━━━━━━━━━━━━━━━⬣`
     )
@@ -52,10 +52,10 @@ async function handler(m,{ sock }){
         // Update PP channel
         await sock.updateProfilePicture(CHANNEL_ID, finalBuffer)
 
-        // Kirim info ke channel (UI Rimuru)
+        // Kirim info ke channel (UI Yalena)
         const time = new Date().toLocaleTimeString()
         const infoMsg =
-`╭─〔 💖 RIMURU CHANNEL UPDATE 💖 〕
+`╭─〔 💖 YALENA CHANNEL UPDATE 💖 〕
 │
 │ Darling, ada PP baru nih 😋
 │
@@ -73,7 +73,7 @@ async function handler(m,{ sock }){
         // Feedback ke user
         m.react("✅")
         return m.reply(
-`╭━━〔 *❤️ RIMURU SYSTEM* 〕━━⬣
+`╭━━〔 *❤️ YALENA SYSTEM* 〕━━⬣
 ┃ ✅ PP Channel berhasil diupdate!
 ┃ Darling, channel sudah dikasih info 😋
 ╰━━━━━━━━━━━━━━━━⬣`
@@ -83,7 +83,7 @@ async function handler(m,{ sock }){
         console.log(e)
         m.react("❌")
         return m.reply(
-`╭━━〔 *❌ RIMURU SYSTEM* 〕━━⬣
+`╭━━〔 *❌ YALENA SYSTEM* 〕━━⬣
 ┃ ${e.message}
 ╰━━━━━━━━━━━━━━━━⬣`
         )

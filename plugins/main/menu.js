@@ -3,14 +3,14 @@
 import {
   prepareWAMessageMedia,
   generateWAMessageFromContent,
-} from "rimuru";
+} from "yalena";
 import config from "../../config.js";
 import fs from "fs";
 import sharp from "sharp";
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
-import { getTimeGreeting, formatUptime } from "../../src/lib/rimuru-formatter.js";
-import { getCategories, getCommandsByCategory } from "../../src/lib/rimuru-plugins.js";
-import { getCasesByCategory } from "../../case/rimuru.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
+import { getTimeGreeting, formatUptime } from "../../src/lib/yalena-formatter.js";
+import { getCategories, getCommandsByCategory } from "../../src/lib/yalena-plugins.js";
+import { getCasesByCategory } from "../../case/yalena.js";
 import { legacyMenuHandler } from "./menu-variants.js";
 
 const pluginConfig = {
@@ -105,13 +105,13 @@ async function defaultMenuHandler(m, { sock, config: botConfig, db, uptime }) {
 
   let video;
   try {
-    video = botConfig.assets?.["rimuru-mp4"];
+    video = botConfig.assets?.["yalena-mp4"];
     if (!video) throw new Error("asset unavailable");
   } catch {
     return m.reply("❌ Video menu tidak ditemukan di assets.");
   }
 
-  const thumbnail = await sharp(getAssetBuffer("rimuru", botConfig.assets))
+  const thumbnail = await sharp(getAssetBuffer("yalena", botConfig.assets))
     .resize(300, 300)
     .jpeg({ quality: 80 })
     .toBuffer();
@@ -123,7 +123,7 @@ async function defaultMenuHandler(m, { sock, config: botConfig, db, uptime }) {
   }));
 
   const bodyText =
-`${pretty("RIMURU MD")}  ✦  ${pretty("V5 — LV 2")}\n\n` +
+`${pretty("Yalena MD")}  ✦  ${pretty("V5 — LV 2")}\n\n` +
 `${pretty(greeting)} ${m.pushName || "Kawan"} ✨\n` +
 `_${botConfig.bot?.body || "Siap membantu kebutuhan kamu di WhatsApp."}_\n\n` +
 `┏━━ ${pretty("USER INFO")} ━━┓\n` +
@@ -133,13 +133,13 @@ async function defaultMenuHandler(m, { sock, config: botConfig, db, uptime }) {
 `┃  ${pretty("Nomor")}  : +${senderNo}\n` +
 `┗━━━━━━━━━━━━━━━━━━┛\n\n` +
 `┏━━ ${pretty("BOT INFO")} ━━┓\n` +
-`┃  ${pretty("Bot")}     : ${botConfig.bot?.name || "Rimuru MD"}\n` +
-`┃  ${pretty("Author")}  : ${botConfig.bot?.developer || "Anita Putri Azzahra"}\n` +
+`┃  ${pretty("Bot")}     : ${botConfig.bot?.name || "Yalena MD"}\n` +
+`┃  ${pretty("Author")}  : ${botConfig.bot?.developer || "Colpad"}\n` +
 `┃  ${pretty("Versi")}   : ${botConfig.bot?.version || "-"}\n` +
 `┃  ${pretty("Uptime")}  : ${runtime}\n` +
 `┗━━━━━━━━━━━━━━━━━━┛\n` +
 `🤖  ${pretty("BOT AUTO ORDER")}\n` +
-`▸ t.me/kyizzxautoorder_bof\n` +
+`▸ t.me/Beginer_Magisk\n` +
 `╭─ ${pretty("MENU UTAMA")} ─╮\n` +
 `│ ✦ Pilih kategori lewat tombol di bawah.\n` +
 `│ ✦ Setiap kategori langsung membuka ${pretty(".menucat")} .\n` +
@@ -150,8 +150,8 @@ async function defaultMenuHandler(m, { sock, config: botConfig, db, uptime }) {
     gifPlayback: true,
   }, { upload: sock.waUploadToServer });
 
-  const newsletterId = botConfig.saluran?.id || "120363412350560864@newsletter";
-  const newsletterName = botConfig.saluran?.name || botConfig.bot?.name || "Rimuru MD";
+  const newsletterId = botConfig.saluran?.id || "120363380765405182@newsletter";
+  const newsletterName = botConfig.saluran?.name || botConfig.bot?.name || "Yalena MD";
 
   const message = generateWAMessageFromContent(m.chat, {
     viewOnceMessage: {
@@ -159,13 +159,13 @@ async function defaultMenuHandler(m, { sock, config: botConfig, db, uptime }) {
         messageContextInfo: {},
         interactiveMessage: {
           header: {
-            title: `${botConfig.bot?.name || "Rimuru MD"} • V5 — LV 2`,
+            title: `${botConfig.bot?.name || "Yalena MD"} • V5 — LV 2`,
             subtitle: "Menu utama",
             hasMediaAttachment: true,
             videoMessage: media.videoMessage,
           },
           body: { text: bodyText },
-          footer: { text: "Rimuru MD • pilih kategori untuk melihat command" },
+          footer: { text: "Yalena MD • pilih kategori untuk melihat command" },
           contextInfo: {
             mentionedJid: [m.sender],
             isForwarded: true,
@@ -191,7 +191,7 @@ async function defaultMenuHandler(m, { sock, config: botConfig, db, uptime }) {
                 buttonParamsJson: JSON.stringify({
                   title: "🌸 Pilih Menu",
                   sections: [{
-                    title: "Kategori Rimuru MD",
+                    title: "Kategori Yalena MD",
                     rows: categoryRows,
                   }],
                 }),
@@ -215,7 +215,7 @@ async function defaultMenuHandler(m, { sock, config: botConfig, db, uptime }) {
         locationMessage: {
           degreesLatitude: 0,
           degreesLongitude: 0,
-          name: `${botConfig.bot?.name || "Rimuru MD"} • ${pretty("V5 — LV 2")}`,
+          name: `${botConfig.bot?.name || "Yalena MD"} • ${pretty("V5 — LV 2")}`,
           jpegThumbnail: thumbnail,
         },
       },

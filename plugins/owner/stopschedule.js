@@ -1,9 +1,9 @@
 //
 
-import { stopSchedulerByName, getFullSchedulerStatus } from '../../src/lib/rimuru-scheduler.js'
-import { stopSholatScheduler } from '../../src/lib/rimuru-sholat-scheduler.js'
-import { getDatabase } from '../../src/lib/rimuru-database.js'
-import te from '../../src/lib/rimuru-error.js'
+import { stopSchedulerByName, getFullSchedulerStatus } from '../../src/lib/yalena-scheduler.js'
+import { stopSholatScheduler } from '../../src/lib/yalena-sholat-scheduler.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'stopschedule',
     category: 'owner',

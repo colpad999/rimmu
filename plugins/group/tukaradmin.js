@@ -1,8 +1,8 @@
 //
 
-import { getParticipantJid } from '../../src/lib/rimuru-lid.js'
+import { getParticipantJid } from '../../src/lib/yalena-lid.js'
 import { isOwner } from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 
 const pluginConfig = {
     name: 'tukaradmin',

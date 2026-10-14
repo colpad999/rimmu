@@ -1,7 +1,7 @@
 //
 
 import crypto from "crypto";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const pluginConfig = {
   name: "transkripvideo",

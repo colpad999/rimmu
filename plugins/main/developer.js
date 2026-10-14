@@ -2,13 +2,13 @@
 
 import crypto from "crypto";
 import config, { getOwnerName } from "../../config.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import {
   proto,
   generateWAMessageFromContent,
   prepareWAMessageMedia,
-} from "rimuru";
-import { AIRich } from "../../src/lib/rimuru-builder.js";
+} from "yalena";
+import { AIRich } from "../../src/lib/yalena-builder.js";
 import axios from "axios";
 import sharp from "sharp";
 const pluginConfig = {
@@ -32,7 +32,7 @@ async function handler(m, { sock, config: botConfig }) {
   const configOwners = botConfig.owner?.number || [];
   const dbOwners = db.data.owner || [];
   const ownerNumbers = [...new Set([...configOwners, ...dbOwners])];
-  const botName = botConfig.bot?.name || "Rimuru-AI";
+  const botName = botConfig.bot?.name || "Yalena-AI";
   if (ownerType === 2) {
     const contacts = [];
 

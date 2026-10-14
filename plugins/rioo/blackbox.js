@@ -1,11 +1,11 @@
 //
 
-import { config, httpRequest } from "../../src/lib/rimuru-rioo-bridge.js";
+import { config, httpRequest } from "../../src/lib/yalena-rioo-bridge.js";
 
 const pluginConfig = {
   name: "blackbox",
   category: "ai",
-  description: "Blackbox AI dari Rimuru, dipasang sebagai plugin native Rimuru",
+  description: "Blackbox AI dari Yalena, dipasang sebagai plugin native Yalena",
   usage: ".blackbox <pertanyaan>",
   isOwner: false,
   isPremium: false,

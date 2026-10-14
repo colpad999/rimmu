@@ -1,6 +1,6 @@
 //
 
-import { getDatabase } from '../../src/lib/rimuru-database.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
 import axios from 'axios'
 import FormData from 'form-data'
 

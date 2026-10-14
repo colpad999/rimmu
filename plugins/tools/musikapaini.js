@@ -3,10 +3,10 @@
 import axios from "axios";
 import FormData from "form-data";
 import config from "../../config.js";
-import { downloadMediaMessage } from "rimuru";
-import te from "../../src/lib/rimuru-error.js";
-import rimuruApi from "../../src/lib/rimuru-apimanager.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
+import { downloadMediaMessage } from "yalena";
+import te from "../../src/lib/yalena-error.js";
+import yalenaApi from "../../src/lib/yalena-apimanager.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
 
 const pluginConfig = {
   name: "musikapaini",
@@ -88,10 +88,10 @@ async function handler(m, { sock }) {
 
     await m.reply("🔍 *ᴍᴇɴɢɪᴅᴇɴᴛɪꜰɪᴋᴀsɪ...*\n\n> Mencari info lagu...");
 
-    const data = await rimuruApi.neoxr.whatMusic(
+    const data = await yalenaApi.neoxr.whatMusic(
       {
         url: audioUrl,
-        apikey: config.APIkey?.neoxr || "Milik-Bot-RimuruMD",
+        apikey: config.APIkey?.neoxr || "Milik-Bot-YalenaMD",
       },
       {
         timeout: 60000,

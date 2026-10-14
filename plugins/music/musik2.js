@@ -11,7 +11,7 @@ import { createDecipheriv, randomUUID } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import yts from 'yt-search';
 import sharp from 'sharp';
-import { prepareWAMessageMedia } from 'rimuru';
+import { prepareWAMessageMedia } from 'yalena';
 import ffmpegInstaller from '@ffmpeg-installer/ffmpeg';
 
 /* =========================================================

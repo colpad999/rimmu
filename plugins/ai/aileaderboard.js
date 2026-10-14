@@ -2,9 +2,9 @@
 
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import { RIMURU_CORE_CONFIG } from "../../config.js";
+import { YALENA_CORE_CONFIG } from "../../config.js";
 import config from '../../config.js';
-import te from '../../src/lib/rimuru-error.js';
+import te from '../../src/lib/yalena-error.js';
 const pluginConfig = {
     name: 'aileaderboard',
     category: 'ai',
@@ -137,8 +137,8 @@ async function handler(m, { sock }) {
             return m.reply('❌ Gagal mengambil data leaderboard\n> Menggunakan data sementara mungkin tidak tersedia')
         }
         
-        const saluranId = RIMURU_CORE_CONFIG.saluran?.id || config.saluran?.id
-        const saluranName = RIMURU_CORE_CONFIG.saluran?.name || RIMURU_CORE_CONFIG.bot?.name || 'rimuru-AI'
+        const saluranId = YALENA_CORE_CONFIG.saluran?.id || config.saluran?.id
+        const saluranName = YALENA_CORE_CONFIG.saluran?.name || YALENA_CORE_CONFIG.bot?.name || 'yalena-AI'
         
         if (!category) {
             let text = `🤖 *ᴀɪ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ*\n\n`

@@ -1,9 +1,9 @@
 //
 
-import { queueFFmpeg } from '../../src/lib/rimuru-ffmpeg.js'
+import { queueFFmpeg } from '../../src/lib/yalena-ffmpeg.js'
 import fs from 'fs'
 import path from 'path'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const EFFECTS = {
     bass:      { emoji: '🔊', filter: 'bass=g=20:f=110:w=0.6', desc: 'Bass boost' },
     blown:     { emoji: '💥', filter: 'acrusher=level_in=4:level_out=5:bits=8:mode=log:aa=1', desc: 'Distortion' },

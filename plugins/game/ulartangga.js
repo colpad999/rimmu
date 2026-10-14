@@ -1,13 +1,13 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import {
   drawBoard,
   getRandomMap,
   DICE_STICKERS,
-} from "../../src/lib/rimuru-game-ulartangga.js";
+} from "../../src/lib/yalena-game-ulartangga.js";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "ulartangga",
   category: "game",
@@ -36,13 +36,13 @@ function uniqueMentions(mentions = []) {
 
 let thumbUT = null;
 try {
-  const { getAssetBuffer } = await import("../../src/lib/rimuru-asset-manager.js");
-  thumbUT = getAssetBuffer("rimuru-games");
+  const { getAssetBuffer } = await import("../../src/lib/yalena-asset-manager.js");
+  thumbUT = getAssetBuffer("yalena-games");
 } catch (e) { }
 
 function utCtx(mentions) {
-  const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-  const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+  const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+  const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
   const normalizedMentions = uniqueMentions(mentions);
   return {
     forwardingScore: 9999,

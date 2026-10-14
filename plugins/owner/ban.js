@@ -1,8 +1,8 @@
 //
 
 import config from '../../config.js'
-import { getDatabase } from '../../src/lib/rimuru-database.js'
-import { isLid, lidToJid, resolveAnyLidToJid } from '../../src/lib/rimuru-lid.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
+import { isLid, lidToJid, resolveAnyLidToJid } from '../../src/lib/yalena-lid.js'
 
 const pluginConfig = {
     name: 'ban',

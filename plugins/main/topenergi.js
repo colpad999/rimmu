@@ -1,6 +1,6 @@
 //
 
-import { getDatabase } from '../../src/lib/rimuru-database.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
 import config from '../../config.js'
 const pluginConfig = {
     name: 'topenergi',
@@ -85,7 +85,7 @@ async function handler(m, { sock }) {
         const overviewText = `🏆 *LEADERBOARD OVERVIEW* 🏆\n\n` +
             `_Pilih tombol di bawah untuk melihat ranking!_`
             try {
-                await sock.sendButton(m.chat, config.assets?.["rimuru"], overviewText, m, {
+                await sock.sendButton(m.chat, config.assets?.["yalena"], overviewText, m, {
                     buttons: [
                     {
                         name: 'quick_reply',

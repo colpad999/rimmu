@@ -2,15 +2,15 @@
 
 import fs from "fs";
 import path from "path";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import { getGroupMode } from "../group/botmode.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 import config from "../../config.js";
 import {
   resolveAnyLidToJid,
   isLidConverted,
   getCachedJid,
-} from "../../src/lib/rimuru-lid.js";
+} from "../../src/lib/yalena-lid.js";
 
 const pluginConfig = {
   name: "skipadmin_off",
@@ -33,13 +33,13 @@ const SESSION_TIMEOUT = 300000;
 const SERIAL_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 import axios from "axios";
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 
 let cachedThumb = null;
 let cachedDoc = null;
 try {
-  if (getAssetBuffer("rimuru")) {
-    cachedThumb = getAssetBuffer("rimuru");
+  if (getAssetBuffer("yalena")) {
+    cachedThumb = getAssetBuffer("yalena");
   }
   cachedDoc = fs.readFileSync("./package.json");
 } catch { }
@@ -112,7 +112,7 @@ function nativeFlowMsg(m, title, buttons) {
   return {
     interactiveMessage: {
       title,
-      footer: config.bot?.name || "Rimuru-AI",
+      footer: config.bot?.name || "Yalena-AI",
       image: cachedThumb,
       contextInfo: {
         mentionedJid: [m.sender],
@@ -122,7 +122,7 @@ function nativeFlowMsg(m, title, buttons) {
       nativeFlowMessage: {
         messageParamsJson: JSON.stringify({
           limited_time_offer: {
-            text: config.bot?.name || "Rimuru-AI",
+            text: config.bot?.name || "Yalena-AI",
             url: "",
             copy_code: "Push Kontak",
             expiration_time: Date.now() * 7,
@@ -136,7 +136,7 @@ function nativeFlowMsg(m, title, buttons) {
           tap_target_configuration: {
             title: " X ",
             description: "bomboclard",
-            canonical_url: "https://rimuru.site",
+            canonical_url: "https://yalena.site",
             domain: "shop.example.com",
             button_index: 0,
           },

@@ -3,9 +3,9 @@
 import _sharp from 'sharp'
 import axios from "axios";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
-import { f } from "../../src/lib/rimuru-http.js";
-import { addExifToWebp } from "../../src/lib/rimuru-exif.js";
+import te from "../../src/lib/yalena-error.js";
+import { f } from "../../src/lib/yalena-http.js";
+import { addExifToWebp } from "../../src/lib/yalena-exif.js";
 
 function getSharp() {
   return _sharp;

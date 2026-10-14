@@ -11,7 +11,7 @@ const pluginConfig = {
     category: 'canvas',
     description: 'Bikin fake paspor (buat konten/gaguan doang)',
     usage: '.fakepaspor <nama> | <umur> | <negara>',
-    example: '.fakepaspor Rimuru | 20 | Jepang',
+    example: '.fakepaspor Yalena | 20 | Jepang',
     isOwner: false,
     isPremium: false,
     isGroup: false,
@@ -88,14 +88,14 @@ async function handler(m, { sock }) {
             `┃\n` +
             `┃ ✦ *Contoh*\n` +
             `┃\n` +
-            `┃   ${m.prefix}fakepaspor Rimuru | 20 | Jepang\n` +
+            `┃   ${m.prefix}fakepaspor Yalena | 20 | Jepang\n` +
             `┃   ${m.prefix}fakepaspor Darling | 18 | Indonesia\n` +
             `┃\n` +
             `┃ ⚠️ *Peringatan!*\n` +
             `┃   Fitur ini cuma buat konten/gaguan\n` +
             `┃   JANGAN dipakai buat hal ilegal!\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Mau bikin paspor palsu siapa darling~?\n` +
+            `┃ 💗 *Yalena:* Mau bikin paspor palsu siapa darling~?\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
     }
@@ -110,7 +110,7 @@ async function handler(m, { sock }) {
     }
     
     m.react('💕')
-    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Rimuru:* Lagi bikin fake paspor darling~ tunggu sebentar yaa 🎨`)
+    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Yalena:* Lagi bikin fake paspor darling~ tunggu sebentar yaa 🎨`)
     
     try {
         const imageBuffer = await generateFakePaspor(nama, umur, negara)
@@ -126,7 +126,7 @@ async function handler(m, { sock }) {
                     `┃ 🏳️ *ɴᴇɢᴀʀᴀ*: ${negara}\n` +
                     `┃\n` +
                     `┃ ⚠️ *Cuma buat konten!*\n` +
-                    `┃ 💗 *Rimuru:* Ini paspornya darling~ jangan dipake beneran ya! 🗿\n` +
+                    `┃ 💗 *Yalena:* Ini paspornya darling~ jangan dipake beneran ya! 🗿\n` +
                     `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         }, { quoted: m })
         

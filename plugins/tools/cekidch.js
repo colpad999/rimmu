@@ -1,7 +1,7 @@
 //
 
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 
 const pluginConfig = {
     name: 'cekidch',
@@ -98,7 +98,7 @@ async function handler(m, { sock }) {
 
         await sock.sendButton(m.chat, chPicUrl, infoText, m, {
             buttons: buttons,
-            footer: `© ${config.bot?.name || 'Rimuru-AI'}`,
+            footer: `© ${config.bot?.name || 'Yalena-AI'}`,
         })
 
         m.react('✅')

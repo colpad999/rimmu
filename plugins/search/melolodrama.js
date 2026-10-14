@@ -1,8 +1,8 @@
 //
 
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
-import rimuruApi from "../../src/lib/rimuru-apimanager.js";
+import te from "../../src/lib/yalena-error.js";
+import yalenaApi from "../../src/lib/yalena-apimanager.js";
 
 const pluginConfig = {
   name: "melolodrama",
@@ -49,7 +49,7 @@ function normalizeResults(data) {
 }
 
 async function fetchMelolo(category) {
-  const data = await rimuruApi.covenant.meloloCategory(category, {
+  const data = await yalenaApi.covenant.meloloCategory(category, {
     timeout: 30000,
   });
 

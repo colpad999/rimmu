@@ -2,13 +2,13 @@
 
 import fs from 'fs'
 import path from 'path'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'gantibot',
     category: 'owner',
     description: 'Ganti nama bot di config.js',
     usage: '.ganti-namabot <nama baru>',
-    example: '.ganti-namabot Rimuru MD',
+    example: '.ganti-namabot Yalena MD',
     isOwner: true,
     isPremium: false,
     isGroup: false,

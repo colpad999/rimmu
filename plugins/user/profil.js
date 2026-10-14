@@ -1,10 +1,10 @@
 //
 
 import config from "../../config.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import { getRole } from "./level.js";
 import fs from "fs";
-import { getDevice } from "rimuru";
+import { getDevice } from "yalena";
 
 const pluginConfig = {
   name: "profil",

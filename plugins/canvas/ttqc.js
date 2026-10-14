@@ -4,7 +4,7 @@
 import { createCanvas, loadImage, GlobalFonts } from '@napi-rs/canvas';
 import https from 'node:https';
 import http from 'node:http';
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const TEMPLATE_URL  = 'https://raw.githubusercontent.com/Ditzzx-vibecoder/Assets/main/ttqc/qyzwa.png';
 

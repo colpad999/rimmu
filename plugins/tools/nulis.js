@@ -3,12 +3,12 @@
 import * as _canvas from "@napi-rs/canvas";
 import path from "path";
 import fs from "fs";
-import * as timeHelper from "../../src/lib/rimuru-time.js";
-import te from "../../src/lib/rimuru-error.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
+import * as timeHelper from "../../src/lib/yalena-time.js";
+import te from "../../src/lib/yalena-error.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
 import axios from "axios";
 import config from "../../config.js";
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 const pluginConfig = {
   name: "nulis",
   category: "tools",
@@ -23,7 +23,7 @@ const pluginConfig = {
   energi: 1,
   isEnabled: true,
 };
-const fontUrl = getAssetBuffer("rimuru-font");
+const fontUrl = getAssetBuffer("yalena-font");
 let _fontRegistered = false;
 function wrapText(ctx, text, maxWidth) {
   const words = text.split(" ");
@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
   if (text.length > 500) {
     return m.reply(`❌ *ᴛᴇᴋs ᴛᴇʀʟᴀʟᴜ ᴘᴀɴᴊᴀɴɢ*\n\n> Maksimal 500 karakter`);
   }
-  const inputUrl = getAssetBuffer("rimuru-kertas");
+  const inputUrl = getAssetBuffer("yalena-kertas");
   if (!inputUrl) {
     return m.reply(
       `❌ *ᴛᴇᴍᴘʟᴀᴛᴇ ᴛɪᴅᴀᴋ ᴀᴅᴀ*\n\n> File template kertas tidak ditemukan di config.assets`,
@@ -67,7 +67,7 @@ async function handler(m, { sock }) {
     const { createCanvas, loadImage, GlobalFonts } = _canvas;
     if (!_fontRegistered) {
       try {
-        const fontBuf = getAssetBuffer("rimuru-font");
+        const fontBuf = getAssetBuffer("yalena-font");
         if (fontBuf) {
           GlobalFonts.register(fontBuf, "Zahraaa");
         }
@@ -76,7 +76,7 @@ async function handler(m, { sock }) {
       }
       _fontRegistered = true;
     }
-    const bgBuf = getAssetBuffer("rimuru-kertas");
+    const bgBuf = getAssetBuffer("yalena-kertas");
     const bgImage = await loadImage(bgBuf);
     const canvas = createCanvas(bgImage.width, bgImage.height);
     const ctx = canvas.getContext("2d");

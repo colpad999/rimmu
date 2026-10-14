@@ -2,14 +2,14 @@
 
 import fs from 'fs'
 import path from 'path'
-import te from '../../src/lib/rimuru-error.js'
-import { updateAssetUrl } from '../../src/lib/rimuru-uploader.js'
+import te from '../../src/lib/yalena-error.js'
+import { updateAssetUrl } from '../../src/lib/yalena-uploader.js'
 const pluginConfig = {
     name: 'gantigoodbye',
     category: 'owner',
-    description: 'Ganti gambar rimuru-goodbye.jpg (thumbnail goodbye)',
-    usage: '.ganti-rimuru-goodbye.jpg (reply/kirim gambar)',
-    example: '.ganti-rimuru-goodbye.jpg',
+    description: 'Ganti gambar yalena-goodbye.jpg (thumbnail goodbye)',
+    usage: '.ganti-yalena-goodbye.jpg (reply/kirim gambar)',
+    example: '.ganti-yalena-goodbye.jpg',
     isOwner: true,
     isPremium: false,
     isGroup: false,
@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼️ *ɢᴀɴᴛɪ ᴏᴜʀɪɴ-ɢᴏᴏᴅʙʏᴇ.ᴊᴘɢ*\n\n> Kirim/reply gambar untuk mengganti\n> File: assets/images/rimuru-goodbye.jpg`)
+        return m.reply(`🖼️ *ɢᴀɴᴛɪ ᴏᴜʀɪɴ-ɢᴏᴏᴅʙʏᴇ.ᴊᴘɢ*\n\n> Kirim/reply gambar untuk mengganti\n> File: assets/images/yalena-goodbye.jpg`)
     }
     
     try {
@@ -40,8 +40,8 @@ async function handler(m, { sock }) {
         
         await m.reply(`⏳ Sedang mengupload gambar...`)
         try {
-            const newUrl = await updateAssetUrl('rimuru-goodbye', buffer, 'rimuru-goodbye.jpg')
-            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Gambar rimuru-goodbye.jpg telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
+            const newUrl = await updateAssetUrl('yalena-goodbye', buffer, 'yalena-goodbye.jpg')
+            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Gambar yalena-goodbye.jpg telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
         } catch (e) {
             m.reply(`❌ Gagal mengupload gambar: ${e.message}`)
         }

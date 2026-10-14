@@ -7,7 +7,7 @@ const pluginConfig = {
     category: 'owner',
     description: 'Mengganti semua link saluran di SC',
     usage: '.gantilinksaluran|link',
-    example: '.gantilinksaluran|https://whatsapp.com/channel/RIMURU_CHANNEL',
+    example: '.gantilinksaluran|https://whatsapp.com/channel/YALENA_CHANNEL',
     isOwner: true,
     cooldown: 3,
     isEnabled: true
@@ -20,7 +20,7 @@ async function handler(m) {
 
     if (!input) {
         return m.reply(`Contoh:
-.gantilinksaluran|https://whatsapp.com/channel/RIMURU_CHANNEL`)
+.gantilinksaluran|https://whatsapp.com/channel/YALENA_CHANNEL`)
     }
 
     const newLink = input.trim()
@@ -47,7 +47,7 @@ async function handler(m) {
 
     scan("./")
 
-    await m.reply(`╭━━〔 💗 RIMURU SYSTEM 💗 〕━━⬣
+    await m.reply(`╭━━〔 💗 YALENA SYSTEM 💗 〕━━⬣
 ┃ ✅ Link saluran berhasil diganti
 ┃
 ┃ 🔗 Link Baru :

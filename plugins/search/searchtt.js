@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto'
 import { tiktokSearchVideo } from '../../src/scraper/tiktoksearch.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 
 const pluginConfig = {
   name: 'searchtt',
@@ -88,7 +88,7 @@ function buildTikTokHTML(videos, query) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#000">
-<title>Rimuru TikTok</title>
+<title>Yalena TikTok</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100%;overflow:hidden;background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}

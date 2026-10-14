@@ -6,19 +6,19 @@ import path from 'path';
 const pluginConfig = {
   name: 'randomfotozero',
   category: 'anime',
-  description: 'Rimuru random image 💗',
-  usage: '.foto-randomrimuru',
+  description: 'Yalena random image 💗',
+  usage: '.foto-randomyalena',
   isEnabled: true,
   cooldown: 5
 }
 
 async function handler(m, { sock }) {
 
-const folderPath = path.join(process.cwd(), 'assets', 'foto-rimuru-random')
+const folderPath = path.join(process.cwd(), 'assets', 'foto-yalena-random')
 
 // cek folder
 if (!fs.existsSync(folderPath)) {
-    return m.reply('❌ Folder Rimuru belum ada, darling...')
+    return m.reply('❌ Folder Yalena belum ada, darling...')
 }
 
 // ambil file
@@ -33,14 +33,14 @@ const images = files.filter(file =>
 
 // kalau kosong
 if (images.length === 0) {
-    return m.reply('📂 Foto Rimuru masih kosong... aku jadi kesepian 😢')
+    return m.reply('📂 Foto Yalena masih kosong... aku jadi kesepian 😢')
 }
 
 // random file
 const randomFile = images[Math.floor(Math.random() * images.length)]
 const filePath = path.join(folderPath, randomFile)
 
-// 💗 caption random ala Rimuru
+// 💗 caption random ala Yalena
 const captions = [
 "Darling… kamu manggil aku? 😈",
 "Aku cuma punya kamu loh 💕",
@@ -59,7 +59,7 @@ await m.react('💗')
 // kirim
 await sock.sendMessage(m.chat, {
 image: fs.readFileSync(filePath),
-caption: `╭━━━〔 💗 RIMURU RANDOM 💗 〕━━━⬣
+caption: `╭━━━〔 💗 YALENA RANDOM 💗 〕━━━⬣
 ┃
 ┃ ${randomCaption}
 ┃

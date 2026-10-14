@@ -1,7 +1,7 @@
 //
 
 import { live3d } from '../../src/scraper/seaart.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 
 const pluginConfig = {
     name: 'island',

@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { RIMURU_CORE_CONFIG } from "../../config.js";
+import { YALENA_CORE_CONFIG } from "../../config.js";
 import config from '../../config.js';
 const pluginConfig = {
     name: 'setversion',
@@ -70,7 +70,7 @@ async function handler(m) {
         
         // Update config yang sudah di-require
         if (config.bot) {
-            RIMURU_CORE_CONFIG.bot.version = newVersion
+            YALENA_CORE_CONFIG.bot.version = newVersion
         }
         
         m.react('✅')

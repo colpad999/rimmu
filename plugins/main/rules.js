@@ -1,8 +1,8 @@
 //
 
 import config from "../../config.js"
-import { getDatabase } from "../../src/lib/rimuru-database.js"
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js"
+import { getDatabase } from "../../src/lib/yalena-database.js"
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js"
 
 const pluginConfig = {
     name: "rules",
@@ -49,7 +49,7 @@ _Dengan menggunakan bot ini, kamu dianggap sudah membaca dan menyetujui seluruh 
 
 async function handler(m, { sock }) {
     const db = getDatabase()
-    const botName = config.bot?.name || "Rimuru-AI"
+    const botName = config.bot?.name || "Yalena-AI"
     const customRules = db.setting("botRules")
 
     let rulesText
@@ -64,7 +64,7 @@ async function handler(m, { sock }) {
         rulesText = buildDefaultRules(botName, m.prefix)
     }
 
-    const imageUrl = config.assets?.["rimuru-rules"]
+    const imageUrl = config.assets?.["yalena-rules"]
 
     if (imageUrl) {
         await sock.sendMessage(m.chat, {

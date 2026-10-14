@@ -1,9 +1,9 @@
 //
 
 import axios from 'axios'
-import { uploadImage } from '../../src/lib/rimuru-uploader.js'
-import te from '../../src/lib/rimuru-error.js'
-import { serialize } from '../../src/lib/rimuru-serialize.js'
+import { uploadImage } from '../../src/lib/yalena-uploader.js'
+import te from '../../src/lib/yalena-error.js'
+import { serialize } from '../../src/lib/yalena-serialize.js'
 import { parsePhoneNumber } from 'awesome-phonenumber'
 
 const pluginConfig = {

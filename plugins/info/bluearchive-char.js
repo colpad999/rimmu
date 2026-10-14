@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "bluearchive-char",
   category: "info",
@@ -95,8 +95,8 @@ async function handler(m, { sock }) {
     const ba = new BluArchive();
     const char = await ba.char(name);
 
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-    const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+    const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
 
     let caption = `🎮 *${char.name?.toUpperCase()}*\n\n`;
 

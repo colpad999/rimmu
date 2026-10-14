@@ -1,6 +1,6 @@
 //
 
-import { getDatabase } from '../../src/lib/rimuru-database.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
 import config from '../../config.js'
 import moment from 'moment-timezone'
 const pluginConfig = {
@@ -43,7 +43,7 @@ ganti intro bawaan dengan .setintro <text>`
         .replace(/@date/gi, dateStr)
         .replace(/@time/gi, timeStr)
         .replace(/@desc/gi, groupMeta?.desc || 'Tidak ada deskripsi')
-        .replace(/@botname/gi, config.bot?.name || 'Rimuru-AI')
+        .replace(/@botname/gi, config.bot?.name || 'Yalena-AI')
 }
 
 async function handler(m, { sock }) {

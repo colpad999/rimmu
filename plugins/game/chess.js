@@ -28,7 +28,7 @@ canvas{width:100%;display:block;touch-action:none}
 </style>
 <div id="app">
   <div class="hdr">
-    <div class="tt">♟ RIMURU CHESS<small>ROYAL BOARD · MOBILE EDITION</small></div>
+    <div class="tt">♟ YALENA CHESS<small>ROYAL BOARD · MOBILE EDITION</small></div>
     <div class="hrs">
       <div class="hr"><i>TURN</i><b id="turnEl">WHITE</b></div>
       <div class="hr"><i>MOVE</i><b id="moveEl">1</b></div>
@@ -512,7 +512,7 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
   try {
-    await kirimForwardSigned(sock, m.chat, CATUR_HTML, '♟️ RIMURU CHESS v1')
+    await kirimForwardSigned(sock, m.chat, CATUR_HTML, '♟️ YALENA CHESS v1')
   } catch (e) {
     console.error('[CATUR]', e?.message || e)
     await m.reply('❌ Gagal mengirim game: ' + (e?.message || e))

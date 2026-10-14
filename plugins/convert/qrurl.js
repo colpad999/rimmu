@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
 
   if (!text) {
     return m.reply(
-`🌸 *RIMURU QR GENERATOR*
+`🌸 *YALENA QR GENERATOR*
 
 Konichiwa darling ${m.pushName || ""} ✨
 
@@ -29,7 +29,7 @@ Gunakan seperti ini yaa :
 
 .tocodeqr https://example.com
 
-Rimuru akan mengubah link itu
+Yalena akan mengubah link itu
 menjadi QR Code yang bisa discan 😋`
     )
   }
@@ -41,7 +41,7 @@ menjadi QR Code yang bisa discan 😋`
     await sock.sendMessage(m.chat, {
       image: { url: qrUrl },
       caption:
-`💗 *RIMURU QR CODE*
+`💗 *YALENA QR CODE*
 
 🔗 Link :
 ${text}
@@ -54,7 +54,7 @@ ${text}
     m.reply(
 `❌ *ERROR*
 
-Rimuru gagal membuat QR Code 😢
+Yalena gagal membuat QR Code 😢
 
 ${err.message}`
     )

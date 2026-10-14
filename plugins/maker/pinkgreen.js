@@ -11,7 +11,7 @@ const execFileAsync = promisify(execFile);
 const pluginConfig = {
   name: "pinkgreen",
   category: "maker",
-  description: "Efek pink-green bergaya Rimuru by Anita Putri Azzahra 2",
+  description: "Efek pink-green bergaya Yalena by Colpad 2",
   usage: ".pinkgreen <reply/kirim gambar>",
   example: ".pinkgreen",
   isOwner: false,
@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
   const input = await (qmsg?.download ? qmsg.download() : m.download());
   if (!input) return m.reply("❌ Gagal mengunduh gambar.");
 
-  const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "rimuru-pinkgreen-"));
+  const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "yalena-pinkgreen-"));
   const inputPath = path.join(tmpDir, "input.jpg");
   const outputPath = path.join(tmpDir, "output.png");
 

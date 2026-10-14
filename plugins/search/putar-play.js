@@ -49,13 +49,13 @@ async function handler(m, { sock }) {
     await m.react("🖤")
     
     try {
-        await m.reply("🩸 *Rimuru:* Darling... aku sedang mengambil musiknya untukmu~")
+        await m.reply("🩸 *Yalena:* Darling... aku sedang mengambil musiknya untukmu~")
         
         // Panggil API
         const api = `https://api-faa.my.id/faa/ytplay?url=${encodeURIComponent(url)}`
         const { data } = await axios.get(api, {
             timeout: 30000,
-            headers: { 'User-Agent': 'RimuruBot/1.0' }
+            headers: { 'User-Agent': 'YalenaBot/1.0' }
         })
 
         if (!data.status || !data.result) {
@@ -86,7 +86,7 @@ async function handler(m, { sock }) {
             text: caption,
             contextInfo: {
                 externalAdReply: {
-                    title: "🖤 Rimuru Dark Stage",
+                    title: "🖤 Yalena Dark Stage",
                     body: res.title,
                     mediaType: 1,
                     mediaUrl: res.url,

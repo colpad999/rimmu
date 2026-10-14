@@ -4,8 +4,8 @@ import axios from "axios";
 import { spawn } from "child_process";
 import fs from "fs";
 import path from "path";
-import te from "../../src/lib/rimuru-error.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
+import te from "../../src/lib/yalena-error.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
 const pluginConfig = {
   name: "ttselonmusk",
   category: "tts",

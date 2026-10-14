@@ -1,15 +1,15 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
-import { prepareWAMessageMedia, generateWAMessageFromContent, proto } from "rimuru";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
+import { prepareWAMessageMedia, generateWAMessageFromContent, proto } from "yalena";
 import axios from 'axios'
 import crypto from 'crypto'
 import config from '../../config.js'
-import { isLid, lidToJid } from '../../src/lib/rimuru-lid.js'
-import { checkPanelJeda, setPanelLastUsed } from '../../src/lib/rimuru-panel-jeda.js'
-import { hasAccessToServer, getUserRole, VALID_SERVERS } from '../../src/lib/rimuru-roles-cpanel.js'
+import { isLid, lidToJid } from '../../src/lib/yalena-lid.js'
+import { checkPanelJeda, setPanelLastUsed } from '../../src/lib/yalena-panel-jeda.js'
+import { hasAccessToServer, getUserRole, VALID_SERVERS } from '../../src/lib/yalena-roles-cpanel.js'
 import { isGcSeller } from './gcseller.js'
-import * as timeHelper from '../../src/lib/rimuru-time.js'
+import * as timeHelper from '../../src/lib/yalena-time.js'
 import fs from 'fs'
 const RAM_OPTIONS = [
   "1gb",
@@ -224,7 +224,7 @@ async function handler(m, { sock }) {
     return m.reply(`❌ Paket tidak ditemukan.`);
   }
 
-  const email = `${username}@rimuru.md`;
+  const email = `${username}@yalena.md`;
   const name = capitalize(username) + " Server";
   const password = username + crypto.randomBytes(3).toString("hex");
   const serverLabel = serverVersion.toUpperCase();
@@ -332,7 +332,7 @@ async function handler(m, { sock }) {
     detailTxt += `⚠️ Simpan data ini, jangan bagikan ke siapapun!`;
 
     const headerMedia = await prepareWAMessageMedia(
-      { image: { url: config.assets?.["rimuru-v8"] } },
+      { image: { url: config.assets?.["yalena-v8"] } },
       { upload: sock.waUploadToServer }
     );
 

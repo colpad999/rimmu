@@ -1,8 +1,8 @@
 //
 
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
-import { drawBrat } from "../../src/lib/rimuru-brat.js";
+import te from "../../src/lib/yalena-error.js";
+import { drawBrat } from "../../src/lib/yalena-brat.js";
 
 const pluginConfig = {
   name: "bratgreen",

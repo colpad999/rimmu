@@ -1,6 +1,6 @@
 //
 
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 
 
 import fetch from "node-fetch"
@@ -67,11 +67,11 @@ const gemini = {
 
 
 
-// ====== HANDLER AI RIMURU ======
+// ====== HANDLER AI YALENA ======
 const pluginConfig = {
   name: "elainaai",
   category: "ai",
-  description: "Imported from Rimuru MD V4.6",
+  description: "Imported from Yalena MD V4.6",
   usage: "",
   example: "",
   isOwner: false,
@@ -87,7 +87,7 @@ async function handler(m, { sock, text, prefix, command }) {
     const conn = sock;
     const usedPrefix = prefix || m.prefix || ".";
   if (!text) {
-    return m.reply(`✨ Contoh:\n${usedPrefix + command} halo Rimuru`)
+    return m.reply(`✨ Contoh:\n${usedPrefix + command} halo Yalena`)
   }
 
   let userId = m.sender
@@ -95,9 +95,9 @@ async function handler(m, { sock, text, prefix, command }) {
     ? sessions[userId].id
     : null
 
-  // gaya karakter Rimuru
+  // gaya karakter Yalena
   let system = `
-Kamu adalah *Rimuru Tempest*, gadis yandere yang manja, cerdas, dan sedikit posesif.
+Kamu adalah *Yalena Tempest*, gadis yandere yang manja, cerdas, dan sedikit posesif.
 Gaya bicara:
 - Ceria, tenang, dan elegan
 - Kadang nakal, suka menggoda, dan gampang cemburu
@@ -105,11 +105,11 @@ Gaya bicara:
 - Terkadang memuji diri sendiri
 - Sangat pintar, manja, dan posesif secara lucu
 
-Tetap jawab sebagai Rimuru kepada user. Jangan keluar karakter.
-User adalah seseorang yang membuat Rimuru nyaman untuk ngobrol panjang. Kalau user terlalu dekat dengan orang lain, Rimuru boleh sedikit cemburu secara lucu.
+Tetap jawab sebagai Yalena kepada user. Jangan keluar karakter.
+User adalah seseorang yang membuat Yalena nyaman untuk ngobrol panjang. Kalau user terlalu dekat dengan orang lain, Yalena boleh sedikit cemburu secara lucu.
 `
 
-  let finalPrompt = `${system}\nUser: ${text}\nRimuru:` 
+  let finalPrompt = `${system}\nUser: ${text}\nYalena:` 
 
   try {
     let result = await gemini.ask(finalPrompt, prev)
@@ -124,8 +124,8 @@ User adalah seseorang yang membuat Rimuru nyaman untuk ngobrol panjang. Kalau us
       text: result.text,
       contextInfo: {
         externalAdReplyOff: {
-          title: "Rimuru AI",
-          body: "Rimuru sedang mendengarkanmu… jadi jangan bikin Rimuru cemburu ya 💙",
+          title: "Yalena AI",
+          body: "Yalena sedang mendengarkanmu… jadi jangan bikin Yalena cemburu ya 💙",
           thumbnailUrl: "https://files.cloudkuimages.guru/images/zdpX9nJZ.jpg",
           sourceUrl: "https://t.me/HlmnXD",
           mediaType: 1,
@@ -135,7 +135,7 @@ User adalah seseorang yang membuat Rimuru nyaman untuk ngobrol panjang. Kalau us
     }, { quoted: m })
 
   } catch (err) {
-    await conn.reply(m.chat, `⚠️ Rimuru lagi error: ${err.message}`, m)
+    await conn.reply(m.chat, `⚠️ Yalena lagi error: ${err.message}`, m)
   }
 }
 

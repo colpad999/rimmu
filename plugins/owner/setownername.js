@@ -2,9 +2,9 @@
 
 import fs from "fs";
 import path from "path";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import { getOwnerName } from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "setownername",
   category: "owner",

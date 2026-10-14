@@ -4,7 +4,7 @@
 ✨ YuriPuki
 💫 Nama Fitur: RoyalRoad Novel
 🤖 Type : Plugin Esm
-🔗 Sumber : https://whatsapp.com/channel/RIMURU_CHANNEL
+🔗 Sumber : https://whatsapp.com/channel/YALENA_CHANNEL
 */
 
 import axios from 'axios'

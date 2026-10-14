@@ -2,9 +2,9 @@
 
 import axios from 'axios'
 import crypto from 'crypto'
-import { generateWAMessage, generateWAMessageFromContent, jidNormalizedUser } from 'rimuru'
+import { generateWAMessage, generateWAMessageFromContent, jidNormalizedUser } from 'yalena'
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 
 const pluginConfig = {
     name: 'searchtiktokfoto',

@@ -1,10 +1,10 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 import fs from "fs";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
-import rimuruApi from "../../src/lib/rimuru-apimanager.js";
+import te from "../../src/lib/yalena-error.js";
+import yalenaApi from "../../src/lib/yalena-apimanager.js";
 const pluginConfig = {
   name: "bratmenu",
   category: "sticker",
@@ -97,7 +97,7 @@ async function sendBratMenu(m, sock, text) {
 
   await sock.sendButton(
     m.chat,
-    config.assets?.["rimuru"],
+    config.assets?.["yalena"],
     caption,
     m,
     {

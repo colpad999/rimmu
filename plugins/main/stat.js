@@ -1,7 +1,7 @@
 //
 
 import os from "os";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const pluginConfig = {
   name: "stat",
@@ -57,7 +57,7 @@ async function handler(m, { sock, db, uptime, config: botConfig }) {
     const premiumUsers = Object.values(users).filter((u) => u.premium).length;
 
     const statsObj = {
-      bot: botConfig?.bot?.name || "Rimuru-AI",
+      bot: botConfig?.bot?.name || "Yalena-AI",
       version: `v${botConfig?.bot?.version || "1.0.0"}`,
       uptime: formatUptime(uptime),
       database: {

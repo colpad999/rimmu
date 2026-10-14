@@ -1,7 +1,7 @@
 //
 
 import moment from 'moment-timezone'
-import { getDatabase } from '../../src/lib/rimuru-database.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
 const pluginConfig = {
     name: 'afkmode',
     category: 'owner',

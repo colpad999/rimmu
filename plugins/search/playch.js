@@ -8,7 +8,7 @@ import path from "path";
 import { exec } from "child_process";
 import { promisify } from "util";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const run = promisify(exec);
 const pluginConfig = {
@@ -72,7 +72,7 @@ function generateWaveform(audioBuf, samples = 64) {
 async function handler(m, { sock }) {
   const raw = m.text?.trim() || "";
   let chId = config?.saluran?.id;
-  let chName = config?.saluran?.name || config?.bot?.name || "Rimuru-AI";
+  let chName = config?.saluran?.name || config?.bot?.name || "Yalena-AI";
   let q = raw;
 
   const idchMatch = raw.match(/--idch\s+(\S+)/);

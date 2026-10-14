@@ -9,7 +9,7 @@ const pluginConfig = {
     category: 'canvas',
     description: 'Bikin fake ID Card (buat konten/gaguan doang)',
     usage: '.fakeidcard <nama> | <jabatan>',
-    example: '.fakeidcard Rimuru | CEO',
+    example: '.fakeidcard Yalena | CEO',
     isOwner: false,
     isPremium: false,
     isGroup: false,
@@ -51,7 +51,7 @@ async function generateFakeIDCard(nama, jabatan) {
 
 async function handler(m, { sock }) {
     const text = m.args.join(' ') || m.text?.trim() || ''
-    if (!text) return m.reply(`*Cara pakai:*\n${m.prefix}fakeidcard <nama> | <jabatan>\nContoh: .fakeidcard Rimuru | CEO`)
+    if (!text) return m.reply(`*Cara pakai:*\n${m.prefix}fakeidcard <nama> | <jabatan>\nContoh: .fakeidcard Yalena | CEO`)
     
     const parts = text.split('|').map(p => p.trim())
     const nama = parts[0] || 'Darling'
@@ -62,7 +62,7 @@ async function handler(m, { sock }) {
     
     try {
         const imageBuffer = await generateFakeIDCard(nama, jabatan)
-        await sock.sendMessage(m.chat, { image: imageBuffer, caption: `💕 *FAKE ID CARD* 💕\n\n✅ Nama: ${nama}\n📌 Jabatan: ${jabatan}\n\n💗 *Rimuru:* Ini ID card nya darling~` }, { quoted: m })
+        await sock.sendMessage(m.chat, { image: imageBuffer, caption: `💕 *FAKE ID CARD* 💕\n\n✅ Nama: ${nama}\n📌 Jabatan: ${jabatan}\n\n💗 *Yalena:* Ini ID card nya darling~` }, { quoted: m })
         m.react('✅')
     } catch (err) {
         m.react('💔')

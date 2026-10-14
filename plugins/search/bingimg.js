@@ -2,8 +2,8 @@
 
 import axios from "axios";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
-import rimuruApi from "../../src/lib/rimuru-apimanager.js";
+import te from "../../src/lib/yalena-error.js";
+import yalenaApi from "../../src/lib/yalena-apimanager.js";
 const pluginConfig = {
   name: "bingimg",
   category: "search",
@@ -31,8 +31,8 @@ async function handler(m, { sock }) {
 
     await m.react("🔍");
 
-    const apikey = config.APIkey?.neoxr || "Milik-Bot-RimuruMD";
-    const data = await rimuruApi.apiFaa.get(
+    const apikey = config.APIkey?.neoxr || "Milik-Bot-YalenaMD";
+    const data = await yalenaApi.apiFaa.get(
       "/faa/google-image",
       {
         query,

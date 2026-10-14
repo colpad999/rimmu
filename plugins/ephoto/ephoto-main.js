@@ -4,7 +4,7 @@ import axios from 'axios'
 import FormData from 'form-data'
 import * as cheerio from 'cheerio'
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const EFFECT_URLS = {
     glitchtext: 'https://en.ephoto360.com/create-digital-glitch-text-effects-online-767.html',
     writetext: 'https://en.ephoto360.com/write-text-on-wet-glass-online-589.html',
@@ -53,7 +53,7 @@ const pluginConfig = {
     category: 'ephoto',
     description: 'Buat efek text keren dengan berbagai style',
     usage: '.<effect> <text>',
-    example: '.glitchtext Rimuru-AI',
+    example: '.glitchtext Yalena-AI',
     isOwner: false,
     isPremium: false,
     isGroup: false,
@@ -121,12 +121,12 @@ async function handler(m, { sock }) {
             `🎨 *ᴇᴘʜᴏᴛᴏ ᴇꜰꜰᴇᴄᴛs*\n\n` +
             `> Buat efek text keren!\n\n` +
             `╭┈┈⬡「 📋 *ᴅᴀꜰᴛᴀʀ ᴇꜰᴇᴋ* 」\n${effectList}\n╰┈┈┈┈┈┈┈┈⬡\n\n` +
-            `> *Contoh:* ${m.prefix}glitchtext Rimuru-AI`
+            `> *Contoh:* ${m.prefix}glitchtext Yalena-AI`
         )
     }
     
     if (!text) {
-        return m.reply(`❌ *ᴇʀʀᴏʀ*\n\n> Masukkan text!\n> *Contoh:* ${m.prefix}${command} Rimuru-AI`)
+        return m.reply(`❌ *ᴇʀʀᴏʀ*\n\n> Masukkan text!\n> *Contoh:* ${m.prefix}${command} Yalena-AI`)
     }
     
     const effectUrl = EFFECT_URLS[command]

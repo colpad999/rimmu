@@ -1,13 +1,13 @@
 //
 
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 
 
 //Dont delete this credit!!!
 //Script by ShirokamiRyzen
 
 import fetch from 'node-fetch'
-import { uploadImage } from '../../src/lib/rimuru-uploader.js'
+import { uploadImage } from '../../src/lib/yalena-uploader.js'
 
 let handler = async (m, { conn, usedPrefix, command }) => {
     try {

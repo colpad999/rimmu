@@ -2,9 +2,9 @@
 
 import axios from 'axios';
 import FormData from 'form-data';
-import { getAssetBuffer } from '../../src/lib/rimuru-asset-manager.js';
-import { uploadTo0x0 } from '../../src/lib/rimuru-tmpfiles.js';
-import te from '../../src/lib/rimuru-error.js';
+import { getAssetBuffer } from '../../src/lib/yalena-asset-manager.js';
+import { uploadTo0x0 } from '../../src/lib/yalena-tmpfiles.js';
+import te from '../../src/lib/yalena-error.js';
 
 const pluginConfig = {
   name: 'mlbbfake',
@@ -28,7 +28,7 @@ async function uploadImage(buffer) {
   const form = new FormData();
   form.append('reqtype', 'fileupload');
   form.append('fileToUpload', buffer, {
-    filename: 'rimuru-fakeml-avatar.jpg',
+    filename: 'yalena-fakeml-avatar.jpg',
     contentType: 'image/jpeg',
   });
 

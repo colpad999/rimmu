@@ -1,7 +1,7 @@
 //
 
 import { createCanvas, GlobalFonts } from "@napi-rs/canvas";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 import axios from "axios";
 import config from "../../config.js";
 

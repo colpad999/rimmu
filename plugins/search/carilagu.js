@@ -2,7 +2,7 @@
 
 import http from "http";
 import https from "https";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const pluginConfig = {
   name: "carilagu",

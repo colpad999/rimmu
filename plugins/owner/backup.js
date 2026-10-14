@@ -1,9 +1,9 @@
 //
 
-import { enableAutoBackup, disableAutoBackup, getBackupStatus, triggerManualBackup, formatInterval } from '../../src/lib/rimuru-auto-backup.js'
-import * as timeHelper from '../../src/lib/rimuru-time.js'
+import { enableAutoBackup, disableAutoBackup, getBackupStatus, triggerManualBackup, formatInterval } from '../../src/lib/yalena-auto-backup.js'
+import * as timeHelper from '../../src/lib/yalena-time.js'
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
   name: "backup",
   category: "owner",

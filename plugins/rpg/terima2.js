@@ -1,9 +1,9 @@
 //
 
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 
 const kataTembak = [
   `Hai.
@@ -116,7 +116,7 @@ async function handler(m, { sock }) {
     if (target.jadian) return m.reply("Dia sudah punya pasangan 💔");
 
     // Simpan request di data user target, bukan global.db.
-    // Dengan begitu tetap memakai database Rimuru dan ikut autosave.
+    // Dengan begitu tetap memakai database Yalena dan ikut autosave.
     target.rpg = target.rpg || {};
     target.rpg.tembak = {
       from: m.sender,

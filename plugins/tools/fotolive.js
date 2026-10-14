@@ -4,7 +4,7 @@ import path from "path";
 import { randomUUID } from "crypto";
 import ffmpeg from "fluent-ffmpeg";
 import ffmpegInstaller from "@ffmpeg-installer/ffmpeg";
-import { downloadContentFromMessage, prepareWAMessageMedia, generateWAMessageFromContent } from "rimuru";
+import { downloadContentFromMessage, prepareWAMessageMedia, generateWAMessageFromContent } from "yalena";
 
 try {
   if (ffmpegInstaller?.path) ffmpeg.setFfmpegPath(ffmpegInstaller.path);

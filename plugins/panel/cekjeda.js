@@ -1,8 +1,8 @@
 //
 
-import { getDatabase } from '../../src/lib/rimuru-database.js'
-import { hasAccessToServer, VALID_SERVERS } from '../../src/lib/rimuru-roles-cpanel.js'
-import * as timeHelper from '../../src/lib/rimuru-time.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
+import { hasAccessToServer, VALID_SERVERS } from '../../src/lib/yalena-roles-cpanel.js'
+import * as timeHelper from '../../src/lib/yalena-time.js'
 const DEFAULT_JEDA = 5 * 60 * 1000;
 
 const pluginConfig = {

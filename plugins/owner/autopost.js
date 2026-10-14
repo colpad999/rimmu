@@ -3,7 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import config from '../../config.js';
-import { getDatabase } from '../../src/lib/rimuru-database.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
 import { getRandomCaption, addCaption, getCaptionCount, getAllCaptions } from '../../src/lib/zerotwoCaption.js';
 const pluginConfig = {
     name: 'autopost',
@@ -166,7 +166,7 @@ async function handler(m, { sock }) {
                 `> 1. Buka saluran lo\n` +
                 `> 2. Ketik ${m.prefix}getjid\n` +
                 `> 3. Copy JID yang muncul (format @newsletter)\n\n` +
-                `🦋 *Rimuru:* "Set dulu darling~ 🎐"`
+                `🦋 *Yalena:* "Set dulu darling~ 🎐"`
             )
         }
         
@@ -179,7 +179,7 @@ async function handler(m, { sock }) {
                 `> 1. Buat folder: \`assets/zerotwo-random/\`\n` +
                 `> 2. Masukkan gambar ke dalamnya\n` +
                 `> 3. Coba lagi\n\n` +
-                `🦋 *Rimuru:* "Bikin dulu folder nya darling~ 🎐"`
+                `🦋 *Yalena:* "Bikin dulu folder nya darling~ 🎐"`
             )
         }
         
@@ -196,7 +196,7 @@ async function handler(m, { sock }) {
                 `📊 Total file: ${files.length} file\n` +
                 `🖼️ Gambar: 0 file\n\n` +
                 `💡 *Masukkan gambar* (jpg/png/gif/webp) ke folder tersebut.\n\n` +
-                `🦋 *Rimuru:* "Isi dulu gambarnya darling~ 🎐"`
+                `🦋 *Yalena:* "Isi dulu gambarnya darling~ 🎐"`
             )
         }
         
@@ -217,7 +217,7 @@ async function handler(m, { sock }) {
             `💬 Caption: ${getCaptionCount()} caption tersedia\n\n` +
             `> ${m.prefix}autopost off → matikan\n` +
             `> ${m.prefix}autopost test → kirim manual\n\n` +
-            `🦋 *Rimuru:* "Siap darling~ Saluran lo bakal rame! 🎐"`
+            `🦋 *Yalena:* "Siap darling~ Saluran lo bakal rame! 🎐"`
         )
     }
     
@@ -232,7 +232,7 @@ async function handler(m, { sock }) {
             `❌ *AUTOPOST NONAKTIF*\n\n` +
             `> Bot berhenti kirim gambar otomatis.\n` +
             `> Ketik ${m.prefix}autopost on untuk aktifkan lagi.\n\n` +
-            `🦋 *Rimuru:* "Yaudah darling, lain kali lagi ya~ 🎐"`
+            `🦋 *Yalena:* "Yaudah darling, lain kali lagi ya~ 🎐"`
         )
     }
     
@@ -256,7 +256,7 @@ async function handler(m, { sock }) {
                 `📡 ID: ${value}\n` +
                 `📌 Tipe: ${channelType}\n` +
                 `> Ketik ${m.prefix}autopost on untuk memulai.\n\n` +
-                `🦋 *Rimuru:* "Oke darling, udah siap~ 🎐"`
+                `🦋 *Yalena:* "Oke darling, udah siap~ 🎐"`
             )
         }
         
@@ -274,7 +274,7 @@ async function handler(m, { sock }) {
                 `✅ *INTERVAL DIUBAH*\n\n` +
                 `⏰ Menjadi ${interval} jam sekali\n` +
                 `> Akan kirim gambar setiap ${interval} jam.\n\n` +
-                `🦋 *Rimuru:* "Siap darling, gak bakal sepi lagi~ 🔥"`
+                `🦋 *Yalena:* "Siap darling, gak bakal sepi lagi~ 🔥"`
             )
         }
         
@@ -282,7 +282,7 @@ async function handler(m, { sock }) {
             `⚠️ *CARA SET:*\n\n` +
             `> Set channel: ${m.prefix}autopost set 120363xxxxxx@newsletter\n` +
             `> Set interval: ${m.prefix}autopost set 2 (jam)\n\n` +
-            `🦋 *Rimuru:* "Gitu darling~ 🎐"`
+            `🦋 *Yalena:* "Gitu darling~ 🎐"`
         )
     }
     
@@ -355,7 +355,7 @@ async function handler(m, { sock }) {
                 `> 1. Cek apakah folder \`assets/zerotwo-random/\` ada\n` +
                 `> 2. Cek apakah ada gambar (jpg/png/gif/webp) di dalamnya\n` +
                 `> 3. Coba upload ulang gambarnya\n\n` +
-                `🦋 *Rimuru:* "Coba cek lagi darling~ 🎐"`
+                `🦋 *Yalena:* "Coba cek lagi darling~ 🎐"`
             )
         }
     }
@@ -401,7 +401,7 @@ async function handler(m, { sock }) {
         `> ${m.prefix}autopost caption list → lihat caption\n\n` +
         `📁 *Folder gambar:*\n` +
         `> assets/zerotwo-random/\n\n` +
-        `💫 *Rimuru:* "Saluran lo bakal rame darling~ 🎐"`
+        `💫 *Yalena:* "Saluran lo bakal rame darling~ 🎐"`
     )
 }
 

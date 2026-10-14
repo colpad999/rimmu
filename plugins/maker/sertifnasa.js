@@ -1,7 +1,7 @@
 //
 
 import fetch from 'node-fetch';
-import { withNetworkRetry, formatNetworkError } from '../../src/lib/rimuru-network.js';
+import { withNetworkRetry, formatNetworkError } from '../../src/lib/yalena-network.js';
 
 const pluginConfig = {
   name: "sertifnasa",

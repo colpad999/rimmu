@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { getDatabase } from '../../src/lib/rimuru-database.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
 import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = fileURLToPath(new URL(".", import.meta.url));

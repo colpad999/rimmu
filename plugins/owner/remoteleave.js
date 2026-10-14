@@ -1,6 +1,6 @@
 //
 
-import { generateWAMessageFromContent } from 'rimuru';
+import { generateWAMessageFromContent } from 'yalena';
 
 const pluginConfig = {
   name: 'remoteleave',

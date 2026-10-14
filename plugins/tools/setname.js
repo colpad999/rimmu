@@ -5,7 +5,7 @@ const pluginConfig = {
     category: 'tools',
     description: 'Mengubah nama profil bot',
     usage: '.setname <nama baru>',
-    example: '.setname Rimuru-AI',
+    example: '.setname Yalena-AI',
     isOwner: true,
     isPremium: false,
     isGroup: false,

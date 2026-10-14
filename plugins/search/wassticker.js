@@ -75,7 +75,7 @@ async function handler(m, { sock }) {
                     })
                     
                     await sock.sendImageAsSticker(m.chat, Buffer.from(stickerRes.data), m, {
-                        packname: selectedPack.title || 'rimuru-AI',
+                        packname: selectedPack.title || 'yalena-AI',
                         author: selectedPack.author || 'Bot'
                     })
                     

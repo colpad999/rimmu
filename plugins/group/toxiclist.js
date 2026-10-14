@@ -1,6 +1,6 @@
 //
 
-import { getDatabase } from '../../src/lib/rimuru-database.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
 import { DEFAULT_TOXIC_WORDS } from './antitoxic.js'
 const pluginConfig = {
     name: 'toxiclist',

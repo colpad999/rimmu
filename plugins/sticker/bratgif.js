@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 import { bratVid } from 'brat-canvas/video'
 import fs from 'fs'
 import path from 'path'

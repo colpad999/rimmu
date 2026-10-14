@@ -44,8 +44,8 @@ function buildText(vt, l916, l11, xml) {
 
 ─────
 
-#prstrimuru  
-#rimuruwangyy  
+#prstyalena  
+#yalenawangyy  
 
 ⌘ search : gm_zero_12
 
@@ -73,7 +73,7 @@ async function handler(m, { sock }) {
     // 💗 LOADING MESSAGE
     await sock.sendMessage(m.chat, {
         image: await loadImageBuffer(imgUrl),
-        caption: `💗 *Rimuru lagi nyusun preset kamu...* 😈
+        caption: `💗 *Yalena lagi nyusun preset kamu...* 😈
 
 Tunggu bentar ya darling~`
     }, { quoted: m })
@@ -95,7 +95,7 @@ Tunggu bentar ya darling~`
     await sock.sendMessage(m.chat, {
         image: await loadImageBuffer(imgUrl),
         caption: finalText,
-        footer: 'Rimuru AI 💗',
+        footer: 'Yalena AI 💗',
         interactiveButtons: buttons
     }, { quoted: m })
 }

@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const VPS_SPECS = {
     'vps1g1c': { size: 's-1vcpu-1gb', ram: '1GB', cpu: '1 vCPU' },
     'vps2g1c': { size: 's-1vcpu-2gb', ram: '2GB', cpu: '1 vCPU' },
@@ -98,7 +98,7 @@ chpasswd: { expire: False }
 ssh_pwauth: True`,
         private_networking: null,
         volumes: null,
-        tags: ['rimuru-bot']
+        tags: ['yalena-bot']
     }
     
     await m.reply(`🛠️ *ᴍᴇᴍʙᴜᴀᴛ ᴠᴘs...*\n\n> Hostname: \`${hostname}\`\n> Spec: ${spec.ram} RAM, ${spec.cpu}\n> Region: ${region}`)

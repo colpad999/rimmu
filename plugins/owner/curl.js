@@ -4,7 +4,7 @@ import config from "../../config.js";
 import axios from "axios";
 import fs from "fs";
 import path from "path";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "curl",
   category: "owner",
@@ -206,7 +206,7 @@ async function handler(m, { sock }) {
       validateStatus: () => true,
       responseType: "arraybuffer",
       headers: {
-        "User-Agent": "Rimuru-Bot/2.0",
+        "User-Agent": "Yalena-Bot/2.0",
         Accept: "*/*",
         ...(jsonBody ? { "Content-Type": "application/json" } : {}),
         ...customHeaders,

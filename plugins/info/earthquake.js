@@ -1,7 +1,7 @@
 //
 
 import axios from "axios";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
 
 const pluginConfig = {
   name: "earthquake",

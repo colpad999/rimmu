@@ -13,9 +13,9 @@ async function loadImageBuffer(url) {
 const pluginConfig = {
     name: 'tebalteks',
     category: 'tools',
-    description: 'Teks tebal ala Rimuru 😈💗 (4 style)',
+    description: 'Teks tebal ala Yalena 😈💗 (4 style)',
     usage: '.tebalteks <teks>',
-    example: '.tebalteks rimuruWangy',
+    example: '.tebalteks yalenaWangy',
     cooldown: 3,
     isEnabled: true
 }
@@ -64,7 +64,7 @@ async function handler(m, { sock }) {
     // 💗 INTRO
     await sock.sendMessage(m.chat, {
         image: await loadImageBuffer(imgUrl),
-        caption: `💗✨ *Rimuru Mode ON...* ✨💗
+        caption: `💗✨ *Yalena Mode ON...* ✨💗
 
 (｡•̀ᴗ-)✧ *Eh eh darling~!!*
 Aku lagi siapin teks kamu nih... 😳💞`
@@ -106,12 +106,12 @@ Aku lagi siapin teks kamu nih... 😳💞`
     // 💗 RESULT
     await sock.sendMessage(m.chat, {
         image: await loadImageBuffer(imgUrl),
-        caption: `╭─〔 💗 *RIMURU RESULT* 💗 〕─⬣
+        caption: `╭─〔 💗 *YALENA RESULT* 💗 〕─⬣
 │ ✨ Input : *${text}*
 ╰──────────────⬣
 
 (≧◡≦) ♡ Udah jadi nih darling~!! 😈💗`,
-        footer: 'Rimuru AI 💗',
+        footer: 'Yalena AI 💗',
         interactiveButtons: buttons
     }, { quoted: m })
 }

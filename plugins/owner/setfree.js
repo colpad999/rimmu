@@ -1,7 +1,7 @@
 //
 
-import { getPlugin } from "../../src/lib/rimuru-plugins.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getPlugin } from "../../src/lib/yalena-plugins.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 
 const config = {
   name: "setfree",

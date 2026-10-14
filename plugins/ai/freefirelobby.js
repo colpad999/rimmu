@@ -4,7 +4,7 @@ import axios from "axios";
 import { createCanvas, loadImage, GlobalFonts } from "@napi-rs/canvas";
 import path from "node:path";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const pluginConfig = {
   name: "freefirelobby",

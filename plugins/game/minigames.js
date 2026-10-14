@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
      submessages: [
       {
        messageType: 2,
-       messageText: 'Nixel Games • Fitur By: Anita Putri Azzahra',
+       messageText: 'Nixel Games • Fitur By: Colpad',
       },
      ],
      unifiedResponse: {

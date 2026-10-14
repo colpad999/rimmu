@@ -1,16 +1,16 @@
 //
 
 const pluginConfig = {
-    name: "autorimuru",
+    name: "autoyalena",
     category: "fun",
-    description: "Auto respon jika ada yang menyebut Rimuru",
-    usage: ".autorimuru on/off",
-    example: ".autorimuru on",
+    description: "Auto respon jika ada yang menyebut Yalena",
+    usage: ".autoyalena on/off",
+    example: ".autoyalena on",
     cooldown: 3
 }
 
 // global agar tidak reset saat hot reload
-if (!global.autoRimuru) global.autoRimuru = false
+if (!global.autoYalena) global.autoYalena = false
 
 async function handler(m) {
 
@@ -19,13 +19,13 @@ async function handler(m) {
 
     if (!args) {
         return m.reply(
-`╭─〔 ❤️ RIMURU AUTO RESPON 〕
+`╭─〔 ❤️ YALENA AUTO RESPON 〕
 │
 │ 📌 Perintah:
-│ • .autorimuru on
-│ • .autorimuru off
+│ • .autoyalena on
+│ • .autoyalena off
 │
-│ Rimuru akan otomatis
+│ Yalena akan otomatis
 │ merespon jika namanya disebut.
 │
 ╰────────────`
@@ -33,10 +33,10 @@ async function handler(m) {
     }
 
     if (args === "on") {
-        global.autoRimuru = true
+        global.autoYalena = true
 
         return m.reply(
-`╭─〔 ❤️ RIMURU 〕
+`╭─〔 ❤️ YALENA 〕
 │
 │ Ara ara~
 │ Auto respon sekarang *AKTIF*
@@ -49,10 +49,10 @@ async function handler(m) {
     }
 
     if (args === "off") {
-        global.autoRimuru = false
+        global.autoYalena = false
 
         return m.reply(
-`╭─〔 RIMURU 〕
+`╭─〔 YALENA 〕
 │
 │ Hmph!
 │ Auto respon dimatikan.
@@ -67,28 +67,28 @@ async function handler(m) {
 
 async function before(m, { sock }) {
 
-    if (!global.autoRimuru) return
+    if (!global.autoYalena) return
 
     const text = (m.text || "").toLowerCase()
 
     const trigger = [
 
-        "Rimuru",
-        "rimuru",
+        "Yalena",
+        "yalena",
         "02",
-        "rimuru",
+        "yalena",
         "zero2",
-        "Rimuru ai",
-        "rimuru ai",
-        "bot Rimuru",
-        "Rimuru bot",
+        "Yalena ai",
+        "yalena ai",
+        "bot Yalena",
+        "Yalena bot",
         "02 ai",
-        "darling Rimuru",
-        "rimuruoo",
-        "Rimuruoo",
+        "darling Yalena",
+        "yalenaoo",
+        "Yalenaoo",
         "02 darling",
-        "rimuru chan",
-        "rimuru-chan"
+        "yalena chan",
+        "yalena-chan"
 
     ]
 
@@ -98,17 +98,17 @@ async function before(m, { sock }) {
 
     const respon = [
 
-`╭─〔 ❤️ RIMURU 〕
+`╭─〔 ❤️ YALENA 〕
 │
 │ Ara ara~
 │ ${name} memanggilku?
 │
 │ Ada yang bisa
-│ Rimuru bantu?
+│ Yalena bantu?
 │
 ╰────────────`,
 
-`╭─〔 RIMURU 〕
+`╭─〔 YALENA 〕
 │
 │ Fufu~
 │ Aku mendengar
@@ -118,7 +118,7 @@ async function before(m, { sock }) {
 │
 ╰────────────`,
 
-`╭─〔 RIMURU 〕
+`╭─〔 YALENA 〕
 │
 │ Eh?
 │ ${name} kangen aku ya?
@@ -127,7 +127,7 @@ async function before(m, { sock }) {
 │
 ╰────────────`,
 
-`╭─〔 RIMURU 〕
+`╭─〔 YALENA 〕
 │
 │ Ara ara~
 │ Jangan panggil aku
@@ -138,17 +138,17 @@ async function before(m, { sock }) {
 │
 ╰────────────`,
 
-`╭─〔 RIMURU 〕
+`╭─〔 YALENA 〕
 │
 │ Hmph!
 │ Siapa yang memanggil
-│ Rimuru?
+│ Yalena?
 │
 │ Oh ternyata kamu~
 │
 ╰────────────`,
 
-`╭─〔 RIMURU 〕
+`╭─〔 YALENA 〕
 │
 │ Darling ${name}~
 │ Kamu memanggilku?
@@ -157,7 +157,7 @@ async function before(m, { sock }) {
 │
 ╰────────────`,
 
-`╭─〔 RIMURU 〕
+`╭─〔 YALENA 〕
 │
 │ Fufu~
 │ Aku merasa
@@ -167,11 +167,11 @@ async function before(m, { sock }) {
 │
 ╰────────────`,
 
-`╭─〔 RIMURU 〕
+`╭─〔 YALENA 〕
 │
 │ Eh ${name}!
 │ Kamu memanggil
-│ Rimuru?
+│ Yalena?
 │
 │ Aku disini~
 │

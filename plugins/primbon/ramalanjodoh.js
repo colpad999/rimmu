@@ -1,7 +1,7 @@
 //
 
 import axios from 'axios'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'ramalanjodoh',
     category: 'primbon',

@@ -59,7 +59,7 @@ async function handler(m) {
   const load = os.loadavg?.() || [0, 0, 0];
 
   let text =
-    `⚡ *RIMURU SERVER STATUS*\n\n` +
+    `⚡ *YALENA SERVER STATUS*\n\n` +
     `🏓 Ping: *${ping.toFixed(2)} ms*\n` +
     `⏱️ Uptime: *${runtime(process.uptime())}*\n` +
     `🖥️ OS: *${os.type()} ${os.release()}*\n` +

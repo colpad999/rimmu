@@ -84,7 +84,7 @@ async function handler(m, { sock }) {
             `┃\n` +
             `┃   ${m.prefix}gdrive https://drive.google.com/file/d/xxx/view\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Mau download file dari Google Drive apa darling~?\n` +
+            `┃ 💗 *Yalena:* Mau download file dari Google Drive apa darling~?\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
     }
@@ -97,7 +97,7 @@ async function handler(m, { sock }) {
     }
     
     m.react('💕')
-    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Rimuru:* Lagi mengambil file dari Google Drive darling~ tunggu sebentar yaa 📁`)
+    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Yalena:* Lagi mengambil file dari Google Drive darling~ tunggu sebentar yaa 📁`)
     
     try {
         const data = await drive(url)
@@ -119,7 +119,7 @@ async function handler(m, { sock }) {
                     `┃ 📄 *ɴᴀᴍᴀ*: ${data.fileName}\n` +
                     `┃ 📦 *ᴜᴋᴜʀᴀɴ*: ${data.fileSize}\n` +
                     `┃\n` +
-                    `┃ 💗 *Rimuru:* Ini file nya darling~ 📂\n` +
+                    `┃ 💗 *Yalena:* Ini file nya darling~ 📂\n` +
                     `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         }, { quoted: m })
         

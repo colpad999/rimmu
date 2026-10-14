@@ -8,7 +8,7 @@ const pluginConfig = {
   category: "tools",
   description: "Membuat beberapa akun Alight Motion Premium sekaligus (bulk)",
   usage: ".ambulk <jumlah> <prefix>",
-  example: ".ambulk 3 rimuru",
+  example: ".ambulk 3 yalena",
   isOwner: false,
   isPremium: false,
   isGroup: false,
@@ -46,7 +46,7 @@ async function handler(m, { sock }) {
       `└ \`${m.prefix || '.'}ambulk <jumlah> <prefix>\` (Dengan prefix)\n\n` +
       `Contoh:\n` +
       `└ \`${m.prefix || '.'}ambulk 3\` (Random)\n` +
-      `└ \`${m.prefix || '.'}ambulk 3 rimuru\` (Prefix rimuru)`
+      `└ \`${m.prefix || '.'}ambulk 3 yalena\` (Prefix yalena)`
     );
   }
 

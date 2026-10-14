@@ -1,6 +1,6 @@
 //
 
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 import mediafire from "../../src/scraper/mediafire.js";
 
 const pluginConfig = {

@@ -3,14 +3,14 @@
 /*
 By : ZenzzXD
 Canvas Fake Instagram Profile
-Source bahan : https://whatsapp.com/channel/RIMURU_CHANNEL
+Source bahan : https://whatsapp.com/channel/YALENA_CHANNEL
 */
 
 import { createCanvas, loadImage, GlobalFonts } from '@napi-rs/canvas';
 import fs from 'fs';
 import path from 'path';
 import axios from 'axios';
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const config = {
   name: "igprofilememe",

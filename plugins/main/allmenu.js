@@ -1,18 +1,18 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 import config from "../../config.js";
 import {
   getCommandsByCategory,
   getCategories,
-} from "../../src/lib/rimuru-plugins.js";
-import { getCasesByCategory } from "../../case/rimuru.js";
+} from "../../src/lib/yalena-plugins.js";
+import { getCasesByCategory } from "../../case/yalena.js";
 import { legacyAllMenuHandler, externalDefaultAllMenuHandler } from "./allmenu-variants.js";
 
 const pluginConfig = {
   name: "allmenu",
   category: "main",
-  description: "Menampilkan All Menu dengan tampilan Rimuru MD",
+  description: "Menampilkan All Menu dengan tampilan Yalena MD",
   usage: ".allmenu",
   example: ".allmenu",
   isOwner: false,
@@ -129,7 +129,7 @@ async function defaultAllMenuHandler(m, { sock, config: botConfig, db, uptime })
   for (const section of sections) total += section.commands.length;
 
   const pushName = m.pushName || "User";
-  const botName = botConfig.bot?.name || "Rimuru MD";
+  const botName = botConfig.bot?.name || "Yalena MD";
   const version = botConfig.bot?.version || "11.0.0";
   const runtime = typeof uptime === "function" ? await uptime() : "-";
   const mode = botMode === "md" ? (botConfig.mode?.public ? "🌐 Public" : "🔒 Private") : botMode;
@@ -139,7 +139,7 @@ async function defaultAllMenuHandler(m, { sock, config: botConfig, db, uptime })
   caption += `> ⎆  [ ${mono("Nama")} : ${mono(pushName)}\n`;
   caption += `> ⎆  [ ${mono("Role")} : ${mono(roleText(m))}\n`;
   caption += `> ⎆  [ ${mono("Mode")} : ${mono(mode)}\n`;
-  caption += `> ⎆  [ ${mono("Author")} : ${mono(botConfig.bot?.developer || "Anita Putri Azzahra")}\n`;
+  caption += `> ⎆  [ ${mono("Author")} : ${mono(botConfig.bot?.developer || "Colpad")}\n`;
   caption += `◣──────────❈\n\n`;
 
   caption += `◤───「 ${mono("INFO BOT")} 」──✦\n`;
@@ -158,7 +158,7 @@ async function defaultAllMenuHandler(m, { sock, config: botConfig, db, uptime })
   await sock.sendMessage(
     m.chat,
     {
-      image: { url: config.assets?.["rimuru-v8"] },
+      image: { url: config.assets?.["yalena-v8"] },
       caption,
       contextInfo: {
         forwardingScore: 999,

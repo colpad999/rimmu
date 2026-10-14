@@ -1,12 +1,12 @@
 //
 
 import config from "../../config.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import {
   addJadibotPremium,
   removeJadibotPremium,
   getJadibotPremiums,
-} from "../../src/lib/rimuru-jadibot-database.js";
+} from "../../src/lib/yalena-jadibot-database.js";
 const pluginConfig = {
   name: "addprem",
   category: "owner",

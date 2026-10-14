@@ -3,8 +3,8 @@
 import sharp from "sharp";
 import config from "../../config.js";
 import axios from "axios";
-import { generateWAMessageFromContent, proto } from "rimuru";
-import te from "../../src/lib/rimuru-error.js";
+import { generateWAMessageFromContent, proto } from "yalena";
+import te from "../../src/lib/yalena-error.js";
 
 const pluginConfig = {
   name: "idgrup",
@@ -119,8 +119,8 @@ async function handler(m, { sock }) {
       }
     } catch {}
 
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-    const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+    const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
 
     const infoText =
       `── .✦ 𝗚𝗥𝗢𝗨𝗣 𝗜𝗡𝗙𝗢 ✦. ── 𝜗ৎ\n\n` +
@@ -137,7 +137,7 @@ async function handler(m, { sock }) {
       `│  ✦ ᴊᴏɪɴ ᴍᴏᴅᴇ  : *${joinMode}*\n` +
       `│  ✦ ᴅᴇsᴋʀɪᴘsɪ  : ${descPreview}\n` +
       `╰──────────────⬣\n\n` +
-      `.☘︎ ݁˖ © ${config.bot?.name || "Rimuru-AI"}`;
+      `.☘︎ ݁˖ © ${config.bot?.name || "Yalena-AI"}`;
 
     const buttons = [
       {
@@ -176,7 +176,7 @@ async function handler(m, { sock }) {
                   text: infoText,
                 }),
                 footer: proto.Message.InteractiveMessage.Footer.fromObject({
-                  text: `© ${config.bot?.name || "Rimuru-AI"}`,
+                  text: `© ${config.bot?.name || "Yalena-AI"}`,
                 }),
                 header: proto.Message.InteractiveMessage.Header.fromObject({
                   hasMediaAttachment: !!headerMedia,
@@ -219,7 +219,7 @@ async function handler(m, { sock }) {
                   text: infoText,
                 }),
                 footer: proto.Message.InteractiveMessage.Footer.fromObject({
-                  text: `© ${config.bot?.name || "Rimuru-AI"}`,
+                  text: `© ${config.bot?.name || "Yalena-AI"}`,
                 }),
                 nativeFlowMessage:
                   proto.Message.InteractiveMessage.NativeFlowMessage.fromObject(

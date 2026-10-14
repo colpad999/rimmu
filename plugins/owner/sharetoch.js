@@ -1,6 +1,6 @@
 //
 
-import { RIMURU_CORE_CONFIG } from "../../config.js";
+import { YALENA_CORE_CONFIG } from "../../config.js";
 import config from '../../config.js';
 const pluginConfig = {
     name: "sharetoch",
@@ -17,7 +17,7 @@ async function handler(m, { sock }) {
     const quoted = m.quoted
     if (!quoted) return m.reply("Reply pesan yang mau dikirim.")
 
-    const CHANNEL_ID = RIMURU_CORE_CONFIG.saluran?.id
+    const CHANNEL_ID = YALENA_CORE_CONFIG.saluran?.id
     if (!CHANNEL_ID) {
         return m.reply("❌ ID Saluran tidak ditemukan di config!\n\n> Cek bagian `saluran.id` di config.js")
     }

@@ -2,28 +2,28 @@
 
 import config from "../config.js";
 import { isSelf } from "../config.js";
-import { generateWAMessageFromContent, prepareWAMessageMedia } from "rimuru";
-import { serialize, getCachedThumb } from "./lib/rimuru-serialize.js";
-import { saluranCtx } from "./lib/rimuru-context.js";
+import { generateWAMessageFromContent, prepareWAMessageMedia } from "yalena";
+import { serialize, getCachedThumb } from "./lib/yalena-serialize.js";
+import { saluranCtx } from "./lib/yalena-context.js";
 import {
   getPlugin,
   getPluginCount,
   getAllPlugins,
   pluginStore,
   getAllCommandNames,
-} from "./lib/rimuru-plugins.js";
+} from "./lib/yalena-plugins.js";
 import {
   findSimilarCommands,
   formatSuggestionMessage,
-} from "./lib/rimuru-similarity.js";
-import { getDatabase } from "./lib/rimuru-database.js";
+} from "./lib/yalena-similarity.js";
+import { getDatabase } from "./lib/yalena-database.js";
 import {
   formatUptime,
   createWaitMessage,
   createErrorMessage,
-} from "./lib/rimuru-formatter.js";
+} from "./lib/yalena-formatter.js";
 import { getUptime } from "./connection.js";
-import { logger, logMessage, c } from "./lib/rimuru-logger.js";
+import { logger, logMessage, c } from "./lib/yalena-logger.js";
 import {
   isLid,
   isLidConverted,
@@ -33,14 +33,14 @@ import {
   cacheParticipantLids,
   savePersistentCache,
   getLidCacheSize,
-} from "./lib/rimuru-lid.js";
-import { hasActiveSession, getSession } from "./lib/rimuru-game-data.js";
+} from "./lib/yalena-lid.js";
+import { hasActiveSession, getSession } from "./lib/yalena-game-data.js";
 import {
   levenshtein,
   formatAfkDuration,
   checkPermission,
   checkMode,
-} from "./lib/rimuru-middleware.js";
+} from "./lib/yalena-middleware.js";
 import {
   handleAntilink,
   handleAntilinkKick,
@@ -55,29 +55,29 @@ import {
   handleAntiHidetag,
   handleAntiViewOnce,
   handleAntiSwGc,
-} from "./lib/rimuru-group-protection.js";
+} from "./lib/yalena-group-protection.js";
 import {
   debounceMessage,
   getCachedUser,
   getCachedGroup,
   getCachedSetting,
-} from "./lib/rimuru-performance.js";
+} from "./lib/yalena-performance.js";
 import {
   isJadibotOwner,
   isJadibotPremium,
   loadJadibotDb,
-} from "./lib/rimuru-jadibot-database.js";
-import { getActiveJadibots } from "./lib/rimuru-jadibot-manager.js";
-import { handleCommand as handleCaseCommand } from "../case/rimuru.js";
+} from "./lib/yalena-jadibot-database.js";
+import { getActiveJadibots } from "./lib/yalena-jadibot-manager.js";
+import { handleCommand as handleCaseCommand } from "../case/yalena.js";
 import { RateLimiterMemory } from "rate-limiter-flexible";
-import { games as rimuruGames } from "./lib/rimuru-games.js";
+import { games as yalenaGames } from "./lib/yalena-games.js";
 import fs from "fs";
 import path from "path";
 import { exec } from "child_process";
 import axios from "axios";
-import * as timeHelper from "./lib/rimuru-time.js";
+import * as timeHelper from "./lib/yalena-time.js";
 import sharp from "sharp";
-import { getAssetBuffer } from "./lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "./lib/yalena-asset-manager.js";
 const safe = (fn) => {
   try {
     return fn();
@@ -129,7 +129,7 @@ try {
   FormData = (await import("form-data")).default || (await import("form-data"));
 } catch { }
 try {
-  levelHelper = await import("./lib/rimuru-level.js");
+  levelHelper = await import("./lib/yalena-level.js");
 } catch { }
 try {
   handleBuyerDone = (await import("../plugins/store/done.js")).handleBuyerDone;
@@ -236,18 +236,18 @@ try {
   sulapPlugin = await import("../plugins/fun/sulap.js");
 } catch { }
 try {
-  handleAutoAI = (await import("./lib/rimuru-auto-ai.js")).handleAutoAI;
+  handleAutoAI = (await import("./lib/yalena-auto-ai.js")).handleAutoAI;
 } catch { }
 try {
-  handleAutoDownload = (await import("./lib/rimuru-auto-download.js"))
+  handleAutoDownload = (await import("./lib/yalena-auto-download.js"))
     .handleAutoDownload;
 } catch { }
 try {
-  checkStickerCommand = (await import("./lib/rimuru-sticker-command.js"))
+  checkStickerCommand = (await import("./lib/yalena-sticker-command.js"))
     .checkStickerCommand;
 } catch { }
 try {
-  handleStickerReply = (await import("./lib/rimuru-sticker-reply.js"))
+  handleStickerReply = (await import("./lib/yalena-sticker-reply.js"))
     .handleStickerReply;
 } catch { }
 try {
@@ -306,7 +306,7 @@ let _smartTriggerThumb = undefined;
 async function getSmartTriggerThumb() {
   if (_smartTriggerThumb !== undefined) return _smartTriggerThumb;
   try {
-    _smartTriggerThumb = getAssetBuffer("rimuru2");
+    _smartTriggerThumb = getAssetBuffer("yalena2");
   } catch {
     _smartTriggerThumb = null;
   }
@@ -405,9 +405,9 @@ async function handleSmartTriggers(m, sock, db) {
     db.setting("smartTriggers") ?? config.features?.smartTriggers ?? false;
 
   try {
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-    const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
-    const botName = config.bot?.name || "Rimuru-AI";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+    const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
+    const botName = config.bot?.name || "Yalena-AI";
 
     let isAutoreplyEnabled = globalSmartTriggers;
 
@@ -1030,7 +1030,7 @@ async function messageHandler(msg, sock, options = {}) {
                 const commandArgs = words.slice(1).join(" ");
                 m.body = `${prefix}${bestMatch}${commandArgs ? " " + commandArgs : ""}`;
                 const { parseCommand } =
-                  await import("./lib/rimuru-serialize.js");
+                  await import("./lib/yalena-serialize.js");
                 const parsed = parseCommand(m.body, prefix);
                 m.isCommand = parsed.isCommand;
                 m.command = parsed.command;
@@ -1108,9 +1108,9 @@ async function messageHandler(msg, sock, options = {}) {
           const { default: path } = await import('path')
           const { default: os } = await import('os')
           const { promisify } = await import('util')
-          const { generateWAMessage, getBuffer, generateWAMessageFromContent, proto, generateMessageID } = await import('rimuru')
+          const { generateWAMessage, getBuffer, generateWAMessageFromContent, proto, generateMessageID } = await import('yalena')
           const { exec: childExec } = await import('child_process')
-          const { VERSION, Button, ButtonV2, Carousel, AIRich, } = await import('./lib/rimuru-builder.js')
+          const { VERSION, Button, ButtonV2, Carousel, AIRich, } = await import('./lib/yalena-builder.js')
           const exec = promisify(childExec)
           
           ${code}
@@ -1168,7 +1168,7 @@ async function messageHandler(msg, sock, options = {}) {
           const { default: fs } = await import('fs')
           const { default: path } = await import('path')
           const { default: os } = await import('os')
-          const { generateWAMessage, getBuffer, generateWAMessageFromContent, proto, generateMessageID } = await import('rimuru')
+          const { generateWAMessage, getBuffer, generateWAMessageFromContent, proto, generateMessageID } = await import('yalena')
 
           const result = await ${expr}
           if (result === undefined) return 'undefined'
@@ -1409,7 +1409,7 @@ async function messageHandler(msg, sock, options = {}) {
           if (stickerCmd) {
             const prefix = m.prefix || config.command?.prefix || ".";
             m.body = `${prefix}${stickerCmd}`;
-            const { parseCommand } = await import("./lib/rimuru-serialize.js");
+            const { parseCommand } = await import("./lib/yalena-serialize.js");
             const parsed = parseCommand(m.body, prefix);
             m.isCommand = parsed.isCommand;
             m.command = parsed.command;
@@ -1614,7 +1614,7 @@ async function messageHandler(msg, sock, options = {}) {
                 url: config.info.website,
                 title: "Command not found",
                 description: `Suggestions Command | ${config.bot.name}`,
-                jpegThumbnail: await sharp(getAssetBuffer("rimuru2", config.assets)).resize(300, 300).toBuffer(),
+                jpegThumbnail: await sharp(getAssetBuffer("yalena2", config.assets)).resize(300, 300).toBuffer(),
                 previewType: 1,
               },
               { quoted: m }
@@ -2039,9 +2039,9 @@ async function groupHandler(update, sock) {
         await sendGoodbyeMessage(sock, groupJid, participant, groupMeta);
       }
 
-      const saluranId = config.saluran?.id || "120363412350560864@newsletter";
+      const saluranId = config.saluran?.id || "120363380765405182@newsletter";
       const saluranName =
-        config.saluran?.name || config.bot?.name || "Rimuru-AI";
+        config.saluran?.name || config.bot?.name || "Yalena-AI";
 
       let groupPpUrl = null;
       try {
@@ -2052,8 +2052,8 @@ async function groupHandler(update, sock) {
         promote: {
           notifKey: "notifPromote",
           imgKey: "_promoteImg",
-          imgPath: config.assets["rimuru-promote"],
-          assetKey: "rimuru-promote",
+          imgPath: config.assets["yalena-promote"],
+          assetKey: "yalena-promote",
           emoji: "🎉",
           label: "PROMOTE",
           text: (p, a) =>
@@ -2062,8 +2062,8 @@ async function groupHandler(update, sock) {
         demote: {
           notifKey: "notifDemote",
           imgKey: "_demoteImg",
-          imgPath: config.assets["rimuru-demote"],
-          assetKey: "rimuru-demote",
+          imgPath: config.assets["yalena-demote"],
+          assetKey: "yalena-demote",
           emoji: "📉",
           label: "DEMOTE",
           text: (p, a) =>
@@ -2131,15 +2131,15 @@ async function groupHandler(update, sock) {
                 messageContextInfo: {},
                 interactiveMessage: {
                   header: { title: "", subtitle: "", hasMediaAttachment: true, imageMessage: media4.imageMessage },
-                  footer: { text: config.bot?.name || "Rimuru-AI" },
+                  footer: { text: config.bot?.name || "Yalena-AI" },
                   body: { text: rankCfg.text(pNum, aNum) },
                   contextInfo: {
                     mentionedJid: mentions,
                     isForwarded: true,
                     forwardingScore: 9999,
                     forwardedNewsletterMessageInfo: {
-                      newsletterJid: config.saluran?.id || "120363412350560864@newsletter",
-                      newsletterName: config.saluran?.name || config.bot?.name || "Rimuru-AI",
+                      newsletterJid: config.saluran?.id || "120363380765405182@newsletter",
+                      newsletterName: config.saluran?.name || config.bot?.name || "Yalena-AI",
                       serverMessageId: 127,
                     },
                   },
@@ -2151,7 +2151,7 @@ async function groupHandler(update, sock) {
                         expiration_time: Date.now() + 1000000
                       },
                       bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2], list_title: "Opsi", button_title: "🍙 Lihat Opsi" },
-                      tap_target_configuration: { title: " X ", description: "bomboclard", canonical_url: "https://rimuru.site", domain: "shop.example.com", button_index: 0 },
+                      tap_target_configuration: { title: " X ", description: "bomboclard", canonical_url: "https://yalena.site", domain: "shop.example.com", button_index: 0 },
                     }),
                     buttons: action === "promote" ? promoteButtons : demoteButtons
                   }

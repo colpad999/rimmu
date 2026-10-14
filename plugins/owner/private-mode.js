@@ -5,8 +5,8 @@ import config from '../../config.js'
  * @file plugins/owner/self.js
  * @description Plugin untuk mengaktifkan mode self (hanya owner & bot)
  */
-import { getDatabase } from '../../src/lib/rimuru-database.js'
-import te from '../../src/lib/rimuru-error.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'private-mode',
     category: 'owner',

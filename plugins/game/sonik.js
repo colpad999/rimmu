@@ -30,7 +30,7 @@ canvas{width:100%;display:block;touch-action:none}
 <div class="gw"><canvas id="cv" width="404" height="300"></canvas></div>
 <div class="pads"><button class="pd" id="boostB">⚡ BOOST</button><button class="pd" id="jumpB">⤒ JUMP</button></div>
 <div class="hint">Lompat saat garis merah LASER kedip cepat! · kena musuh = ring turun 10% saja · tiap 50 ring = BOSS! · 🔊 = sound</div>
-<div class="credit">Fitur by: Anita Putri Azzahra Anita Putri Azzahra · Saluran: <a href="https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P" target="_blank" rel="noopener noreferrer">WhatsApp Channel</a></div>
+<div class="credit">Fitur by: Colpad Colpad · Saluran: <a href="https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y" target="_blank" rel="noopener noreferrer">WhatsApp Channel</a></div>
 </div>
 <script>
 window.onerror=function(m,s,l){var e=document.getElementById('hint');if(e){e.textContent='⚠ '+m+' @'+l;e.style.color='#ff7a8a'}};
@@ -945,9 +945,9 @@ update();draw();requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
 })();
-\n/* RIMURU LIGHT SFX: procedural WebAudio, no external audio asset */
+\n/* YALENA LIGHT SFX: procedural WebAudio, no external audio asset */
 (function(){
-  if (window.__RIMURU_LIGHT_SFX__) return;
+  if (window.__YALENA_LIGHT_SFX__) return;
   var ac=null, master=null, last=0;
   function init(){
     try{
@@ -987,7 +987,7 @@ requestAnimationFrame(loop);
     win:function(){ if(cool(60)) { tone(523,0.08,'sine',0.06); tone(659,0.08,'sine',0.05,0.07); tone(784,0.12,'sine',0.045,0.14); } },
     over:function(){ if(cool(60)) { tone(392,0.09,'sawtooth',0.055); tone(294,0.12,'sawtooth',0.04,0.08); } }
   };
-  window.__RIMURU_LIGHT_SFX__=api;
+  window.__YALENA_LIGHT_SFX__=api;
 
   function num(el){
     var s=(el.textContent||'').replace(/,/g,'').match(/-?\d+(?:\.\d+)?/);

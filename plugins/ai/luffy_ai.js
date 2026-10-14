@@ -1,7 +1,7 @@
 //
 
 import { UnlimitedAI } from '../../src/scraper/unlimitedai.js';
-import te from '../../src/lib/rimuru-error.js';
+import te from '../../src/lib/yalena-error.js';
 
 const pluginConfig = {
   name: "luffyai",
@@ -41,7 +41,7 @@ async function handler(m, { sock }) {
       `┃   ${m.prefix}luffyai Halo Luffy!\n` +
       `┃   ${m.prefix}luffyai Mau makan daging?\n` +
       `┃\n` +
-      `┃ 💗 *Rimuru:* Mau ngobrol sama Luffy darling~?\n` +
+      `┃ 💗 *Yalena:* Mau ngobrol sama Luffy darling~?\n` +
       `╰━━━━━━━━━━━━━━━━━━━━━⬣`
     );
   }

@@ -1,6 +1,6 @@
 //
 
-import { getAllPlugins } from '../../src/lib/rimuru-plugins.js'
+import { getAllPlugins } from '../../src/lib/yalena-plugins.js'
 import config from '../../config.js'
 const pluginConfig = {
     name: 'benefitprem',

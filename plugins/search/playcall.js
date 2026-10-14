@@ -6,7 +6,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import config from "../../config.js";
-import { VoipClient } from "rimuru";
+import { VoipClient } from "yalena";
 
 const pluginConfig = {
   name: "playcall",

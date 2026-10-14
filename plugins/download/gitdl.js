@@ -3,7 +3,7 @@
 import config from '../../config.js'
 import path from 'path'
 import fs from 'fs'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'gitdl',
     category: 'download',

@@ -22,12 +22,12 @@ async function handler(m) {
   cancelJadibot.add(userJid)
 
   await m.reply(
-`🌸 *RIMURU NOTICE*
+`🌸 *YALENA NOTICE*
 
 Baik darling~
 
 Proses *jadibot* sudah
-Rimuru batalkan ya 💕
+Yalena batalkan ya 💕
 
 Kalau ingin mencoba lagi
 silakan ketik *.jadibot* ✨`

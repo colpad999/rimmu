@@ -9,7 +9,7 @@ const pluginConfig = {
     category: 'canvas',
     description: 'Bikin fake tiket pesawat (buat konten/gaguan doang)',
     usage: '.faketiket <dari> | <tujuan> | <nama>',
-    example: '.faketiket Jakarta | Tokyo | Rimuru',
+    example: '.faketiket Jakarta | Tokyo | Yalena',
     isOwner: false,
     isPremium: false,
     isGroup: false,
@@ -81,9 +81,9 @@ async function handler(m, { sock }) {
             `┃\n` +
             `┃ ✦ *Contoh*\n` +
             `┃\n` +
-            `┃   ${m.prefix}faketiket Jakarta | Tokyo | Rimuru\n` +
+            `┃   ${m.prefix}faketiket Jakarta | Tokyo | Yalena\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Mau kemana darling~?\n` +
+            `┃ 💗 *Yalena:* Mau kemana darling~?\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
     }
@@ -94,7 +94,7 @@ async function handler(m, { sock }) {
     const nama = parts[2] || 'Darling'
     
     m.react('💕')
-    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Rimuru:* Lagi bikin tiket pesawat darling~`)
+    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Yalena:* Lagi bikin tiket pesawat darling~`)
     
     try {
         const imageBuffer = await generateFakeTiket(dari, tujuan, nama)
@@ -107,7 +107,7 @@ async function handler(m, { sock }) {
                     `┃ ✈️ *ʀᴜᴛᴇ*: ${dari} → ${tujuan}\n` +
                     `┃ 👤 *ɴᴀᴍᴀ*: ${nama}\n` +
                     `┃\n` +
-                    `┃ 💗 *Rimuru:* Ini tiketnya darling~ selamat jalan-jalan! 🗿\n` +
+                    `┃ 💗 *Yalena:* Ini tiketnya darling~ selamat jalan-jalan! 🗿\n` +
                     `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         }, { quoted: m })
         

@@ -1,7 +1,7 @@
 //
 
-import { getParticipantJid } from '../../src/lib/rimuru-lid.js'
-import te from '../../src/lib/rimuru-error.js'
+import { getParticipantJid } from '../../src/lib/yalena-lid.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'jadiadmin',
     category: 'group',

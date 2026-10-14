@@ -4,7 +4,7 @@
 ‎✧ Name   : quotes windows 
 ‎✧ Creator   : Rin imup lucu🤤
 ‎✧ Category : Canvas
-‎✧ Link fitur : https://whatsapp.com/channel/RIMURU_CHANNEL
+‎✧ Link fitur : https://whatsapp.com/channel/YALENA_CHANNEL
 ‎✧ *Note* : Jangan hapus wm ya ,btw ini masih bablas text nya tinggal sesuaikan aja sendiri 🤭
 ‎**/
 

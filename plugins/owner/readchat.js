@@ -1,7 +1,7 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
 import config from "../../config.js";
 
 const pluginConfig = {

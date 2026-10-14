@@ -37,9 +37,9 @@ function buildCookie(deviceId, chatId, cookies = {}) {
 }
 
 const CHARACTERS = {
-  "rimuru-ai": {
-    name: "Rimuru AI",
-    prompt: `Kamu adalah Rimuru AI, asisten WhatsApp bot yang ramah, cerdas, dan responsif. Kamu menjawab dalam bahasa Indonesia dengan gaya santai tapi tetap informatif. Kamu ahli dalam teknologi, programming, dan hal-hal umum. Jawab dengan singkat, jelas, dan natural. Gunakan emoji secukupnya untuk membuat percakapan lebih hidup.`,
+  "yalena-ai": {
+    name: "Yalena AI",
+    prompt: `Kamu adalah Yalena AI, asisten WhatsApp bot yang ramah, cerdas, dan responsif. Kamu menjawab dalam bahasa Indonesia dengan gaya santai tapi tetap informatif. Kamu ahli dalam teknologi, programming, dan hal-hal umum. Jawab dengan singkat, jelas, dan natural. Gunakan emoji secukupnya untuk membuat percakapan lebih hidup.`,
   },
   "kobo-ai": {
     name: "Kobo Kanaeru",
@@ -59,10 +59,10 @@ const CHARACTERS = {
   },
 };
 
-async function UnlimitedAI(prompt, character = "rimuru-ai") {
+async function UnlimitedAI(prompt, character = "yalena-ai") {
   const chatId = crypto.randomUUID();
   const deviceId = crypto.randomUUID();
-  const char = CHARACTERS[character] || CHARACTERS["rimuru-ai"];
+  const char = CHARACTERS[character] || CHARACTERS["yalena-ai"];
 
   const systemPrompt = `${char.prompt}\n\nPertanyaan user: ${prompt}`;
 

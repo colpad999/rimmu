@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
             `┃   idr / rp → Rupiah ke Yen\n` +
             `┃   jpy / yen → Yen ke Rupiah\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Mau konversi uang Jepang darling~?\n` +
+            `┃ 💗 *Yalena:* Mau konversi uang Jepang darling~?\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
     }
@@ -88,7 +88,7 @@ async function handler(m, { sock }) {
     }
     
     m.react('💴')
-    await m.reply(`⏳ *ᴍᴇɴɢʜɪᴛᴜɴɢ ᴋᴜʀꜱ...*\n\n💗 *Rimuru:* Tunggu sebentar darling~ 🧮`)
+    await m.reply(`⏳ *ᴍᴇɴɢʜɪᴛᴜɴɢ ᴋᴜʀꜱ...*\n\n💗 *Yalena:* Tunggu sebentar darling~ 🧮`)
     
     try {
         const kurs = await getExchangeRate()
@@ -144,7 +144,7 @@ async function handler(m, { sock }) {
             `┃ 🗾 *Fakta Jepang:*\n` +
             `┃    Uang koin Yen ada yang berlubang! (¥5 & ¥50)\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Ini hasilnya darling~ 🇯🇵\n` +
+            `┃ 💗 *Yalena:* Ini hasilnya darling~ 🇯🇵\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
         

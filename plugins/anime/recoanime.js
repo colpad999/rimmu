@@ -17,7 +17,7 @@ const pluginConfig = {
     isEnabled: true
 }
 
-// 💗 RIMURU NEON COLORS - SAME AS TOTALFITUR
+// 💗 YALENA NEON COLORS - SAME AS TOTALFITUR
 const COLORS = [
     '#ff2a6d', '#ff69b4', '#ff1493', '#ff4da6',
     '#ff6b9d', '#ff3f6c', '#ff85c1', '#ff1e56',
@@ -123,7 +123,7 @@ async function getTopAnime(limit = 5) {
         const response = await axios.get(`${JIKAN_API}/top/anime`, {
             params: { limit, filter: 'bypopularity' },
             timeout: 15000,
-            headers: { 'User-Agent': 'Rimuru-Bot/2.0' }
+            headers: { 'User-Agent': 'Yalena-Bot/2.0' }
         })
 
         const animes = response.data.data.map(anime => ({
@@ -162,7 +162,7 @@ async function getAnimeByGenre(genreName, limit = 5) {
         const response = await axios.get(`${JIKAN_API}/anime`, {
             params: { genres: genreId, order_by: 'score', sort: 'desc', limit, sfw: true },
             timeout: 15000,
-            headers: { 'User-Agent': 'Rimuru-Bot/2.0' }
+            headers: { 'User-Agent': 'Yalena-Bot/2.0' }
         })
 
         const animes = response.data.data.map(anime => ({
@@ -248,11 +248,11 @@ async function renderRecommendationCard(animes, type, genre = null) {
     ctx.fillStyle = '#ff2a6d'
     ctx.font = 'bold 30px "Segoe UI"'
     ctx.textAlign = 'left'
-    ctx.fillText('♡ RIMURU', 30, 48)
+    ctx.fillText('♡ YALENA', 30, 48)
     
     ctx.fillStyle = '#ff69b4'
     ctx.font = 'bold 30px "Segoe UI"'
-    ctx.fillText(' RECOMMENDATION', 30 + ctx.measureText('♡ RIMURU').width, 48)
+    ctx.fillText(' RECOMMENDATION', 30 + ctx.measureText('♡ YALENA').width, 48)
     ctx.shadowBlur = 0
 
     ctx.fillStyle = '#c084fc'
@@ -430,7 +430,7 @@ async function renderRecommendationCard(animes, type, genre = null) {
     ctx.font = '10px "Segoe UI"'
     ctx.fillText(`${type === 'top' ? 'Top Anime' : genre ? genre.toUpperCase() : 'Random'} Recommendation`, 250, bottomY + 45)
 
-    // Rimuru message
+    // Yalena message
     ctx.fillStyle = '#ff69b4'
     ctx.font = 'italic 10px "Segoe UI"'
     ctx.textAlign = 'right'
@@ -441,13 +441,13 @@ async function renderRecommendationCard(animes, type, genre = null) {
     ctx.fillStyle = '#ff2a6d'
     ctx.font = 'bold 10px "Segoe UI"'
     ctx.textAlign = 'center'
-    ctx.fillText('♡ RIMURU AI | ANIME RECOMMENDATION ♡', W / 2, H - 12)
+    ctx.fillText('♡ YALENA AI | ANIME RECOMMENDATION ♡', W / 2, H - 12)
     
     return canvas.toBuffer('image/png')
 }
 
 function formatCaption(animes, type, genre = null) {
-    let caption = `💕 *RIMURU RECOMMENDATION* 💕\n\n`
+    let caption = `💕 *YALENA RECOMMENDATION* 💕\n\n`
     
     if (type === 'top') {
         caption += `🏆 *TOP ANIME BY POPULARITY* 🏆\n\n`
@@ -464,7 +464,7 @@ function formatCaption(animes, type, genre = null) {
         caption += `   📖 ${anime.synopsis.substring(0, 100)}${anime.synopsis.length > 100 ? '...' : ''}\n\n`
     }
     
-    caption += `💕 *Rimuru:* ${type === 'top' ? 'Ini anime favorit banyak orang darling~' : `Wah suka anime ${genre}? Rekomendasi ini buat kamu darling~`} 🦋`
+    caption += `💕 *Yalena:* ${type === 'top' ? 'Ini anime favorit banyak orang darling~' : `Wah suka anime ${genre}? Rekomendasi ini buat kamu darling~`} 🦋`
     
     return caption
 }
@@ -478,28 +478,28 @@ async function handler(m, { sock }) {
         let result
         
         if (query === 'top' || query === 'popular') {
-            await m.reply(`🦋 *Rimuru:* Lagi ambil daftar top anime... tunggu sebentar ya darling~ ⭐`)
+            await m.reply(`🦋 *Yalena:* Lagi ambil daftar top anime... tunggu sebentar ya darling~ ⭐`)
             result = await getTopAnime(5)
         } else if (query && GENRES[query]) {
             const symbol = GENRE_SYMBOL[query] || '🎭'
-            await m.reply(`🦋 *Rimuru:* Lagi cari rekomendasi anime *${query}*... tunggu sebentar ya darling~ ${symbol}`)
+            await m.reply(`🦋 *Yalena:* Lagi cari rekomendasi anime *${query}*... tunggu sebentar ya darling~ ${symbol}`)
             result = await getAnimeByGenre(query, 5)
         } else if (query) {
             const genreList = Object.keys(GENRES).join(', ')
             return m.reply(
-                `🎭 *RIMURU ANIME RECOMMENDATION* 🎭\n\n` +
+                `🎭 *YALENA ANIME RECOMMENDATION* 🎭\n\n` +
                 `📌 *Genre yang tersedia:*\n${genreList}\n\n` +
                 `📌 *Contoh:*\n` +
                 `• ${m.prefix}animereco action\n` +
                 `• ${m.prefix}animereco romance\n` +
                 `• ${m.prefix}animereco top\n` +
                 `• ${m.prefix}animereco (tanpa genre = random)\n\n` +
-                `💕 *Rimuru:* Mau rekomendasi anime genre apa darling~? 🦋`
+                `💕 *Yalena:* Mau rekomendasi anime genre apa darling~? 🦋`
             )
         } else {
             const genreKeys = Object.keys(GENRES)
             const randomGenre = genreKeys[Math.floor(Math.random() * genreKeys.length)]
-            await m.reply(`🦋 *Rimuru:* Lagi cari rekomendasi anime random... tunggu sebentar ya darling~ 🎲`)
+            await m.reply(`🦋 *Yalena:* Lagi cari rekomendasi anime random... tunggu sebentar ya darling~ 🎲`)
             result = await getAnimeByGenre(randomGenre, 5)
         }
         

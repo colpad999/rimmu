@@ -1,10 +1,10 @@
 //
 
-import { getDatabase } from '../../src/lib/rimuru-database.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
 import config from '../../config.js';
 import fs from 'fs';
 import path from 'path';
-import { getAssetBuffer } from '../../src/lib/rimuru-asset-manager.js';
+import { getAssetBuffer } from '../../src/lib/yalena-asset-manager.js';
 
 const pluginConfig = {
     name: ['autopromo', 'promosi'],
@@ -14,8 +14,8 @@ const pluginConfig = {
     isOwner: true
 };
 
-const CHANNEL_URL = config.saluran?.link || 'https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P';
-const IMAGE_PATH = config.assets?.rimuru2;
+const CHANNEL_URL = config.saluran?.link || 'https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y';
+const IMAGE_PATH = config.assets?.yalena2;
 
 const blacklist = []; // Bisa ditambah ID grup yang gak mau dipromosi
 
@@ -65,7 +65,7 @@ async function handler(m, { sock }) {
     const status = db.setting('autoPromo') ? '✅ Aktif' : '❌ Off';
 
     return m.reply(
-`📢 *AUTO PROMO RIMURU*
+`📢 *AUTO PROMO YALENA*
 
 Status : ${status}
 Delay : 4 jam
@@ -90,7 +90,7 @@ async function sendPromo(sock, isTest = false) {
     }
 
     // Validasi gambar
-    const imageUrl = config.assets?.rimuru2;
+    const imageUrl = config.assets?.yalena2;
     if (!imageUrl) {
         console.log('[AUTO PROMO] ❌ Gambar tidak ditemukan:', IMAGE_PATH);
         return false;
@@ -161,7 +161,7 @@ async function sendPromo(sock, isTest = false) {
 `╭━━━〔 💌 HEY DARLING 〕━━━⬣
 ┃ Hai kamu yang lagi scroll 👀
 ┃
-┃ Join saluran Rimuru yuk 💕
+┃ Join saluran Yalena yuk 💕
 ┃ biar selalu dapet update terbaru
 ┃
 ┃ ✦ Info bot tiap hari
@@ -205,7 +205,7 @@ async function sendPromo(sock, isTest = false) {
             // Opsi 1: Pakai sendMessage biasa dengan buttons (lebih universal)
             await sock.sendMessage(groupId, {
                 image: { url: imageUrl },
-                caption: caption + '\n\n© RIMURU AI',
+                caption: caption + '\n\n© YALENA AI',
                 buttons: [
                     { buttonId: '.menu', buttonText: { displayText: '📋 Menu Bot' }, type: 1 },
                     { buttonId: '.owner', buttonText: { displayText: '👑 Owner Bot' }, type: 1 },
@@ -224,7 +224,7 @@ async function sendPromo(sock, isTest = false) {
             try {
                 await sock.sendMessage(groupId, {
                     image: { url: imageUrl },
-                    caption: caption + '\n\n© RIMURU AI\n\n📢 Join: ' + CHANNEL_URL
+                    caption: caption + '\n\n© YALENA AI\n\n📢 Join: ' + CHANNEL_URL
                 });
                 console.log(`[AUTO PROMO] ✅ terkirim (no buttons) ke ${groupId}`);
                 successCount++;

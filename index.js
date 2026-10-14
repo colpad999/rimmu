@@ -11,22 +11,22 @@ import {
   groupSettingsHandler,
   handleAntiRemoveFromUpsert,
 } from "./src/handler.js";
-import { loadPlugins, pluginStore } from "./src/lib/rimuru-plugins.js";
-import { initDatabase, getDatabase } from "./src/lib/rimuru-database.js";
+import { loadPlugins, pluginStore } from "./src/lib/yalena-plugins.js";
+import { initDatabase, getDatabase } from "./src/lib/yalena-database.js";
 import {
   initScheduler,
   loadScheduledMessages,
   startGroupScheduleChecker,
   startSewaChecker,
-} from "./src/lib/rimuru-scheduler.js";
-import { handleAntiTagSW } from "./src/lib/rimuru-group-protection.js";
-import { initSholatScheduler } from "./src/lib/rimuru-sholat-scheduler.js";
-import { initNotifScheduler } from "./src/lib/rimuru-notif-scheduler.js";
-import { initAutoJpmScheduler } from "./src/lib/rimuru-auto-jpm.js";
-import { startMemoryMonitor } from "./src/lib/rimuru-memory-monitor.js";
-import { startTempCleaner } from "./src/lib/rimuru-temp-cleaner.js";
-import { startDailyPruner } from "./src/lib/rimuru-data-pruner.js";
-import { preloadAssets } from "./src/lib/rimuru-asset-manager.js";
+} from "./src/lib/yalena-scheduler.js";
+import { handleAntiTagSW } from "./src/lib/yalena-group-protection.js";
+import { initSholatScheduler } from "./src/lib/yalena-sholat-scheduler.js";
+import { initNotifScheduler } from "./src/lib/yalena-notif-scheduler.js";
+import { initAutoJpmScheduler } from "./src/lib/yalena-auto-jpm.js";
+import { startMemoryMonitor } from "./src/lib/yalena-memory-monitor.js";
+import { startTempCleaner } from "./src/lib/yalena-temp-cleaner.js";
+import { startDailyPruner } from "./src/lib/yalena-data-pruner.js";
+import { preloadAssets } from "./src/lib/yalena-asset-manager.js";
 import {
   logger,
   c,
@@ -35,9 +35,9 @@ import {
   logConnection,
   logErrorBox,
   divider,
-} from "./src/lib/rimuru-logger.js";
+} from "./src/lib/yalena-logger.js";
 
-await import("./src/lib/rimuru-agent.js")
+await import("./src/lib/yalena-agent.js")
   .then((m) => m.initializeAgent())
   .catch(() => { });
 
@@ -113,7 +113,7 @@ function startDevWatcher(pluginsPath) {
         if (!fs.existsSync(fullPath)) {
           fileStatCache.delete(fullPath);
           const pluginName = path.basename(filename, ".js");
-          const { unloadPlugin } = await import("./src/lib/rimuru-plugins.js");
+          const { unloadPlugin } = await import("./src/lib/yalena-plugins.js");
           const result = unloadPlugin(pluginName);
           if (result.success) logger.warn("plugin", `removed ${filename}`);
           return;
@@ -134,7 +134,7 @@ function startDevWatcher(pluginsPath) {
           });
 
           const { hotReloadPlugin } =
-            await import("./src/lib/rimuru-plugins.js");
+            await import("./src/lib/yalena-plugins.js");
           const result = await hotReloadPlugin(fullPath);
           if (!result.success) {
             logger.error(
@@ -243,7 +243,7 @@ function setupAntiCrash() {
 
 async function main() {
   await playBootSequence({
-    name: config.bot?.name || "Rimuru-AI",
+    name: config.bot?.name || "Yalena-AI",
     version: config.bot?.version || "1.0.0",
     developer: config.bot?.developer || "Developer",
     mode: config.mode || "public",
@@ -374,13 +374,13 @@ async function main() {
         } catch { }
         try {
           const { startOtpPoller: _startOtp } =
-            await import("./src/lib/rimuru-otp-poller.js");
+            await import("./src/lib/yalena-otp-poller.js");
           _startOtp(sock);
         } catch { }
 
         try {
           const { getAllJadibotSessions, restartJadibotSession } =
-            await import("./src/lib/rimuru-jadibot-manager.js");
+            await import("./src/lib/yalena-jadibot-manager.js");
           const sessions = getAllJadibotSessions();
           if (sessions.length > 0) {
             logger.info("JADIBOT", `Restoring ${sessions.length} session(s)`);

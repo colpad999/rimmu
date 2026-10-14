@@ -1873,7 +1873,7 @@ export async function balapGameHandler(m, sock) {
               submessages: [
                 {
                   messageType: 2,
-                  messageText: "🏎️ Turbo Race 2.5D • Fitur By: Anita Putri Azzahra",
+                  messageText: "🏎️ Turbo Race 2.5D • Fitur By: Colpad",
                 },
               ],
               unifiedResponse: {

@@ -18,12 +18,12 @@ const pluginConfig = {
     isEnabled: true
 }
 
-// Warna-warni kaya pelangi tapi tetap tema Rimuru
+// Warna-warni kaya pelangi tapi tetap tema Yalena
 const THEME = {
     bg: '#0a050f',           // dark purple background
     bgGradient2: '#1a0b2e',  // ungu tua
     bgGradient3: '#0f0a1a',  // deep purple
-    primary: '#ff2a6d',      // hot pink (Rimuru signature)
+    primary: '#ff2a6d',      // hot pink (Yalena signature)
     secondary: '#ff69b4',    // pink
     tertiary: '#b9266b',     // dark pink
     blue: '#3b82f6',         // biru cerah
@@ -58,7 +58,7 @@ async function searchAnime(query) {
         const searchRes = await axios.get(`${JIKAN_API}/anime`, {
             params: { q: query, limit: 1, sfw: true },
             timeout: 10000,
-            headers: { 'User-Agent': 'Rimuru-Bot/1.0' }
+            headers: { 'User-Agent': 'Yalena-Bot/1.0' }
         })
 
         if (!searchRes.data.data || searchRes.data.data.length === 0) {
@@ -193,7 +193,7 @@ async function renderTrailerCard(anime, trailer) {
     ctx.textAlign = 'center'
     ctx.shadowColor = THEME.glow
     ctx.shadowBlur = 15
-    ctx.fillText('≫ RIMURU ANIME TRAILER ≪', w/2, 42)
+    ctx.fillText('≫ YALENA ANIME TRAILER ≪', w/2, 42)
     ctx.shadowBlur = 0
 
     // Garis dekorasi
@@ -326,7 +326,7 @@ async function renderTrailerCard(anime, trailer) {
     ctx.fillStyle = THEME.magenta
     ctx.font = 'bold 8px "Segoe UI"'
     ctx.textAlign = 'center'
-    ctx.fillText('∼ RIMURU AI | ANIME TRAILER ∼', w/2, 500)
+    ctx.fillText('∼ YALENA AI | ANIME TRAILER ∼', w/2, 500)
     
     ctx.fillStyle = THEME.blue
     ctx.font = '7px "Segoe UI"'
@@ -351,7 +351,7 @@ function roundRect(ctx, x, y, w, h, r) {
 }
 
 function formatCaption(anime, trailer) {
-    let caption = `🎬 *RIMURU ANIME TRAILER* 🎬\n\n`
+    let caption = `🎬 *YALENA ANIME TRAILER* 🎬\n\n`
     caption += `📺 *${anime.title}*\n`
     if (anime.titleEnglish && anime.titleEnglish !== anime.title) caption += `📖 *English:* ${anime.titleEnglish}\n`
     caption += `\n`
@@ -368,7 +368,7 @@ function formatCaption(anime, trailer) {
     caption += `\n`
     caption += `🔗 *Link:* ${trailer.url}\n`
     caption += `\n`
-    caption += `💕 *Rimuru:* ${['Ayo nonton trailernya darling~', 'Keren banget PV-nya!', 'Anime ini seru nih~', 'Darling mau nonton anime ini?', 'Rimuru sayang banget sama kamu~'][Math.floor(Math.random() * 5)]} 🦋`
+    caption += `💕 *Yalena:* ${['Ayo nonton trailernya darling~', 'Keren banget PV-nya!', 'Anime ini seru nih~', 'Darling mau nonton anime ini?', 'Yalena sayang banget sama kamu~'][Math.floor(Math.random() * 5)]} 🦋`
     return caption
 }
 
@@ -377,20 +377,20 @@ async function handler(m, { sock }) {
     
     if (!query) {
         return m.reply(
-            `🎬 *RIMURU ANIME TRAILER* 🎬\n\n` +
+            `🎬 *YALENA ANIME TRAILER* 🎬\n\n` +
             `📌 *Cara pakai:*\n• ${m.prefix}animetrailer <judul anime>\n\n` +
             `📌 *Contoh:*\n` +
             `• ${m.prefix}animetrailer jujutsu kaisen\n` +
             `• ${m.prefix}animetrailer chainsaw man\n` +
             `• ${m.prefix}animetrailer one piece\n\n` +
-            `💕 *Rimuru:* Mau nonton trailer anime apa darling~? 🎥`
+            `💕 *Yalena:* Mau nonton trailer anime apa darling~? 🎥`
         )
     }
 
     await m.react('🎬')
     
     try {
-        await m.reply(`🦋 *Rimuru:* Lagi nyari trailer *${query}*... tunggu sebentar ya darling~ 🎥`)
+        await m.reply(`🦋 *Yalena:* Lagi nyari trailer *${query}*... tunggu sebentar ya darling~ 🎥`)
         
         const animeResult = await searchAnime(query)
         if (!animeResult.success) {

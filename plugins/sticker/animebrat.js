@@ -2,8 +2,8 @@
 
 import axios from 'axios'
 import config from '../../config.js'
-import { f } from '../../src/lib/rimuru-http.js'
-import te from '../../src/lib/rimuru-error.js'
+import { f } from '../../src/lib/yalena-http.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'animebrat',
     category: 'sticker',

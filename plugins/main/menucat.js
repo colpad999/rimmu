@@ -1,8 +1,8 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
-import { getCommandsByCategory, getCategories } from "../../src/lib/rimuru-plugins.js";
-import { getCasesByCategory } from "../../case/rimuru.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
+import { getCommandsByCategory, getCategories } from "../../src/lib/yalena-plugins.js";
+import { getCasesByCategory } from "../../case/yalena.js";
 import config from "../../config.js";
 
 const pluginConfig = {
@@ -129,7 +129,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
   if (!commands.length) return m.reply("❌ Tidak ada command pada kategori ini atau kategori tersebut tidak bisa diakses.");
 
   const pushName = m.pushName || "User";
-  const botName = botConfig.bot?.name || "Rimuru MD";
+  const botName = botConfig.bot?.name || "Yalena MD";
   const version = botConfig.bot?.version || "11.0.0";
   const runtime = typeof uptime === "function" ? await uptime() : "-";
   const mode = m.isGroup ? ((db.getGroup(m.chat) || {}).botMode || "md") : "md";
@@ -140,7 +140,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
   caption += `> ⎆  [ ${mono("Nama")} : ${mono(pushName)}\n`;
   caption += `> ⎆  [ ${mono("Role")} : ${mono(roleText(m))}\n`;
   caption += `> ⎆  [ ${mono("Mode")} : ${mono(mode)}\n`;
-  caption += `> ⎆  [ ${mono("Author")} : ${mono(botConfig.bot?.developer || "Anita Putri Azzahra")}\n`;
+  caption += `> ⎆  [ ${mono("Author")} : ${mono(botConfig.bot?.developer || "Colpad")}\n`;
   caption += `◣──────────❈\n\n`;
 
   caption += `◤───「 ${mono("INFO BOT")} 」──✦\n`;
@@ -155,7 +155,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
   await sock.sendMessage(
     m.chat,
     {
-      image: { url: config.assets?.["rimuru-v8"] },
+      image: { url: config.assets?.["yalena-v8"] },
       caption,
       contextInfo: { forwardingScore: 999, isForwarded: true },
     },

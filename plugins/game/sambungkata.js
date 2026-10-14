@@ -2,14 +2,14 @@
 
 import fs from 'fs';
 import path from 'path';
-import { getDatabase } from '../../src/lib/rimuru-database.js';
-import { addExpWithLevelCheck } from '../../src/lib/rimuru-level.js';
-import { getRandomReward, isSurrender } from '../../src/lib/rimuru-game-data.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
+import { addExpWithLevelCheck } from '../../src/lib/yalena-level.js';
+import { getRandomReward, isSurrender } from '../../src/lib/yalena-game-data.js';
 import {
     getGameContextInfo,
     getWinnerContextInfo,
     checkFastAnswer
-} from '../../src/lib/rimuru-context.js';
+} from '../../src/lib/yalena-context.js';
 const aiJalurKamus = path.join(process.cwd(), 'src/data/kbbi.json');
 let aiIsiKamus = [];
 try {

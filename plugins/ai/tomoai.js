@@ -1,8 +1,8 @@
 //
 
-import { uploadImage } from '../../src/lib/rimuru-uploader.js'
-import { f } from '../../src/lib/rimuru-http.js'
-import te from '../../src/lib/rimuru-error.js'
+import { uploadImage } from '../../src/lib/yalena-uploader.js'
+import { f } from '../../src/lib/yalena-http.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'tomoai',
     category: 'ai',

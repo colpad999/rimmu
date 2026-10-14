@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
 
     const random = members[Math.floor(Math.random() * members.length)]
 
-    const teks = `🎲 *RIMURU RANDOM SELECT*
+    const teks = `🎲 *YALENA RANDOM SELECT*
 
 Ara ara~
 

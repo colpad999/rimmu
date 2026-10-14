@@ -1,7 +1,7 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import { sendRpgPreview } from "../../src/lib/rimuru-context.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import { sendRpgPreview } from "../../src/lib/yalena-context.js";
 
 const pluginConfig = {
   name: "mesin",

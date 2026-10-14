@@ -1,8 +1,8 @@
 //
 
-import { RIMURU_CORE_CONFIG } from "../../config.js";
+import { YALENA_CORE_CONFIG } from "../../config.js";
 import config from '../../config.js';
-import { getDatabase } from '../../src/lib/rimuru-database.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
 const pluginConfig = {
     name: 'process',
     category: 'store',
@@ -91,8 +91,8 @@ async function handler(m, { sock }) {
     db.setting('transactionSessions', sessions)
     await db.save()
     
-    const saluranId = RIMURU_CORE_CONFIG.saluran?.id || config.saluran?.id
-    const saluranName = RIMURU_CORE_CONFIG.saluran?.name || RIMURU_CORE_CONFIG.bot?.name || 'rimuru-AI'
+    const saluranId = YALENA_CORE_CONFIG.saluran?.id || config.saluran?.id
+    const saluranName = YALENA_CORE_CONFIG.saluran?.name || YALENA_CORE_CONFIG.bot?.name || 'yalena-AI'
     
     const prosesMessage = generateProsesMessage(db, session)
     

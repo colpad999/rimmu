@@ -1,7 +1,7 @@
 //
 
 import { createTarotCard, getTarotCard } from '../../src/lib/elaina/tarotCard.js';
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "tarot",
   category: "fun",
@@ -36,7 +36,7 @@ async function handler(m, { sock }) {
       try { avatar = await m.quoted.download(); } catch {}
     }
 
-    const username = m.pushName || String(m.sender || "").split("@")[0] || "Rimuru User";
+    const username = m.pushName || String(m.sender || "").split("@")[0] || "Yalena User";
     const card = getTarotCard(username);
     const result = await createTarotCard({ username, avatar, cardIndex, reversed });
 

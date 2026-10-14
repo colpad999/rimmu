@@ -1,7 +1,7 @@
 //
 
-import { getAllPlugins } from "../../src/lib/rimuru-plugins.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getAllPlugins } from "../../src/lib/yalena-plugins.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 
 const config = {
   name: "fiturprem",

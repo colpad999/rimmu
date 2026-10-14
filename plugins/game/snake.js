@@ -105,9 +105,9 @@ function frame(now){requestAnimationFrame(frame);if(!lastTime)lastTime=now;const
 function bind(){startBtn.addEventListener('pointerdown',e=>{e.preventDefault();togglePause()},{passive:false});resetBtn.addEventListener('pointerdown',e=>{e.preventDefault();reset();show('Siap','Tekan MULAI untuk memulai.','🐍')},{passive:false});document.querySelectorAll('.pad').forEach(btn=>{const press=e=>{e.preventDefault();btn.classList.add('active');const d=btn.dataset.dir;if(d==='up')setDirection(0,-1);else if(d==='down')setDirection(0,1);else if(d==='left')setDirection(-1,0);else setDirection(1,0)};const release=()=>btn.classList.remove('active');btn.addEventListener('pointerdown',press,{passive:false});btn.addEventListener('pointerup',release);btn.addEventListener('pointercancel',release);btn.addEventListener('pointerleave',release)});document.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if(k===' '){e.preventDefault();togglePause();return}if(k==='r'){e.preventDefault();reset();show('Siap','Tekan MULAI untuk memulai.','🐍');return}if(k==='w'||k==='arrowup')setDirection(0,-1);else if(k==='s'||k==='arrowdown')setDirection(0,1);else if(k==='a'||k==='arrowleft')setDirection(-1,0);else if(k==='d'||k==='arrowright')setDirection(1,0)},{passive:false});canvas.addEventListener('pointerdown',e=>{swipeStart={x:e.clientX,y:e.clientY}},{passive:true});canvas.addEventListener('pointerup',e=>{if(!swipeStart)return;const dx=e.clientX-swipeStart.x,dy=e.clientY-swipeStart.y;swipeStart=null;if(Math.max(Math.abs(dx),Math.abs(dy))<18)return;if(Math.abs(dx)>Math.abs(dy))setDirection(dx>0?1:-1,0);else setDirection(0,dy>0?1:-1)},{passive:true});document.addEventListener('visibilitychange',()=>{if(document.hidden&&running&&!paused){paused=true;show('Jeda','Game dijeda otomatis saat layar ditinggalkan.','⏸️');updateUi()}})}
 reset();show('Ular Rimba','Tekan MULAI untuk berburu.','🐍');bind();requestAnimationFrame(frame);
 })();
-\n/* RIMURU LIGHT SFX: procedural WebAudio, no external audio asset */
+\n/* YALENA LIGHT SFX: procedural WebAudio, no external audio asset */
 (function(){
-  if (window.__RIMURU_LIGHT_SFX__) return;
+  if (window.__YALENA_LIGHT_SFX__) return;
   var ac=null, master=null, last=0;
   function init(){
     try{
@@ -147,7 +147,7 @@ reset();show('Ular Rimba','Tekan MULAI untuk berburu.','🐍');bind();requestAni
     win:function(){ if(cool(60)) { tone(523,0.08,'sine',0.06); tone(659,0.08,'sine',0.05,0.07); tone(784,0.12,'sine',0.045,0.14); } },
     over:function(){ if(cool(60)) { tone(392,0.09,'sawtooth',0.055); tone(294,0.12,'sawtooth',0.04,0.08); } }
   };
-  window.__RIMURU_LIGHT_SFX__=api;
+  window.__YALENA_LIGHT_SFX__=api;
 
   function num(el){
     var s=(el.textContent||'').replace(/,/g,'').match(/-?\d+(?:\.\d+)?/);

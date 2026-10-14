@@ -1,11 +1,11 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-rioo-bridge.js";
+import { getDatabase } from "../../src/lib/yalena-rioo-bridge.js";
 
 const pluginConfig = {
   name: "nguli",
   category: "economy",
-  description: "Klaim upah nguli +10 limit dari Rimuru",
+  description: "Klaim upah nguli +10 limit dari Yalena",
   usage: ".nguli",
   isOwner: false,
   isPremium: false,

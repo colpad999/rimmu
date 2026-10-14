@@ -3,9 +3,9 @@
 import fs from "fs";
 import path from "path";
 import { mconverter } from "../../src/scraper/mconverter.js";
-import { downloadContentFromMessage } from "rimuru";
+import { downloadContentFromMessage } from "yalena";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "convert",
   category: "tools",
@@ -99,8 +99,8 @@ async function handler(m, { sock }) {
       return m.reply(`❌ *ɢᴀɢᴀʟ ᴄᴏɴᴠᴇʀᴛ*\n\n> ${result.error}`);
     }
 
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-    const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+    const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
 
     await sock.sendMessage(
       m.chat,

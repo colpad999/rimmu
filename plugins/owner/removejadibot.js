@@ -1,7 +1,7 @@
 //
 
-import { stopJadibot, getAllJadibotSessions } from '../../src/lib/rimuru-jadibot-manager.js'
-import te from '../../src/lib/rimuru-error.js'
+import { stopJadibot, getAllJadibotSessions } from '../../src/lib/yalena-jadibot-manager.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'removejadibot',
     category: 'owner',

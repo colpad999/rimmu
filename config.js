@@ -1,17 +1,17 @@
 //
 
-import { getDatabase } from "./src/lib/rimuru-database.js";
-import * as ownerPremiumDb from "./src/lib/rimuru-premium-db.js";
+import { getDatabase } from "./src/lib/yalena-database.js";
+import * as ownerPremiumDb from "./src/lib/yalena-premium-db.js";
 
 //  utamakan baca object config sampai bawah
 const config = {
   info: {
-    website: "https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P",
+    website: "https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y",
     grupwa: "",
   },
 
   owner: {
-    name: "Anita Putri Azzahra", // Nama owner
+    name: "Colpad", // Nama owner
     number: ["6285194593615"], // Format: 628xxx (tanpa + atau 0)
   },
 
@@ -28,34 +28,34 @@ const config = {
   },
 
   bot: {
-    name: "Rimuru MD", // Nama bot
+    name: "Yalena MD", // Nama bot
     version: "4.7", // Versi bot
-    developer: "Anita Putri Azzahra", // Nama developer
+    developer: "Colpad", // Nama developer
   },
 
   assets: {
-    "rimuru-daftar": "https://files.catbox.moe/h1tjy0.png",
-    "rimuru-demote": "https://files.catbox.moe/68d3cq.jpg",
-    "rimuru-fishit": "https://files.catbox.moe/d7mzg4.jpg",
-    "rimuru-games": "https://files.catbox.moe/gw8tg2.png",
-    "rimuru-landscape": "https://files.catbox.moe/dokjwu.jpg",
-    "rimuru-levelup": "https://files.catbox.moe/5k43y6.jpg",
-    "rimuru-minecraft": "https://files.catbox.moe/7go19u.jpg",
-    "rimuru-promote": "https://files.catbox.moe/x4gwyj.png",
-    "rimuru-rpg": "https://files.catbox.moe/t4m0fl.jpg",
-    "rimuru-rules": "https://files.catbox.moe/tpjx2v.jpg",
-    "rimuru-store": "https://files.catbox.moe/31h3re.png",
-    "rimuru-v2": "https://files.catbox.moe/s1fkp1.png",
-    "rimuru-v8": "https://files.catbox.moe/zmwnc8.jpg",
-    "rimuru-winner": "https://files.catbox.moe/r98yoe.jpg",
-    "rimuru": "https://files.catbox.moe/tfkuf4.jpg",
-    "rimuru2": "https://files.catbox.moe/n4kh4f.jpg",
-    "rimuru3": "https://files.catbox.moe/uu2q0l.jpg",
+    "yalena-daftar": "https://files.catbox.moe/h1tjy0.png",
+    "yalena-demote": "https://files.catbox.moe/68d3cq.jpg",
+    "yalena-fishit": "https://files.catbox.moe/d7mzg4.jpg",
+    "yalena-games": "https://files.catbox.moe/gw8tg2.png",
+    "yalena-landscape": "https://files.catbox.moe/dokjwu.jpg",
+    "yalena-levelup": "https://files.catbox.moe/5k43y6.jpg",
+    "yalena-minecraft": "https://files.catbox.moe/7go19u.jpg",
+    "yalena-promote": "https://files.catbox.moe/x4gwyj.png",
+    "yalena-rpg": "https://files.catbox.moe/t4m0fl.jpg",
+    "yalena-rules": "https://files.catbox.moe/tpjx2v.jpg",
+    "yalena-store": "https://files.catbox.moe/31h3re.png",
+    "yalena-v2": "https://files.catbox.moe/s1fkp1.png",
+    "yalena-v8": "https://files.catbox.moe/zmwnc8.jpg",
+    "yalena-winner": "https://files.catbox.moe/r98yoe.jpg",
+    "yalena": "https://files.catbox.moe/tfkuf4.jpg",
+    "yalena2": "https://files.catbox.moe/n4kh4f.jpg",
+    "yalena3": "https://files.catbox.moe/uu2q0l.jpg",
     "pp-kosong": "https://files.catbox.moe/7e4y9f.jpg",
-    "rimuru-mp4": "https://files.catbox.moe/lqkp1p.mp4",
-    "rimuru-mp3": "https://files.catbox.moe/t6xzd2",
-    "rimuru-font": "./assets/rimuru-font.ttf",
-    "rimuru-kertas": "https://files.catbox.moe/8j4d2s.jpg",
+    "yalena-mp4": "https://files.catbox.moe/lqkp1p.mp4",
+    "yalena-mp3": "https://files.catbox.moe/t6xzd2",
+    "yalena-font": "./assets/yalena-font.ttf",
+    "yalena-kertas": "https://files.catbox.moe/8j4d2s.jpg",
     "riooxdzz": "https://files.catbox.moe/tvgwvn.png",
   },
 
@@ -110,14 +110,14 @@ const config = {
   },
 
   sticker: {
-    packname: "Rimuru MD", // Nama pack sticker
-    author: "Anita Putri Azzahra", // Author sticker
+    packname: "Yalena MD", // Nama pack sticker
+    author: "Colpad", // Author sticker
   },
 
   saluran: {
-    id: "120363412350560864@newsletter", // ID saluran (contoh: 120363xxx@newsletter)                          // ID saluran (contoh: 120363xxx@newsletter)
-    name: "Saluran Resmi Rimuru MD", // Nama saluran
-    link: "https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P", // Link saluran
+    id: "120363380765405182@newsletter", // ID saluran (contoh: 120363xxx@newsletter)                          // ID saluran (contoh: 120363xxx@newsletter)
+    name: "Saluran Resmi Yalena MD", // Nama saluran
+    link: "https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y", // Link saluran
   },
 
   groupProtection: {
@@ -585,8 +585,8 @@ config.getOwnerName = getOwnerName;
 export default config;
 // Named compatibility exports used by merged plugins.
 // Keep the canonical config object as the single source of truth.
-const RIMURU_CORE_CONFIG = config;
-const RIMURU_DEVELOPER = config.bot?.developer || config.owner?.name || "Rimuru MD";
+const YALENA_CORE_CONFIG = config;
+const YALENA_DEVELOPER = config.bot?.developer || config.owner?.name || "Yalena MD";
 
 export {
   config,
@@ -598,6 +598,6 @@ export {
   setBotNumber,
   isSelf,
   getOwnerName,
-  RIMURU_CORE_CONFIG,
-  RIMURU_DEVELOPER,
+  YALENA_CORE_CONFIG,
+  YALENA_DEVELOPER,
 };

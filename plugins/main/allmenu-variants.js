@@ -1,18 +1,18 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 import {
   getCommandsByCategory,
   getCategories,
-} from "../../src/lib/rimuru-plugins.js";
-import { getCasesByCategory } from "../../case/rimuru.js";
-import { generateWAMessageFromContent, prepareWAMessageMedia } from "rimuru";
-import { getTimeGreeting } from "../../src/lib/rimuru-formatter.js";
+} from "../../src/lib/yalena-plugins.js";
+import { getCasesByCategory } from "../../case/yalena.js";
+import { generateWAMessageFromContent, prepareWAMessageMedia } from "yalena";
+import { getTimeGreeting } from "../../src/lib/yalena-formatter.js";
 
 const pluginConfig = {
   name: "allmenu",
   category: "main",
-  description: "Menampilkan All Menu dengan tampilan Rimuru MD",
+  description: "Menampilkan All Menu dengan tampilan Yalena MD",
   usage: ".allmenu",
   example: ".allmenu",
   isOwner: false,
@@ -129,7 +129,7 @@ async function legacyAllMenuHandler(m, { sock, config: botConfig, db, uptime }) 
   for (const section of sections) total += section.commands.length;
 
   const pushName = m.pushName || "User";
-  const botName = botConfig.bot?.name || "Rimuru MD";
+  const botName = botConfig.bot?.name || "Yalena MD";
   const version = botConfig.bot?.version || "11.0.0";
   const runtime = typeof uptime === "function" ? await uptime() : "-";
   const mode = botMode === "md" ? (botConfig.mode?.public ? "🌐 Public" : "🔒 Private") : botMode;
@@ -139,7 +139,7 @@ async function legacyAllMenuHandler(m, { sock, config: botConfig, db, uptime }) 
   caption += `> ⎆  [ ${mono("Nama")} : ${mono(pushName)}\n`;
   caption += `> ⎆  [ ${mono("Role")} : ${mono(roleText(m))}\n`;
   caption += `> ⎆  [ ${mono("Mode")} : ${mono(mode)}\n`;
-  caption += `> ⎆  [ ${mono("Author")} : ${mono(botConfig.bot?.developer || "Anita Putri Azzahra")}\n`;
+  caption += `> ⎆  [ ${mono("Author")} : ${mono(botConfig.bot?.developer || "Colpad")}\n`;
   caption += `◣──────────❈\n\n`;
 
   caption += `◤───「 ${mono("INFO BOT")} 」──✦\n`;
@@ -158,7 +158,7 @@ async function legacyAllMenuHandler(m, { sock, config: botConfig, db, uptime }) 
   await sock.sendMessage(
     m.chat,
     {
-      image: { url: botConfig.assets?.["rimuru-v8"] },
+      image: { url: botConfig.assets?.["yalena-v8"] },
       caption,
       contextInfo: {
         forwardingScore: 999,
@@ -216,8 +216,8 @@ async function externalDefaultAllMenuHandler(m, { sock, config: botConfig, db })
   }
 
   const pushName = m.pushName || "User";
-  const botName = botConfig.bot?.name || "Rimuru MD";
-  const devName = botConfig.bot?.developer || "Anita Putri Azzahra";
+  const botName = botConfig.bot?.name || "Yalena MD";
+  const devName = botConfig.bot?.developer || "Colpad";
   const total = sorted.reduce((n, category) => {
     const key = String(category).toLowerCase();
     if (key === "owner" && !m.isOwner) return n;
@@ -229,7 +229,7 @@ async function externalDefaultAllMenuHandler(m, { sock, config: botConfig, db })
   const body = `> Halo *${pushName}* 👋 Perkenalkan aku *${botName}*, buatan *${devName}*. Saya siap membantu kebutuhanmu, mulai dari download video, main game, tanya jawab, nyari info/sesuatu, bikin sticker, dan lain-lain.\n\n`;
   const txt = `✦ *Informasi User*\n• Nama   : ${pushName}\n• Status : ${m.isOwner ? "Owner" : m.isPremium ? "Premium" : "User"}\n\n✦ *Informasi Bot*\n• Nama   : ${botName}\n• Fitur  : ${total} fitur\n\n${lines.join("\n")}`;
 
-  const imageUrl = botConfig.assets?.["rimuru"];
+  const imageUrl = botConfig.assets?.["yalena"];
   if (!imageUrl) {
     await m.reply(body + txt);
     return;
@@ -249,7 +249,7 @@ async function externalDefaultAllMenuHandler(m, { sock, config: botConfig, db })
             forwardingScore: 9,
             mentionedJid: [m.sender],
             forwardedNewsletterMessageInfo: {
-              newsletterJid: botConfig.saluran?.id || "120363412350560864@newsletter",
+              newsletterJid: botConfig.saluran?.id || "120363380765405182@newsletter",
               newsletterName: botConfig.saluran?.name || botName,
               serverMessageId: 127,
             },

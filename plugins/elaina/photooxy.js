@@ -3,16 +3,16 @@
 import axios from "axios";
 import FormData from "form-data";
 import * as cheerio from "cheerio";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const EFFECT_ALIASES = ["photooxy", "photofx", "poxy", "oxyfx"];
 
 const pluginConfig = {
   name: EFFECT_ALIASES,
   category: "elaina",
-  description: "PhotoOxy text effects yang dipindahkan ke struktur RimuruMD",
+  description: "PhotoOxy text effects yang dipindahkan ke struktur YalenaMD",
   usage: ".photooxy <url-effect>|<teks>",
-  example: ".photooxy https://photooxy.com/xxx.html|Rimuru",
+  example: ".photooxy https://photooxy.com/xxx.html|Yalena",
   isOwner: false,
   isPremium: false,
   isGroup: false,
@@ -99,7 +99,7 @@ async function handler(m, { sock }) {
     return m.reply(
       `🖼️ *PHOTO OXY EFFECT*\n\n` +
       `Format: ${m.prefix}${command} <url-effect>|<teks>\n\n` +
-      `Contoh:\n${m.prefix}${command} https://photooxy.com/xxx.html|Rimuru`
+      `Contoh:\n${m.prefix}${command} https://photooxy.com/xxx.html|Yalena`
     );
   }
 

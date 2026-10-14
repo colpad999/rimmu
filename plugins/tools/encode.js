@@ -8,11 +8,11 @@ Jangan Hapus Wm Bang
 Iya In aja Meski Gak Paham Bilang Ada
 
 *[Sumber]*
-https://whatsapp.com/channel/RIMURU_CHANNEL
+https://whatsapp.com/channel/YALENA_CHANNEL
 
 *[Sumber Scrape]*
 
-https://whatsapp.com/channel/RIMURU_CHANNEL
+https://whatsapp.com/channel/YALENA_CHANNEL
 */
 
 import axios from "axios";

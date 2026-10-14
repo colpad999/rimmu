@@ -1,6 +1,6 @@
 //
 
-import { generateWAMessageFromContent, proto, prepareWAMessageMedia } from 'rimuru';
+import { generateWAMessageFromContent, proto, prepareWAMessageMedia } from 'yalena';
 
 const pluginConfig = {
     name: 'ramadhan2027',

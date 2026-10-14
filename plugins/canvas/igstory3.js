@@ -1,13 +1,13 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 import config from "../../config.js";
 import fs from 'fs'
 import * as _canvas from '@napi-rs/canvas'
 
 
 import axios from "axios";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "igstory3",
   category: "canvas",

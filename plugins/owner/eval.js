@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import axios from 'axios'
 import os from 'os'
-import { getDatabase } from '../../src/lib/rimuru-database.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
 import config from '../../config.js'
 import util from 'util'
 const pluginConfig = {

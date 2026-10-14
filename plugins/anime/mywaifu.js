@@ -2,7 +2,7 @@
 
 import fetch from "node-fetch";
 import crypto from "crypto";
-import { generateWAMessageFromContent, generateWAMessage, jidNormalizedUser } from "rimuru";
+import { generateWAMessageFromContent, generateWAMessage, jidNormalizedUser } from "yalena";
 
 const pluginConfig = {
     name: 'mywaifu',

@@ -2,8 +2,8 @@
 
 import fs from "fs";
 import path from "path";
-import { getAllPlugins } from "../../src/lib/rimuru-plugins.js";
-import te from "../../src/lib/rimuru-error.js";
+import { getAllPlugins } from "../../src/lib/yalena-plugins.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "infoplugin",
   category: "owner",

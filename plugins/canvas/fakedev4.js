@@ -1,8 +1,8 @@
 //
 
 import { createCanvas, loadImage } from "@napi-rs/canvas";
-import { downloadMediaMessage, getContentType } from "rimuru";
-import te from "../../src/lib/rimuru-error.js";
+import { downloadMediaMessage, getContentType } from "yalena";
+import te from "../../src/lib/yalena-error.js";
 import axios from "axios";
 
 // Fakedev4 mapping ke logika fakedev3 dengan badge warna sedikit berbeda / beda title.

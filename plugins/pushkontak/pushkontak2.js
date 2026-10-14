@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { getDatabase } from '../../src/lib/rimuru-database.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
 import { getGroupMode } from '../group/botmode.js';
 
 const pluginConfig = {

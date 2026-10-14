@@ -69,7 +69,7 @@ async function handler(m, { sock }) {
             `┃   idr / rp → Rupiah ke Riyal\n` +
             `┃   sar / riyal → Riyal ke Rupiah\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Mau konversi uang Arab darling~?\n` +
+            `┃ 💗 *Yalena:* Mau konversi uang Arab darling~?\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
     }
@@ -87,7 +87,7 @@ async function handler(m, { sock }) {
     }
     
     m.react('﷼')
-    await m.reply(`⏳ *ᴍᴇɴɢʜɪᴛᴜɴɢ ᴋᴜʀꜱ...*\n\n💗 *Rimuru:* Tunggu sebentar darling~ 🧮`)
+    await m.reply(`⏳ *ᴍᴇɴɢʜɪᴛᴜɴɢ ᴋᴜʀꜱ...*\n\n💗 *Yalena:* Tunggu sebentar darling~ 🧮`)
     
     try {
         const kurs = await getExchangeRate()
@@ -144,7 +144,7 @@ async function handler(m, { sock }) {
             `┃    Riyal adalah mata uang resmi Arab Saudi\n` +
             `┃    Uang kertas Riyal bergambar Masjid Nabawi\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Ini hasilnya darling~ 🕌\n` +
+            `┃ 💗 *Yalena:* Ini hasilnya darling~ 🕌\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
         

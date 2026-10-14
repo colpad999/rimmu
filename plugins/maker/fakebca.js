@@ -4,7 +4,7 @@
 * Name     : fake bca
 * Creator  : Rin imup lucu🤤
 * Category : Canvas
-* Link     : https://whatsapp.com/channel/RIMURU_CHANNEL
+* Link     : https://whatsapp.com/channel/YALENA_CHANNEL
 * Note     : Dilarang menghapus watermark/credit original.
 **/
 

@@ -3,10 +3,10 @@
 ║       👑  𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 — GROUP SECURITY        ║
 ╚══════════════════════════════════════════════╝
 
-Fitur By: Anita Putri Azzahra
+Fitur By: Colpad
 */
 
-import { getDatabase } from '../../src/lib/rimuru-database.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
 
 const pluginConfig = {
     name: 'alkick',

@@ -1,6 +1,6 @@
 //
 
-import { queueFFmpeg } from '../../src/lib/rimuru-ffmpeg.js'
+import { queueFFmpeg } from '../../src/lib/yalena-ffmpeg.js'
 import fs from 'fs'
 import path from 'path'
 const pluginConfig = {

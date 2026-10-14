@@ -168,7 +168,7 @@ async function handler(m, { sock }) {
             `> *${m.prefix}landsat* [nama kamu]\n\n` +
             `✨ *Contoh:*\n` +
             `> ${m.prefix}landsat Ditzzx\n` +
-            `> ${m.prefix}landsat Rimuru\n\n` +
+            `> ${m.prefix}landsat Yalena\n\n` +
             `⚠️ *Catatan:*\n` +
             `> Hanya huruf A-Z yang didukung\n` +
             `> Huruf besar/kecil otomatis disamakan\n\n` +

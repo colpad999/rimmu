@@ -1,6 +1,6 @@
 //
 
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 import config from "../../config.js"
 
 const pluginConfig = {
@@ -21,10 +21,10 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     return await sock.sendMessage(m.chat, {
-        image: { url: config.assets?.["rimuru"] },
+        image: { url: config.assets?.["yalena"] },
         caption: `🌾 Halo kak *${m.pushName}*
         
-Untuk asli dari bot ini, kamu bisa dapatkan melalui link, nanti kamu tinggal cari kata kunci *Rimuru MD*`,
+Untuk asli dari bot ini, kamu bisa dapatkan melalui link, nanti kamu tinggal cari kata kunci *Yalena MD*`,
         footer: "💬 Link ini nanti akan mengarahkan kamu ke Youtube *Zanspiw*",
         interactiveButtons: [
             {

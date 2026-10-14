@@ -1,26 +1,26 @@
 //
 
-import { getCaseCount, getCasesByCategory } from "../../case/rimuru.js";
+import { getCaseCount, getCasesByCategory } from "../../case/yalena.js";
 import {
   prepareWAMessageMedia,
   generateWAMessageFromContent,
   proto,
-} from "rimuru";
+} from "yalena";
 import { createCanvas, loadImage, GlobalFonts } from "@napi-rs/canvas";
 import _sharp from "sharp";
 import config from "../../config.js";
 import {
   formatUptime,
   getTimeGreeting,
-} from "../../src/lib/rimuru-formatter.js";
+} from "../../src/lib/yalena-formatter.js";
 import {
   getCommandsByCategory,
   getCategories,
-} from "../../src/lib/rimuru-plugins.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+} from "../../src/lib/yalena-plugins.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import fs from "fs";
 import path from "path";
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 
 function getSharp() {
   return _sharp;
@@ -215,11 +215,11 @@ function getSortedCategories(m, botMode) {
   return { sorted: result, totalCmds, commandsByCategory };
 }
 async function formatTime(date) {
-  const timeHelper = await import("../../src/lib/rimuru-time.js");
+  const timeHelper = await import("../../src/lib/yalena-time.js");
   return timeHelper.formatTime("HH:mm");
 }
 async function formatDateShort(date) {
-  const timeHelper = await import("../../src/lib/rimuru-time.js");
+  const timeHelper = await import("../../src/lib/yalena-time.js");
   return timeHelper.formatFull("dddd, DD MMMM YYYY");
 }
 async function buildMenuText(
@@ -232,7 +232,7 @@ async function buildMenuText(
 ) {
   const prefix = botConfig.command?.prefix || ".";
   const user = db.getUser(m.sender);
-  const timeHelper = await import("../../src/lib/rimuru-time.js");
+  const timeHelper = await import("../../src/lib/yalena-time.js");
   const timeStr = timeHelper.formatTime("HH:mm");
   const dateStr = timeHelper.formatFull("dddd, DD MMMM YYYY");
   const categories = getCategories();
@@ -273,10 +273,10 @@ async function buildMenuText(
   txt += `╰➤------------------------------\n`;
 
   txt += `    ᯓ INFO BOT\n`;
-  txt += `╭  • Name : ${botConfig.bot?.name || "Rimuru-AI"}\n`;
+  txt += `╭  • Name : ${botConfig.bot?.name || "Yalena-AI"}\n`;
   txt += `┆  • Author : ${botConfig.bot?.developer || "Owner"}\n`;
   txt += `┆  • Versi : ${botConfig.bot?.version || "1.2.0"}\n`;
-  txt += `┆  • Type script : RIMURU x ${botConfig.bot?.developer || "Owner"}\n`;
+  txt += `┆  • Type script : YALENA x ${botConfig.bot?.developer || "Owner"}\n`;
   txt += `┆  • Uptime : ${uptimeFormatted}\n`;
   txt += `╰➤------------------------------\n`;
   const categoryOrder = [
@@ -380,16 +380,16 @@ function getContextInfo(
   thumbBuffer,
   renderLargerThumbnail = false,
 ) {
-  const saluranId = botConfig.saluran?.id || "120363412350560864@newsletter";
+  const saluranId = botConfig.saluran?.id || "120363380765405182@newsletter";
   const saluranName =
-    botConfig.saluran?.name || botConfig.bot?.name || "Rimuru-AI";
+    botConfig.saluran?.name || botConfig.bot?.name || "Yalena-AI";
   const saluranLink = botConfig.saluran?.link || "";
   const ctx = {
     mentionedJid: [m.sender],
     forwardingScore: 9,
     isForwarded: true,
     externalAdReply: {
-      title: botConfig.bot?.name || "Rimuru-AI",
+      title: botConfig.bot?.name || "Yalena-AI",
       body: `BOT WHATSAPP MULTI DEVICE`,
       sourceUrl: saluranLink,
       previewType: "VIDEO",
@@ -450,18 +450,18 @@ async function legacyMenuHandler(m, { sock, config: botConfig, db, uptime }) {
   let videoBuffer = null;
 
   try {
-    imageBuffer = getAssetBuffer("rimuru", botConfig.assets)
-    thumbBuffer = getAssetBuffer("rimuru2", botConfig.assets)
+    imageBuffer = getAssetBuffer("yalena", botConfig.assets)
+    thumbBuffer = getAssetBuffer("yalena2", botConfig.assets)
   } catch (e) {
     console.error("Gagal load assets:", e.message);
   }
   const prefix = botConfig.command?.prefix || ".";
-  const saluranId = botConfig.saluran?.id || "120363412350560864@newsletter";
+  const saluranId = botConfig.saluran?.id || "120363380765405182@newsletter";
   const saluranName =
-    botConfig.saluran?.name || botConfig.bot?.name || "Rimuru-AI";
+    botConfig.saluran?.name || botConfig.bot?.name || "Yalena-AI";
   const saluranLink =
     botConfig.saluran?.link ||
-    "https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+    "https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
   const {
     sorted: menuSorted,
     totalCmds,
@@ -481,8 +481,8 @@ async function legacyMenuHandler(m, { sock, config: botConfig, db, uptime }) {
     });
     switch (menuVariant) {
       case 1:
-        if (videoBuffer || config.assets?.["rimuru-mp4"]) {
-          const pvideo = videoBuffer || config.assets?.["rimuru-mp4"];
+        if (videoBuffer || config.assets?.["yalena-mp4"]) {
+          const pvideo = videoBuffer || config.assets?.["yalena-mp4"];
           const senderNo = String(m.sender || "").split("@")[0];
           const totalFitur = totalCmds + Object.values(getCasesByCategory()).flat().length;
           const userStatus = m?.isOwner ? "Owner" : m?.isPremium ? "Premium" : "Free";
@@ -499,7 +499,7 @@ _${config.bot?.body || "Siap membantu kebutuhan kamu di WhatsApp"}_
 ◦ Level: ${user?.level || 1}
 
 *S Y S T E M  I N F O*
-◦ Bot: ${config.bot?.name || "Rimuru MD"}
+◦ Bot: ${config.bot?.name || "Yalena MD"}
 ◦ Ver: ${config.bot?.version || "-"}
 ◦ Up: ${uptimeFormatted}
 ◦ Total: ${totalFitur} Fitur
@@ -591,7 +591,7 @@ _Select a category to see commands._`;
           s += "╰─⬣\n\n"
         });
         const media = await prepareWAMessageMedia({
-          image: { url: config.assets?.["rimuru"] }
+          image: { url: config.assets?.["yalena"] }
         }, { upload: sock.waUploadToServer })
         const readmore = String.fromCharCode(8206).repeat(4001)
         await sock.relayMessage(
@@ -616,7 +616,7 @@ Welcome to ${config.bot?.name}, Our bot will help you
 > 🤖 *Name*: ${config.bot?.name}
 > ⚙️ *Version*: ${config.bot?.version}
 > 👨‍💻 *Developer*: ${config.bot?.developer}
-> 🧩 *Library*: \`__KEEP_RIMURU_BAILEYS__\`
+> 🧩 *Library*: \`__KEEP_YALENA_BAILEYS__\`
 
 🍅 *USER INFORMATION*
 > 🧑 *Name*: ${m.pushName}
@@ -660,7 +660,7 @@ ${readmore}${s}`
                       tap_target_configuration: {
                         title: " X ",
                         description: "bomboclard",
-                        canonical_url: "https://rimuru.site",
+                        canonical_url: "https://yalena.site",
                         domain: "shop.example.com",
                         button_index: 0,
                       },
@@ -718,7 +718,7 @@ ${readmore}${s}`
               },
             ],
             locationMessage: {
-              jpegThumbnail: await sharp(getAssetBuffer("rimuru", config.assets)).resize(300, 170).toBuffer(),
+              jpegThumbnail: await sharp(getAssetBuffer("yalena", config.assets)).resize(300, 170).toBuffer(),
               name: config.bot.name,
               address: `Versi saat ini: ${config.bot.version}`
             },
@@ -730,7 +730,7 @@ Welcome to ${config.bot?.name}, Our bot will help you
 > 🤖 *Name*: ${config.bot?.name}
 > ⚙️ *Version*: ${config.bot?.version}
 > 👨‍💻 *Developer*: ${config.bot?.developer}
-> 🧩 *Library*: \`__KEEP_RIMURU_BAILEYS__\`
+> 🧩 *Library*: \`__KEEP_YALENA_BAILEYS__\`
 
 🍅 *USER INFORMATION*
 > 🧑 *Name*: ${m.pushName}
@@ -755,7 +755,7 @@ Welcome to ${config.bot?.name}, Our bot will help you
         break
 
       case 4: {
-        const thumbnail = await sharp(getAssetBuffer("rimuru", config.assets)).resize(300, 300).toBuffer()
+        const thumbnail = await sharp(getAssetBuffer("yalena", config.assets)).resize(300, 300).toBuffer()
         const qvideo = {
           key: {
             fromMe: false,
@@ -772,7 +772,7 @@ Welcome to ${config.bot?.name}, Our bot will help you
           }
         }
         const media4 = await prepareWAMessageMedia({
-          video: { url: config.assets?.["rimuru-mp4"] },
+          video: { url: config.assets?.["yalena-mp4"] },
           gifPlayback: true
         }, { upload: sock.waUploadToServer });
         let singlePush = categories.sorted.map(cat => {
@@ -846,7 +846,7 @@ Enjoy your use brother.`
                     tap_target_configuration: {
                       title: " X ",
                       description: "bomboclard",
-                      canonical_url: "https://rimuru.site",
+                      canonical_url: "https://yalena.site",
                       domain: "shop.example.com",
                       button_index: 0,
                     },
@@ -922,7 +922,7 @@ Enjoy your use brother.`
             return "Cuaca tidak tersedia"
           }
         }
-        const thumbnail = await sharp(getAssetBuffer("rimuru", config.assets)).resize(300, 300).toBuffer()
+        const thumbnail = await sharp(getAssetBuffer("yalena", config.assets)).resize(300, 300).toBuffer()
         const qOrder = {
           key: {
             fromMe: false,
@@ -939,7 +939,7 @@ Enjoy your use brother.`
           }
         }
         const media4 = await prepareWAMessageMedia({
-          video: { url: config.assets?.["rimuru-mp4"] },
+          video: { url: config.assets?.["yalena-mp4"] },
           gifPlayback: true
         }, { upload: sock.waUploadToServer });
         const msg4 = generateWAMessageFromContent(m.chat, {
@@ -1003,7 +1003,7 @@ _i am an automated system (WhatsApp bot) that can help to do something search an
                     tap_target_configuration: {
                       title: " X ",
                       description: "bomboclard",
-                      canonical_url: "https://rimuru.site",
+                      canonical_url: "https://yalena.site",
                       domain: "shop.example.com",
                       button_index: 0,
                     },
@@ -1106,7 +1106,7 @@ _i am an automated system (WhatsApp bot) that can help to do something search an
           topCmdText += `╭   • Belum ada command\n╰➤------------------------------\n`
         }
 
-        const thumbnail = await sharp(getAssetBuffer("rimuru", config.assets)).resize(300, 300).toBuffer()
+        const thumbnail = await sharp(getAssetBuffer("yalena", config.assets)).resize(300, 300).toBuffer()
         const msg6 = generateWAMessageFromContent(m.chat, {
           viewOnceMessage: {
             message: {
@@ -1117,7 +1117,7 @@ _i am an automated system (WhatsApp bot) that can help to do something search an
                   locationMessage: {
                     degreesLatitude: 0,
                     degreesLongitude: 0,
-                    name: config.bot?.name || "Rimuru-AI",
+                    name: config.bot?.name || "Yalena-AI",
                     address: await weatherMenu(),
                     jpegThumbnail: thumbnail
                   }
@@ -1146,7 +1146,7 @@ _i am an automated system (WhatsApp bot) that can help to do something search an
                     tap_target_configuration: {
                       title: " X ",
                       description: "bomboclard",
-                      canonical_url: "https://rimuru.site",
+                      canonical_url: "https://yalena.site",
                       domain: "shop.example.com",
                       button_index: 0,
                     },
@@ -1244,12 +1244,12 @@ I'm ${botName}, your intelligent assistant powered by ${config.bot?.developer}. 
         case7Text += `╰╯`;
 
 
-        const { getAssetBuffer } = await import("../../src/lib/rimuru-asset-manager.js");
-        const imageBuffer = await getAssetBuffer("rimuru2");
+        const { getAssetBuffer } = await import("../../src/lib/yalena-asset-manager.js");
+        const imageBuffer = await getAssetBuffer("yalena2");
         const sharp = (await import("sharp")).default;
         const stickerBuf = await sharp(imageBuffer).resize(512, 512).webp().toBuffer();
 
-        const { prepareWAMessageMedia } = await import("rimuru");
+        const { prepareWAMessageMedia } = await import("yalena");
         const uploadMedia = await prepareWAMessageMedia({ image: stickerBuf }, { upload: sock.waUploadToServer });
 
         const fakeQuotedSticker = {
@@ -1266,13 +1266,13 @@ I'm ${botName}, your intelligent assistant powered by ${config.bot?.developer}. 
           }
         };
 
-        const { generateWAMessageFromContent } = await import("rimuru");
+        const { generateWAMessageFromContent } = await import("yalena");
         const menuMedia = await prepareWAMessageMedia({
-          image: { url: config.assets?.["rimuru"] }
+          image: { url: config.assets?.["yalena"] }
         }, { upload: sock.waUploadToServer });
 
         const videoLive = await prepareWAMessageMedia({
-          video: { url: config.assets?.["rimuru-mp4"] }
+          video: { url: config.assets?.["yalena-mp4"] }
         }, { upload: sock.waUploadToServer });
 
         const msg = generateWAMessageFromContent(m.chat, {
@@ -1416,14 +1416,14 @@ I'm ${botName}, your intelligent assistant powered by ${config.bot?.developer}. 
         }
         case7Text = case7Text.trimEnd();
 
-        const { getAssetBuffer } = await import("../../src/lib/rimuru-asset-manager.js");
-        const imageBuffer = await getAssetBuffer("rimuru");
-        const favB = await getAssetBuffer("rimuru2");
+        const { getAssetBuffer } = await import("../../src/lib/yalena-asset-manager.js");
+        const imageBuffer = await getAssetBuffer("yalena");
+        const favB = await getAssetBuffer("yalena2");
         const sharp = (await import("sharp")).default;
         const thumbBuf = await sharp(imageBuffer).resize(1280, 720).jpeg().toBuffer();
         const favBuf = await sharp(favB).resize(512, 512).jpeg().toBuffer();
 
-        const { prepareWAMessageMedia, generateWAMessageFromContent } = await import("rimuru");
+        const { prepareWAMessageMedia, generateWAMessageFromContent } = await import("yalena");
         const uploadMedia = await prepareWAMessageMedia({ image: thumbBuf }, { upload: sock.waUploadToServer, mediaTypeOverride: "thumbnail-link" });
         const uploadFav = await prepareWAMessageMedia({ image: favBuf }, { upload: sock.waUploadToServer, mediaTypeOverride: "thumbnail-link" });
 
@@ -1512,7 +1512,7 @@ I'm ${botName}, your intelligent assistant powered by ${config.bot?.developer}. 
     }
     const audioEnabled = db.setting("audioMenu") !== false;
     if (audioEnabled) {
-      const audioUrl = botConfig.assets["rimuru-mp3"];
+      const audioUrl = botConfig.assets["yalena-mp3"];
       try {
         switch (menuVariant) {
           case 1:
@@ -1620,7 +1620,7 @@ I'm ${botName}, your intelligent assistant powered by ${config.bot?.developer}. 
               key: {
                 fromMe: false,
                 participant: "0@s.whatsapp.net",
-                remoteJid: typeof saluranId !== "undefined" ? saluranId : "120363412350560864@newsletter",
+                remoteJid: typeof saluranId !== "undefined" ? saluranId : "120363380765405182@newsletter",
               },
               message: {
                 conversation: "🔊 Playing Audio Menu..."
@@ -1681,7 +1681,7 @@ I'm ${botName}, your intelligent assistant powered by ${config.bot?.developer}. 
                   sellerJid: botConfig.botNumber
                     ? `${botConfig.botNumber}@s.whatsapp.net`
                     : m.sender,
-                  token: "rimuru-menu-v8",
+                  token: "yalena-menu-v8",
                   totalAmount1000: 3333333,
                   totalCurrencyCode: "IDR",
                   contextInfo: {

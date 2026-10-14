@@ -2,7 +2,7 @@
 
 import fs from "fs";
 import path from "path";
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 
 const dbFile = path.join(process.cwd(), "database", "hargabot.json");
 
@@ -77,7 +77,7 @@ async function handler(m, { sock, isOwner }) {
         `*Permanen* ➔ *Rp5.000* ✨\n` +
         `*Permanen* ➔ *Rp10.000 FREE PREMIUM BOT* ✨\n\n` +
         `📌 *Minat? Chat .owner ya!*\n` +
-        `Terima kasih telah menggunakan Rimuru Bot ❤️`;
+        `Terima kasih telah menggunakan Yalena Bot ❤️`;
     }
 
     await m.react("✅");

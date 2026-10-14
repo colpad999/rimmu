@@ -1,7 +1,7 @@
 //
 
 import FormData from 'form-data';
-import { downloadMediaMessage } from 'rimuru';
+import { downloadMediaMessage } from 'yalena';
 import axios from 'axios';
 
 const pluginConfig = {
@@ -9,7 +9,7 @@ const pluginConfig = {
   category: 'owner',
   description: 'Membuat WhatsApp Channel/newsletter baru',
   usage: '.createchannel <nama>|<deskripsi>',
-  example: '.createchannel Rimuru MD|Channel resmi bot',
+  example: '.createchannel Yalena MD|Channel resmi bot',
   isOwner: true,
   isPremium: false,
   isGroup: false,

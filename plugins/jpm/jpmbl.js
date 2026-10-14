@@ -1,30 +1,30 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import { fetchGroupsSafe } from "../../src/lib/rimuru-jpm-helper.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import { fetchGroupsSafe } from "../../src/lib/yalena-jpm-helper.js";
 import {
   getAutoJpmConfig,
   setAutoJpmConfig,
   startAutoJpmScheduler,
   stopAutoJpmScheduler,
   getAutoJpmStorageDir,
-} from "../../src/lib/rimuru-auto-jpm.js";
-import { getMimeType, getExtension } from "../../src/lib/rimuru-utils.js";
-import * as timeHelper from "../../src/lib/rimuru-time.js";
+} from "../../src/lib/yalena-auto-jpm.js";
+import { getMimeType, getExtension } from "../../src/lib/yalena-utils.js";
+import * as timeHelper from "../../src/lib/yalena-time.js";
 import {
   getBinaryNodeChild,
   prepareWAMessageMedia,
   generateWAMessageFromContent,
   proto,
-} from "rimuru";
+} from "yalena";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
+import te from "../../src/lib/yalena-error.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
 import util from "util";
 import axios from "axios";
 import path from "path";
 import fs from "fs";
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 
 const pluginConfig = {
   name: "jpmbl",
@@ -46,11 +46,11 @@ const jpmSessions = {};
 
 let cachedThumb = null;
 try {
-  cachedThumb = getAssetBuffer("rimuru2");
+  cachedThumb = getAssetBuffer("yalena2");
 } catch {}
 
 function getVerifiedQuoted() {
-  const botName = config.bot?.name || "Rimuru-AI";
+  const botName = config.bot?.name || "Yalena-AI";
   const botNumber = config.owner?.number?.[0] || "0";
   return {
     key: {
@@ -228,8 +228,8 @@ async function sendInteractiveMessage(
     } catch {}
   }
 
-  const botName = config.bot?.name || "Rimuru-AI";
-  const saluranId = config.saluran?.id || "120363412350560864@newsletter";
+  const botName = config.bot?.name || "Yalena-AI";
+  const saluranId = config.saluran?.id || "120363380765405182@newsletter";
   const saluranName = config.saluran?.name || botName;
 
   const msg = generateWAMessageFromContent(
@@ -280,7 +280,7 @@ async function sendInteractiveMessage(
 
 async function sendInteractiveJpm(m, sock, db, contentInfo) {
   const prefix = m.prefix;
-  const botName = config.bot?.name || "Rimuru-AI";
+  const botName = config.bot?.name || "Yalena-AI";
   const hasContent =
     contentInfo?.text ||
     contentInfo?.mediaBuffer ||
@@ -1023,7 +1023,7 @@ async function handleJpmUpdateWithContent(m, sock, db, input) {
       );
     }
 
-    const botName = config.bot?.name || "Rimuru-AI";
+    const botName = config.bot?.name || "Yalena-AI";
     const dateStr = timeHelper.formatDate("DD MMMM YYYY");
     const updateMessage =
       `🚀 *UPDATE !! | ${version}*\n\n` +
@@ -1182,9 +1182,9 @@ async function startAutoJpmSession(m, sock, db) {
   ];
 
   return sendInteractiveMessage(m, sock, {
-    title: `🔄 ${config.bot?.name || "Rimuru-AI"} AutoJPM`,
+    title: `🔄 ${config.bot?.name || "Yalena-AI"} AutoJPM`,
     body,
-    footer: `${config.bot?.name || "Rimuru-AI"} AutoJPM`,
+    footer: `${config.bot?.name || "Yalena-AI"} AutoJPM`,
     buttons,
   });
 }
@@ -1462,9 +1462,9 @@ async function handleSetDelay(m, sock, db, input) {
     ];
 
     return sendInteractiveMessage(m, sock, {
-      title: `⏱️ ${config.bot?.name || "Rimuru-AI"} Delay`,
+      title: `⏱️ ${config.bot?.name || "Yalena-AI"} Delay`,
       body,
-      footer: `${config.bot?.name || "Rimuru-AI"} JPM System`,
+      footer: `${config.bot?.name || "Yalena-AI"} JPM System`,
       buttons,
     });
   }

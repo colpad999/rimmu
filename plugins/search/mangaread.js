@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
 
     if (!input) {
         return m.reply(
-            `📖 *MANGA READ - RIMURU* 📖\n\n` +
+            `📖 *MANGA READ - YALENA* 📖\n\n` +
             `💫 *"He~ mau baca manga apa darling?"* 💫\n\n` +
             `📌 *Cara pakai:*\n` +
             `> ${m.prefix}mangaread <url atau id>\n\n` +
@@ -131,7 +131,7 @@ async function handler(m, { sock }) {
             caption += `➡️ *Next Chapter:* ${nextUrl}\n`
         }
 
-        caption += `\n💬 *Rimuru:* "Ini dia darling~ 🗿"\n`
+        caption += `\n💬 *Yalena:* "Ini dia darling~ 🗿"\n`
         caption += `🌸 *Selamat membaca!* 🌸`
 
         // Kirim gambar pertama sebagai preview + info

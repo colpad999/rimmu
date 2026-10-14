@@ -2,8 +2,8 @@
 
 import axios from "axios";
 import config from "../../config.js";
-import te from "../../src/lib/rimuru-error.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import te from "../../src/lib/yalena-error.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 
 const pluginConfig = {
     name: "stikerly",

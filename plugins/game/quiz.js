@@ -1,6 +1,6 @@
 //
 
-import { games } from '../../src/lib/rimuru-games.js'
+import { games } from '../../src/lib/yalena-games.js'
 
 games.register('asahotak', {
     emoji: '🧠',

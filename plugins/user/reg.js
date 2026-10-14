@@ -2,14 +2,14 @@
 
 import fs from "fs";
 import path from "path";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 import {
   getCachedJid,
   isLid,
   isLidConverted,
   lidToJid,
-} from "../../src/lib/rimuru-lid.js";
+} from "../../src/lib/yalena-lid.js";
 import config from "../../config.js";
 
 const pluginConfig = {
@@ -33,13 +33,13 @@ if (!global.registrationSessions) global.registrationSessions = {};
 const SESSION_TIMEOUT = 300000;
 const DEFAULT_REWARDS = { koin: 30000, energi: 300, exp: 300000 };
 const REGISTRATION_IMAGE_CANDIDATES = [
-  "rimuru-daftar",
-  "rimuru",
+  "yalena-daftar",
+  "yalena",
 ];
 
 function getRegistrationContextInfo() {
-  const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-  const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+  const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+  const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
 
   return {
     forwardingScore: 9999,

@@ -1,8 +1,8 @@
 //
 
-import { getAllPlugins } from '../../src/lib/rimuru-plugins.js'
+import { getAllPlugins } from '../../src/lib/yalena-plugins.js'
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 
 const pluginConfig = {
     name: 'totalcmd',

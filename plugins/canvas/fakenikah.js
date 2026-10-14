@@ -7,7 +7,7 @@ const pluginConfig = {
     category: 'canvas',
     description: 'Bikin fake sertifikat nikah (buat konten/gaguan doang)',
     usage: '.fakenikah <nama1> | <nama2>',
-    example: '.fakenikah Rimuru | Darling',
+    example: '.fakenikah Yalena | Darling',
     isOwner: false,
     isPremium: false,
     isGroup: false,
@@ -72,19 +72,19 @@ async function handler(m, { sock }) {
             `┃\n` +
             `┃ ✦ *Contoh*\n` +
             `┃\n` +
-            `┃   ${m.prefix}fakenikah Rimuru | Darling\n` +
+            `┃   ${m.prefix}fakenikah Yalena | Darling\n` +
             `┃\n` +
-            `┃ 💗 *Rimuru:* Mau nikah sama siapa darling~?\n` +
+            `┃ 💗 *Yalena:* Mau nikah sama siapa darling~?\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
     }
     
     const parts = text.split('|').map(p => p.trim())
-    const nama1 = parts[0] || 'Rimuru'
+    const nama1 = parts[0] || 'Yalena'
     const nama2 = parts[1] || 'Darling'
     
     m.react('💕')
-    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Rimuru:* Lagi bikin sertifikat nikah darling~`)
+    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Yalena:* Lagi bikin sertifikat nikah darling~`)
     
     try {
         const imageBuffer = await generateFakeNikah(nama1, nama2)
@@ -96,7 +96,7 @@ async function handler(m, { sock }) {
                     `┃ ✅ *ʙᴇʀʜᴀꜱɪʟ*\n` +
                     `┃ 💑 *ᴘᴀꜱᴀɴɢᴀɴ*: ${nama1} & ${nama2}\n` +
                     `┃\n` +
-                    `┃ 💗 *Rimuru:* Selamat ya darling! Semoga langgeng~ 🗿\n` +
+                    `┃ 💗 *Yalena:* Selamat ya darling! Semoga langgeng~ 🗿\n` +
                     `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         }, { quoted: m })
         

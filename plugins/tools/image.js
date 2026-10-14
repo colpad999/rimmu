@@ -3,8 +3,8 @@
 /*
 * Nama Fitur : Tools image
 * Type : Plugin Esm
-* Sumber : https://whatsapp.com/channel/RIMURU_CHANNEL
-* Sumber Skrep : https://whatsapp.com/channel/RIMURU_CHANNEL
+* Sumber : https://whatsapp.com/channel/YALENA_CHANNEL
+* Sumber Skrep : https://whatsapp.com/channel/YALENA_CHANNEL
 * Author : ZenzzXD
 */
 

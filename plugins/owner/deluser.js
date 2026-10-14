@@ -1,9 +1,9 @@
 //
 
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 
 
-import { getDatabase } from '../../src/lib/rimuru-database.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
 const pluginConfig = {
     name: 'deluser',
     category: 'owner',
@@ -33,7 +33,7 @@ async function handler(m, { sock }) {
         db.save()
 
         return m.reply(
-`╭━━━〔 💔 RIMURU DELETE 💔 〕━━━⬣
+`╭━━━〔 💔 YALENA DELETE 💔 〕━━━⬣
 ┃
 ┃ Ara ara~ user berhasil dihapus 😈
 ┃
@@ -61,10 +61,10 @@ async function handler(m, { sock }) {
         id: `${m.prefix}hapususer --confirm ${jid}`
     }))
 
-    // 💗 UI RIMURU
+    // 💗 UI YALENA
     await sock.sendMessage(m.chat, {
         text:
-`╭━━━〔 💗 RIMURU SYSTEM 💗 〕━━━⬣
+`╭━━━〔 💗 YALENA SYSTEM 💗 〕━━━⬣
 ┃
 ┃ Hai ${m.pushName || 'Darling'} 😋
 ┃ Mau hapus siapa nih?
@@ -73,7 +73,7 @@ async function handler(m, { sock }) {
 ┃ Jangan salah pilih 😈
 ┃
 ╰━━━━━━━━━━━━━━━━━━⬣`,
-        footer: 'Rimuru AI 💗',
+        footer: 'Yalena AI 💗',
         interactiveButtons: [
             {
                 name: 'single_select',

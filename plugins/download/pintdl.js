@@ -3,9 +3,9 @@
 import fs from "fs";
 import axios from "axios";
 import path from "path";
-import { queueFFmpeg } from "./../../src/lib/rimuru-ffmpeg.js";
-import { f } from "../../src/lib/rimuru-http.js";
-import te from "../../src/lib/rimuru-error.js";
+import { queueFFmpeg } from "./../../src/lib/yalena-ffmpeg.js";
+import { f } from "../../src/lib/yalena-http.js";
+import te from "../../src/lib/yalena-error.js";
 const pluginConfig = {
   name: "pintdl",
   category: "download",

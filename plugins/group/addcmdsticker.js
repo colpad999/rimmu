@@ -1,7 +1,7 @@
 //
 
-import { getQuotedStickerHash, addStickerCommand, listStickerCommands } from '../../src/lib/rimuru-sticker-command.js'
-import { getPlugin } from '../../src/lib/rimuru-plugins.js'
+import { getQuotedStickerHash, addStickerCommand, listStickerCommands } from '../../src/lib/yalena-sticker-command.js'
+import { getPlugin } from '../../src/lib/yalena-plugins.js'
 const pluginConfig = {
     name: 'addcmdsticker',
     category: 'group',

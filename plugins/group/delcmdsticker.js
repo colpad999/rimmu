@@ -1,6 +1,6 @@
 //
 
-import { getQuotedStickerHash, deleteStickerCommand, listStickerCommands, findByCommand } from '../../src/lib/rimuru-sticker-command.js'
+import { getQuotedStickerHash, deleteStickerCommand, listStickerCommands, findByCommand } from '../../src/lib/yalena-sticker-command.js'
 const pluginConfig = {
     name: 'delcmdsticker',
     category: 'group',

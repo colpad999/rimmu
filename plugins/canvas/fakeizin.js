@@ -7,7 +7,7 @@ const pluginConfig = {
     category: 'canvas',
     description: 'Bikin fake surat ijin (buat konten/gaguan doang)',
     usage: '.fakeijin <nama> | <alasan>',
-    example: '.fakeijin Rimuru | Sakit',
+    example: '.fakeijin Yalena | Sakit',
     isOwner: false,
     isPremium: false,
     isGroup: false,
@@ -45,7 +45,7 @@ async function generateFakeIjin(nama, alasan) {
       <text x="550" y="430" text-anchor="middle" font-family="Times New Roman, serif" font-size="24" font-weight="700">${escapeXml(alasan).toUpperCase()}</text>
       <text x="550" y="500" text-anchor="middle" font-family="Times New Roman, serif" font-size="16">Tanggal: ${escapeXml(tanggal)}</text>
       <text x="790" y="580" text-anchor="middle" font-family="Times New Roman, serif" font-size="15">Kepala Sekolah</text>
-      <text x="790" y="625" text-anchor="middle" font-family="Times New Roman, serif" font-size="16">Dr. Rimuru, M.Pd</text>
+      <text x="790" y="625" text-anchor="middle" font-family="Times New Roman, serif" font-size="16">Dr. Yalena, M.Pd</text>
       <text x="550" y="690" text-anchor="middle" font-family="Times New Roman, serif" font-size="14" fill="#666">DOKUMEN CONTOH — TIDAK BERLAKU SEBAGAI DOKUMEN RESMI</text>
     </svg>`
 
@@ -58,7 +58,7 @@ async function generateFakeIjin(nama, alasan) {
 
 async function handler(m, { sock }) {
     const text = m.args.join(' ') || m.text?.trim() || ''
-    if (!text) return m.reply(`*Cara pakai:*\n${m.prefix}fakeijin <nama> | <alasan>\nContoh: .fakeijin Rimuru | Sakit`)
+    if (!text) return m.reply(`*Cara pakai:*\n${m.prefix}fakeijin <nama> | <alasan>\nContoh: .fakeijin Yalena | Sakit`)
     
     const parts = text.split('|').map(p => p.trim())
     const nama = parts[0] || 'Darling'
@@ -69,7 +69,7 @@ async function handler(m, { sock }) {
     
     try {
         const imageBuffer = await generateFakeIjin(nama, alasan)
-        await sock.sendMessage(m.chat, { image: imageBuffer, caption: `💕 *FAKE SURAT IJIN* 💕\n\n✅ Nama: ${nama}\n📌 Alasan: ${alasan}\n\n💗 *Rimuru:* Izin nya udah jadi darling~` }, { quoted: m })
+        await sock.sendMessage(m.chat, { image: imageBuffer, caption: `💕 *FAKE SURAT IJIN* 💕\n\n✅ Nama: ${nama}\n📌 Alasan: ${alasan}\n\n💗 *Yalena:* Izin nya udah jadi darling~` }, { quoted: m })
         m.react('✅')
     } catch (err) {
         m.react('💔')

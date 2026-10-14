@@ -12,9 +12,9 @@ import {
   isSurrender,
   isReplyToGame,
   getRandomReward,
-} from "../../src/lib/rimuru-game-data.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import { addExpWithLevelCheck } from "../../src/lib/rimuru-level.js";
+} from "../../src/lib/yalena-game-data.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import { addExpWithLevelCheck } from "../../src/lib/yalena-level.js";
 
 const pluginConfig = {
   name: "f100",

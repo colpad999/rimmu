@@ -2,11 +2,11 @@
 
 import fs from 'fs';
 import path from 'path';
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 const pluginConfig = {
     name: 'saluran',
     category: 'main',
-    description: 'Join saluran resmi Rimuru 😈',
+    description: 'Join saluran resmi Yalena 😈',
     usage: '.saluran',
     cooldown: 5,
     isEnabled: true
@@ -29,7 +29,7 @@ async function handler(m, { sock }) {
     }
 
     const caption = 
-`╭━━━〔 💗 RIMURU CHANNEL 💗 〕━━━⬣
+`╭━━━〔 💗 YALENA CHANNEL 💗 〕━━━⬣
 ┃
 ┃ Ara ara~ 😏
 ┃ Kamu mau tetap dekat denganku kan, darling?
@@ -48,7 +48,7 @@ async function handler(m, { sock }) {
 ┃ 👑 Saluran Owner
 ┃ Liat update & behind the scene~
 ┃
-┃ 🎭 Saluran Sticker Rimuru
+┃ 🎭 Saluran Sticker Yalena
 ┃ Biar chat kamu makin hidup 💕
 ┃
 ╰━━━⬣
@@ -61,7 +61,7 @@ aku bisa saja mengabaikanmu juga, darling 😌💔”
         await sock.sendMessage(m.chat, {
             image: imageBuffer,
             caption: caption,
-            footer: 'Rimuru 💗',
+            footer: 'Yalena 💗',
             interactiveButtons: [
                 {
                     name: 'cta_url',
@@ -80,7 +80,7 @@ aku bisa saja mengabaikanmu juga, darling 😌💔”
                 {
                     name: 'cta_url',
                     buttonParamsJson: JSON.stringify({
-                        display_text: '🎭 Sticker Rimuru',
+                        display_text: '🎭 Sticker Yalena',
                         url: chSticker
                     })
                 }

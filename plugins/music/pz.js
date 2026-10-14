@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
     await m.react('🎧')
     
     try {
-        await m.reply('🎵 *Rimuru:* Darling~ lagi nyari lagunya ya... tunggu sebentar 🦋')
+        await m.reply('🎵 *Yalena:* Darling~ lagi nyari lagunya ya... tunggu sebentar 🦋')
         
         let videoUrl, videoInfo
         
@@ -117,7 +117,7 @@ async function handler(m, { sock }) {
             `👤 *Artist:* ${channel}\n` +
             `⏱️ *Duration:* ${durationText}\n` +
             `👁️ *Views:* ${viewText}\n\n` +
-            `🦋 *Rimuru:* Selamat menikmati darling~ jangan lupa putar ulang kalo suka! 💕`
+            `🦋 *Yalena:* Selamat menikmati darling~ jangan lupa putar ulang kalo suka! 💕`
         
         // Kirim gambar dulu
         await sock.sendMessage(m.chat, {

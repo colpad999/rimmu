@@ -22,7 +22,7 @@ const femboyList = [
 "Ritsu Sohma",
 "Kurapika",
 "Haku",
-"Rimuru Tempest",
+"Yalena Tempest",
 "Hideyoshi Kinoshita",
 "Tetra",
 "Juuzou Suzuya",
@@ -45,7 +45,7 @@ const femboyList = [
 "Gasper Vladi",
 "Haku (Naruto)",
 "Nagisa Shiota",
-"Rimuru Human Form"
+"Yalena Human Form"
 
 ]
 

@@ -43,7 +43,7 @@ const MAX_COMPRESSED_AUDIO_MB = 6
 const MAX_COMPRESSED_AUDIO_SIZE = MAX_COMPRESSED_AUDIO_MB * 1024 * 1024
 
 const LRCLIB_API = 'https://lrclib.net/api'
-const LRCLIB_USER_AGENT = 'RimuruPlay/1.0 (https://github.com/)'
+const LRCLIB_USER_AGENT = 'YalenaPlay/1.0 (https://github.com/)'
 
 async function getLRCLyrics({ title, artist, duration = 0, album = '' }) {
     try {
@@ -471,7 +471,7 @@ function createMusicPlayer({ title, artist, duration, audioSrc, imageSrc, lyrics
       <div class="head">
         <svg class="head__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         <div class="head__mid">
-          <div class="head__from">Rimuru · YT Music</div>
+          <div class="head__from">Yalena · YT Music</div>
           <div class="head__album">${safeArtist}</div>
         </div>
         <svg class="head__icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg>
@@ -528,7 +528,7 @@ function createMusicPlayer({ title, artist, duration, audioSrc, imageSrc, lyrics
         </button>
       </div>
 
-      <div class="note">『 RimuruPlay 』・ support terus ya~ ⭐</div>
+      <div class="note">『 YalenaPlay 』・ support terus ya~ ⭐</div>
     </div>
   </div>
 </div>
@@ -807,7 +807,7 @@ async function sendMusicPlayer(sock, m, html) {
                 message: {
                     richResponseMessage: {
                         messageType: 1,
-                        submessages: [{ messageType: 2, messageText: 'Rimuru Music Player' }],
+                        submessages: [{ messageType: 2, messageText: 'Yalena Music Player' }],
                         unifiedResponse: {
                             data: Buffer.from(
                                 JSON.stringify({
@@ -948,7 +948,7 @@ async function handler(m, { sock }) {
         return m.reply(
             `❌ *ᴀᴅᴜʜ, ɢᴀɢᴀʟ ᴍᴜᴛᴇʀɪɴ ʟᴀɢᴜɴʏᴀ* 😭\n\n` +
             `> ${error?.message || 'Unknown error'}\n\n` +
-            `> Coba lagi ya darling, Rimuru janji next take bakal lebih bagus~ 🎤`
+            `> Coba lagi ya darling, Yalena janji next take bakal lebih bagus~ 🎤`
         )
     }
 }

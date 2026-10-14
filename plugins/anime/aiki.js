@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
       responseType: "arraybuffer",
       timeout: 30000,
       headers: {
-        'User-Agent': 'Rimuru-Bot/2.0'
+        'User-Agent': 'Yalena-Bot/2.0'
       }
     });
 

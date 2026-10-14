@@ -1,10 +1,10 @@
 //
 
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 
 
-import { getAllPlugins, getCommandsByCategory } from "../../src/lib/rimuru-plugins.js"
-import { getCaseCount } from "../../case/rimuru.js"
+import { getAllPlugins, getCommandsByCategory } from "../../src/lib/yalena-plugins.js"
+import { getCaseCount } from "../../case/yalena.js"
 
 const pluginConfig = {
   name: "totalcmd2",

@@ -3,7 +3,7 @@
 import config from '../../config.js'
 import path from 'path'
 import fs from 'fs'
-import { AIRich } from '../../src/lib/rimuru-builder.js'
+import { AIRich } from '../../src/lib/yalena-builder.js'
 const pluginConfig = {
     name: 'kredit',
     category: 'main',
@@ -20,16 +20,16 @@ const pluginConfig = {
 }
 
 async function handler(m, { sock }) {
-    const botName = config.bot?.name || 'Rimuru-AI'
+    const botName = config.bot?.name || 'Yalena-AI'
     const version = config.bot?.version || '1.0.0'
     const developer = config.bot?.developer || 'Lucky Archz'
 
     const credits = [
         { name: 'hyuuOkkotsuX', role: 'Lead Staff', icon: '👨‍💻' },
-        { name: 'Zann', role: 'Creator Rimuru MD dan APK Stardem Rimuru', icon: '👨‍💻' },
+        { name: 'Zann', role: 'Creator Yalena MD dan APK Stardem Yalena', icon: '👨‍💻' },
         { name: 'SenzOkkotsu', role: 'Developer', icon: '👨‍💻' },
         { name: 'Ell', role: 'Developer', icon: '👨‍💻' },
-        { name: 'Aqell', role: 'Developer SC BUG Rimuru Glitch', icon: '👨‍💻' },
+        { name: 'Aqell', role: 'Developer SC BUG Yalena Glitch', icon: '👨‍💻' },
         { name: 'Mobbc', role: 'Staff', icon: '👨‍💻' },
         { name: 'Raka', role: 'Staff', icon: '👨‍💻' },
         { name: 'Sanxz', role: 'Tangan Kanan', icon: '👨‍💻' },

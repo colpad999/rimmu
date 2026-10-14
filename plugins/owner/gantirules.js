@@ -2,14 +2,14 @@
 
 import fs from 'fs'
 import path from 'path'
-import te from '../../src/lib/rimuru-error.js'
-import { updateAssetUrl } from '../../src/lib/rimuru-uploader.js'
+import te from '../../src/lib/yalena-error.js'
+import { updateAssetUrl } from '../../src/lib/yalena-uploader.js'
 const pluginConfig = {
     name: 'gantirules',
     category: 'owner',
-    description: 'Ganti gambar rimuru-rules.jpg (thumbnail rules)',
-    usage: '.ganti-rimuru-rules.jpg (reply/kirim gambar)',
-    example: '.ganti-rimuru-rules.jpg',
+    description: 'Ganti gambar yalena-rules.jpg (thumbnail rules)',
+    usage: '.ganti-yalena-rules.jpg (reply/kirim gambar)',
+    example: '.ganti-yalena-rules.jpg',
     isOwner: true,
     isPremium: false,
     isGroup: false,
@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼️ *ɢᴀɴᴛɪ ᴏᴜʀɪɴ-ʀᴜʟᴇs.ᴊᴘɢ*\n\n> Kirim/reply gambar untuk mengganti\n> File: assets/images/rimuru-rules.jpg`)
+        return m.reply(`🖼️ *ɢᴀɴᴛɪ ᴏᴜʀɪɴ-ʀᴜʟᴇs.ᴊᴘɢ*\n\n> Kirim/reply gambar untuk mengganti\n> File: assets/images/yalena-rules.jpg`)
     }
     
     try {
@@ -40,8 +40,8 @@ async function handler(m, { sock }) {
         
         await m.reply(`⏳ Sedang mengupload gambar...`)
         try {
-            const newUrl = await updateAssetUrl('rimuru-rules', buffer, 'rimuru-rules.jpg')
-            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Gambar rimuru-rules.jpg telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
+            const newUrl = await updateAssetUrl('yalena-rules', buffer, 'yalena-rules.jpg')
+            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Gambar yalena-rules.jpg telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
         } catch (e) {
             m.reply(`❌ Gagal mengupload gambar: ${e.message}`)
         }

@@ -1,10 +1,10 @@
 //
 
-import { getFullSchedulerStatus, formatTimeRemaining, getMsUntilTime } from '../../src/lib/rimuru-scheduler.js'
-import { initSholatScheduler, stopSholatScheduler } from '../../src/lib/rimuru-sholat-scheduler.js'
-import { getDatabase } from '../../src/lib/rimuru-database.js'
-import { getTodaySchedule, extractPrayerTimes } from '../../src/lib/rimuru-sholat-api.js'
-import te from '../../src/lib/rimuru-error.js'
+import { getFullSchedulerStatus, formatTimeRemaining, getMsUntilTime } from '../../src/lib/yalena-scheduler.js'
+import { initSholatScheduler, stopSholatScheduler } from '../../src/lib/yalena-sholat-scheduler.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
+import { getTodaySchedule, extractPrayerTimes } from '../../src/lib/yalena-sholat-api.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'cekscheduler',
     category: 'owner',

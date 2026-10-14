@@ -2,16 +2,16 @@
 
 import moment from "moment-timezone";
 import config from "../../config.js";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import { createWideDiscordCard } from "../../src/lib/rimuru-welcome-card.js";
-import { resolveAnyLidToJid } from "../../src/lib/rimuru-lid.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import { createWideDiscordCard } from "../../src/lib/yalena-welcome-card.js";
+import { resolveAnyLidToJid } from "../../src/lib/yalena-lid.js";
 import path from "path";
 import fs from "fs";
 import axios from "axios";
-import te from "../../src/lib/rimuru-error.js";
-import { saluranCtx } from "../../src/lib/rimuru-context.js";
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
-import { prepareWAMessageMedia, generateWAMessageFromContent } from "rimuru";
+import te from "../../src/lib/yalena-error.js";
+import { saluranCtx } from "../../src/lib/yalena-context.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
+import { prepareWAMessageMedia, generateWAMessageFromContent } from "yalena";
 function resolvePlaceholders(
   template,
   username,
@@ -42,7 +42,7 @@ function resolvePlaceholders(
     .replace(/{date}/gi, now.format("DD/MM/YYYY"))
     .replace(/{time}/gi, now.format("HH:mm"))
     .replace(/{day}/gi, dayId)
-    .replace(/{bot}/gi, config.bot?.name || "Rimuru")
+    .replace(/{bot}/gi, config.bot?.name || "Yalena")
     .replace(/{prefix}/gi, prefix);
 }
 const pluginConfig = {
@@ -172,8 +172,8 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
       groupMeta?.owner?.split("@")[0] || "",
       config.command?.prefix || ".",
     );
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
-    const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
+    const saluranName = config.saluran?.name || config.bot?.name || "Yalena-AI";
     if (welcomeType === 2) {
       const cardBody = groupData?.welcomeMsg
         ? resolvePlaceholders(
@@ -191,7 +191,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
           body: {
             text: `👋 Welcome *@${userName}*`,
           },
-          footer: { text: config.bot?.name || "Rimuru-AI" },
+          footer: { text: config.bot?.name || "Yalena-AI" },
           header: { title: "Welcome", hasMediaAttachment: false },
           carouselMessage: {
             cards: [
@@ -202,7 +202,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
                 body: {
                   text: cardBody,
                 },
-                footer: { text: config.bot?.name || "Rimuru-AI" },
+                footer: { text: config.bot?.name || "Yalena-AI" },
                 nativeFlowMessage: {
                   buttons: [
                     {
@@ -275,7 +275,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
       );
     } else if (welcomeType === 6) {
       await sock.sendMessage(groupJid, {
-        video: config.assets?.["rimuru-mp4"] ? { url: config.assets["rimuru-mp4"] } : { url: "https://files.catbox.moe/k28dhp.mp4" },
+        video: config.assets?.["yalena-mp4"] ? { url: config.assets["yalena-mp4"] } : { url: "https://files.catbox.moe/k28dhp.mp4" },
         gifPlayback: true,
         caption: text,
         contextInfo: {
@@ -313,7 +313,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
                 text: text
               },
               footer: {
-                text: config.bot?.name || "Rimuru-AI"
+                text: config.bot?.name || "Yalena-AI"
               },
               contextInfo: {
                 mentionedJid: [realParticipant],

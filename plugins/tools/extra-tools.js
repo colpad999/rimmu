@@ -13,7 +13,7 @@ const pluginConfig = {
     "pascal","primelist","trapezoid","hexagon","cylinder","tax","taxrm","discstack","retire","timeconv","numsys","leaplist","daysmonth","zodiaccomp","fracsimp","moneyfmt","hashtag","massconv","volconv","trim","capfirst","countchar","randcolor","agesecond","nextday","gcdlist","lcmList","dedupe","strlen","isnum","revnum","punct","extractnum","extractmail","extracturl","wordwrap"
   ],
   category: "tools",
-  description: "Tool matematika, teks, konversi, dan utilitas tambahan yang tidak tersedia di Rimuru.",
+  description: "Tool matematika, teks, konversi, dan utilitas tambahan yang tidak tersedia di Yalena.",
   usage: ".<command> <input>",
   example: ".collatz 27",
   isOwner: false,

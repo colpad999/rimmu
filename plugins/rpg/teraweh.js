@@ -2,13 +2,13 @@
 
 import moment from 'moment-timezone';
 import { generateWAMessageFromContent, proto, prepareWAMessageMedia } from '@itsliaaa/baileys';
-import { RIMURU_CORE_CONFIG } from "../../config.js";
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD 👑\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+import { YALENA_CORE_CONFIG } from "../../config.js";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 
 
 import config from '../../config.js';
-import { getDatabase } from '../../src/lib/rimuru-database.js';
-import { addExpWithLevelCheck } from '../../src/lib/rimuru-level.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
+import { addExpWithLevelCheck } from '../../src/lib/yalena-level.js';
 const pluginConfig = {
     name: 'teraweh',
     category: 'rpg',
@@ -177,7 +177,7 @@ Hai *${m.pushName}*, Selamat menunaikan ibadah puasa yak
         await sock.sendMessage(m.chat, {
             image: { url: 'https://cdn.gimita.id/download/f52ad_poster_1771083297809_f76737b9.webp' },
             caption: headerTxt,
-            footer: `${RIMURU_CORE_CONFIG.bot.name} RAMADHAN SERIES`,
+            footer: `${YALENA_CORE_CONFIG.bot.name} RAMADHAN SERIES`,
             interactiveButtons: [
                 {
                     name: 'single_select',

@@ -1,6 +1,6 @@
 //
 
-import { startJadibot, isJadibotActive } from '../../src/lib/rimuru-jadibot-manager.js'
+import { startJadibot, isJadibotActive } from '../../src/lib/yalena-jadibot-manager.js'
 
 const pluginConfig = {
     name: 'jadibot',

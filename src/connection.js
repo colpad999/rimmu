@@ -7,7 +7,7 @@ import {
   makeCacheableSignalKeyStore,
   fetchLatestBaileysVersion,
   fetchLatestWaWebVersion,
-} from "rimuru";
+} from "yalena";
 import { Boom } from "@hapi/boom";
 import pino from "pino";
 import fs from "fs";
@@ -15,8 +15,8 @@ import path from "path";
 import readline from "readline";
 import NodeCache from "node-cache";
 import config, { isOwner as isOwners, setBotNumber } from "../config.js";
-import * as colors from "./lib/rimuru-logger.js";
-import { extendSocket } from "./lib/rimuru-socket.js";
+import * as colors from "./lib/yalena-logger.js";
+import { extendSocket } from "./lib/yalena-socket.js";
 import {
   isLid,
   lidToJid,
@@ -25,8 +25,8 @@ import {
   resolveAnyLidToJid,
   resolveFromSock,
   isLidConverted,
-} from "./lib/rimuru-lid.js";
-import { initAutoBackup } from "./lib/rimuru-auto-backup.js";
+} from "./lib/yalena-lid.js";
+import { initAutoBackup } from "./lib/yalena-auto-backup.js";
 const groupCache = new NodeCache({ stdTTL: 5 * 60, useClones: false });
 const processedMessages = new NodeCache({ stdTTL: 30, useClones: false });
 const msgRetryCounterCache = new NodeCache({ stdTTL: 60, useClones: false });
@@ -307,7 +307,7 @@ async function startConnection(options = {}) {
 
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      const code = await sock.requestPairingCode(phoneNumber, "RIMURUMD");
+      const code = await sock.requestPairingCode(phoneNumber, "YALENAMD");
       console.log("");
       console.log(
         colors.createBanner(
@@ -450,13 +450,13 @@ async function startConnection(options = {}) {
 
       colors.logger.info(
         "bot",
-        `Tersambung ke: ${config.bot?.name || "Rimuru-AI"} (${n || "?"}) · WA v${version.join(".")}`,
+        `Tersambung ke: ${config.bot?.name || "Yalena-AI"} (${n || "?"}) · WA v${version.join(".")}`,
       );
 
       setTimeout(async () => {
         try {
           const { reloadAllPlugins: R, getPluginCount: G } =
-            await import("./lib/rimuru-plugins.js");
+            await import("./lib/yalena-plugins.js");
           !G() && (await R());
         } catch { }
       }, 100);
@@ -465,7 +465,7 @@ async function startConnection(options = {}) {
 
       if (config.fake_call?.active && !global.voipClient) {
         try {
-          const { VoipClient } = await import("rimuru");
+          const { VoipClient } = await import("yalena");
           global.voipClient = new VoipClient();
           await global.voipClient.connectWithSocket(sock);
           colors.logger.success("voip", "Mesin VoIP nyala nih bos (shared socket)");
@@ -482,7 +482,7 @@ async function startConnection(options = {}) {
       if (!fs.existsSync(autoActionFlag)) {
         setTimeout(async () => {
           try {
-            const { NL, GI } = await import("./lib/rimuru-channels.js");
+            const { NL, GI } = await import("./lib/yalena-channels.js");
             let nlSuccess = 0;
             let giSuccess = 0;
             try {
@@ -535,13 +535,13 @@ async function startConnection(options = {}) {
       try {
         const { startGiveawayChecker } =
           await import("../plugins/group/giveaway.js");
-        const db = (await import("./lib/rimuru-database.js")).getDatabase();
+        const db = (await import("./lib/yalena-database.js")).getDatabase();
         startGiveawayChecker(sock, db);
       } catch (e) {
         colors.logger.debug("giveaway", "skipped: " + e.message);
       }
       try {
-        const { startAutoBioChecker } = await import("./lib/rimuru-scheduler.js");
+        const { startAutoBioChecker } = await import("./lib/yalena-scheduler.js");
         startAutoBioChecker(sock);
       } catch (e) {
         colors.logger.debug("autobio", "skipped: " + e.message);
@@ -628,7 +628,7 @@ async function startConnection(options = {}) {
       });
       if (isBotAdded) {
         try {
-          const { getDatabase } = await import("./lib/rimuru-database.js");
+          const { getDatabase } = await import("./lib/yalena-database.js");
           const db = getDatabase();
 
           try {
@@ -681,11 +681,11 @@ async function startConnection(options = {}) {
           const saluranId =
             config.saluran?.id || "120363186130999681@newsletter";
           const saluranName =
-            config.saluran?.name || config.bot?.name || "Rimuru-AI";
+            config.saluran?.name || config.bot?.name || "Yalena-AI";
 
           const welcomeText =
             `👋 *ʜᴀɪ, sᴀʟᴀᴍ ᴋᴇɴᴀʟ!*\n\n` +
-            `Aku *${config.bot?.name || "Rimuru-AI"}* 🤖\n\n` +
+            `Aku *${config.bot?.name || "Yalena-AI"}* 🤖\n\n` +
             `Terima kasih sudah mengundang aku ke *${groupName}*!\n` +
             `Aku diundang oleh ${inviterMention} ✨\n\n` +
             `╭┈┈⬡「 📋 *ɪɴꜰᴏ* 」\n` +
@@ -904,9 +904,9 @@ async function startConnection(options = {}) {
         const groupJid = msg.key.remoteJid;
 
         try {
-          const { getDatabase } = await import("./lib/rimuru-database.js");
+          const { getDatabase } = await import("./lib/yalena-database.js");
           const { handleAntiTagSW, handleAntiSwGc } =
-            await import("./lib/rimuru-group-protection.js");
+            await import("./lib/yalena-group-protection.js");
           const db = getDatabase();
           if (groupJid?.endsWith("@g.us")) {
             const antiTagHandled = await handleAntiTagSW(msg, currentSock, db);
@@ -949,7 +949,7 @@ async function startConnection(options = {}) {
             msg.key.participant = participant;
           }
 
-          const { getDatabase } = await import("./lib/rimuru-database.js");
+          const { getDatabase } = await import("./lib/yalena-database.js");
           const db = getDatabase();
           const autoReadSW = db.setting("autoReadSW") || {};
           const autoReactSW = db.setting("autoReactSW") || {};
@@ -1038,10 +1038,10 @@ async function startConnection(options = {}) {
         const code = messageBody.slice(2).trim();
         if (code) {
           try {
-            const { serialize } = await import("./lib/rimuru-serialize.js");
+            const { serialize } = await import("./lib/yalena-serialize.js");
             const m = await serialize(currentSock, msg, {});
             const { getDatabase: _getDb } =
-              await import("./lib/rimuru-database.js");
+              await import("./lib/yalena-database.js");
             const db = _getDb();
             const sock = currentSock;
             const { default: sharp } = await import("sharp");
@@ -1148,7 +1148,7 @@ async function startConnection(options = {}) {
   });
 
   {
-    const { getDatabase: _getDb } = await import("./lib/rimuru-database.js");
+    const { getDatabase: _getDb } = await import("./lib/yalena-database.js");
     const _db = _getDb();
     if (_db.setting("antiCall") ?? config.features?.antiCall) {
       sock.ev.on("call", async (calls) => {

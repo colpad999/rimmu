@@ -1,7 +1,7 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import { getTimeGreeting } from "../../src/lib/rimuru-formatter.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import { getTimeGreeting } from "../../src/lib/yalena-formatter.js";
 const pluginConfig = {
   name: "daily",
   category: "user",

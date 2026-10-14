@@ -1,6 +1,6 @@
 //
 
-import { getRandomItem } from '../../src/lib/rimuru-game-data.js'
+import { getRandomItem } from '../../src/lib/yalena-game-data.js'
 const pluginConfig = {
     name: 'dare',
     category: 'fun',

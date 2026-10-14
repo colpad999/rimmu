@@ -1,8 +1,8 @@
 //
 
 import axios from "axios";
-import te from "../../src/lib/rimuru-error.js";
-import { generateWAMessageFromContent } from "rimuru";
+import te from "../../src/lib/yalena-error.js";
+import { generateWAMessageFromContent } from "yalena";
 import sharp from "sharp";
 
 const pluginConfig = {
@@ -73,7 +73,7 @@ async function handler(m, { sock, text }) {
             address: `🎤 ${firstResult.artist} | ⏱️ ${firstResult.duration}`
           },
           contentText: contentText,
-          footerText: '🚀 Rimuru MD - Spotify Search',
+          footerText: '🚀 Yalena MD - Spotify Search',
           headerType: 6,
         },
       };

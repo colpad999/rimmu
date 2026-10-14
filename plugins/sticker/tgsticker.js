@@ -1,6 +1,6 @@
 //
 
-import { RIMURU_DEVELOPER } from "../../config.js";
+import { YALENA_DEVELOPER } from "../../config.js";
 import axios from 'axios';
 import _sharp from 'sharp';
 import config from '../../config.js';
@@ -44,7 +44,7 @@ async function handler(m, { sock }) {
     return m.reply('❌ Telegram Bot Token belum diisi di config.telegram.botToken.');
   }
   if (typeof sock.sendStickerPack !== 'function') {
-    return m.reply('❌ WhatsApp client Rimuru tidak mendukung pengiriman sticker pack otomatis.');
+    return m.reply('❌ WhatsApp client Yalena tidak mendukung pengiriman sticker pack otomatis.');
   }
 
   await m.react('⏳');
@@ -80,8 +80,8 @@ async function handler(m, { sock }) {
     await sock.sendStickerPack(m.chat, buffers, m, {
       name: packName,
       packname: packName,
-      publisher: RIMURU_DEVELOPER || 'RimuruMD',
-      author: RIMURU_DEVELOPER || 'RimuruMD',
+      publisher: YALENA_DEVELOPER || 'YalenaMD',
+      author: YALENA_DEVELOPER || 'YalenaMD',
       description: `Telegram sticker pack: ${packName}`,
       emojis: ['❤'],
     });

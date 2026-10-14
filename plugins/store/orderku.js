@@ -1,10 +1,10 @@
 //
 
-import { getDatabase } from '../../src/lib/rimuru-database.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
 import orderPoller from '../../src/lib/orderPoller.js';
 import path from 'path';
 import fs from 'fs';
-import { getAssetBuffer } from '../../src/lib/rimuru-asset-manager.js';
+import { getAssetBuffer } from '../../src/lib/yalena-asset-manager.js';
 
 const pluginConfig = {
     name: 'orderku',
@@ -24,7 +24,7 @@ const pluginConfig = {
 async function handler(m, { sock }) {
     const db = getDatabase()
     const groupData = db.getGroup(m.chat) || {}
-    const storeImage = getAssetBuffer('rimuru-store')
+    const storeImage = getAssetBuffer('yalena-store')
     
     if (groupData.botMode !== 'store') {
         return m.reply(`❌ Fitur ini hanya tersedia di mode *STORE*!`)

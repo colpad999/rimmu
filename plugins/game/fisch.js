@@ -1,6 +1,6 @@
 //
 
-import { getDatabase } from "../../src/lib/rimuru-database.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
 import {
   getOrCreateFischUser,
   getRandomFish,
@@ -13,7 +13,7 @@ import {
   JACKPOT_POOLS,
   doJackpotPull,
   applyJackpotReward,
-} from "../../src/lib/rimuru-fisch.js";
+} from "../../src/lib/yalena-fisch.js";
 import {
   islands,
   travelRequirements,
@@ -26,11 +26,11 @@ import {
   TOKEN_SHOP,
   GACHA_COST_COINS,
   GACHA_PITY_LIMIT,
-} from "../../src/lib/rimuru-fisch-data.js";
+} from "../../src/lib/yalena-fisch-data.js";
 import config from "../../config.js";
 import path from "path";
 import fs from "fs";
-import { getAssetBuffer } from "../../src/lib/rimuru-asset-manager.js";
+import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
 
 const FC = 15;
 const rc = (r) => RARITY_EMOJI[r] || "W";
@@ -47,12 +47,12 @@ const encCost = (r) =>
 
 let thumbFish = null;
 try {
-  thumbFish = getAssetBuffer("rimuru-fishit");
+  thumbFish = getAssetBuffer("yalena-fishit");
 } catch (e) {}
 
 function ctx(title, body) {
-  const sId = config.saluran?.id || "120363412350560864@newsletter";
-  const sName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
+  const sId = config.saluran?.id || "120363380765405182@newsletter";
+  const sName = config.saluran?.name || config.bot?.name || "Yalena-AI";
   const c = {
     forwardingScore: 9999,
     isForwarded: true,

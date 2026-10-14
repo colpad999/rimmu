@@ -4,9 +4,9 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import config from '../../config.js';
-import { getDatabase } from '../../src/lib/rimuru-database.js';
-import te from '../../src/lib/rimuru-error.js';
-import { prepareWAMessageMedia, generateWAMessageFromContent, generateWAMessage, jidNormalizedUser } from 'rimuru';
+import { getDatabase } from '../../src/lib/yalena-database.js';
+import te from '../../src/lib/yalena-error.js';
+import { prepareWAMessageMedia, generateWAMessageFromContent, generateWAMessage, jidNormalizedUser } from 'yalena';
 
 const pluginConfig = {
     name: 'shufflereply',

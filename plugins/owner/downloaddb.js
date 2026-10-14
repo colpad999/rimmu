@@ -4,7 +4,7 @@ import moment from 'moment-timezone'
 import fs from 'fs'
 import path from 'path'
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'downloaddb',
     category: 'owner',

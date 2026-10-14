@@ -3,9 +3,9 @@
 import axios from 'axios'
 import * as cheerio from 'cheerio'
 import crypto from 'crypto'
-import { generateWAMessage, generateWAMessageFromContent, jidNormalizedUser } from 'rimuru'
+import { generateWAMessage, generateWAMessageFromContent, jidNormalizedUser } from 'yalena'
 import config from '../../config.js'
-import te from '../../src/lib/rimuru-error.js'
+import te from '../../src/lib/yalena-error.js'
 const headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
     Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',

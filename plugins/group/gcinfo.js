@@ -1,9 +1,9 @@
 //
 
 import axios from 'axios'
-import { getParticipantJid, resolveAnyLidToJid } from '../../src/lib/rimuru-lid.js'
-import * as timeHelper from '../../src/lib/rimuru-time.js'
-import te from '../../src/lib/rimuru-error.js'
+import { getParticipantJid, resolveAnyLidToJid } from '../../src/lib/yalena-lid.js'
+import * as timeHelper from '../../src/lib/yalena-time.js'
+import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
     name: 'gcinfo',
     category: 'group',

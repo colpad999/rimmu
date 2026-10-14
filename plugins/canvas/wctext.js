@@ -1,6 +1,6 @@
 //
 
-import te from "../../src/lib/rimuru-error.js";
+import te from "../../src/lib/yalena-error.js";
 import config from "../../config.js";
 import axios from "axios";
 
@@ -9,7 +9,7 @@ const pluginConfig = {
   category: "canvas",
   description: "Buat gambar teks dengan efek watercolor",
   usage: ".watercolortext <teks>",
-  example: ".watercolortext RIMURU",
+  example: ".watercolortext YALENA",
   isOwner: false,
   isPremium: false,
   isGroup: false,
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
 
   if (!text) {
     return m.reply(
-      `🎨 *ᴡᴀᴛᴇʀᴄᴏʟᴏʀ ᴛᴇxᴛ*\n\n> Masukkan teks yang ingin dijadikan gambar\n\n\`Contoh: ${m.prefix}watercolortext RIMURU\``,
+      `🎨 *ᴡᴀᴛᴇʀᴄᴏʟᴏʀ ᴛᴇxᴛ*\n\n> Masukkan teks yang ingin dijadikan gambar\n\n\`Contoh: ${m.prefix}watercolortext YALENA\``,
     );
   }
 

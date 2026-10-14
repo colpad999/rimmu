@@ -1,7 +1,7 @@
 //
 
 import config from '../../config.js'
-import { getDatabase } from '../../src/lib/rimuru-database.js'
+import { getDatabase } from '../../src/lib/yalena-database.js'
 const pluginConfig = {
     name: 'preminfo',
     category: 'cek',

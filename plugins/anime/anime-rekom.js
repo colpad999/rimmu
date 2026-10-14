@@ -121,24 +121,24 @@ if (anime === "Darling in the Franxx") {
 m.react("😍")
 
 text =
-`╭━━━〔 💗 RIMURU FAVORITE 💗 〕━━⬣
+`╭━━━〔 💗 YALENA FAVORITE 💗 〕━━⬣
 ┃
 ┃ EH?! DARLING!! 😳
 ┃
-┃ Rimuru sangat merekomendasikan
+┃ Yalena sangat merekomendasikan
 ┃ anime ini!!
 ┃
 ┃ 📺 Judul :
 ┃ ${anime}
 ┃
 ┃ Ini anime tentang
-┃ *Rimuru* loh!! 💕
+┃ *Yalena* loh!! 💕
 ┃
 ┃ Darling wajib nonton!!
 ┃ SERIUS!! 😆✨
 ┃
 ┃ Nanti bilang ya
-┃ Rimuru paling lucu 😏
+┃ Yalena paling lucu 😏
 ┃
 ╰━━━━━━━━━━━━━━━━⬣`
 
@@ -149,7 +149,7 @@ m.react("✨")
 text =
 `╭━━━〔 🎌 REKOMENDASI ANIME 🎌 〕━━⬣
 ┃
-┃ Rimuru punya
+┃ Yalena punya
 ┃ rekomendasi anime nih~
 ┃
 ┃ 📺 Judul :

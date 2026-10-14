@@ -131,13 +131,13 @@ async function handler(m, { sock }) {
     if (args === 'on') {
         autoCleanEnabled = true
         await m.react('✅')
-        return m.reply(`✅ *AUTO CLEAN AKTIF*\n\n📂 File: baileys_store.json\n📍 Lokasi: ${storePath}\n📦 Batas ukuran: ${MAX_SIZE_MB} MB\n\nFile akan otomatis dihapus jika melebihi ${MAX_SIZE_MB} MB.\n\n🦋 *Rimuru:* Udah aktif ya darling~`)
+        return m.reply(`✅ *AUTO CLEAN AKTIF*\n\n📂 File: baileys_store.json\n📍 Lokasi: ${storePath}\n📦 Batas ukuran: ${MAX_SIZE_MB} MB\n\nFile akan otomatis dihapus jika melebihi ${MAX_SIZE_MB} MB.\n\n🦋 *Yalena:* Udah aktif ya darling~`)
     }
     
     if (args === 'off') {
         autoCleanEnabled = false
         await m.react('✅')
-        return m.reply(`❌ *AUTO CLEAN NONAKTIF*\n\nFitur auto hapus sudah dimatikan.\n\nGunakan \`.autoclean on\` untuk mengaktifkan lagi.\n\n🦋 *Rimuru:* Siap darling~`)
+        return m.reply(`❌ *AUTO CLEAN NONAKTIF*\n\nFitur auto hapus sudah dimatikan.\n\nGunakan \`.autoclean on\` untuk mengaktifkan lagi.\n\n🦋 *Yalena:* Siap darling~`)
     }
     
     // Tampilkan status (default)
@@ -159,7 +159,7 @@ async function handler(m, { sock }) {
     statusText += `• \`.autoclean off\` - Nonaktifkan\n`
     statusText += `• \`.autoclean clean\` - Hapus manual sekarang\n`
     statusText += `• \`.autoclean status\` - Lihat status ini\n\n`
-    statusText += `🦋 *Rimuru:* Mau diatur gimana darling~?`
+    statusText += `🦋 *Yalena:* Mau diatur gimana darling~?`
     
     await m.reply(statusText)
 }

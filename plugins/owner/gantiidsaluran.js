@@ -49,7 +49,7 @@ async function handler(m) {
 
     scan("./")
 
-    await m.reply(`╭━━〔 ❤️ RIMURU SYSTEM ❤️ 〕━━⬣
+    await m.reply(`╭━━〔 ❤️ YALENA SYSTEM ❤️ 〕━━⬣
 ┃ ✅ ID Saluran berhasil diganti
 ┃
 ┃ ID Baru :

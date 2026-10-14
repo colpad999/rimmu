@@ -1,10 +1,10 @@
 //
 
 import config from "../../config.js";
-import * as timeHelper from "../../src/lib/rimuru-time.js";
+import * as timeHelper from "../../src/lib/yalena-time.js";
 import { CronJob } from "cron";
-import { getDatabase } from "../../src/lib/rimuru-database.js";
-import { fetchGroupsSafe } from "../../src/lib/rimuru-jpm-helper.js";
+import { getDatabase } from "../../src/lib/yalena-database.js";
+import { fetchGroupsSafe } from "../../src/lib/yalena-jpm-helper.js";
 
 function generateGiveawayId() {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -365,7 +365,7 @@ function startGiveawayChecker(sock, db) {
     "* * * * *",
     async () => {
       try {
-        const { getDatabase } = await import("../../src/lib/rimuru-database.js");
+        const { getDatabase } = await import("../../src/lib/yalena-database.js");
         const currentDb = getDatabase();
         const { getSocket } = await import("../../src/connection.js");
         const currentSock = getSocket();

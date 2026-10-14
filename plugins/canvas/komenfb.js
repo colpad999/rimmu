@@ -1,8 +1,8 @@
 //
 
 import { createCanvas, loadImage } from "@napi-rs/canvas";
-import { downloadMediaMessage, getContentType } from "rimuru";
-import te from "../../src/lib/rimuru-error.js";
+import { downloadMediaMessage, getContentType } from "yalena";
+import te from "../../src/lib/yalena-error.js";
 
 const pluginConfig = {
   name: "komenfb",

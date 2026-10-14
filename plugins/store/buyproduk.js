@@ -1,10 +1,10 @@
 //
 
-import { getDatabase } from '../../src/lib/rimuru-database.js';
+import { getDatabase } from '../../src/lib/yalena-database.js';
 import orderPoller from '../../src/lib/orderPoller.js';
 import path from 'path';
 import fs from 'fs';
-import { getAssetBuffer } from '../../src/lib/rimuru-asset-manager.js';
+import { getAssetBuffer } from '../../src/lib/yalena-asset-manager.js';
 
 const pluginConfig = {
     name: 'buyproduk',
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
     const qty = parseInt(args[1]) || 1
     
     if (isNaN(productIdx) || productIdx < 0 || productIdx >= products.length) {
-        const storeImage = getAssetBuffer('rimuru-store')
+        const storeImage = getAssetBuffer('yalena-store')
         
         let txt = `💳 *ʙᴇʟɪ ᴅᴇɴɢᴀɴ sᴀʟᴅᴏ*\n\n`
         txt += `> Bayar produk menggunakan *Koin* in-game!\n`
