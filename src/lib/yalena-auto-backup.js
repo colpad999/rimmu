@@ -3,9 +3,10 @@
 import fs from "fs";
 import path from "path";
 import archiver from "archiver";
+import axios from "axios";
+import FormData from "form-data";
 import { CronJob } from "cron";
 import config from "../../config.js";
-import { getDatabase } from "./yalena-database.js";
 import * as timeHelper from "./yalena-time.js";
 import { logger } from "./yalena-logger.js";
 
@@ -14,8 +15,8 @@ const BACKUP_STATE_FILE = path.join(
   "database",
   "autobackup.json",
 );
-let sockInstance = null;
 let activeCronJob = null;
+const MAX_TELEGRAM_FILE_SIZE = 50 * 1024 * 1024;
 
 const EXCLUDE_DIRS = new Set([
   "node_modules",
@@ -204,6 +205,7 @@ async function createBackup() {
         timestamp,
       });
     });
+    output.on("error", reject);
     archive.on("error", reject);
     archive.pipe(output);
 
@@ -237,87 +239,118 @@ async function createBackup() {
   });
 }
 
-async function sendBackupToOwner(backupInfo) {
-  if (!sockInstance) {
-    logger.error("AutoBackup", "Socket not initialized");
-    return false;
+function getTelegramBackupConfig() {
+  return {
+    botToken: config.telegram?.botToken?.trim() || "",
+    chatId: config.telegram?.chatId?.trim() || "",
+  };
+}
+
+function isTelegramBackupConfigured() {
+  const { botToken, chatId } = getTelegramBackupConfig();
+  return Boolean(botToken && chatId);
+}
+
+async function sendBackupToTelegram(backupInfo) {
+  const { botToken, chatId } = getTelegramBackupConfig();
+  if (!botToken || !chatId) {
+    throw new Error(
+      "Telegram belum dikonfigurasi. Atur TELEGRAM_BOT_TOKEN dan TELEGRAM_CHAT_ID.",
+    );
+  }
+  if (backupInfo.size > MAX_TELEGRAM_FILE_SIZE) {
+    throw new Error("Ukuran backup melebihi batas upload Telegram 50 MB.");
   }
 
-  const ownerNumbers = config.owner?.number || [];
-  if (ownerNumbers.length === 0) {
-    logger.error("AutoBackup", "No owner number configured");
-    return false;
-  }
-
-  const ownerNumber = String(ownerNumbers[0]).replace(/[^0-9]/g, "");
-  if (!ownerNumber) {
-    logger.error("AutoBackup", "Invalid owner number");
-    return false;
-  }
-
-  const ownerJid = `${ownerNumber}@s.whatsapp.net`;
+  const sizeInMB = (backupInfo.size / (1024 * 1024)).toFixed(2);
+  const state = loadBackupState();
+  const caption =
+    `Auto Backup ${config.bot?.name || "Yalena-AI"}\n` +
+    `Waktu: ${timeHelper.formatDateTime("DD MMMM YYYY HH:mm:ss")} WIB\n` +
+    `Ukuran: ${sizeInMB} MB\n` +
+    `File: ${backupInfo.fileCount}\n` +
+    `Backup ke-${state.backupCount + 1}`;
+  const form = new FormData();
+  form.append("chat_id", chatId);
+  form.append("caption", caption);
+  form.append("document", fs.createReadStream(backupInfo.path), {
+    filename: path.basename(backupInfo.path),
+    contentType: "application/zip",
+  });
 
   try {
-    const sizeInMB = (backupInfo.size / (1024 * 1024)).toFixed(2);
-    const state = loadBackupState();
-
-    const caption =
-      `🗂️ *ᴀᴜᴛᴏ ʙᴀᴄᴋᴜᴘ*\n\n` +
-      `╭┈┈⬡「 📋 *ɪɴꜰᴏ* 」\n` +
-      `┃ 📅 Waktu: ${timeHelper.formatDateTime("DD MMMM YYYY HH:mm:ss")} WIB\n` +
-      `┃ 📦 Size: ${sizeInMB} MB\n` +
-      `┃ 📁 Files: ${backupInfo.fileCount}\n` +
-      `┃ ⏱️ Interval: ${formatInterval(state.intervalMs)}\n` +
-      `┃ #️⃣ Backup ke-${state.backupCount + 1}\n` +
-      `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-      `> ${config.bot?.name || "Yalena-AI"} Auto Backup System`;
-
-    await sockInstance.sendMessage(ownerJid, {
-      document: { url: backupInfo.path },
-      mimetype: "application/zip",
-      fileName: path.basename(backupInfo.path),
-      caption,
-    });
-
-    state.lastBackup = new Date().toISOString();
-    state.backupCount++;
-    saveBackupState(state);
-
-    try {
-      await fs.promises.unlink(backupInfo.path);
-    } catch {}
-
-    logger.success("AutoBackup", `Backup sent to owner (${sizeInMB} MB)`);
-    return true;
+    const response = await axios.post(
+      `https://api.telegram.org/bot${botToken}/sendDocument`,
+      form,
+      {
+        headers: form.getHeaders(),
+        maxBodyLength: Infinity,
+        maxContentLength: Infinity,
+        timeout: 120_000,
+      },
+    );
+    if (!response.data?.ok) {
+      throw new Error(response.data?.description || "Telegram menolak file backup.");
+    }
   } catch (error) {
-    logger.error("AutoBackup", `Send failed: ${error.message}`);
-    return false;
+    const detail = String(
+      error.response?.data?.description ||
+      error.message ||
+      "Kesalahan tidak diketahui",
+    );
+    const safeDetail = botToken ? detail.replaceAll(botToken, "[redacted]") : detail;
+    logger.error("AutoBackup", `Telegram upload failed: ${safeDetail}`);
+    throw new Error(`Pengiriman backup ke Telegram gagal: ${safeDetail}`);
   }
+
+  state.lastBackup = new Date().toISOString();
+  state.backupCount++;
+  saveBackupState(state);
+  try {
+    await fs.promises.unlink(backupInfo.path);
+  } catch (error) {
+    logger.warn("AutoBackup", `Backup cleanup failed: ${error.message}`);
+  }
+  logger.success("AutoBackup", `Backup sent to Telegram (${sizeInMB} MB)`);
 }
 
 async function doBackup() {
-  try {
-    logger.info("AutoBackup", "Starting backup...");
-    const backupInfo = await createBackup();
-    await sendBackupToOwner(backupInfo);
-  } catch (error) {
-    logger.error("AutoBackup", `Backup failed: ${error.message}`);
-  }
+  logger.info("AutoBackup", "Starting backup...");
+  const backupInfo = await createBackup();
+  await sendBackupToTelegram(backupInfo);
 }
 
-function startAutoBackup(sock) {
-  sockInstance = sock;
+function startAutoBackup() {
   const state = loadBackupState();
 
   if (!state.enabled) {
     logger.info("AutoBackup", "Auto backup is disabled");
     return;
   }
+  if (!isTelegramBackupConfigured()) {
+    logger.error(
+      "AutoBackup",
+      "Telegram backup is enabled but TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is missing",
+    );
+    return;
+  }
 
   stopAutoBackup();
 
   const cronExp = intervalToCron(state.intervalMs);
-  activeCronJob = new CronJob(cronExp, doBackup, null, true, "Asia/Jakarta");
+  activeCronJob = new CronJob(
+    cronExp,
+    async () => {
+      try {
+        await doBackup();
+      } catch (error) {
+        logger.error("AutoBackup", `Backup failed: ${error.message}`);
+      }
+    },
+    null,
+    true,
+    "Asia/Jakarta",
+  );
   logger.info(
     "AutoBackup",
     `Started with interval: ${formatInterval(state.intervalMs)} (cron: ${cronExp})`,
@@ -332,7 +365,7 @@ function stopAutoBackup() {
   }
 }
 
-function enableAutoBackup(intervalStr, sock) {
+function enableAutoBackup(intervalStr) {
   const parsed = parseInterval(intervalStr);
   if (!parsed) {
     return {
@@ -341,8 +374,6 @@ function enableAutoBackup(intervalStr, sock) {
     };
   }
 
-  sockInstance = sock;
-
   const state = loadBackupState();
   state.enabled = true;
   state.intervalMs = parsed.ms;
@@ -350,7 +381,7 @@ function enableAutoBackup(intervalStr, sock) {
   saveBackupState(state);
 
   stopAutoBackup();
-  startAutoBackup(sock);
+  startAutoBackup();
 
   return {
     success: true,
@@ -379,14 +410,12 @@ function getBackupStatus() {
   };
 }
 
-async function triggerManualBackup(sock) {
-  sockInstance = sock;
+async function triggerManualBackup() {
   await doBackup();
 }
 
-function initAutoBackup(sock) {
-  sockInstance = sock;
-  startAutoBackup(sock);
+function initAutoBackup() {
+  startAutoBackup();
 }
 
 export {
@@ -400,4 +429,5 @@ export {
   createBackup,
   parseInterval,
   formatInterval,
+  isTelegramBackupConfigured,
 };

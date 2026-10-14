@@ -23,6 +23,7 @@ import { handleAntiTagSW } from "./src/lib/yalena-group-protection.js";
 import { initSholatScheduler } from "./src/lib/yalena-sholat-scheduler.js";
 import { initNotifScheduler } from "./src/lib/yalena-notif-scheduler.js";
 import { initAutoJpmScheduler } from "./src/lib/yalena-auto-jpm.js";
+import { initAutoBackup } from "./src/lib/yalena-auto-backup.js";
 import { startMemoryMonitor } from "./src/lib/yalena-memory-monitor.js";
 import { startTempCleaner } from "./src/lib/yalena-temp-cleaner.js";
 import { startDailyPruner } from "./src/lib/yalena-data-pruner.js";
@@ -361,6 +362,7 @@ async function main() {
         startGroupScheduleChecker(sock);
         startSewaChecker(sock);
         initScheduler(config, sock);
+        initAutoBackup();
         initAutoJpmScheduler(sock);
         initSholatScheduler(sock);
         initNotifScheduler(sock);

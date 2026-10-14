@@ -199,6 +199,11 @@ const config = {
 
   database: { path: "./database/main" },
   backup: { enabled: false, intervalHours: 24, retainDays: 7 },
+  // Provide credentials through environment variables; never hardcode the bot token.
+  telegram: {
+    botToken: process.env.TELEGRAM_BOT_TOKEN || "",
+    chatId: process.env.TELEGRAM_CHAT_ID || "",
+  },
   scheduler: { resetHour: 0, resetMinute: 0 },
 
   // Dev mode settings (auto-enabled jika NODE_ENV=development)

@@ -1,9 +1,7 @@
 //
 
-import { enableAutoBackup, disableAutoBackup, getBackupStatus, triggerManualBackup, formatInterval } from '../../src/lib/yalena-auto-backup.js'
+import { enableAutoBackup, disableAutoBackup, getBackupStatus, triggerManualBackup, isTelegramBackupConfigured } from '../../src/lib/yalena-auto-backup.js'
 import * as timeHelper from '../../src/lib/yalena-time.js'
-import config from '../../config.js'
-import te from '../../src/lib/yalena-error.js'
 const pluginConfig = {
   name: "autobackup",
   category: "owner",
@@ -19,13 +17,15 @@ const pluginConfig = {
   isEnabled: true,
 };
 
-async function handler(m, { sock }) {
+async function handler(m) {
   const args = m.text?.trim().split(/\s+/) || [];
   const action = args[0]?.toLowerCase();
 
   if (!action) {
     const status = getBackupStatus();
-    const ownerNum = config.owner?.number?.[0] || "Tidak diset";
+    const telegramStatus = isTelegramBackupConfigured()
+      ? "✅ Telegram siap"
+      : "❌ Telegram belum dikonfigurasi";
 
     let txt = `🗂️ *ᴀᴜᴛᴏ ʙᴀᴄᴋᴜᴘ sʏsᴛᴇᴍ*\n\n`;
     txt += `╭┈┈⬡「 📊 *sᴛᴀᴛᴜs* 」\n`;
@@ -33,7 +33,7 @@ async function handler(m, { sock }) {
     txt += `┃ ⏱️ Interval: ${status.interval}\n`;
     txt += `┃ 📅 Last Backup: ${status.lastBackup ? timeHelper.fromTimestamp(status.lastBackup, "DD MMMM YYYY HH:mm:ss") : "-"}\n`;
     txt += `┃ #️⃣ Total: ${status.backupCount} backup\n`;
-    txt += `┃ 📤 Dikirim ke: ${ownerNum}\n`;
+    txt += `┃ 📤 Tujuan: ${telegramStatus}\n`;
     txt += `╰┈┈┈┈┈┈┈┈⬡\n\n`;
 
     txt += `*ᴄᴀʀᴀ ᴘᴀᴋᴀɪ:*\n`;
@@ -41,6 +41,7 @@ async function handler(m, { sock }) {
     txt += `> \`${m.prefix}autobackup off\`\n`;
     txt += `> \`${m.prefix}autobackup status\`\n`;
     txt += `> \`${m.prefix}autobackup now\`\n\n`;
+    txt += `Token dan chat ID Telegram diatur lewat \`TELEGRAM_BOT_TOKEN\` dan \`TELEGRAM_CHAT_ID\`.\n\n`;
 
     txt += `*ꜰᴏʀᴍᴀᴛ ɪɴᴛᴇʀᴠᴀʟ:*\n`;
     txt += `> • \`5m\` = 5 menit\n`;
@@ -71,20 +72,24 @@ async function handler(m, { sock }) {
         );
       }
 
-      const result = enableAutoBackup(interval, sock);
+      if (!isTelegramBackupConfigured()) {
+        return m.reply(
+          "❌ Telegram belum dikonfigurasi. Atur TELEGRAM_BOT_TOKEN dan TELEGRAM_CHAT_ID sebelum mengaktifkan backup.",
+        );
+      }
+
+      const result = enableAutoBackup(interval);
 
       if (!result.success) {
         return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> ${result.error}`);
       }
-
-      const ownerNum = config.owner?.number?.[0] || "Owner #1";
 
       await m.react("✅");
       return m.reply(
         `✅ *ᴀᴜᴛᴏ ʙᴀᴄᴋᴜᴘ ᴅɪᴀᴋᴛɪꜰᴋᴀɴ*\n\n` +
           `╭┈┈⬡「 ⚙️ *sᴇᴛᴛɪɴɢs* 」\n` +
           `┃ ⏱️ Interval: ${result.interval}\n` +
-          `┃ 📤 Dikirim ke: ${ownerNum}\n` +
+          `┃ 📤 Dikirim ke: Telegram\n` +
           `┃ 📦 Exclude: node_modules, .git, storages, dll\n` +
           `╰┈┈┈┈┈┈┈┈⬡\n\n` +
           `> Backup pertama akan dikirim dalam ${result.interval}`,
@@ -107,7 +112,9 @@ async function handler(m, { sock }) {
     case "status":
     case "info": {
       const status = getBackupStatus();
-      const ownerNum = config.owner?.number?.[0] || "Tidak diset";
+      const telegramStatus = isTelegramBackupConfigured()
+        ? "✅ Telegram siap"
+        : "❌ Telegram belum dikonfigurasi";
 
       let txt = `🗂️ *sᴛᴀᴛᴜs ᴀᴜᴛᴏ ʙᴀᴄᴋᴜᴘ*\n\n`;
       txt += `╭┈┈⬡「 📊 *ɪɴꜰᴏ* 」\n`;
@@ -116,7 +123,7 @@ async function handler(m, { sock }) {
       txt += `┃ 🔄 Running: ${status.isRunning ? "✅ Ya" : "❌ Tidak"}\n`;
       txt += `┃ 📅 Last: ${status.lastBackup ? timeHelper.fromTimestamp(status.lastBackup, "DD MMMM YYYY HH:mm:ss") : "-"}\n`;
       txt += `┃ #️⃣ Total: ${status.backupCount} backup\n`;
-      txt += `┃ 📤 Target: ${ownerNum}\n`;
+      txt += `┃ 📤 Target: ${telegramStatus}\n`;
       txt += `╰┈┈┈┈┈┈┈┈⬡`;
 
       return m.reply(txt);
@@ -125,20 +132,26 @@ async function handler(m, { sock }) {
     case "now":
     case "manual":
     case "trigger": {
+      if (!isTelegramBackupConfigured()) {
+        return m.reply(
+          "❌ Telegram belum dikonfigurasi. Atur TELEGRAM_BOT_TOKEN dan TELEGRAM_CHAT_ID terlebih dahulu.",
+        );
+      }
+
       await m.react("🕕");
       await m.reply(
         `🕕 *ᴍᴇᴍʙᴜᴀᴛ ʙᴀᴄᴋᴜᴘ...*\n\n> Mohon tunggu, sedang membuat backup...`,
       );
 
       try {
-        await triggerManualBackup(sock);
+        await triggerManualBackup();
         await m.react("✅");
         return m.reply(
-          `✅ *ʙᴀᴄᴋᴜᴘ sᴇʟᴇsᴀɪ*\n\n> Backup telah dikirim ke owner!`,
+          `✅ *ʙᴀᴄᴋᴜᴘ sᴇʟᴇsᴀɪ*\n\n> File backup telah dikirim ke Telegram!`,
         );
       } catch (error) {
-        await m.react('☢');
-        await m.reply(te(m.prefix, m.command, m.pushName));
+        await m.react("☢");
+        return m.reply(`❌ *Backup gagal*\n\n> ${error.message}`);
       }
     }
 
