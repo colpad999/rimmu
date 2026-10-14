@@ -617,7 +617,7 @@ const config = {
 
 async function handler(m, { sock }) {
     try {
-        await kirimForwardSigned(sock, m.chat, MJ_HTML, '🀄 KYOKO MAHJONG • Fitur By: Anita Putri Azzahra')
+        await kirimForwardSigned(sock, m.chat, MJ_HTML, '🀄 KYOKO MAHJONG • Fitur By: Colpad')
     } catch (e) {
         console.error('[KYOKO MAHJONG]', e?.stack || e?.message || e)
         try {

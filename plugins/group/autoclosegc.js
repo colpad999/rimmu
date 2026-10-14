@@ -12,7 +12,7 @@
  * Fitur hanya bekerja di grup dan membutuhkan bot sebagai admin.
  * Konfigurasi tersimpan di database/ocgc.json agar tetap aktif setelah restart.
  *
- * Fitur By: Anita Putri Azzahra
+ * Fitur By: Colpad
  * Fitur SC Bot Rimuru MD 👑
  * Tiktok: https://tiktok.com/@anita.putri.azzah1
  * Saluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P

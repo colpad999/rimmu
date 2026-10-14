@@ -219,7 +219,7 @@ async function handleCommand(m, sock) {
                 forwardingScore: 9999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                  newsletterJid: "120363412350560864@newsletter",
+                  newsletterJid: "120363380765405182@newsletter",
                   newsletterName: "Rimuru Case System",
                   serverMessageId: 127,
                 },
@@ -307,7 +307,7 @@ async function handleCommand(m, sock) {
                 forwardingScore: 9999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                  newsletterJid: "120363412350560864@newsletter",
+                  newsletterJid: "120363380765405182@newsletter",
                   newsletterName: "Rimuru Plugin System",
                   serverMessageId: 127,
                 },

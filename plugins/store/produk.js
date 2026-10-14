@@ -102,7 +102,7 @@ async function handler(m, { sock }) {
   txt += `💡 _Ketik \`${m.prefix}beli <nomor>\` untuk memesan produk_`;
 
   if (m.isGroup) {
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
     const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
     await sock.sendMessage(
       m.chat,

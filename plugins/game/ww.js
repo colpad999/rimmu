@@ -110,7 +110,7 @@ const PHASE_DURATION = {
 };
 
 function wwCtx(mentions) {
-  const saluranId = config.saluran?.id || "120363412350560864@newsletter";
+  const saluranId = config.saluran?.id || "120363380765405182@newsletter";
   const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
   return {
     forwardingScore: 9999,

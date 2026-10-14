@@ -160,7 +160,7 @@ async function defaultMenuHandler(m, { sock, config: botConfig, db, uptime }) {
 `┗━━━━━━━━━━━━━━━━━━┛\n\n` +
 `┏━━ ${pretty("BOT INFO")} ━━┓\n` +
 `┃  ${pretty("Bot")}     : ${botConfig.bot?.name || "Rimuru MD"}\n` +
-`┃  ${pretty("Author")}  : ${botConfig.bot?.developer || "Anita Putri Azzahra"}\n` +
+`┃  ${pretty("Author")}  : ${botConfig.bot?.developer || "Colpad"}\n` +
 `┃  ${pretty("Versi")}   : ${botConfig.bot?.version || "-"}\n` +
 `┃  ${pretty("Uptime")}  : ${runtime}\n` +
 `┗━━━━━━━━━━━━━━━━━━┛\n` +
@@ -176,7 +176,7 @@ async function defaultMenuHandler(m, { sock, config: botConfig, db, uptime }) {
     gifPlayback: true,
   }, { upload: sock.waUploadToServer });
 
-  const newsletterId = botConfig.saluran?.id || "120363412350560864@newsletter";
+  const newsletterId = botConfig.saluran?.id || "120363380765405182@newsletter";
   const newsletterName = botConfig.saluran?.name || botConfig.bot?.name || "Rimuru MD";
 
   const message = generateWAMessageFromContent(m.chat, {

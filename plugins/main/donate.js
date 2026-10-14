@@ -48,7 +48,7 @@ const pluginConfig = {
 async function handler(m, { sock }) {
   const botName = config.bot?.name || "Rimuru-AI";
   const ownerName = config.owner?.name || "Owner";
-  const saluranId = config.saluran?.id || "120363412350560864@newsletter";
+  const saluranId = config.saluran?.id || "120363380765405182@newsletter";
   const saluranName = config.saluran?.name || botName;
 
   const donasiConfig = config.donasi || {};

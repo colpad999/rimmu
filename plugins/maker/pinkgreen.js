@@ -37,7 +37,7 @@ const execFileAsync = promisify(execFile);
 const pluginConfig = {
   name: "pinkgreen",
   category: "maker",
-  description: "Efek pink-green bergaya Rimuru by Anita Putri Azzahra 2",
+  description: "Efek pink-green bergaya Rimuru by Colpad 2",
   usage: ".pinkgreen <reply/kirim gambar>",
   example: ".pinkgreen",
   isOwner: false,

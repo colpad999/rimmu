@@ -56,7 +56,7 @@ canvas{width:100%;display:block;touch-action:none}
 <div class="gw"><canvas id="cv" width="404" height="300"></canvas></div>
 <div class="pads"><button class="pd" id="boostB">⚡ BOOST</button><button class="pd" id="jumpB">⤒ JUMP</button></div>
 <div class="hint">Lompat saat garis merah LASER kedip cepat! · kena musuh = ring turun 10% saja · tiap 50 ring = BOSS! · 🔊 = sound</div>
-<div class="credit">Fitur by: Anita Putri Azzahra Anita Putri Azzahra · Saluran: <a href="https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P" target="_blank" rel="noopener noreferrer">WhatsApp Channel</a></div>
+<div class="credit">Fitur by: Colpad Colpad · Saluran: <a href="https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P" target="_blank" rel="noopener noreferrer">WhatsApp Channel</a></div>
 </div>
 <script>
 window.onerror=function(m,s,l){var e=document.getElementById('hint');if(e){e.textContent='⚠ '+m+' @'+l;e.style.color='#ff7a8a'}};

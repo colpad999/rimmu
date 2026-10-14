@@ -77,7 +77,7 @@ try {
 } catch (e) {}
 
 function ctx(title, body) {
-  const sId = config.saluran?.id || "120363412350560864@newsletter";
+  const sId = config.saluran?.id || "120363380765405182@newsletter";
   const sName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
   const c = {
     forwardingScore: 9999,

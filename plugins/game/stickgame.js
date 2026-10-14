@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
           richResponseMessage: {
             messageType: 1,
             submessages: [
-              { messageType: 2, messageText: 'Stickman 3D • Fitur By: Anita Putri Azzahra' }
+              { messageType: 2, messageText: 'Stickman 3D • Fitur By: Colpad' }
             ],
             unifiedResponse: { data: payload },
             contextInfo: {

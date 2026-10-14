@@ -231,7 +231,7 @@ async function handler(m, { sock }) {
         `🔍 *ʜᴀsɪʟ ᴘᴇɴᴄᴀʀɪᴀɴ*\n\n> Tidak ditemukan fitur dengan keyword \`${keyword}\``,
       );
     }
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
     const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
     let text = `🔍 *ʜᴀsɪʟ ᴘᴇɴᴄᴀʀɪᴀɴ: "${keyword}"*\n`;
     text += `> Ditemukan *${matches.length}* fitur\n`;

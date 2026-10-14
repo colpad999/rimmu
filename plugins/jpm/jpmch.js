@@ -255,7 +255,7 @@ async function sendInteractiveMessage(
   }
 
   const botName = config.bot?.name || "Rimuru-AI";
-  const saluranId = config.saluran?.id || "120363412350560864@newsletter";
+  const saluranId = config.saluran?.id || "120363380765405182@newsletter";
   const saluranName = config.saluran?.name || botName;
 
   const msg = generateWAMessageFromContent(

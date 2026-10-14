@@ -21,10 +21,10 @@ Rimuru MD adalah SC hasil rename dari SC Ourin MD.
 ╰─────────────────────────────────────────────╯
 
         ⚠️ 𝑫𝑶 𝑵𝑶𝑻 𝑹𝑬𝑴𝑶𝑽𝑬 𝑪𝑹𝑬𝑫𝑰𝑻 ⚠️
-              ❖ 𝐉𝐚𝐧𝐠𝐚𝐧 𝐡𝐚𝐩𝐮𝐬 𝐜𝐫𝐞𝐝𝐢𝐭 ❖
+                      ❖ 𝐉𝐚𝐧𝐠𝐚𝐧 𝐡𝐚𝐩𝐮𝐬 𝐜𝐫𝐞𝐝𝐢𝐭 ❖
 
-                 「 👑 𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 👑 」
-*/
+                                       「 👑 𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 👑 」
+                                       */
 
 import path from "path";
 import fs from "fs";

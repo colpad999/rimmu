@@ -143,7 +143,7 @@ resize();
                             submessages: [
                                 {
                                     messageType: 2,
-                                    messageText: "Flappy Bird • Fitur By: Anita Putri Azzahra"
+                                    messageText: "Flappy Bird • Fitur By: Colpad"
                                 }
                             ],
                             unifiedResponse: {

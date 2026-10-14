@@ -26,7 +26,7 @@ Rimuru MD adalah SC hasil rename dari SC Ourin MD.
                  「 👑 𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 👑 」
 */
 
-export const FEATURE_CREDIT = "Fitur By: Anita Putri Azzahra\nFitur SC Bot Rimuru MD\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
+export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Rimuru MD\nTiktok: https://tiktok.com/@anita.putri.azzah1\nSaluran Resmi: https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P";
 
 import { createCanvas } from '@napi-rs/canvas';
 
@@ -118,7 +118,7 @@ async function buildIqc(text) {
 
     g.fillStyle = BLUE;
     g.font = 'bold 25px sans-serif';
-    g.fillText('Anita Putri Azzahra', bubbleX + 34, bubbleY + 46);
+    g.fillText('Colpad', bubbleX + 34, bubbleY + 46);
 
     g.fillStyle = TEXT;
     g.font = textFont;

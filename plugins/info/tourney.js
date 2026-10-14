@@ -103,7 +103,7 @@ async function handler(m, { sock }) {
       return m.reply("❌ Tidak ada turnamen yang ditemukan");
     }
 
-    const saluranId = config.saluran?.id || "120363412350560864@newsletter";
+    const saluranId = config.saluran?.id || "120363380765405182@newsletter";
     const saluranName = config.saluran?.name || config.bot?.name || "Rimuru-AI";
 
     let text = `🏆 *ɪɴꜰᴏ ᴛᴜʀɴᴀᴍᴇɴ ᴍᴏʙɪʟᴇ ʟᴇɢᴇɴᴅs*\n\n`;

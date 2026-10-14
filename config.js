@@ -21,10 +21,10 @@ Rimuru MD adalah SC hasil rename dari SC Ourin MD.
 ╰─────────────────────────────────────────────╯
 
         ⚠️ 𝑫𝑶 𝑵𝑶𝑻 𝑹𝑬𝑴𝑶𝑽𝑬 𝑪𝑹𝑬𝑫𝑰𝑻 ⚠️
-              ❖ 𝐉𝐚𝐧𝐠𝐚𝐧 𝐡𝐚𝐩𝐮𝐬 𝐜𝐫𝐞𝐝𝐢𝐭 ❖
+                      ❖ 𝐉𝐚𝐧𝐠𝐚𝐧 𝐡𝐚𝐩𝐮𝐬 𝐜𝐫𝐞𝐝𝐢𝐭 ❖
 
-                 「 👑 𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 👑 」
-*/
+                                       「 👑 𝑹𝑰𝑴𝑼𝑹𝑼 𝑴𝑫 👑 」
+                                       */
 
 import { getDatabase } from "./src/lib/rimuru-database.js";
 import * as ownerPremiumDb from "./src/lib/rimuru-premium-db.js";
@@ -37,12 +37,12 @@ const config = {
   },
 
   owner: {
-    name: "Anita Putri Azzahra", // Nama owner
-    number: ["628111111111"], // Format: 628xxx (tanpa + atau 0)
+    name: "Colpad", // Nama owner
+    number: ["6285194593615"], // Format: 628xxx (tanpa + atau 0)
   },
 
   session: {
-    pairingNumber: "6281111111111", // Nomor WA yang akan di-pair, ini penting
+    pairingNumber: "6285126541090", // Nomor WA yang akan di-pair, ini penting
     usePairingCode: true, // true = Pairing Code, false = QR Code
   },
 
@@ -56,7 +56,7 @@ const config = {
   bot: {
     name: "Rimuru MD", // Nama bot
     version: "4.7", // Versi bot
-    developer: "Anita Putri Azzahra", // Nama developer
+    developer: "Colpad", // Nama developer
   },
 
   assets: {
@@ -137,11 +137,11 @@ const config = {
 
   sticker: {
     packname: "Rimuru MD", // Nama pack sticker
-    author: "Anita Putri Azzahra", // Author sticker
+    author: "Colpad", // Author sticker
   },
 
   saluran: {
-    id: "120363412350560864@newsletter", // ID saluran (contoh: 120363xxx@newsletter)                          // ID saluran (contoh: 120363xxx@newsletter)
+    id: "120363380765405182@newsletter", // ID saluran (contoh: 120363xxx@newsletter)                          // ID saluran (contoh: 120363xxx@newsletter)
     name: "Saluran Resmi Rimuru MD", // Nama saluran
     link: "https://whatsapp.com/channel/0029Vb8dmsUElagkVPIw9X2P", // Link saluran
   },

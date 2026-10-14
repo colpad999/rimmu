@@ -165,7 +165,7 @@ async function legacyAllMenuHandler(m, { sock, config: botConfig, db, uptime }) 
   caption += `> ⎆  [ ${mono("Nama")} : ${mono(pushName)}\n`;
   caption += `> ⎆  [ ${mono("Role")} : ${mono(roleText(m))}\n`;
   caption += `> ⎆  [ ${mono("Mode")} : ${mono(mode)}\n`;
-  caption += `> ⎆  [ ${mono("Author")} : ${mono(botConfig.bot?.developer || "Anita Putri Azzahra")}\n`;
+  caption += `> ⎆  [ ${mono("Author")} : ${mono(botConfig.bot?.developer || "Colpad")}\n`;
   caption += `◣──────────❈\n\n`;
 
   caption += `◤───「 ${mono("INFO BOT")} 」──✦\n`;
@@ -243,7 +243,7 @@ async function externalDefaultAllMenuHandler(m, { sock, config: botConfig, db })
 
   const pushName = m.pushName || "User";
   const botName = botConfig.bot?.name || "Rimuru MD";
-  const devName = botConfig.bot?.developer || "Anita Putri Azzahra";
+  const devName = botConfig.bot?.developer || "Colpad";
   const total = sorted.reduce((n, category) => {
     const key = String(category).toLowerCase();
     if (key === "owner" && !m.isOwner) return n;
@@ -275,7 +275,7 @@ async function externalDefaultAllMenuHandler(m, { sock, config: botConfig, db })
             forwardingScore: 9,
             mentionedJid: [m.sender],
             forwardedNewsletterMessageInfo: {
-              newsletterJid: botConfig.saluran?.id || "120363412350560864@newsletter",
+              newsletterJid: botConfig.saluran?.id || "120363380765405182@newsletter",
               newsletterName: botConfig.saluran?.name || botName,
               serverMessageId: 127,
             },

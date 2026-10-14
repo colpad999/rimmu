@@ -165,7 +165,7 @@ async function defaultAllMenuHandler(m, { sock, config: botConfig, db, uptime })
   caption += `> ⎆  [ ${mono("Nama")} : ${mono(pushName)}\n`;
   caption += `> ⎆  [ ${mono("Role")} : ${mono(roleText(m))}\n`;
   caption += `> ⎆  [ ${mono("Mode")} : ${mono(mode)}\n`;
-  caption += `> ⎆  [ ${mono("Author")} : ${mono(botConfig.bot?.developer || "Anita Putri Azzahra")}\n`;
+  caption += `> ⎆  [ ${mono("Author")} : ${mono(botConfig.bot?.developer || "Colpad")}\n`;
   caption += `◣──────────❈\n\n`;
 
   caption += `◤───「 ${mono("INFO BOT")} 」──✦\n`;

@@ -587,7 +587,7 @@ loop();
                             submessages: [
                                 {
                                     messageType: 2,
-                                    messageText: "Arrow Breakout • Fitur By: Anita Putri Azzahra"
+                                    messageText: "Arrow Breakout • Fitur By: Colpad"
                                 }
                             ],
                             unifiedResponse: {
