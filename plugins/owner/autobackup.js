@@ -90,7 +90,7 @@ async function handler(m) {
           `╭┈┈⬡「 ⚙️ *sᴇᴛᴛɪɴɢs* 」\n` +
           `┃ ⏱️ Interval: ${result.interval}\n` +
           `┃ 📤 Dikirim ke: Telegram\n` +
-          `┃ 📦 Exclude: node_modules, .git, storages, dll\n` +
+          `┃ 📦 Exclude: node_modules\n` +
           `╰┈┈┈┈┈┈┈┈⬡\n\n` +
           `> Backup pertama akan dikirim dalam ${result.interval}`,
       );

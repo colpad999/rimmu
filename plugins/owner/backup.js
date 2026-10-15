@@ -85,7 +85,7 @@ async function handler(m, { sock }) {
           `╭┈┈⬡「 ⚙️ *sᴇᴛᴛɪɴɢs* 」\n` +
           `┃ ⏱️ Interval: ${result.interval}\n` +
           `┃ 📤 Dikirim ke: ${ownerNum}\n` +
-          `┃ 📦 Exclude: node_modules, .git, storages, dll\n` +
+          `┃ 📦 Exclude: node_modules\n` +
           `╰┈┈┈┈┈┈┈┈⬡\n\n` +
           `> Backup pertama akan dikirim dalam ${result.interval}`,
       );

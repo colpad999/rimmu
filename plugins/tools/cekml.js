@@ -3,8 +3,6 @@
 export const FEATURE_CREDIT = "Fitur By: Colpad\nFitur SC Bot Yalena MD 👑\nTiktok: https://tiktok.com/@sibrosup\nSaluran Resmi: https://www.whatsapp.com/channel/0029VazvN8I9xVJgSsIBv02Y";
 
 
-import safeJson from "../../src/lib/yalena-safe-json.js";
-
 let handler = async (m, { args, usedPrefix, command }) => {
   if (args.length < 2) {
     return m.reply(`Example:\n${usedPrefix + command} id zone`)
@@ -21,7 +19,7 @@ let handler = async (m, { args, usedPrefix, command }) => {
 
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
 
-    const data = await safeJson(res)
+    const data = await res.json()
     if (!data?.status || !data?.result) throw new Error('Data tidak ditemukan')
 
     const result = data.result

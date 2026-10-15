@@ -179,6 +179,7 @@ Struktur di atas merupakan ringkasan direktori utama; isi folder dapat berubah m
 | Node.js terlalu lama | Jalankan `node --version`; gunakan Node.js 22 atau lebih baru. |
 | `npm ci` gagal dengan `ENOENT` | Pastikan dependency lokal `./tmp_caller` benar-benar tersedia. |
 | Dependency native gagal dipasang | Periksa arsitektur dengan `uname -m`, versi Node.js, dan pesan error npm. |
+| Plugin canvas gagal dengan `Cannot find module '../skia.node'` | Jalankan `npm rebuild skia-canvas` di lingkungan tempat bot berjalan. Jangan salin `node_modules` dari sistem operasi lain; folder tersebut tidak disertakan dalam autobackup. |
 | Pairing tidak berhasil | Periksa nomor di `config.js`, koneksi internet, dan instruksi pairing yang tampil. |
 | Plugin tidak terbaca | Periksa lokasi plugin, ekstensi `.js`, sintaks, dan log terminal. |
 | Bot berhenti atau error | Baca stack trace dan log terkait; hindari mengabaikan error tanpa mencari penyebabnya. |

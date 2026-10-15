@@ -1,6 +1,7 @@
 //
 
 import fs from "fs";
+import os from "os";
 import path from "path";
 import archiver from "archiver";
 import axios from "axios";
@@ -17,103 +18,6 @@ const BACKUP_STATE_FILE = path.join(
 );
 let activeCronJob = null;
 const MAX_TELEGRAM_FILE_SIZE = 50 * 1024 * 1024;
-
-const EXCLUDE_DIRS = new Set([
-  "node_modules",
-  ".git",
-  "storage",
-  "storages",
-  "tmp",
-  "temp",
-  ".cache",
-  "logs",
-  "sessions",
-  "session",
-  "auth",
-  ".npm",
-  ".yarn",
-  "dist",
-  "coverage",
-  "__pycache__",
-  "autoreply_media",
-  "build",
-  "Baileys-master",
-  "yalena",
-  "ALYA V8",
-  "DHX-pro",
-  "RTXZY-MD-pro",
-  "BETABOTZ-MD2-pro",
-  "KazzTzyCanvs",
-  "starseed-main",
-  "YalenaGlitch-Baileys-main",
-  "Script Lyrra MD V7",
-  "Sky Md V2",
-  "Marin Kitagawa MD V1.0 (1)",
-  "AmbaCrash v19 Free (1)",
-  "@blckrose",
-  "backup",
-  "animation",
-  "_tools",
-  "PUSHKONTAK",
-  ".vscode",
-  ".gemini",
-  "fischit-main",
-  ".yalena-temp",
-]);
-
-const EXCLUDE_EXTENSIONS = new Set([
-  ".zip",
-  ".tar.gz",
-  ".7z",
-  ".mp4",
-  ".mp3",
-  ".wav",
-  ".avi",
-  ".mkv",
-  ".ico",
-  ".svg",
-  ".traineddata",
-  ".log",
-  ".bak",
-  ".lock",
-]);
-
-const EXCLUDE_FILES = new Set([
-  ".env",
-  ".env.local",
-  "creds.json",
-  "package-lock.json",
-  "yarn.lock",
-  ".npmrc",
-  ".gitignore",
-  "boot_final.log",
-  "bot_log.txt",
-  "error.txt",
-  "changelog.txt",
-  "UPDATE.txt",
-  "CHANGELOG.md",
-]);
-
-const MAX_FILE_SIZE = 10 * 1024 * 1024;
-
-function shouldExclude(filePath) {
-  const relativePath = path.relative(process.cwd(), filePath);
-  const parts = relativePath.split(path.sep);
-  for (const part of parts) {
-    if (EXCLUDE_DIRS.has(part)) return true;
-  }
-  const fileName = path.basename(filePath);
-  if (EXCLUDE_FILES.has(fileName)) return true;
-  const ext = path.extname(fileName).toLowerCase();
-  if (EXCLUDE_EXTENSIONS.has(ext)) {
-    const isAsset =
-      relativePath.startsWith("assets" + path.sep) ||
-      relativePath.startsWith("database" + path.sep);
-    if (!isAsset) return true;
-  }
-  if (fileName.endsWith(".tar.gz")) return true;
-  return false;
-}
 
 function loadBackupState() {
   try {
@@ -189,15 +93,35 @@ async function createBackup() {
       .toISOString()
       .replace(/[:.]/g, "-")
       .slice(0, 19);
-    const tmpDir = path.join(process.cwd(), "tmp");
-    if (!fs.existsSync(tmpDir)) fs.mkdirSync(tmpDir, { recursive: true });
-    const backupPath = path.join(tmpDir, `backup_${timestamp}.zip`);
+    const backupPath = path.join(
+      os.tmpdir(),
+      `backup_${process.pid}_${timestamp}.zip`,
+    );
 
     const output = fs.createWriteStream(backupPath);
     const archive = archiver("zip", { zlib: { level: 9 } });
     let fileCount = 0;
+    let settled = false;
+
+    const fail = (error) => {
+      if (settled) return;
+      settled = true;
+      archive.abort();
+      output.destroy();
+      fs.promises.unlink(backupPath).catch((cleanupError) => {
+        if (cleanupError.code !== "ENOENT") {
+          logger.warn(
+            "AutoBackup",
+            `Backup cleanup failed: ${cleanupError.message}`,
+          );
+        }
+      });
+      reject(error);
+    };
 
     output.on("close", () => {
+      if (settled) return;
+      settled = true;
       resolve({
         path: backupPath,
         size: archive.pointer(),
@@ -205,37 +129,31 @@ async function createBackup() {
         timestamp,
       });
     });
-    output.on("error", reject);
-    archive.on("error", reject);
+    output.on("error", fail);
+    archive.on("error", fail);
+    archive.on("warning", fail);
     archive.pipe(output);
 
     const rootDir = process.cwd();
 
     async function addDirectory(dirPath) {
-      try {
-        const entries = await fs.promises.readdir(dirPath, { withFileTypes: true });
-        for (const entry of entries) {
-          const fullPath = path.join(dirPath, entry.name);
-          if (shouldExclude(fullPath)) continue;
-          if (entry.isDirectory()) {
-            await addDirectory(fullPath);
-          } else if (entry.isFile()) {
-            try {
-              const stat = await fs.promises.stat(fullPath);
-              if (stat.size < MAX_FILE_SIZE) {
-                const relativePath = path.relative(rootDir, fullPath);
-                archive.file(fullPath, { name: relativePath });
-                fileCount++;
-              }
-            } catch {}
-          }
+      const entries = await fs.promises.readdir(dirPath, { withFileTypes: true });
+      for (const entry of entries) {
+        if (entry.name === "node_modules") continue;
+        const fullPath = path.join(dirPath, entry.name);
+        if (entry.isDirectory()) {
+          await addDirectory(fullPath);
+        } else if (entry.isFile() || entry.isSymbolicLink()) {
+          const relativePath = path.relative(rootDir, fullPath);
+          archive.file(fullPath, { name: relativePath });
+          fileCount++;
         }
-      } catch {}
+      }
     }
 
-    addDirectory(rootDir).then(() => {
-      archive.finalize();
-    }).catch(reject);
+    addDirectory(rootDir)
+      .then(() => archive.finalize())
+      .catch(fail);
   });
 }
 
@@ -317,7 +235,18 @@ async function sendBackupToTelegram(backupInfo) {
 async function doBackup() {
   logger.info("AutoBackup", "Starting backup...");
   const backupInfo = await createBackup();
-  await sendBackupToTelegram(backupInfo);
+  try {
+    await sendBackupToTelegram(backupInfo);
+  } catch (error) {
+    try {
+      await fs.promises.unlink(backupInfo.path);
+    } catch (cleanupError) {
+      if (cleanupError.code !== "ENOENT") {
+        logger.warn("AutoBackup", `Backup cleanup failed: ${cleanupError.message}`);
+      }
+    }
+    throw error;
+  }
 }
 
 function startAutoBackup() {
