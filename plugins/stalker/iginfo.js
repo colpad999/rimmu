@@ -18,7 +18,7 @@ const pluginConfig = {
 };
 
 const UA = "Mozilla/5.0 (Linux; Android 15) AppleWebKit/537.36 Chrome/138 Mobile Safari/537.36";
-const ANITA_TELEGRAM = "https://t.me/anitaputri";
+const ANITA_TELEGRAM = "https://t.me/Beginer_Magisk";
 const INSTAGRAM_API = "https://firefly.maiku.my.id/api/stalk-instagram";
 
 function esc(value = "") {
@@ -111,15 +111,15 @@ body{padding:0;display:flex;justify-content:center;align-items:flex-start}
 <div class="screen" data-response-id="${esc(responseId)}">
   <div class="bg"></div><div class="overlay"></div>
   <div class="content">
-    <div class="top"><div><div class="brand">INSTAGRAM INFO</div><div class="credit">By Anita</div></div><div class="badge">Yalena MD</div></div>
+    <div class="top"><div><div class="brand">INSTAGRAM INFO</div><div class="credit">By Colpad</div></div><div class="badge">Yalena MD</div></div>
     <div class="avatarWrap"><div class="avatar">${profile ? `<img src="${profile}" alt="Instagram profile">` : ""}</div></div>
     <div class="name">${fullName}</div>
     <div class="handle">@${username}</div>
     <div class="badges"><div class="badge">${verified ? "✓ Verified" : "○ Not Verified"}</div><div class="badge">${privateAccount ? "🔒 Private" : "🌐 Public"}</div></div>
     <div class="stats"><div class="stat"><div class="num">${followers}</div><div class="label">Followers</div></div><div class="stat"><div class="num">${following}</div><div class="label">Following</div></div><div class="stat"><div class="num">${posts}</div><div class="label">Posts</div></div></div>
     <div class="bio"><div class="bioTitle">BIO</div>${bio}</div>
-    <div class="actions"><a class="btn primary" href="${ig}" target="_blank" rel="noopener">Open Instagram</a><a class="btn" href="${telegram}" target="_blank" rel="noopener">Telegram • Anita</a></div>
-    <div class="footer">Fitur by Colpad • <a href="${telegram}" target="_blank" rel="noopener">t.me/anitaputri</a></div>
+    <div class="actions"><a class="btn primary" href="${ig}" target="_blank" rel="noopener">Open Instagram</a><a class="btn" href="${telegram}" target="_blank" rel="noopener">Telegram • Colpad</a></div>
+    <div class="footer">Fitur by Colpad • <a href="${telegram}" target="_blank" rel="noopener">t.me/Beginer_Magisk</a></div>
   </div>
 </div>`;
 }
@@ -140,7 +140,7 @@ async function sendHTMLRichMessage(sock, chatId, username, html, fallbackText) {
           message: {
             richResponseMessage: {
               messageType: 1,
-              submessages: [{ messageType: 2, messageText: "Instagram Info • By Anita" }],
+              submessages: [{ messageType: 2, messageText: "Instagram Info • By Colpad" }],
               unifiedResponse: {
                 data: Buffer.from(JSON.stringify({
                   response_id: responseId,
@@ -149,11 +149,11 @@ async function sendHTMLRichMessage(sock, chatId, username, html, fallbackText) {
                       view_model: {
                         primitives: [{
                           title: "Instagram Info",
-                          subtitle: "By Anita",
+                          subtitle: "By Colpad",
                           secondary_subtitle: "",
                           image: { url: imageUrl, mime_type: "image/png" },
                           entity_id: "123456",
-                          entity_url: "t.me/anitaputri",
+                          entity_url: "t.me/Beginer_Magisk",
                           entity_type: "WEBSITE",
                           action_type: "OPEN_URL",
                           is_verified: true,

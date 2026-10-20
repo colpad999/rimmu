@@ -12,7 +12,7 @@ const pluginConfig = {
   category: "elaina",
   description: "Membuat screenshot chat Discord palsu",
   usage: ".fakediscord nama|pesan (reply gambar opsional)",
-  example: ".fakediscord Anita|Halo semuanya",
+  example: ".fakediscord Colpad|Halo semuanya",
   isOwner: false,
   isPremium: false,
   isGroup: false,

@@ -17,7 +17,7 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     const credits = [
-        { name: 'Anita', role: 'Lead Staff', icon: '👩‍💻' },
+        { name: 'Colpad', role: 'Lead Staff', icon: '👩‍💻' },
         { name: 'Hair', role: 'Feature Developer', icon: '👨‍💻' },
         { name: 'Albert', role: 'Partner', icon: '🛒' },
         { name: 'Bima', role: 'Partner', icon: '🛒' },

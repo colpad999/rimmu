@@ -70,7 +70,7 @@ async function handler(m, { sock, isOwner }) {
 
     if (!caption) {
       caption = 
-        `⭐ *PRICE LIST SEWA BOT ANITA* ⭐\n\n` +
+        `⭐ *PRICE LIST SEWA BOT Colpad* ⭐\n\n` +
         `*1 Hari* ➔ *Rp1.000* ✨\n` +
         `*5 Hari* ➔ *Rp2.000* ✨\n` +
         `*10 Hari* ➔ *Rp3.000* ✨\n` +

@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
         { name: 'Sabila', role: 'Tangan Kanan', icon: '👩‍💻' },
         { name: 'Syura Store', role: 'Tangan Kanan', icon: '👩‍💻' },
         { name: 'Xero', role: 'Tangan Kanan', icon: '👩‍💻' },
-        { name: 'Anita', role: 'Tangan Kanan', icon: '👩‍💻' },
+        { name: 'Colpad', role: 'Tangan Kanan', icon: '👩‍💻' },
         { name: 'Lyoraaa', role: 'Owner', icon: '👩‍💻' },
         { name: 'Danzzz', role: 'Owner', icon: '👨‍💻' },
         { name: 'Muzan', role: 'Owner', icon: '👨‍💻' },

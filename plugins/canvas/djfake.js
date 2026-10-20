@@ -19,7 +19,7 @@ const pluginConfig = {
 
 async function handler(m, { sock, text }) {
     const value = text?.trim();
-    if (!value) return m.reply(`❌ Masukkan teks. Contoh: ${m.prefix}fakedj Anita`);
+    if (!value) return m.reply(`❌ Masukkan teks. Contoh: ${m.prefix}fakedj Colpad`);
     await m.react('⏳');
     try {
         const apiUrl = `https://free-restapi.biz.id/api/fakedj?text=${encodeURIComponent(value)}`;
