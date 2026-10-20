@@ -16,6 +16,12 @@ const BACKUP_STATE_FILE = path.join(
   "database",
   "autobackup.json",
 );
+const EXCLUDED_BACKUP_DIRECTORIES = new Set([
+  ".git",
+  "backups",
+  "node_modules",
+  "temp",
+]);
 let activeCronJob = null;
 const MAX_TELEGRAM_FILE_SIZE = 50 * 1024 * 1024;
 
@@ -136,23 +142,29 @@ async function createBackup() {
 
     const rootDir = process.cwd();
 
-    async function isNodeModulesEntry(fullPath, entry) {
+    async function isExcludedEntry(fullPath, entry) {
       const relativePath = path.relative(rootDir, fullPath);
-      if (relativePath.split(path.sep).includes("node_modules")) return true;
+      if (
+        relativePath
+          .split(path.sep)
+          .some((part) => EXCLUDED_BACKUP_DIRECTORIES.has(part))
+      ) {
+        return true;
+      }
       if (!entry.isSymbolicLink()) return false;
 
       const realPath = await fs.promises.realpath(fullPath);
       return path
         .relative(rootDir, realPath)
         .split(path.sep)
-        .includes("node_modules");
+        .some((part) => EXCLUDED_BACKUP_DIRECTORIES.has(part));
     }
 
     async function addDirectory(dirPath) {
       const entries = await fs.promises.readdir(dirPath, { withFileTypes: true });
       for (const entry of entries) {
         const fullPath = path.join(dirPath, entry.name);
-        if (await isNodeModulesEntry(fullPath, entry)) continue;
+        if (await isExcludedEntry(fullPath, entry)) continue;
         if (entry.isDirectory()) {
           await addDirectory(fullPath);
         } else if (entry.isFile() || entry.isSymbolicLink()) {
