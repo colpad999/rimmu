@@ -136,11 +136,23 @@ async function createBackup() {
 
     const rootDir = process.cwd();
 
+    async function isNodeModulesEntry(fullPath, entry) {
+      const relativePath = path.relative(rootDir, fullPath);
+      if (relativePath.split(path.sep).includes("node_modules")) return true;
+      if (!entry.isSymbolicLink()) return false;
+
+      const realPath = await fs.promises.realpath(fullPath);
+      return path
+        .relative(rootDir, realPath)
+        .split(path.sep)
+        .includes("node_modules");
+    }
+
     async function addDirectory(dirPath) {
       const entries = await fs.promises.readdir(dirPath, { withFileTypes: true });
       for (const entry of entries) {
-        if (entry.name === "node_modules") continue;
         const fullPath = path.join(dirPath, entry.name);
+        if (await isNodeModulesEntry(fullPath, entry)) continue;
         if (entry.isDirectory()) {
           await addDirectory(fullPath);
         } else if (entry.isFile() || entry.isSymbolicLink()) {

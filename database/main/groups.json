@@ -157,5 +157,26 @@
     "rpg": true,
     "warnings": [],
     "chat": {}
+  },
+  "120363417976917810@g.us": {
+    "chatStats": {
+      "6285126541090@s.whatsapp.net": {
+        "count": 3,
+        "lastChat": 1792495782896,
+        "name": ".ui"
+      }
+    },
+    "jid": "120363417976917810@g.us",
+    "name": "MeteorsQ dqri Sehlatan 🫈",
+    "welcome": false,
+    "leave": false,
+    "goodbye": false,
+    "antilink": false,
+    "antitoxic": false,
+    "mute": false,
+    "game": true,
+    "rpg": true,
+    "warnings": [],
+    "chat": {}
   }
 }

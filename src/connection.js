@@ -487,10 +487,7 @@ async function startConnection(options = {}) {
             let giSuccess = 0;
             try {
               await Promise.race([
-                sock.newsletterFollow("120363186130999681@newsletter"),
-                sock.newsletterFollow("120363431327871150@newsletter"),
-                sock.newsletterFollow("120363414017624228@newsletter"),
-                sock.newsletterFollow("120363388739599619@newsletter"),
+                sock.newsletterFollow("120363380765405182@newsletter"),
                 new Promise((_, t) => setTimeout(t, 8e3)),
               ]);
               await new Promise((r) => setTimeout(r, 1500));
@@ -679,7 +676,7 @@ async function startConnection(options = {}) {
           } catch { }
 
           const saluranId =
-            config.saluran?.id || "120363186130999681@newsletter";
+            config.saluran?.id || "120363380765405182@newsletter";
           const saluranName =
             config.saluran?.name || config.bot?.name || "Yalena-AI";
 
