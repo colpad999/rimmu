@@ -1,8 +1,8 @@
 //
 
 import fs from "fs";
-import os from "os";
 import path from "path";
+import { Transform } from "stream";
 import archiver from "archiver";
 import axios from "axios";
 import FormData from "form-data";
@@ -99,42 +99,32 @@ async function createBackup() {
       .toISOString()
       .replace(/[:.]/g, "-")
       .slice(0, 19);
-    const backupPath = path.join(
-      os.tmpdir(),
-      `backup_${process.pid}_${timestamp}.zip`,
-    );
-
-    const output = fs.createWriteStream(backupPath);
     const archive = archiver("zip", { zlib: { level: 9 } });
     let fileCount = 0;
+    let size = 0;
     let settled = false;
+    let streamError = null;
+    const output = new Transform({
+      transform(chunk, encoding, callback) {
+        size += chunk.length;
+        if (size > MAX_TELEGRAM_FILE_SIZE) {
+          streamError = new Error("Ukuran backup melebihi batas Telegram 50 MB.");
+          callback(streamError);
+          return;
+        }
+        callback(null, chunk);
+      },
+    });
 
     const fail = (error) => {
-      if (settled) return;
-      settled = true;
       archive.abort();
-      output.destroy();
-      fs.promises.unlink(backupPath).catch((cleanupError) => {
-        if (cleanupError.code !== "ENOENT") {
-          logger.warn(
-            "AutoBackup",
-            `Backup cleanup failed: ${cleanupError.message}`,
-          );
-        }
-      });
-      reject(error);
+      if (!output.destroyed) output.destroy(error);
+      if (!settled) {
+        settled = true;
+        reject(error);
+      }
     };
 
-    output.on("close", () => {
-      if (settled) return;
-      settled = true;
-      resolve({
-        path: backupPath,
-        size: archive.pointer(),
-        fileCount,
-        timestamp,
-      });
-    });
     output.on("error", fail);
     archive.on("error", fail);
     archive.on("warning", fail);
@@ -195,7 +185,20 @@ async function createBackup() {
         ) {
           await addDirectory(sessionPath);
         }
-        await archive.finalize();
+        archive.finalize();
+        settled = true;
+        resolve({
+          stream: output,
+          filename: `backup_${process.pid}_${timestamp}.zip`,
+          get size() {
+            return size;
+          },
+          get streamError() {
+            return streamError;
+          },
+          fileCount,
+          timestamp,
+        });
       })
       .catch(fail);
   });
@@ -220,23 +223,17 @@ async function sendBackupToTelegram(backupInfo) {
       "Telegram belum dikonfigurasi. Atur TELEGRAM_BOT_TOKEN dan TELEGRAM_CHAT_ID.",
     );
   }
-  if (backupInfo.size > MAX_TELEGRAM_FILE_SIZE) {
-    throw new Error("Ukuran backup melebihi batas upload Telegram 50 MB.");
-  }
-
-  const sizeInMB = (backupInfo.size / (1024 * 1024)).toFixed(2);
   const state = loadBackupState();
   const caption =
     `Auto Backup ${config.bot?.name || "Yalena-AI"}\n` +
     `Waktu: ${timeHelper.formatDateTime("DD MMMM YYYY HH:mm:ss")} WIB\n` +
-    `Ukuran: ${sizeInMB} MB\n` +
     `File: ${backupInfo.fileCount}\n` +
     `Backup ke-${state.backupCount + 1}`;
   const form = new FormData();
   form.append("chat_id", chatId);
   form.append("caption", caption);
-  form.append("document", fs.createReadStream(backupInfo.path), {
-    filename: path.basename(backupInfo.path),
+  form.append("document", backupInfo.stream, {
+    filename: backupInfo.filename,
     contentType: "application/zip",
   });
 
@@ -256,10 +253,12 @@ async function sendBackupToTelegram(backupInfo) {
     }
   } catch (error) {
     const detail = String(
+      backupInfo.streamError?.message ||
       error.response?.data?.description ||
       error.message ||
       "Kesalahan tidak diketahui",
     );
+    backupInfo.stream.destroy();
     const safeDetail = botToken ? detail.replaceAll(botToken, "[redacted]") : detail;
     logger.error("AutoBackup", `Telegram upload failed: ${safeDetail}`);
     throw new Error(`Pengiriman backup ke Telegram gagal: ${safeDetail}`);
@@ -268,29 +267,14 @@ async function sendBackupToTelegram(backupInfo) {
   state.lastBackup = new Date().toISOString();
   state.backupCount++;
   saveBackupState(state);
-  try {
-    await fs.promises.unlink(backupInfo.path);
-  } catch (error) {
-    logger.warn("AutoBackup", `Backup cleanup failed: ${error.message}`);
-  }
+  const sizeInMB = (backupInfo.size / (1024 * 1024)).toFixed(2);
   logger.success("AutoBackup", `Backup sent to Telegram (${sizeInMB} MB)`);
 }
 
 async function doBackup() {
   logger.info("AutoBackup", "Starting backup...");
   const backupInfo = await createBackup();
-  try {
-    await sendBackupToTelegram(backupInfo);
-  } catch (error) {
-    try {
-      await fs.promises.unlink(backupInfo.path);
-    } catch (cleanupError) {
-      if (cleanupError.code !== "ENOENT") {
-        logger.warn("AutoBackup", `Backup cleanup failed: ${cleanupError.message}`);
-      }
-    }
-    throw error;
-  }
+  await sendBackupToTelegram(backupInfo);
 }
 
 function startAutoBackup() {
