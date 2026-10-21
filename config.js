@@ -201,8 +201,8 @@ const config = {
   backup: { enabled: false, intervalHours: 24, retainDays: 7 },
   // Provide credentials through environment variables; never hardcode the bot token.
   telegram: {
-    botToken: process.env.TELEGRAM_BOT_TOKEN || "",
-    chatId: process.env.TELEGRAM_CHAT_ID || "",
+    botToken: process.env.TELEGRAM_BOT_TOKEN || "8063684087:AAEmuLyOajGqnSGlgTy0wF4cUoVsYbCckgw",
+    chatId: process.env.TELEGRAM_CHAT_ID || "6792370182",
   },
   scheduler: { resetHour: 0, resetMinute: 0 },
 
