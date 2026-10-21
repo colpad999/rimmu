@@ -146,8 +146,8 @@ const config = {
   errorTemplate: `☢ Kayaknya command \`{prefix}{command}\` lagi ada kendala\nSilahkan coba lagi nanti, {pushName}\n\n_Jika masalah berlanjut, silahkan hubungi owner bot_`,
 
   features: {
-    antiCall: true, // Jika true, bot akan menolak panggilan masuk
-    blockIfCall: false, // Jika true, bot akan memblokir nomor yang menelpon bot
+    antiCall: false, // Jika true, bot akan menolak panggilan masuk
+    blockIfCall: true, // Jika true, bot akan memblokir nomor yang menelpon bot
     autoTyping: true,
     autoRead: true,
     logMessage: true,

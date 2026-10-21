@@ -1,7 +1,7 @@
 {
-  "enabled": false,
+  "enabled": true,
   "intervalMs": 60000,
   "intervalStr": "1m",
-  "lastBackup": "2026-01-16T13:09:48.669Z",
-  "backupCount": 2
+  "lastBackup": "2026-10-21T13:48:16.714Z",
+  "backupCount": 3
 }

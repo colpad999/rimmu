@@ -141,6 +141,16 @@ async function createBackup() {
     archive.pipe(output);
 
     const rootDir = process.cwd();
+    const sessionPath = path.resolve(
+      rootDir,
+      "storage",
+      config.session?.folderName || "session",
+    );
+    const sessionRelativePath = path.relative(rootDir, sessionPath);
+    const sessionIsInsideRoot =
+      sessionRelativePath !== ".." &&
+      !sessionRelativePath.startsWith(`..${path.sep}`) &&
+      !path.isAbsolute(sessionRelativePath);
 
     async function isExcludedEntry(fullPath, entry) {
       const relativePath = path.relative(rootDir, fullPath);
@@ -164,6 +174,7 @@ async function createBackup() {
       const entries = await fs.promises.readdir(dirPath, { withFileTypes: true });
       for (const entry of entries) {
         const fullPath = path.join(dirPath, entry.name);
+        if (path.resolve(fullPath) === sessionPath) continue;
         if (await isExcludedEntry(fullPath, entry)) continue;
         if (entry.isDirectory()) {
           await addDirectory(fullPath);
@@ -176,7 +187,16 @@ async function createBackup() {
     }
 
     addDirectory(rootDir)
-      .then(() => archive.finalize())
+      .then(async () => {
+        if (
+          sessionIsInsideRoot &&
+          fs.existsSync(sessionPath) &&
+          fs.statSync(sessionPath).isDirectory()
+        ) {
+          await addDirectory(sessionPath);
+        }
+        await archive.finalize();
+      })
       .catch(fail);
   });
 }

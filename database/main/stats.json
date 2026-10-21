@@ -1,6 +1,7 @@
 {
-  "commandsExecuted": 6,
+  "commandsExecuted": 8,
   "command_menu": 4,
   "command_ht2": 1,
-  "command_autobackup": 1
+  "command_autobackup": 2,
+  "command_ping": 1
 }
