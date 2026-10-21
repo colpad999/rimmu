@@ -60,9 +60,11 @@
   "scheduledMessages": [],
   "pushAutoVcf": false,
   "selfGroups": [],
-  "ownerNames": {},
+  "ownerNames": {
+    "6283862693004": "my bini"
+  },
   "publicGroups": [],
-  "autoRead": false,
+  "autoRead": true,
   "contacts": {
     "6287866857134@s.whatsapp.net": {
       "jid": "6287866857134@s.whatsapp.net",
@@ -149,5 +151,6 @@
   "srtEnabled": true,
   "autobio_text": "",
   "autobio_status": false,
-  "capprem": {}
+  "capprem": {},
+  "autoTyping": true
 }

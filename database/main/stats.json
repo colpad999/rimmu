@@ -1,7 +1,11 @@
 {
-  "commandsExecuted": 8,
+  "commandsExecuted": 12,
   "command_menu": 4,
   "command_ht2": 1,
-  "command_autobackup": 2,
-  "command_ping": 1
+  "command_autobackup": 3,
+  "command_ping": 1,
+  "commandErrors": 7,
+  "command_autoread": 1,
+  "command_autotyping": 1,
+  "command_addowner": 1
 }
