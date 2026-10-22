@@ -1,6 +1,6 @@
 //
 
-import { Canvas, loadImage, FontLibrary } from 'skia-canvas'
+import { Canvas, loadImage, GlobalFonts } from '@napi-rs/canvas'
 import fs from 'fs'
 import path from 'path'
 import te from '../../src/lib/yalena-error.js'
@@ -25,8 +25,8 @@ async function generateImage(saldo, greet) {
   await ensureFile(fontUrl, font1)
   await ensureFile(font2Url, font2)
 
-  FontLibrary.use("CustomFont", font1)
-  FontLibrary.use("GreetingFont", font2)
+  GlobalFonts.registerFromPath(font1, "CustomFont")
+  GlobalFonts.registerFromPath(font2, "GreetingFont")
 
   const bgRes = await fetch(bgUrl)
   const bg = await loadImage(Buffer.from(await bgRes.arrayBuffer()))
@@ -59,7 +59,7 @@ async function generateImage(saldo, greet) {
 
   ctx.fillText(greet, 98, 86)
 
-  return await canvas.png
+  return canvas.toBuffer("image/png")
 }
 const pluginConfig = {
     name: 'fakebankjago',

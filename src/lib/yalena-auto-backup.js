@@ -18,12 +18,17 @@ const BACKUP_STATE_FILE = path.join(
 );
 const EXCLUDED_BACKUP_DIRECTORIES = new Set([
   ".git",
+  ".npm",
+  ".cache",
   "backups",
   "node_modules",
   "temp",
 ]);
 let activeCronJob = null;
-const MAX_TELEGRAM_FILE_SIZE = 50 * 1024 * 1024;
+const MAX_TELEGRAM_FILE_SIZE = 45 * 1024 * 1024;
+const MAX_BACKUP_FILE_SIZE = 44 * 1024 * 1024;
+const MAX_BACKUP_TOTAL_SIZE = 200 * 1024 * 1024;
+const BACKUP_GROUP_SIZE = 35 * 1024 * 1024;
 
 function loadBackupState() {
   try {
@@ -94,114 +99,147 @@ function intervalToCron(ms) {
 }
 
 async function createBackup() {
-  return new Promise((resolve, reject) => {
-    const timestamp = new Date()
-      .toISOString()
-      .replace(/[:.]/g, "-")
-      .slice(0, 19);
-    const archive = archiver("zip", { zlib: { level: 9 } });
-    let fileCount = 0;
-    let size = 0;
-    let settled = false;
-    let streamError = null;
-    const output = new Transform({
-      transform(chunk, encoding, callback) {
-        size += chunk.length;
-        if (size > MAX_TELEGRAM_FILE_SIZE) {
-          streamError = new Error("Ukuran backup melebihi batas Telegram 50 MB.");
-          callback(streamError);
-          return;
-        }
-        callback(null, chunk);
-      },
-    });
+  const timestamp = new Date()
+    .toISOString()
+    .replace(/[:.]/g, "-")
+    .slice(0, 19);
+  const rootDir = process.cwd();
+  const sessionPath = path.resolve(
+    rootDir,
+    "storage",
+    config.session?.folderName || "session",
+  );
+  const sessionRelativePath = path.relative(rootDir, sessionPath);
+  const sessionIsInsideRoot =
+    sessionRelativePath !== ".." &&
+    !sessionRelativePath.startsWith(`..${path.sep}`) &&
+    !path.isAbsolute(sessionRelativePath);
+  const files = [];
 
-    const fail = (error) => {
-      archive.abort();
-      if (!output.destroyed) output.destroy(error);
-      if (!settled) {
-        settled = true;
-        reject(error);
-      }
-    };
-
-    output.on("error", fail);
-    archive.on("error", fail);
-    archive.on("warning", fail);
-    archive.pipe(output);
-
-    const rootDir = process.cwd();
-    const sessionPath = path.resolve(
-      rootDir,
-      "storage",
-      config.session?.folderName || "session",
-    );
-    const sessionRelativePath = path.relative(rootDir, sessionPath);
-    const sessionIsInsideRoot =
-      sessionRelativePath !== ".." &&
-      !sessionRelativePath.startsWith(`..${path.sep}`) &&
-      !path.isAbsolute(sessionRelativePath);
-
-    async function isExcludedEntry(fullPath, entry) {
-      const relativePath = path.relative(rootDir, fullPath);
-      if (
-        relativePath
-          .split(path.sep)
-          .some((part) => EXCLUDED_BACKUP_DIRECTORIES.has(part))
-      ) {
-        return true;
-      }
-      if (!entry.isSymbolicLink()) return false;
-
-      const realPath = await fs.promises.realpath(fullPath);
-      return path
-        .relative(rootDir, realPath)
+  async function isExcludedEntry(fullPath, entry) {
+    const relativePath = path.relative(rootDir, fullPath);
+    if (
+      relativePath
         .split(path.sep)
-        .some((part) => EXCLUDED_BACKUP_DIRECTORIES.has(part));
+        .some((part) => EXCLUDED_BACKUP_DIRECTORIES.has(part))
+    ) {
+      return true;
     }
+    if (!entry.isSymbolicLink()) return false;
 
-    async function addDirectory(dirPath) {
-      const entries = await fs.promises.readdir(dirPath, { withFileTypes: true });
-      for (const entry of entries) {
-        const fullPath = path.join(dirPath, entry.name);
-        if (path.resolve(fullPath) === sessionPath) continue;
-        if (await isExcludedEntry(fullPath, entry)) continue;
-        if (entry.isDirectory()) {
-          await addDirectory(fullPath);
-        } else if (entry.isFile() || entry.isSymbolicLink()) {
-          const relativePath = path.relative(rootDir, fullPath);
-          archive.file(fullPath, { name: relativePath });
-          fileCount++;
-        }
+    const realPath = await fs.promises.realpath(fullPath);
+    return path
+      .relative(rootDir, realPath)
+      .split(path.sep)
+      .some((part) => EXCLUDED_BACKUP_DIRECTORIES.has(part));
+  }
+
+  async function collectDirectory(dirPath) {
+    const entries = await fs.promises.readdir(dirPath, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dirPath, entry.name);
+      if (path.resolve(fullPath) === sessionPath) continue;
+      if (await isExcludedEntry(fullPath, entry)) continue;
+      if (entry.isDirectory()) {
+        await collectDirectory(fullPath);
+      } else if (entry.isFile() || entry.isSymbolicLink()) {
+        const stats = await fs.promises.stat(fullPath);
+        files.push({
+          path: fullPath,
+          name: path.relative(rootDir, fullPath),
+          size: stats.size,
+        });
       }
     }
+  }
 
-    addDirectory(rootDir)
-      .then(async () => {
-        if (
-          sessionIsInsideRoot &&
-          fs.existsSync(sessionPath) &&
-          fs.statSync(sessionPath).isDirectory()
-        ) {
-          await addDirectory(sessionPath);
-        }
-        archive.finalize();
-        settled = true;
-        resolve({
-          stream: output,
-          filename: `backup_${process.pid}_${timestamp}.zip`,
-          get size() {
-            return size;
-          },
-          get streamError() {
-            return streamError;
-          },
-          fileCount,
-          timestamp,
-        });
-      })
-      .catch(fail);
+  await collectDirectory(rootDir);
+  if (
+    sessionIsInsideRoot &&
+    fs.existsSync(sessionPath) &&
+    fs.statSync(sessionPath).isDirectory()
+  ) {
+    await collectDirectory(sessionPath);
+  }
+
+  const oversizedFile = files.find((file) => file.size > MAX_BACKUP_FILE_SIZE);
+  if (oversizedFile) {
+    const sizeInMB = (oversizedFile.size / (1024 * 1024)).toFixed(2);
+    throw new Error(
+      `Backup dibatalkan sebelum upload: ${oversizedFile.name} berukuran ${sizeInMB} MB dan terlalu besar untuk satu arsip Telegram.`,
+    );
+  }
+  const totalSize = files.reduce((size, file) => size + file.size, 0);
+  if (totalSize > MAX_BACKUP_TOTAL_SIZE) {
+    const sizeInMB = (totalSize / (1024 * 1024)).toFixed(2);
+    throw new Error(
+      `Backup dibatalkan sebelum upload: total ukuran file ${sizeInMB} MB melebihi batas 200 MB.`,
+    );
+  }
+
+  const groups = [];
+  let currentGroup = { files: [], size: 0 };
+  for (const file of files) {
+    if (
+      currentGroup.files.length > 0 &&
+      currentGroup.size + file.size > BACKUP_GROUP_SIZE
+    ) {
+      groups.push(currentGroup);
+      currentGroup = { files: [], size: 0 };
+    }
+    currentGroup.files.push(file);
+    currentGroup.size += file.size;
+  }
+  if (currentGroup.files.length > 0 || groups.length === 0) {
+    groups.push(currentGroup);
+  }
+
+  return {
+    groups,
+    filename: `backup_${process.pid}_${timestamp}`,
+    fileCount: files.length,
+    timestamp,
+  };
+}
+
+function createArchiveStream(files) {
+  const archive = archiver("zip", { zlib: { level: 9 } });
+  let size = 0;
+  let streamError = null;
+  const output = new Transform({
+    transform(chunk, encoding, callback) {
+      size += chunk.length;
+      if (size > MAX_TELEGRAM_FILE_SIZE) {
+        streamError = new Error("Ukuran arsip melebihi batas Telegram 50 MB.");
+        callback(streamError);
+        return;
+      }
+      callback(null, chunk);
+    },
   });
+  const fail = (error) => {
+    archive.abort();
+    if (!output.destroyed) output.destroy(error);
+  };
+
+  archive.on("error", fail);
+  archive.on("warning", fail);
+  output.on("error", () => archive.abort());
+  archive.pipe(output);
+  for (const file of files) {
+    archive.file(file.path, { name: file.name });
+  }
+  archive.finalize();
+
+  return {
+    stream: output,
+    get size() {
+      return size;
+    },
+    get streamError() {
+      return streamError;
+    },
+  };
 }
 
 function getTelegramBackupConfig() {
@@ -224,51 +262,60 @@ async function sendBackupToTelegram(backupInfo) {
     );
   }
   const state = loadBackupState();
-  const caption =
-    `Auto Backup ${config.bot?.name || "Yalena-AI"}\n` +
-    `Waktu: ${timeHelper.formatDateTime("DD MMMM YYYY HH:mm:ss")} WIB\n` +
-    `File: ${backupInfo.fileCount}\n` +
-    `Backup ke-${state.backupCount + 1}`;
-  const form = new FormData();
-  form.append("chat_id", chatId);
-  form.append("caption", caption);
-  form.append("document", backupInfo.stream, {
-    filename: backupInfo.filename,
-    contentType: "application/zip",
-  });
+  const timestamp = timeHelper.formatDateTime("DD MMMM YYYY HH:mm:ss");
+  const files = backupInfo.groups.flatMap((group) => group.files);
+  const archiveInfo = createArchiveStream(files);
+  const uploadArchive = async () => {
+    const caption =
+      `Auto Backup ${config.bot?.name || "Yalena-AI"}\n` +
+      `Waktu: ${timestamp}\n` +
+      `File: ${backupInfo.fileCount}\n` +
+      `Backup ke-${state.backupCount + 1}`;
+    const form = new FormData();
+    form.append("chat_id", chatId);
+    form.append("caption", caption);
+    form.append("document", archiveInfo.stream, {
+      filename: `${backupInfo.filename}.zip`,
+      contentType: "application/zip",
+    });
 
-  try {
-    const response = await axios.post(
-      `https://api.telegram.org/bot${botToken}/sendDocument`,
-      form,
-      {
-        headers: form.getHeaders(),
-        maxBodyLength: Infinity,
-        maxContentLength: Infinity,
-        timeout: 120_000,
-      },
-    );
-    if (!response.data?.ok) {
-      throw new Error(response.data?.description || "Telegram menolak file backup.");
+    try {
+      const response = await axios.post(
+        `https://api.telegram.org/bot${botToken}/sendDocument`,
+        form,
+        {
+          headers: form.getHeaders(),
+          maxBodyLength: Infinity,
+          maxContentLength: Infinity,
+          timeout: 120_000,
+        },
+      );
+      if (!response.data?.ok) {
+        throw new Error(response.data?.description || "Telegram menolak file backup.");
+      }
+    } catch (error) {
+      const detail = String(
+        archiveInfo.streamError?.message ||
+        error.response?.data?.description ||
+        error.message ||
+        "Kesalahan tidak diketahui",
+      );
+      archiveInfo.stream.destroy();
+      const safeDetail = botToken ? detail.replaceAll(botToken, "[redacted]") : detail;
+      logger.error("AutoBackup", `Telegram upload failed: ${safeDetail}`);
+      throw new Error(`Pengiriman satu file backup gagal: ${safeDetail}`);
     }
-  } catch (error) {
-    const detail = String(
-      backupInfo.streamError?.message ||
-      error.response?.data?.description ||
-      error.message ||
-      "Kesalahan tidak diketahui",
-    );
-    backupInfo.stream.destroy();
-    const safeDetail = botToken ? detail.replaceAll(botToken, "[redacted]") : detail;
-    logger.error("AutoBackup", `Telegram upload failed: ${safeDetail}`);
-    throw new Error(`Pengiriman backup ke Telegram gagal: ${safeDetail}`);
-  }
+  };
+
+  await uploadArchive();
 
   state.lastBackup = new Date().toISOString();
   state.backupCount++;
   saveBackupState(state);
-  const sizeInMB = (backupInfo.size / (1024 * 1024)).toFixed(2);
-  logger.success("AutoBackup", `Backup sent to Telegram (${sizeInMB} MB)`);
+  logger.success(
+    "AutoBackup",
+    "Backup sent to Telegram as one ZIP archive",
+  );
 }
 
 async function doBackup() {

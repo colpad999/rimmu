@@ -8,6 +8,7 @@ import config from "../../config.js";
 import fs from "fs";
 import sharp from "sharp";
 import { getAssetBuffer } from "../../src/lib/yalena-asset-manager.js";
+import { logger } from "../../src/lib/yalena-logger.js";
 import { getTimeGreeting, formatUptime } from "../../src/lib/yalena-formatter.js";
 import { getCategories, getCommandsByCategory } from "../../src/lib/yalena-plugins.js";
 import { getCasesByCategory } from "../../case/yalena.js";
@@ -111,10 +112,23 @@ async function defaultMenuHandler(m, { sock, config: botConfig, db, uptime }) {
     return m.reply("❌ Video menu tidak ditemukan di assets.");
   }
 
-  const thumbnail = await sharp(getAssetBuffer("yalena", botConfig.assets))
-    .resize(300, 300)
-    .jpeg({ quality: 80 })
-    .toBuffer();
+  let thumbnail;
+  for (const assetKey of ["yalena", "yalena2", "yalena3"]) {
+    try {
+      const image = getAssetBuffer(assetKey, botConfig.assets);
+      if (!image) continue;
+      thumbnail = await sharp(image)
+        .resize(300, 300)
+        .jpeg({ quality: 80 })
+        .toBuffer();
+      break;
+    } catch (error) {
+      logger.warn("Menu", `Unable to create thumbnail from ${assetKey}: ${error.message}`);
+    }
+  }
+  if (!thumbnail) {
+    logger.warn("Menu", "No valid thumbnail asset found; sending menu without one");
+  }
 
   const categoryRows = categories.map(({ cat, emoji, count }) => ({
     title: `${emoji} ${pretty(cat.toUpperCase())}`,
@@ -147,7 +161,7 @@ async function defaultMenuHandler(m, { sock, config: botConfig, db, uptime }) {
 
   const media = await prepareWAMessageMedia({
     video: { url: video },
-    gifPlayback: true,
+    gifPlayback: false,
   }, { upload: sock.waUploadToServer });
 
   const newsletterId = botConfig.saluran?.id || "120363380765405182@newsletter";
@@ -216,7 +230,7 @@ async function defaultMenuHandler(m, { sock, config: botConfig, db, uptime }) {
           degreesLatitude: 0,
           degreesLongitude: 0,
           name: `${botConfig.bot?.name || "Yalena MD"} • ${pretty("V5 — LV 2")}`,
-          jpegThumbnail: thumbnail,
+          ...(thumbnail ? { jpegThumbnail: thumbnail } : {}),
         },
       },
     },

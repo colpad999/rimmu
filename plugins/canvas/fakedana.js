@@ -1,8 +1,8 @@
 //
 
-import { Canvas, loadImage, FontLibrary } from 'skia-canvas'
+import { Canvas, loadImage, GlobalFonts } from '@napi-rs/canvas'
 import te from '../../src/lib/yalena-error.js'
-FontLibrary.use('CartoonVibes', process.cwd() + '/assets/fonts/Epep.ttf')
+GlobalFonts.registerFromPath(process.cwd() + '/assets/fonts/Epep.ttf', 'CartoonVibes')
 
 async function generate(angka) {
   const bg = await loadImage('https://raw.githubusercontent.com/uploader762/dat3/main/uploads/9c18e0-1772932032348.jpg')
@@ -32,7 +32,7 @@ async function generate(angka) {
 
   ctx.drawImage(logo, logoX, logoY, logoSize, logoSize)
 
-  return await canvas.png
+  return canvas.toBuffer('image/png')
 }
 const pluginConfig = {
     name: 'fakedana',
