@@ -652,10 +652,7 @@ async function messageHandler(msg, sock, options = {}) {
         m.isOwner ||
         isJadibotOwner(jadibotId, m.sender) ||
         senderNum === botNum;
-      m.isPremium =
-        m.isPremium ||
-        isJadibotPremium(jadibotId, m.sender) ||
-        m.isOwner;
+      m.isPremium = isJadibotPremium(jadibotId, m.sender) || m.isOwner;
     }
 
     if (config.features?.logMessage) {
