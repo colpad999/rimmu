@@ -4,8 +4,8 @@
   "description": "WhatsApp Multi-Device Bot dengan sistem plugin modular",
   "main": "index.js",
   "scripts": {
-    "start": "set NODE_ENV=development&& node index.js",
-    "dev": "node index.js",
+    "start": "node --max-old-space-size=320 --max-semi-space-size=8 --expose-gc index.js",
+    "dev": "node --max-old-space-size=320 --max-semi-space-size=8 --expose-gc index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint plugins/"
   },

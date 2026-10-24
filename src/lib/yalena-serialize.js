@@ -35,6 +35,7 @@ import util from "util";
 import axios from "axios";
 import sharp from "sharp";
 import fsc from "fs";
+import { LRUCache } from "lru-cache";
 import { getDatabase } from "./yalena-database.js";
 import { saluranCtx } from "./yalena-context.js";
 import { getAssetBuffer } from "./yalena-asset-manager.js";
@@ -98,9 +99,14 @@ const SRT_REMOTE_IMAGES = [
   "https://files.catbox.moe/270vo4.jpg",
 ];
 
-const _thumbCache = {};
+const _thumbCache = new LRUCache({
+  max: 128,
+  maxSize: 24 * 1024 * 1024,
+  maxEntrySize: 8 * 1024 * 1024,
+  sizeCalculation: (value) => Buffer.isBuffer(value) ? value.byteLength : 1,
+});
 async function getCachedThumb(filePath) {
-  if (_thumbCache[filePath] !== undefined) return _thumbCache[filePath];
+  if (_thumbCache.has(filePath)) return _thumbCache.get(filePath);
 
   // Try AssetManager first if it's a known file name
   const basename = filePath ? filePath.split('/').pop().split('.')[0] : null;
@@ -112,19 +118,24 @@ async function getCachedThumb(filePath) {
   try {
     if (filePath && filePath.startsWith("http")) {
       const res = await axios.get(filePath, { responseType: "arraybuffer", timeout: 5000 });
-      _thumbCache[filePath] = Buffer.from(res.data);
+      _thumbCache.set(filePath, Buffer.from(res.data));
     } else if (fsc.existsSync(filePath)) {
-      _thumbCache[filePath] = fsc.readFileSync(filePath);
+      _thumbCache.set(filePath, fsc.readFileSync(filePath));
     } else {
-      _thumbCache[filePath] = null;
+      _thumbCache.set(filePath, null);
     }
   } catch {
-    _thumbCache[filePath] = null;
+    _thumbCache.set(filePath, null);
   }
-  return _thumbCache[filePath];
+  return _thumbCache.get(filePath);
 }
 
-let _sharpThumbCache = {};
+const _sharpThumbCache = new LRUCache({
+  max: 128,
+  maxSize: 8 * 1024 * 1024,
+  maxEntrySize: 2 * 1024 * 1024,
+  sizeCalculation: (value) => Buffer.isBuffer(value) ? value.byteLength : 1,
+});
 let _sharpInstance = null;
 async function _getSharp() {
   if (!_sharpInstance) _sharpInstance = (await import("sharp")).default;
@@ -132,19 +143,19 @@ async function _getSharp() {
 }
 async function getCachedSharpThumb(filePath, w, h) {
   const key = `${filePath}_${w}x${h}`;
-  if (_sharpThumbCache[key] !== undefined) return _sharpThumbCache[key];
+  if (_sharpThumbCache.has(key)) return _sharpThumbCache.get(key);
   try {
     const raw = await getCachedThumb(filePath);
     if (raw) {
       const sharp = await _getSharp();
-      _sharpThumbCache[key] = await sharp(raw).resize(w, h).toBuffer();
+      _sharpThumbCache.set(key, await sharp(raw).resize(w, h).toBuffer());
     } else {
-      _sharpThumbCache[key] = null;
+      _sharpThumbCache.set(key, null);
     }
   } catch {
-    _sharpThumbCache[key] = null;
+    _sharpThumbCache.set(key, null);
   }
-  return _sharpThumbCache[key];
+  return _sharpThumbCache.get(key);
 }
 
 const _ppCache = new Map();

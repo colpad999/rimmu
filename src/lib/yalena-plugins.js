@@ -2,6 +2,7 @@
 
 import fs from "fs";
 import path from "path";
+import { parse } from "acorn";
 import { theme, chalk, logger } from "./yalena-logger.js";
 /**
  * @typedef {Object} PluginConfig
@@ -77,6 +78,168 @@ const defaultConfig = {
   limit: 1,
   isEnabled: true,
 };
+
+const UNSUPPORTED_STATIC_VALUE = Symbol("unsupported-static-value");
+
+function evaluateStaticValue(node, bindings, resolving = new Set()) {
+  if (!node) return UNSUPPORTED_STATIC_VALUE;
+
+  switch (node.type) {
+    case "Literal":
+      return node.value;
+    case "Identifier": {
+      if (!bindings.has(node.name) || resolving.has(node.name)) {
+        return UNSUPPORTED_STATIC_VALUE;
+      }
+      const nextResolving = new Set(resolving);
+      nextResolving.add(node.name);
+      return evaluateStaticValue(
+        bindings.get(node.name),
+        bindings,
+        nextResolving,
+      );
+    }
+    case "ArrayExpression": {
+      const values = [];
+      for (const element of node.elements) {
+        const value = evaluateStaticValue(element, bindings, resolving);
+        if (value === UNSUPPORTED_STATIC_VALUE) {
+          return UNSUPPORTED_STATIC_VALUE;
+        }
+        values.push(value);
+      }
+      return values;
+    }
+    case "ObjectExpression": {
+      const value = {};
+      for (const property of node.properties) {
+        if (
+          property.type !== "Property" ||
+          property.computed ||
+          (property.key.type !== "Identifier" &&
+            property.key.type !== "Literal")
+        ) {
+          return UNSUPPORTED_STATIC_VALUE;
+        }
+        const key =
+          property.key.type === "Identifier"
+            ? property.key.name
+            : property.key.value;
+        const propertyValue = evaluateStaticValue(
+          property.value,
+          bindings,
+          resolving,
+        );
+        if (propertyValue === UNSUPPORTED_STATIC_VALUE) {
+          return UNSUPPORTED_STATIC_VALUE;
+        }
+        value[key] = propertyValue;
+      }
+      return value;
+    }
+    case "TemplateLiteral": {
+      let value = node.quasis[0].value.cooked;
+      for (let index = 0; index < node.expressions.length; index++) {
+        const expression = evaluateStaticValue(
+          node.expressions[index],
+          bindings,
+          resolving,
+        );
+        if (expression === UNSUPPORTED_STATIC_VALUE) {
+          return UNSUPPORTED_STATIC_VALUE;
+        }
+        value += String(expression) + node.quasis[index + 1].value.cooked;
+      }
+      return value;
+    }
+    case "UnaryExpression": {
+      const argument = evaluateStaticValue(node.argument, bindings, resolving);
+      if (argument === UNSUPPORTED_STATIC_VALUE) {
+        return UNSUPPORTED_STATIC_VALUE;
+      }
+      if (node.operator === "!") return !argument;
+      if (node.operator === "+") return +argument;
+      if (node.operator === "-") return -argument;
+      return UNSUPPORTED_STATIC_VALUE;
+    }
+    default:
+      return UNSUPPORTED_STATIC_VALUE;
+  }
+}
+
+function loadPluginMetadata(filePath) {
+  try {
+    const source = fs.readFileSync(filePath, "utf8");
+    const ast = parse(source, { ecmaVersion: "latest", sourceType: "module" });
+    const bindings = new Map();
+
+    for (const node of ast.body) {
+      if (node.type !== "VariableDeclaration") continue;
+      for (const declaration of node.declarations) {
+        if (declaration.id.type === "Identifier" && declaration.init) {
+          bindings.set(declaration.id.name, declaration.init);
+        }
+      }
+    }
+
+    let configExpression = null;
+    let hasHandlerExport = false;
+    for (const node of ast.body) {
+      if (node.type !== "ExportNamedDeclaration") continue;
+
+      if (node.declaration?.type === "VariableDeclaration") {
+        hasHandlerExport ||= node.declaration.declarations.some(
+          (declaration) =>
+            declaration.id.type === "Identifier" &&
+            declaration.id.name === "handler",
+        );
+        const configDeclaration = node.declaration.declarations.find(
+          (declaration) =>
+            declaration.id.type === "Identifier" &&
+            declaration.id.name === "config",
+        );
+        if (configDeclaration) configExpression = configDeclaration.init;
+      }
+      if (
+        node.declaration?.type === "FunctionDeclaration" &&
+        node.declaration.id?.name === "handler"
+      ) {
+        hasHandlerExport = true;
+      }
+
+      const configSpecifier = node.specifiers?.find(
+        (specifier) => specifier.exported?.name === "config",
+      );
+      hasHandlerExport ||= node.specifiers?.some(
+        (specifier) => specifier.exported?.name === "handler",
+      );
+      if (configSpecifier) {
+        configExpression = bindings.get(configSpecifier.local.name) || null;
+      }
+    }
+
+    if (!configExpression || !hasHandlerExport) return null;
+    const config = evaluateStaticValue(configExpression, bindings);
+    if (!config || typeof config !== "object" || Array.isArray(config)) {
+      return null;
+    }
+
+    const pluginConfig = {
+      ...defaultConfig,
+      ...config,
+      name: config.name || path.basename(filePath, path.extname(filePath)),
+    };
+    if (
+      (Array.isArray(pluginConfig.name) && pluginConfig.name.length === 0) ||
+      (!Array.isArray(pluginConfig.name) && !String(pluginConfig.name).trim())
+    ) {
+      return null;
+    }
+    return { config: pluginConfig, handler: null, filePath };
+  } catch {
+    return null;
+  }
+}
 
 const normalizePluginNames = (name) => {
   const values = Array.isArray(name) ? name : [name];
@@ -305,7 +468,8 @@ async function loadPlugins(pluginsDir) {
 
     if (!fs.statSync(categoryPath).isDirectory()) {
       if (category.endsWith(".js") && category !== "_index.js") {
-        const plugin = await loadPlugin(categoryPath);
+        const plugin =
+          loadPluginMetadata(categoryPath) || (await loadPlugin(categoryPath));
         if (plugin && registerPlugin(plugin)) {
           loadedCount++;
           loadedPlugins.push({
@@ -323,7 +487,8 @@ async function loadPlugins(pluginsDir) {
       if (!file.endsWith(".js") || file.startsWith("_")) continue;
 
       const filePath = path.join(categoryPath, file);
-      const plugin = await loadPlugin(filePath);
+      const plugin =
+        loadPluginMetadata(filePath) || (await loadPlugin(filePath));
 
       if (plugin) {
         if (
@@ -346,6 +511,19 @@ async function loadPlugins(pluginsDir) {
 
   printPluginTable(loadedPlugins);
   return loadedCount;
+}
+
+async function loadPluginHandler(plugin) {
+  if (typeof plugin?.handler === "function") return plugin;
+  if (!plugin?.filePath) return null;
+
+  const loadedPlugin = await loadPlugin(plugin.filePath);
+  if (!loadedPlugin) return null;
+
+  removePluginFromStore(plugin);
+  Object.assign(plugin, loadedPlugin);
+  registerPlugin(plugin);
+  return plugin;
 }
 
 /**
@@ -607,6 +785,7 @@ function unloadPlugin(name) {
 export {
   loadPlugin,
   loadPlugins,
+  loadPluginHandler,
   registerPlugin,
   getPlugin,
   getPluginsByCategory,

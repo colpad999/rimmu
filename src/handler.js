@@ -11,6 +11,7 @@ import {
   getAllPlugins,
   pluginStore,
   getAllCommandNames,
+  loadPluginHandler,
 } from "./lib/yalena-plugins.js";
 import {
   findSimilarCommands,
@@ -1881,6 +1882,12 @@ async function messageHandler(msg, sock, options = {}) {
       isJadibot: isJadibot,
     };
 
+    plugin = await loadPluginHandler(plugin);
+    if (!plugin) {
+      logger.error("plugin", `handler gagal dimuat untuk command: ${m.command}`);
+      await m.reply("❌ Fitur ini gagal dimuat. Silakan coba lagi nanti.");
+      return;
+    }
     await plugin.handler(m, context);
 
     if (!m.isOwner && !m.isPartner && plugin.config.cooldown > 0) {
