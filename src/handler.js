@@ -648,8 +648,14 @@ async function messageHandler(msg, sock, options = {}) {
       const botJid = sock.user?.id?.split(":")[0] + "@s.whatsapp.net";
       const senderNum = m.sender?.replace(/[^0-9]/g, "") || "";
       const botNum = botJid.replace(/[^0-9]/g, "");
-      m.isOwner = isJadibotOwner(jadibotId, m.sender) || senderNum === botNum;
-      m.isPremium = isJadibotPremium(jadibotId, m.sender) || m.isOwner;
+      m.isOwner =
+        m.isOwner ||
+        isJadibotOwner(jadibotId, m.sender) ||
+        senderNum === botNum;
+      m.isPremium =
+        m.isPremium ||
+        isJadibotPremium(jadibotId, m.sender) ||
+        m.isOwner;
     }
 
     if (config.features?.logMessage) {
